@@ -39,7 +39,10 @@ function CustomOrdersPage() {
     email: "",
     phone: "",
     date: "",
+    orderType: "pre-order",
     quantity: "1",
+    occasion: "",
+    budget: "",
     preference: "pickup" as "pickup" | "delivery",
     allergies: "",
     instructions: "",
@@ -182,16 +185,38 @@ function CustomOrdersPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Order type</label>
+                <select name="orderType" value={formData.orderType} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white">
+                  <option value="pre-order">Pre-Order</option>
+                  <option value="bakery-box">Bakery Box</option>
+                  <option value="cookie-tray">Cookie Tray</option>
+                  <option value="bread-order">Bread Order</option>
+                  <option value="custom">Custom Bakery Request</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Occasion / event type</label>
+                <input name="occasion" value={formData.occasion} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="Everyday, brunch, gift, celebration..." />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
                 <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Estimated quantity (total items / loaves)</label>
                 <input name="quantity" value={formData.quantity} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="e.g. 2 loaves + 12 cookies" />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Pickup or delivery?</label>
-                <select name="preference" value={formData.preference} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white">
-                  <option value="pickup">Pickup (Daniel Island)</option>
-                  <option value="delivery">Delivery (local area)</option>
-                </select>
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Budget range (optional)</label>
+                <input name="budget" value={formData.budget} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="[PRICE TBD] — share your range" />
               </div>
+            </div>
+
+            <div>
+              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Pickup or delivery?</label>
+              <select name="preference" value={formData.preference} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white">
+                <option value="pickup">Pickup (Daniel Island)</option>
+                <option value="delivery">Delivery (local area)</option>
+              </select>
             </div>
 
             <div>

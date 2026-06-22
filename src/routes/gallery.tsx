@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/sections/Section";
-import { PRODUCTS } from "@/lib/products";
+import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
 export const Route = createFileRoute("/gallery")({
@@ -29,7 +29,7 @@ const GALLERY_CATEGORIES = [
   "Pastries",
   "Seasonal Bakes",
   "Bakery Boxes",
-  "Catering & Events",
+  "Catering / Events",
   "Custom Orders",
 ] as const;
 
@@ -42,22 +42,17 @@ const PLACEHOLDER_LABELS: Record<Category, string> = {
   Pastries: "Seasonal Pastries",
   "Seasonal Bakes": "Limited Seasonal Items",
   "Bakery Boxes": "Curated Gift & Brunch Boxes",
-  "Catering & Events": "Platters & Spreads",
+  "Catering / Events": "Platters & Spreads",
   "Custom Orders": "Bespoke Requests",
 };
 
 function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<Category>("Breads");
 
-  // Use product cards for Breads / Cookies / Bagels
-  const breads = PRODUCTS.filter((p) => p.category === "sourdoughBreads");
-  const cookies = PRODUCTS.filter((p) => p.category === "cookies");
-  const bagels = PRODUCTS.filter((p) => p.category === "bagels");
-
   const getItemsForCategory = (cat: Category) => {
-    if (cat === "Breads") return breads;
-    if (cat === "Cookies") return cookies;
-    if (cat === "Bagels") return bagels;
+    if (cat === "Breads") return ALL_BREADS;
+    if (cat === "Cookies") return ALL_COOKIES;
+    if (cat === "Bagels") return ALL_BAGELS;
     return [];
   };
 
@@ -72,22 +67,22 @@ function GalleryPage() {
             as="h1"
             eyebrow="Gallery"
             title="Fresh from the bakery"
-            intro="A look at our breads, cookies, bagels, boxes, and seasonal offerings. Photos are representative; actual bakes vary with the season."
+            intro="A look at our breads, cookies, bagels, boxes, and seasonal offerings. Product cards are representative; actual bakes vary with the season."
           />
         </div>
       </section>
 
       <Section>
-        {/* Category tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="mb-10 flex flex-wrap gap-2">
           {GALLERY_CATEGORIES.map((cat) => (
             <button
               key={cat}
+              type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm border transition ${
+              className={`rounded-full border px-5 py-2 text-sm transition ${
                 activeCategory === cat
-                  ? "bg-forest text-white border-forest"
-                  : "bg-white text-ink/70 border-border/60 hover:border-forest/40"
+                  ? "border-k2k-blue bg-k2k-blue text-white"
+                  : "border-border/60 bg-white text-ink/70 hover:border-k2k-blue/40"
               }`}
             >
               {cat}
@@ -96,34 +91,37 @@ function GalleryPage() {
         </div>
 
         {isPlaceholderCategory ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <div
                 key={n}
-                className="aspect-[16/11] rounded-3xl bg-white ring-1 ring-border/40 flex items-center justify-center p-8"
+                className="flex aspect-[16/11] items-center justify-center rounded-3xl bg-white p-8 ring-1 ring-border/40"
               >
                 <div className="text-center">
-                  <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-forest/30" />
+                  <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-k2k-blue/30" />
                   <p className="text-sm font-medium text-ink">{PLACEHOLDER_LABELS[activeCategory]}</p>
-                  <p className="text-xs mt-1 text-muted-foreground">Photo coming soon — representative of our fresh bakes</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Photo coming soon — representative of our fresh bakes
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {currentItems.map((product) => (
               <div key={product.id} className="overflow-hidden rounded-3xl bg-white ring-1 ring-border/60">
-                <div className="bg-white p-8 flex items-center justify-center aspect-[5/4]">
+                <div className="flex aspect-[5/4] items-center justify-center bg-white p-8">
                   <img
                     src={product.cardAsset}
                     alt={product.name}
                     className="max-h-full max-w-full object-contain"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-5 text-sm">
                   <div className="font-medium text-ink">{product.name}</div>
-                  <div className="text-forest mt-0.5">{product.price}</div>
+                  <div className="mt-0.5 text-k2k-blue">{product.price}</div>
                 </div>
               </div>
             ))}
@@ -131,12 +129,19 @@ function GalleryPage() {
         )}
 
         <div className="mt-12 text-center">
-          <p className="text-muted-foreground text-sm max-w-md mx-auto">
+          <p className="mx-auto max-w-md text-sm text-muted-foreground">
             Interested in ordering or recreating something you see? Head to our menu or custom orders page.
           </p>
           <div className="mt-5 flex justify-center gap-3">
-            <Link to="/menu" className="rounded-full border px-6 h-10 inline-flex items-center text-sm">View Menu</Link>
-            <Link to="/custom-orders" className="rounded-full bg-forest text-white px-6 h-10 inline-flex items-center text-sm">Request Custom</Link>
+            <Link to="/menu" className="inline-flex h-10 items-center rounded-full border px-6 text-sm">
+              View Menu
+            </Link>
+            <Link
+              to="/custom-orders"
+              className="inline-flex h-10 items-center rounded-full bg-k2k-blue px-6 text-sm text-white"
+            >
+              Request Custom
+            </Link>
           </div>
         </div>
       </Section>

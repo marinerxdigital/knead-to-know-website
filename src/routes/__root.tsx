@@ -80,21 +80,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Knead To Know | Daniel Island Bakery" },
+      {
+        title: "Knead To Know Bakery | Boutique Sourdough & Small-Batch Bakes on Daniel Island",
+      },
       {
         name: "description",
         content:
-          "Knead To Know is a small-batch bakery on Daniel Island serving fresh breads, cookies, pastries, seasonal baked goods and custom orders in the Charleston area.",
+          "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, seasonal baked goods, and custom orders by inquiry or pre-order.",
       },
       { name: "theme-color", content: "#FFFDF8" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Knead To Know" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Knead To Know | Daniel Island Bakery" },
-      { name: "twitter:title", content: "Knead To Know | Daniel Island Bakery" },
-      { name: "description", content: "Fresh breads, cookies, pastries and seasonal bakes from Knead To Know bakery on Daniel Island. Browse the menu and place your order." },
-      { property: "og:description", content: "Fresh breads, cookies, pastries and seasonal bakes from Knead To Know bakery on Daniel Island. Browse the menu and place your order." },
-      { name: "twitter:description", content: "Fresh breads, cookies, pastries and seasonal bakes from Knead To Know bakery on Daniel Island. Browse the menu and place your order." },
+      {
+        property: "og:title",
+        content: "Knead To Know Bakery | Boutique Sourdough & Small-Batch Bakes on Daniel Island",
+      },
+      {
+        name: "twitter:title",
+        content: "Knead To Know Bakery | Boutique Sourdough & Small-Batch Bakes on Daniel Island",
+      },
+      {
+        property: "og:description",
+        content:
+          "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, seasonal baked goods, and custom orders by inquiry or pre-order.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, seasonal baked goods, and custom orders by inquiry or pre-order.",
+      },
       { property: "og:image", content: `${SITE_URL}${ogImage.url}` },
       { property: "og:image:width", content: "1280" },
       { property: "og:image:height", content: "672" },

@@ -11,7 +11,8 @@ import { BUSINESS } from "@/lib/business";
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
-  message: z.string().trim().min(1, "Please add a message").max(1500),
+  phone: z.string().trim().max(30).optional(),
+  message: z.string().trim().min(1, "Please add a message or order notes").max(1500),
   botcheck: z.string().optional(),
 });
 type Values = z.infer<typeof schema>;
@@ -62,6 +63,7 @@ export function ContactForm() {
           from_name: v.name,
           name: v.name,
           email: v.email,
+          phone: v.phone || "",
           message: v.message,
           source: "Contact Form",
           botcheck: "",
@@ -115,7 +117,11 @@ export function ContactForm() {
         {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
       </div>
       <div className="grid gap-2">
-        <Label>Message</Label>
+        <Label>Phone (optional)</Label>
+        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="[INSERT PHONE]" />
+      </div>
+      <div className="grid gap-2">
+        <Label>Message / order notes</Label>
         <Textarea rows={5} {...register("message")} />
         {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
       </div>

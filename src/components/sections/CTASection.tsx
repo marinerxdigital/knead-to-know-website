@@ -14,9 +14,9 @@ export function CTASection({
   title?: string;
   text?: string;
   primaryLabel?: string;
-  primaryTo?: "/inquiry" | "/gallery" | "/flavors" | "/about" | "/contact" | "/menu";
+  primaryTo?: "/inquiry" | "/gallery" | "/flavors" | "/about" | "/contact" | "/menu" | "/custom-orders" | "/catering" | "/faq";
   secondaryLabel?: string;
-  secondaryTo?: "/inquiry" | "/gallery" | "/flavors" | "/about" | "/contact" | "/menu";
+  secondaryTo?: "/inquiry" | "/gallery" | "/flavors" | "/about" | "/contact" | "/menu" | "/custom-orders" | "/catering" | "/faq";
 }) {
   return (
     <section className="px-5 pb-20 sm:px-8 sm:pb-28">
