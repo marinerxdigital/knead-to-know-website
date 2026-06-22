@@ -6,6 +6,11 @@ import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
+const ACCESS_KEY =
+  (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
+  "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+
 export const Route = createFileRoute("/custom-orders")({
   head: () => ({
     meta: [
@@ -50,6 +55,9 @@ function CustomOrdersPage() {
     contactMethod: "email" as "email" | "phone",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [botcheck, setBotcheck] = useState("");
 
   const selectedProducts = PRODUCTS.filter((p) => selectedIds.includes(p.id));
 
@@ -64,11 +72,49 @@ function CustomOrdersPage() {
     setFormData((prev) => ({ ...prev, [name]: value as any }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production: send to API or Web3Forms / email
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setSubmitError(null);
+
+    if (botcheck) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch(WEB3FORMS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: "New Custom Order Request - Knead To Know",
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          requested_date: formData.date,
+          order_type: formData.orderType,
+          quantity: formData.quantity,
+          occasion: formData.occasion,
+          budget: formData.budget,
+          preference: formData.preference,
+          allergies: formData.allergies,
+          instructions: formData.instructions,
+          contact_method: formData.contactMethod,
+          products_selected: selectedProducts.map((p) => p.name).join(" • ") || "None selected",
+          source: "Custom Orders Form",
+          botcheck: "",
+        }),
+      });
+      const data = (await res.json().catch(() => null)) as { success?: boolean } | null;
+      if (!res.ok || !data?.success) throw new Error("Submission failed");
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setSubmitError(
+        "Something went wrong sending your order request. Please try again or email us directly.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -129,7 +175,7 @@ function CustomOrdersPage() {
               Tap any card to add or remove. You can select multiple items.
             </p>
 
-            <div className="grid max-h-[620px] grid-cols-1 gap-4 overflow-auto pr-1 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:max-h-[620px] sm:grid-cols-2 sm:overflow-auto sm:pr-1">
               {PRODUCTS.map((product) => (
                 <K2KProductCard
                   key={product.id}
@@ -149,6 +195,15 @@ function CustomOrdersPage() {
 
           {/* FORM */}
           <form onSubmit={handleSubmit} className="space-y-5">
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={botcheck}
+              onChange={(e) => setBotcheck(e.target.value)}
+              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+            />
             <h2 className="font-display text-2xl text-ink">Your details</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -355,11 +410,22 @@ function CustomOrdersPage() {
               </div>
             </div>
 
+            {submitError && (
+              <p
+                className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                role="alert"
+              >
+                {submitError}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="mt-2 w-full h-12 rounded-full bg-forest text-sm font-medium text-white flex items-center justify-center gap-2 hover:bg-forest-dark"
+              disabled={submitting}
+              className="mt-2 w-full h-12 rounded-full bg-forest text-sm font-medium text-white flex items-center justify-center gap-2 hover:bg-forest-dark disabled:opacity-60"
             >
-              Submit Custom Order Request <ArrowRight className="h-4 w-4" />
+              {submitting ? "Sending…" : "Submit Custom Order Request"}{" "}
+              <ArrowRight className="h-4 w-4" />
             </button>
 
             <p className="text-[10px] text-center text-muted-foreground pt-1">
