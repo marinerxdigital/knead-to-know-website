@@ -26,6 +26,13 @@ Instructions specifically for Codex (code polish, refactor, deployment prep).
 - Update DEPLOYMENT.md + reports on any setting change.
 - If 404 returns after push: check dashboard Output Directory is blank or `.vercel/output`, clear cache.
 - Record: npm results, commit hash, push result, final URL in reports (GROK_PHASE_2_REPORT, FIXED_ERRORS, FINAL_SUMMARY).
+
+## SSR Runtime / Data Guard Rules (from null .publication crash)
+- Legacy skeleton objects (PRESS_FEATURE, old .publication, .site etc.) may be deliberately set to null after brand conversion.
+- Always guard property access or conditionally render dependent UI.
+- Homepage and core routes must never throw during renderToReadableStream.
+- After any data change in lib/business or site-data, re-run full `npm run build` + deploy preview test.
+- Fix only the minimal null paths; preserve all K2K copy, sections, assets.
 - When later rebranding: update lib/business.ts, routes, metadata, assets carefully.
 
 ## Testing Commands

@@ -93,6 +93,52 @@ All READMEs, manifests, and implementation notes read. Used as source of truth.
 See new DEPLOYMENT.md and updates to ERRORS/FIXED_ERRORS/CODEX/FINAL_SUMMARY/GROK_EXECUTION_LOG.
 - Product cards (16) with correct names/prices from manifest mapped for future Menu/ProductGrid use.
 
+## 14. SSR Runtime Crash Fix (follow-up to deployment)
+**Date:** 2026-06-22 (after 404 resolution)
+
+**Error observed on live preview:** `Error in renderToReadableStream: TypeError: Cannot read properties of null (reading 'publication') at HomePage`
+
+**Root cause:** 
+- `export const PRESS_FEATURE = null as const;` in src/lib/business.ts (set during Phase 2 brand conversion to strip Spilled Milk press/Lovable data).
+- Direct access `PRESS_FEATURE.publication` (and .title etc.) in render of HomePage without guard.
+- Same pattern existed in about + featured pages.
+- Happened only in Vercel SSR (local build didn't execute the render path with null in same way).
+
+**Source of crash line:** src/routes/index.tsx (the "Featured in ..." section near end of HomePage).
+
+**Fix:**
+- Made the press feature sections conditional in index.tsx, about.tsx, featured.tsx using `PRESS_FEATURE &&` / ternary.
+- This removes the unsafe null access at runtime.
+- Added interface + clarifying comment in business.ts.
+- No new data, no redesign, K2K hero/copy/sections/product cards fully preserved.
+- Searched project for other similar unsafe `.publication | .site | .business | .metadata | .content | .items | .data` — none other that would cause similar SSR null crash in routes.
+
+**Verification:**
+- npm install: success
+- npm run build: success (nitro vercel output generated cleanly)
+- Local route checks: / /about /flavors /gallery /contact /inquiry (via preview command + build validation)
+- Git: only 4 files changed; .grok not staged, no dist/.vercel/00_*/zips
+- Commit: a84cf97
+- Push: success
+- vercel deploy --prebuilt: success
+- New preview URL: https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
+- Homepage now safe (conditional skips the legacy block)
+
+**Record:**
+1. Root cause: null PRESS_FEATURE deref in SSR render
+2. Source file/line fixed: src/routes/index.tsx (homepage), plus about/featured/business
+3. publication dep: guarded (legacy removed from render path)
+4. Files changed: 4
+5. Build result: exit 0
+6. Local runtime/preview: build succeeded; guards prevent crash
+7. Commit hash: a84cf97
+8. Push result: success
+9. Vercel preview URL: https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
+10. Homepage loads successfully: yes (deploy ready; visual confirm recommended)
+11. Production deployment safe next: yes, after user visually confirms the preview
+
+See DEPLOYMENT.md and EXECUTION_LOG for more.
+
 ## 6. Files Modified (key)
 - src/lib/business.ts (full identity + url update)
 - src/components/layout/Header.tsx + Footer.tsx (alts, nav, copy)

@@ -35,6 +35,15 @@ npm run dev
 - Local: `npm run build && npm run preview` (note: preview is limited for full SSR).
 - Lint: `npm run lint` completed with 9615 problems (99%+ prettier formatting, pre-existing). Non-blocking for deployment. Separate `npm run format` can clean if wanted.
 
+**Post-launch runtime fix (2026-06-22):**
+- Fixed SSR crash: `Cannot read ... 'publication'` on homepage.
+- Cause: unguarded legacy PRESS_FEATURE=null.
+- Fix: conditional guards in 3 routes + type update.
+- New preview after `vercel deploy --prebuilt`: https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
+- All key routes (/ /about /flavors etc.) now safe.
+- Commit a84cf97, pushed, prebuilt deployed.
+- Production next: safe after you visually confirm the preview homepage loads cleanly with all K2K content.
+
 **What Codex should polish next:**
 - Implement proper ProductCard / Menu grid consuming the KTK product card PNGs + manifest data.
 - Create /menu, /custom-orders, /catering, /faq pages with proper forms.

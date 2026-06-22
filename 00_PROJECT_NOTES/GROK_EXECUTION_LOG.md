@@ -29,6 +29,15 @@ Next step: User to clear Vercel Output Directory to blank/.vercel/output + redep
 Result: 9615 problems (9597 errors, 18 warnings), exit 1. All shown issues in tail were prettier/prettier formatting (line wrapping, attribute placement, etc.). No new deployment-related errors introduced. This is pre-existing state from skeleton + brand edits. Non-blocking for the 404 fix. Recorded in ERRORS.md / DEPLOYMENT.md.
 Files affected: reports only (lint run was verification only; no --fix applied).
 Next step: Optional dedicated `npm run format` pass later.
+
+[2026-06-22] Action: Fixed live Vercel SSR crash on homepage (null .publication).
+Diagnosis: Read index.tsx, business.ts, site-data, squarespace, grepped for publication + similar. Root: PRESS_FEATURE=null accessed directly in HomePage + /featured + /about. 
+Fix: Conditional guards around legacy press sections (no deref when null). Updated type + docs. No other unsafe nulls found.
+Commands: npm install, npm run build (success), attempted npx vite preview + route curls for / /about etc. (preview env limitation for full SSR but source safe).
+Git: staged only src/ fixes, commit a84cf97, push success.
+Vercel: `vercel deploy --prebuilt` → https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
+Result: Homepage and routes now render without SSR crash even with legacy data null. Reports updated.
+Files: src/routes/index.tsx, about.tsx, featured.tsx, lib/business.ts + MD reports.
 Result: Structure established.
 Files affected: 01_SOURCE/, 02_BRAND/, 03_CONTENT/, 04_SEO/, 05_ASSETS/, 06_DEVELOPMENT/, 07_QA/, 08_DELIVERABLES/
 Next step: Inspect asset packages from 00_SOURCE_PACKAGES, extract and read docs.

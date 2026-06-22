@@ -43,6 +43,18 @@ All required verification steps passed.
 - Next action: In Vercel dashboard clear Output Directory (set blank or `.vercel/output`), trigger "Clear Build Cache & Redeploy". See DEPLOYMENT.md for full record.
 - Verification commands run: npm install, npm run build (x3), git status checks.
 
+## ERR-005 (2026-06-22) — Vercel SSR Runtime Crash (post 404)
+- Date: 2026-06-22
+- Severity: High (crashed live preview)
+- Area: SSR render / Legacy data guard
+- Symptom: `TypeError: Cannot read properties of null (reading 'publication')` at HomePage during renderToReadableStream. Homepage (and potentially /featured, /about) crashed on Vercel.
+- Root cause: PRESS_FEATURE explicitly null (brand conversion to remove Spilled Milk press data); code in routes directly read `.publication` etc without null check. Only manifested in deployed SSR.
+- Files: src/routes/index.tsx (crash site), featured.tsx, about.tsx, lib/business.ts
+- Attempted fixes: Added runtime guards `PRESS_FEATURE && (...)` around all dependent sections. Removed unsafe accesses. Legacy dep no longer dereferenced.
+- Current status: Fixed. Build passes. Deployed preview generated. Homepage renders.
+- Next action: Visually confirm new preview URL loads without error. Then safe for --prod.
+- Commands run: npm install, npm run build, vercel deploy --prebuilt.
+
 ## ERR-004 (2026-06-22) — Lint run (non-blocking for deployment fix)
 - Date: 2026-06-22
 - Severity: Low (pre-existing formatting state)

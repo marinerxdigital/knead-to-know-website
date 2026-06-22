@@ -84,5 +84,25 @@ Because vercel.json overrides are per-deployment but dashboard Project Settings 
 - Local `npm run preview` may not fully simulate SSR prod; use deployed URL for final test.
 - Lint note: `npm run lint` was executed per instructions. Result: 9615 problems (almost entirely prettier formatting from skeleton + prior edits). Exit 1. Non-blocking for the deployment config fix. See ERRORS.md for details. Use `npm run format` separately if cleaning formatting.
 
+## SSR Runtime Crash Fix (2026-06-22)
+**Error:** `TypeError: Cannot read properties of null (reading 'publication')` at HomePage during renderToReadableStream on Vercel SSR.
+
+**Root cause:** `PRESS_FEATURE = null` in business.ts (intentionally set during brand conversion to remove old Spilled Milk press data). Direct property access without guard in homepage render (and /about, /featured).
+
+**Files fixed:**
+- src/routes/index.tsx (primary homepage crash)
+- src/routes/about.tsx
+- src/routes/featured.tsx
+- src/lib/business.ts (added interface + comment)
+
+**Fix:** Guarded all accesses with `{PRESS_FEATURE && ( ... )}` / ternary so the section only renders when real press data present. Legacy dep safely removed from render path. No random data, no new content invented.
+
+**Verification:**
+- npm install + npm run build: success
+- vercel deploy --prebuilt: success → https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
+- Homepage (and other routes) now safe for SSR even with null publication.
+
+See also ERRORS.md / FIXED_ERRORS.md / GROK_* reports.
+
 ## References
 - Updated in: GROK_PHASE_2_REPORT.md, GROK_EXECUTION_LOG.md, ERRORS.md, FIXED_ERRORS.md, CODEX.md, 08_DELIVERABLES/FINAL_SUMMARY.md, this file.

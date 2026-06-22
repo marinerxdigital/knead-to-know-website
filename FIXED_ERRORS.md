@@ -25,3 +25,17 @@ No other fixes in Phase 1. Build verification and preservation rules were satisf
 - Not committed: .grok/, node_modules/, dist/, .vercel/, 00_*, zips, .env
 - Current live status: Pushed; pending Vercel build + recommended dashboard Output Directory clear. See DEPLOYMENT.md + 00_PROJECT_NOTES/GROK_PHASE_2_REPORT.md for 15-point record.
 - Regression prevention: Always verify `dist/client/index.html` absence + SSR nature before choosing static; prefer nitro preset + vercel.json for this stack. Document all deploy settings.
+
+## FIX-003 (2026-06-22) — Vercel SSR null .publication crash
+- Date fixed: 2026-06-22
+- Symptom: Live deployment crashed with `Cannot read properties of null (reading 'publication')` on homepage SSR.
+- Root cause: Legacy `PRESS_FEATURE = null` from brand conversion + unguarded property reads in HomePage (and siblings).
+- Final fix: 
+  - Conditional render guards in index.tsx, about.tsx, featured.tsx.
+  - Typed the export in business.ts.
+  - Removed all direct unsafe `.publication` (and related) accesses from render path.
+- Files changed: src/routes/index.tsx, src/routes/about.tsx, src/routes/featured.tsx, src/lib/business.ts
+- Commands: npm install ✓, npm run build ✓, vercel deploy --prebuilt → https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
+- Commit: a84cf97
+- Result: SSR now safe. Homepage + key routes render with full K2K content (no old data needed).
+- Regression prevention: Never assume imported "data" objects from skeleton are non-null after brand conversion. Always guard or remove legacy sections. Re-test SSR paths after any data change.
