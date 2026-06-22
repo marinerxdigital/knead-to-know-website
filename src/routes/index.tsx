@@ -9,8 +9,6 @@ import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
 const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
-const BANNER_URL = "/assets/knead-to-know/banners/Knead_To_Know_Promo_Banner_Strip.png";
-const DIVIDER_URL = "/assets/knead-to-know/badges/Knead_To_Know_Section_Divider.png";
 
 const TRUST_ITEMS = [
   {
@@ -22,39 +20,6 @@ const TRUST_ITEMS = [
   {
     icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
     label: "Pre-Orders Welcome",
-  },
-];
-
-const FEATURED_OFFERINGS = [
-  {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-    title: "Artisan Breads",
-    text: "Naturally leavened sourdough loaves baked in small batches.",
-  },
-  {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-    title: "Cookies",
-    text: "Chewy sourdough cookies in signature and seasonal flavors.",
-  },
-  {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
-    title: "Pastries",
-    text: "Morning buns, croissants, muffins, and rotating seasonal bakes.",
-  },
-  {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png",
-    title: "Seasonal Bakes",
-    text: "Limited runs highlighting fresh Lowcountry ingredients.",
-  },
-  {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
-    title: "Bakery Boxes",
-    text: "Curated boxes for gifting, brunch, and gatherings.",
-  },
-  {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-    title: "Custom Orders",
-    text: "Bread orders, cookie trays, and bespoke bakery requests.",
   },
 ];
 
@@ -175,48 +140,15 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Promo banner */}
-      <div className="bg-white">
-        <img
-          src={BANNER_URL}
-          alt="Knead To Know bakery announcements: fresh bread, pre-orders, and small-batch cookies"
-          className="mx-auto w-full max-w-7xl"
-        />
-      </div>
+      <SectionDivider bg="white" accent="wheat" />
 
-      <SectionDivider bg="white" />
-
-      {/* 3. Featured offerings */}
+      {/* 3. Featured products */}
       <Section bg="white">
-        <SectionHeading
-          eyebrow="What we bake"
-          title="Featured offerings"
-          intro="Artisan breads, cookies, pastries, seasonal bakes, bakery boxes, and custom orders — all made in small batches on Daniel Island."
-          align="center"
-        />
-        <div className="mx-auto mt-14 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURED_OFFERINGS.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-3xl border border-k2k-blue/15 bg-white p-7 transition hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-30px_rgba(79,126,168,0.25)]"
-            >
-              <img src={item.icon} alt="" className="mb-4 h-10 w-10 object-contain" aria-hidden />
-              <h3 className="font-display text-2xl text-ink">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <SectionDivider bg="beige" />
-
-      {/* 4. Menu preview — featured products */}
-      <Section bg="beige">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
-            eyebrow="Menu preview"
+            eyebrow="What we bake"
             title="Signature sourdough bakes"
-            intro="Three featured breads, two cookies, and two bagels from our official product card collection."
+            intro="Artisan breads, cookies, and bagels from our official product collection — made in small batches on Daniel Island."
           />
           <Link
             to="/menu"
@@ -232,129 +164,62 @@ function HomePage() {
         </div>
       </Section>
 
-      <SectionDivider bg="white" />
-
-      {/* 5. Bakery boxes */}
-      <Section bg="white">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="Bakery boxes"
-              title="Curated boxes for gifting and gatherings"
-              intro="Cookie boxes, breakfast assortments, mixed pastry boxes, and event boxes — assembled to order for Daniel Island neighbors and Charleston celebrations."
-            />
-            <Link
-              to="/custom-orders"
-              className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-k2k-blue px-6 text-sm font-medium text-white hover:bg-k2k-navy"
-            >
-              Order a Bakery Box <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="overflow-hidden rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-8">
-            <img
-              src="/assets/knead-to-know/cards/Knead_To_Know_Container_Card.png"
-              alt="Knead To Know bakery box presentation"
-              className="mx-auto h-auto w-full max-w-md object-contain"
-            />
-          </div>
-        </div>
-      </Section>
-
       <SectionDivider bg="beige" />
 
-      {/* 6. Custom orders */}
+      {/* 4. How to order */}
       <Section bg="beige">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="order-2 lg:order-1">
-            <SectionHeading
-              eyebrow="Custom orders"
-              title="Pre-order breads, cookies, and special requests"
-              intro="Select from our 16 signature sourdough products or describe a custom bakery box, cookie tray, or brunch assortment. We confirm availability and pricing after inquiry."
-            />
-            <Link
-              to="/custom-orders"
-              className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
-            >
-              Start a Custom Order <ArrowRight className="h-4 w-4" />
-            </Link>
+        <SectionHeading
+          eyebrow="Ordering"
+          title="How to order"
+          align="center"
+          intro="Three steps from browsing to fresh bakes in hand."
+        />
+        <div className="mx-auto mt-12 grid max-w-4xl gap-6 text-left sm:grid-cols-3">
+          <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
+            <div className="mb-2 font-display text-xl text-k2k-blue">Choose</div>
+            <p className="text-sm text-muted-foreground">
+              Browse the menu and note what you would like, or describe a custom request.
+            </p>
           </div>
-          <div className="order-1 overflow-hidden rounded-3xl border border-k2k-blue/15 bg-white p-6 lg:order-2">
-            <img
-              src="/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png"
-              alt=""
-              className="mx-auto mb-4 h-16 w-16 object-contain"
-              aria-hidden
-            />
-            <p className="text-center text-sm text-muted-foreground">
-              Bread orders · Cookie trays · Brunch platters · Seasonal specials · Custom bakery
-              requests
+          <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
+            <div className="mb-2 font-display text-xl text-k2k-blue">Submit inquiry</div>
+            <p className="text-sm text-muted-foreground">
+              Use the Custom Orders or Catering form with quantities and your date.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
+            <div className="mb-2 font-display text-xl text-k2k-blue">Confirm</div>
+            <p className="text-sm text-muted-foreground">
+              We confirm availability and pricing, then bake fresh for you.
             </p>
           </div>
         </div>
-      </Section>
-
-      <SectionDivider bg="white" />
-
-      {/* 7. Catering */}
-      <Section bg="white">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="overflow-hidden rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-8">
-            <img
-              src="/assets/knead-to-know/cards/Knead_To_Know_Feature_Card.png"
-              alt="Knead To Know catering and events presentation"
-              className="mx-auto h-auto w-full max-w-md object-contain"
-            />
-          </div>
-          <div>
-            <SectionHeading
-              eyebrow="Catering & events"
-              title="Premium spreads for offices, gatherings, and celebrations"
-              intro="Office breakfasts, brunch spreads, cookie platters, pastry trays, bread baskets, corporate gifting, and neighborhood events across Daniel Island and Charleston."
-            />
-            <Link
-              to="/catering"
-              className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-k2k-blue px-6 text-sm font-medium text-white hover:bg-k2k-navy"
-            >
-              Explore Catering <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </Section>
-
-      <SectionDivider bg="beige" />
-
-      {/* 8. Gallery preview */}
-      <Section bg="beige">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading
-            eyebrow="Gallery"
-            title="Fresh from the bakery"
-            intro="Browse our breads, cookies, bagels, pastries, bakery boxes, and seasonal offerings."
-          />
+        <div className="mt-10 flex justify-center gap-3">
           <Link
-            to="/gallery"
-            className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
+            to="/custom-orders"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-k2k-blue px-6 text-sm font-medium text-white hover:bg-k2k-navy"
           >
-            View the Gallery <ArrowRight className="h-4 w-4" />
+            Start a Custom Order <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            to="/catering"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
+          >
+            Explore Catering
           </Link>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {HOME_FEATURED_PRODUCTS.slice(0, 4).map((product) => (
-            <K2KProductCard key={product.id} product={product} showCta={false} />
-          ))}
-        </div>
       </Section>
 
-      <SectionDivider bg="white" />
+      <SectionDivider bg="white" accent="wheat" />
 
-      {/* 9. About preview */}
+      {/* 5. About teaser */}
       <Section bg="white">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <SectionHeading
               eyebrow="About"
               title="A boutique bakery on Daniel Island"
-              intro="Knead To Know is a local Daniel Island bakery established in 2026, focused on small-batch baked goods, artisan bread, cookies, pastries, bakery boxes, and seasonal offerings."
+              intro="Knead To Know is a local Daniel Island bakery founded by Wendy Mercado in 2026, focused on small-batch baked goods, artisan bread, cookies, pastries, bakery boxes, and seasonal offerings."
             />
             <Link
               to="/about"
@@ -363,24 +228,19 @@ function HomePage() {
               About Knead To Know <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="flex items-center justify-center rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-12 text-center">
-            <div>
-              <img
-                src={LOGO_URL}
-                alt="Knead To Know"
-                className="mx-auto h-32 w-32 rounded-full object-contain"
-              />
-              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-k2k-blue">
-                Est. 2026 · Daniel Island
-              </p>
-            </div>
+          <div className="flex flex-col items-center justify-center gap-3 rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-12 text-center">
+            <div className="mx-auto h-14 w-14 rounded-full border border-k2k-blue/25" />
+            <p className="font-display text-2xl text-ink">Wendy Mercado</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">
+              Founder &amp; Baker · Est. 2026
+            </p>
           </div>
         </div>
       </Section>
 
       <SectionDivider bg="beige" />
 
-      {/* 10. FAQ preview */}
+      {/* 6. FAQ teaser + final CTA */}
       <Section bg="beige">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
@@ -401,12 +261,8 @@ function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="mx-auto mt-10 flex justify-center">
-          <img src={DIVIDER_URL} alt="" className="h-6 w-auto opacity-60" aria-hidden />
-        </div>
       </Section>
 
-      {/* 11. Final CTA */}
       <CTASection
         eyebrow="Ready to order"
         title="Ready for fresh bakes?"
