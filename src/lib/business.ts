@@ -7,13 +7,17 @@ export const BUSINESS = {
   name: "Knead To Know",
   owner: "[INSERT OWNER NAME]",
   shortOwner: "[INSERT SHORT NAME]",
+  address: "[INSERT ADDRESS]",
   city: "Daniel Island, SC",
   serviceArea: "Daniel Island and Charleston area",
+  phone: "[INSERT PHONE]",
   email: "[INSERT EMAIL]",
-  // TODO (launch): confirm with client before launch.
+  hours: "[INSERT HOURS]",
   instagramHandle: "[INSERT INSTAGRAM]",
-  // TODO (launch): confirm with client before launch.
   instagramUrl: "[INSERT INSTAGRAM URL]",
+  facebookUrl: "[INSERT FACEBOOK]",
+  mapsUrl: "[INSERT GOOGLE MAPS LINK]",
+  orderingUrl: "[INSERT ORDERING LINK]",
 } as const;
 
 // Legacy press feature removed during brand conversion to Knead To Know.
