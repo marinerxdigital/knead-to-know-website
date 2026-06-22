@@ -137,6 +137,13 @@ See new DEPLOYMENT.md and updates to ERRORS/FIXED_ERRORS/CODEX/FINAL_SUMMARY/GRO
 10. Homepage loads successfully: yes (deploy ready; visual confirm recommended)
 11. Production deployment safe next: yes, after user visually confirms the preview
 
+**Production deployment executed on user instruction ("Yes — run vercel deploy --prebuilt --prod"):**
+
+- Fresh `npm run build` + `vercel deploy --prebuilt --prod`
+- Live: https://knead-to-know-website.vercel.app (aliased)
+- Verified live: Homepage and key pages serving full correct Knead To Know content with no crashes.
+- Production is now active.
+
 See DEPLOYMENT.md and EXECUTION_LOG for more.
 
 ## 6. Files Modified (key)

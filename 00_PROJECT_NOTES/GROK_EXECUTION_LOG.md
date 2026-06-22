@@ -38,6 +38,15 @@ Git: staged only src/ fixes, commit a84cf97, push success.
 Vercel: `vercel deploy --prebuilt` → https://knead-to-know-website-2bavvh34d-mariner-x-digital.vercel.app
 Result: Homepage and routes now render without SSR crash even with legacy data null. Reports updated.
 Files: src/routes/index.tsx, about.tsx, featured.tsx, lib/business.ts + MD reports.
+
+[2026-06-22] Action: User confirmed and instructed to run production deployment.
+Command: `vercel deploy --prebuilt --prod` (after fresh `npm run build`).
+Result: Success. 
+- Production alias activated: https://knead-to-know-website.vercel.app
+- Deploy: https://knead-to-know-website-hhxkc79yl-mariner-x-digital.vercel.app
+- Verified: Homepage and /about load correctly with full K2K content, no runtime crash.
+- All safety checks passed prior (preview validated, git clean, build clean).
+Next: Production is now live. No further action unless issues reported.
 Result: Structure established.
 Files affected: 01_SOURCE/, 02_BRAND/, 03_CONTENT/, 04_SEO/, 05_ASSETS/, 06_DEVELOPMENT/, 07_QA/, 08_DELIVERABLES/
 Next step: Inspect asset packages from 00_SOURCE_PACKAGES, extract and read docs.

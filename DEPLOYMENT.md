@@ -104,5 +104,21 @@ Because vercel.json overrides are per-deployment but dashboard Project Settings 
 
 See also ERRORS.md / FIXED_ERRORS.md / GROK_* reports.
 
+## Production Deployment (2026-06-22)
+User explicitly instructed: "Yes — run vercel deploy --prebuilt --prod"
+
+- Re-ran `npm run build` (exit 0) to ensure .vercel/output was fresh.
+- Ran: `vercel deploy --prebuilt --prod`
+- Result: Success ✓
+  - Aliased to production: https://knead-to-know-website.vercel.app
+  - Specific deployment: https://knead-to-know-website-hhxkc79yl-mariner-x-digital.vercel.app
+- Verification:
+  - Homepage (https://knead-to-know-website.vercel.app) serves full correct K2K content (hero "Fresh Bread, Cookies...", Daniel Island positioning, sections, product images, CTAs, etc.).
+  - /about also serves correctly.
+  - No SSR errors (the previous .publication crash is resolved).
+- Git at time of deploy: clean for source (only ?? .grok/ untracked).
+
+Production is now live.
+
 ## References
 - Updated in: GROK_PHASE_2_REPORT.md, GROK_EXECUTION_LOG.md, ERRORS.md, FIXED_ERRORS.md, CODEX.md, 08_DELIVERABLES/FINAL_SUMMARY.md, this file.

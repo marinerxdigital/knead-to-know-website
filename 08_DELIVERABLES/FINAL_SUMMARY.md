@@ -53,3 +53,8 @@ npm run dev
 **Current state:** Ready for visual review once Git/Vercel preview is enabled by user. All Phase 2 non-git work complete per instruction.
 
 See 00_PROJECT_NOTES/GROK_PHASE_2_REPORT.md for details.
+
+**Production Deployment (user-directed):**
+- Command executed: `vercel deploy --prebuilt --prod` (after rebuild)
+- Live URL: https://knead-to-know-website.vercel.app
+- Verified: Homepage loads with correct K2K branding and no SSR crash (the null .publication issue is resolved).
