@@ -18,6 +18,14 @@ Instructions specifically for Codex (code polish, refactor, deployment prep).
 ## Refactor Rules
 - Do not refactor UI or design tokens until brand + design system skills have been applied (Phase 2+).
 - Preserve skeleton routing and component structure during bootstrap.
+
+## Deployment (Vercel 404 Fix Notes for Codex)
+- This project requires SSR deployment via Nitro + vercel preset. Never assume static Vite `dist/client` + index.html SPA fallback.
+- Key files for deploy: vercel.json, vite.config.ts (nitro.preset).
+- Always run `npm run build` and inspect `.vercel/output/` (static + functions) before pushing.
+- Update DEPLOYMENT.md + reports on any setting change.
+- If 404 returns after push: check dashboard Output Directory is blank or `.vercel/output`, clear cache.
+- Record: npm results, commit hash, push result, final URL in reports (GROK_PHASE_2_REPORT, FIXED_ERRORS, FINAL_SUMMARY).
 - When later rebranding: update lib/business.ts, routes, metadata, assets carefully.
 
 ## Testing Commands

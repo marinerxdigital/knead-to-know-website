@@ -24,9 +24,15 @@ npm run dev
 (Or bun if available.)
 
 **How to inspect the Vercel preview:**
-- Once git remote is set up and `knead-to-know-preview` branch pushed (see GROK_PHASE_2_REPORT and blocker note).
-- Vercel will auto-deploy the preview branch.
-- Visit the generated preview URL for visual QA.
+- Main is connected to Vercel (repo: marinerxdigital/knead-to-know-website).
+- `npm run build` now uses Nitro vercel preset + vercel.json controls install/build/output.
+- Production URL: https://knead-to-know-website.vercel.app
+- **Important post-fix note (2026-06-22):** If still 404 after push, in Vercel dashboard:
+  - Set Output Directory to blank (or `.vercel/output`)
+  - Framework: Other
+  - Clear build cache & redeploy latest main commit.
+- See DEPLOYMENT.md, GROK_PHASE_2_REPORT.md (Vercel 404 section with 15-point record), and vercel.json for exact config.
+- Local: `npm run build && npm run preview` (note: preview is limited for full SSR).
 
 **What Codex should polish next:**
 - Implement proper ProductCard / Menu grid consuming the KTK product card PNGs + manifest data.

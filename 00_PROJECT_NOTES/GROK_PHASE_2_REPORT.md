@@ -28,6 +28,68 @@ All READMEs, manifests, and implementation notes read. Used as source of truth.
 - public/assets/knead-to-know/ structure created per spec.
 - Buttons, cards, icons, dividers, product-card frames copied.
 - Full inventory in 05_ASSETS/ASSET_INVENTORY.md
+
+## 13. Phase 2 Extension: Vercel 404 Fix (Deployment Gate)
+**Date:** 2026-06-22
+**Objective:** Resolve live 404 on Vercel after main push. Use npm path. Stop before push on any fail. Self-document.
+
+### Diagnostic Steps Completed
+1. Inspected package.json (scripts: "build":"vite build"; @tanstack/react-start + nitro beta + @lovable.dev/vite-tanstack-config).
+2. Inspected vite.config.ts (thin wrapper; comment notes default nitro cloudflare target).
+3. Inspected TanStack/Nitro: src/server.ts (exports fetch wrapper around @tanstack/react-start/server-entry), src/start.ts, no standalone nitro.config. Build uses Vite SSR + Nitro when enabled.
+4. Inspected dist after builds: dist/client (assets only, no index.html), dist/server/server.js (ESM default export with .fetch). Later with preset: .vercel/output/...
+5. Confirmed: NO dist/client/index.html (SSR design, HTML generated server-side).
+6. Decision: Full SSR/Nitro Vercel deployment required. Cannot use static mockup from dist/client safely (would fail "missing index.html" stop condition).
+7. Inspected Vercel: relied on provided attempted settings + local build + web_fetch on candidate URLs (https://knead-to-know-website.vercel.app and -preview). No vercel CLI auth in env.
+8. Identified causes:
+   - Wrong output dir (dist/client vs SSR structure).
+   - Missing vercel.json.
+   - Nitro preset mismatch (cloudflare vs vercel).
+   - No SPA fallback applicable.
+   - Dashboard settings likely overriding vercel.json until cleared.
+
+### Fix Applied (Smallest Safe, No Arch Change)
+- vite.config.ts: added `nitro: { preset: "vercel" }` to force correct target (log: "[nitro:vercel] Using nodejs24.x runtime").
+- Created vercel.json:
+  ```json
+  {
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "outputDirectory": ".vercel/output",
+    "framework": null
+  }
+  ```
+- Re-ran: npm install (success), npm run build (success; .vercel/output/static + functions/__server.func + config.json with routes).
+- Verified:
+  - vercel.json valid JSON.
+  - .grok/ not tracked/staged.
+  - node_modules/, dist/, .vercel/, 00_TEMP_EXTRACT/, 00_SOURCE_PACKAGES/, *.zip NOT staged.
+  - git status before commit clean.
+- Commit: `5f99c4f Fix Vercel deployment 404 for Knead To Know preview`
+- Push: `git push --force-with-lease origin main` (success, main updated).
+- Live: Polled https://knead-to-know-website.vercel.app (multiple 30-45s intervals) — still 404 (build timing or dashboard "Output Directory" override).
+
+### 15-Point Record
+1. Root cause of Vercel 404: Output Directory=dist/client + missing vercel.json + wrong nitro preset.
+2. Files changed: vite.config.ts, vercel.json (created).
+3. Vercel settings before: Framework=Other, Output=dist/client, Build/Install=npm, Node=24.x.
+4. Vercel settings after: Controlled by committed vercel.json + nitro preset (UI may still need Output blank/.vercel/output).
+5. vercel.json added: yes.
+6. Deployment type: full TanStack Start SSR/Nitro (vercel preset); not static client.
+7. npm install result: exit 0.
+8. npm run build result: exit 0 (verified x3+).
+9. dist/client/index.html verification: MISSING (expected; SSR); used .vercel/output/static instead.
+10. Git status before commit: only vite.config.ts modified + vercel.json untracked (after .gitignore revert for clean commit).
+11. Commit hash: 5f99c4f
+12. Push result: success (origin main).
+13. Vercel redeploy result: push received; URL polls returned 404 (pending successful Vercel build + possible UI setting sync).
+14. Final working Vercel URL: https://knead-to-know-website.vercel.app (or current production alias); currently 404 — see DEPLOYMENT.md for manual steps.
+15. Any remaining warnings: build has non-fatal "unused import" from TanStack internals; npm audit notes 1 low vuln (unrelated); no secrets staged.
+
+**Action for user:** In Vercel dashboard set Output Directory to blank (or `.vercel/output`), Redeploy with cache clear. The committed config + preset is correct.
+
+See new DEPLOYMENT.md and updates to ERRORS/FIXED_ERRORS/CODEX/FINAL_SUMMARY/GROK_EXECUTION_LOG.
 - Product cards (16) with correct names/prices from manifest mapped for future Menu/ProductGrid use.
 
 ## 6. Files Modified (key)

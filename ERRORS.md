@@ -22,3 +22,23 @@
 
 No other unresolved errors at end of Phase 1.
 All required verification steps passed.
+
+## ERR-003 (2026-06-22) — Vercel 404 NOT_FOUND (deployment)
+- Date: 2026-06-22
+- Severity: High (blocks live preview)
+- Area: Deployment / Vercel config
+- Symptom: https://knead-to-know-website.vercel.app returns "404: NOT_FOUND" after successful local build + git push to main.
+- Root cause: 
+  1. Project settings Output Directory = "dist/client" (no index.html present — SSR app).
+  2. No vercel.json to override build settings.
+  3. Nitro build defaulted to cloudflare preset (via @lovable wrapper) instead of vercel preset.
+  4. No SSR function wiring for TanStack Start server entry.
+- Files inspected: package.json, vite.config.ts, src/server.ts, CLOUDFLARE_DEPLOYMENT_NOTES.md, dist/ after build, .gitignore.
+- Attempted fixes (in this session): 
+  - Set nitro: { preset: "vercel" } in vite.config.ts.
+  - Added vercel.json with correct build + outputDirectory: ".vercel/output", framework: null.
+  - Verified multiple clean `npm run build` producing .vercel/output/static + functions/__server.func.
+  - Committed + pushed to main.
+- Current status: Config fix committed/pushed. Live URL still 404 on last poll (possible dashboard override of output dir or build in progress). 
+- Next action: In Vercel dashboard clear Output Directory (set blank or `.vercel/output`), trigger "Clear Build Cache & Redeploy". See DEPLOYMENT.md for full record.
+- Verification commands run: npm install, npm run build (x3), git status checks.

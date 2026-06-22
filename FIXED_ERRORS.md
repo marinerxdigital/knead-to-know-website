@@ -9,3 +9,19 @@
 - Regression prevention: Always check `bun --version` first in future sessions. Record fallback explicitly in MEMORY.md and GROK.md. Prefer restoring Bun for production-like runs.
 
 No other fixes in Phase 1. Build verification and preservation rules were satisfied without code bugs.
+
+## FIX-002 (2026-06-22) — Vercel 404 deployment resolution
+- Date fixed: 2026-06-22
+- Original symptom: Production Vercel URL showed 404 NOT_FOUND despite `npm run build` succeeding locally and push to GitHub main.
+- Root cause: Output Directory set to dist/client (SSR mismatch + no index.html), missing vercel.json, wrong Nitro preset (cloudflare default).
+- Final fix: 
+  - Edit vite.config.ts to enable `nitro: { preset: "vercel" }` (forces correct nodejs24 + web entry for Vercel).
+  - Add vercel.json at root locking install/build and `outputDirectory: ".vercel/output"`, `framework: null`.
+  - Build produces proper Nitro Vercel structure (.vercel/output/functions + static + config.json with /* -> __server).
+- Files changed: vite.config.ts, vercel.json (new)
+- Commands run: npm install (success), npm run build (success, multiple), git status (pre/post), git add (only safe files), commit, push origin main.
+- Commit: 5f99c4f "Fix Vercel deployment 404 for Knead To Know preview"
+- Push result: success (main updated)
+- Not committed: .grok/, node_modules/, dist/, .vercel/, 00_*, zips, .env
+- Current live status: Pushed; pending Vercel build + recommended dashboard Output Directory clear. See DEPLOYMENT.md + 00_PROJECT_NOTES/GROK_PHASE_2_REPORT.md for 15-point record.
+- Regression prevention: Always verify `dist/client/index.html` absence + SSR nature before choosing static; prefer nitro preset + vercel.json for this stack. Document all deploy settings.

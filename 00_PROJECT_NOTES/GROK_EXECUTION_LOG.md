@@ -18,6 +18,12 @@ Files affected: none (verification)
 Next step: Create project folder structure + start asset intake + update todo.
 
 [2026-06-22] Action: Created required top-level folders 01_SOURCE through 08_DELIVERABLES + key subdirs.
+
+[2026-06-22] Action: Diagnosed + fixed Vercel 404 (post-Phase-2 main push).
+Steps: Read package.json, vite.config.ts, server.ts, dist structure (confirmed no index.html in client). Ran fresh npm install + npm run build. Identified SSR + nitro preset issue + missing vercel.json + wrong output dir. Updated vite.config.ts (nitro preset vercel). Created vercel.json. Rebuilt (success, .vercel/output generated with static+functions). Verified all safety (no .grok/dist staged). git status, commit "Fix Vercel deployment 404 for Knead To Know preview", git push origin main. Updated all 7 required MD reports + created DEPLOYMENT.md with 15-point record.
+Result: Config committed and pushed (latest 5f99c4f). Local builds clean. Live URL polls still 404 (dashboard override or propagation). Stopped per rules. Full record in DEPLOYMENT.md + GROK_PHASE_2_REPORT.md.
+Files affected: vite.config.ts, vercel.json, ERRORS.md, FIXED_ERRORS.md, DEPLOYMENT.md (new), CODEX.md, 00_PROJECT_NOTES/GROK_PHASE_2_REPORT.md, 00_PROJECT_NOTES/GROK_EXECUTION_LOG.md, 08_DELIVERABLES/FINAL_SUMMARY.md
+Next step: User to clear Vercel Output Directory to blank/.vercel/output + redeploy from dashboard. URL: https://knead-to-know-website.vercel.app should then serve site.
 Result: Structure established.
 Files affected: 01_SOURCE/, 02_BRAND/, 03_CONTENT/, 04_SEO/, 05_ASSETS/, 06_DEVELOPMENT/, 07_QA/, 08_DELIVERABLES/
 Next step: Inspect asset packages from 00_SOURCE_PACKAGES, extract and read docs.
