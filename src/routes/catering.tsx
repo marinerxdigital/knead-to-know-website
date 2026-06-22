@@ -3,6 +3,11 @@ import { useState } from "react";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { SITE_URL } from "@/lib/business";
 
+const ACCESS_KEY =
+  (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
+  "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+
 export const Route = createFileRoute("/catering")({
   head: () => ({
     meta: [
@@ -40,6 +45,9 @@ function CateringPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [botcheck, setBotcheck] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -48,10 +56,47 @@ function CateringPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setSubmitError(null);
+
+    if (botcheck) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch(WEB3FORMS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: "New Catering Request - Knead To Know",
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          event_date: formData.eventDate,
+          event_type: formData.eventType,
+          guest_count: formData.guestCount,
+          items: formData.items,
+          preference: formData.preference,
+          budget: formData.budget,
+          allergies: formData.allergies,
+          message: formData.message,
+          source: "Catering Form",
+          botcheck: "",
+        }),
+      });
+      const data = (await res.json().catch(() => null)) as { success?: boolean } | null;
+      if (!res.ok || !data?.success) throw new Error("Submission failed");
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setSubmitError(
+        "Something went wrong sending your catering request. Please try again or email us directly.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -127,6 +172,15 @@ function CateringPage() {
       <Section bg="cream">
         <SectionHeading eyebrow="Inquire" title="Event details" />
         <form onSubmit={handleSubmit} className="mt-8 max-w-3xl space-y-5">
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={botcheck}
+            onChange={(e) => setBotcheck(e.target.value)}
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+          />
           <div className="grid sm:grid-cols-2 gap-4">
             <input
               name="name"
@@ -225,11 +279,21 @@ function CateringPage() {
             className="w-full rounded-xl border p-4"
           />
 
+          {submitError && (
+            <p
+              className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive"
+              role="alert"
+            >
+              {submitError}
+            </p>
+          )}
+
           <button
             type="submit"
-            className="h-12 rounded-full bg-forest w-full text-sm font-medium text-white"
+            disabled={submitting}
+            className="h-12 rounded-full bg-forest w-full text-sm font-medium text-white disabled:opacity-60"
           >
-            Submit Catering Request
+            {submitting ? "Sending…" : "Submit Catering Request"}
           </button>
           <p className="text-center text-xs text-muted-foreground">
             We reply within 1 business day to finalize details and availability.
