@@ -141,6 +141,32 @@
   box-shadow: var(--k2k-shadow-soft);
 }
 
+/* Premium boutique product cards — CSS layout, not PNG containers */
+.k2k-product-card {
+  background: var(--k2k-white);
+  border: 1px solid rgba(79, 126, 168, 0.18);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 32px rgba(31, 52, 71, 0.04);
+}
+
+.k2k-product-card:hover {
+  border-color: rgba(79, 126, 168, 0.32);
+  box-shadow: 0 18px 40px rgba(31, 52, 71, 0.08);
+  transform: translateY(-2px);
+}
+
+.k2k-product-card-selected {
+  border-color: var(--k2k-blue);
+  background: rgba(79, 126, 168, 0.04);
+  box-shadow: 0 0 0 1px var(--k2k-blue);
+}
+
+.k2k-product-photo {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(127, 167, 199, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(79, 126, 168, 0.08), transparent 40%);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

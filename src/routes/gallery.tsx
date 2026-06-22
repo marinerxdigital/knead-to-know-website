@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/sections/Section";
+import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
@@ -67,7 +68,7 @@ function GalleryPage() {
             as="h1"
             eyebrow="Gallery"
             title="Fresh from the bakery"
-            intro="A look at our breads, cookies, bagels, boxes, and seasonal offerings. Product cards are representative; actual bakes vary with the season."
+            intro="A look at our breads, cookies, bagels, boxes, and seasonal offerings. Product photos will be added as they are captured."
           />
         </div>
       </section>
@@ -95,14 +96,12 @@ function GalleryPage() {
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <div
                 key={n}
-                className="flex aspect-[16/11] items-center justify-center rounded-3xl bg-white p-8 ring-1 ring-border/40"
+                className="k2k-product-card flex aspect-[4/3] items-center justify-center p-8"
               >
                 <div className="text-center">
-                  <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-k2k-blue/30" />
+                  <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-k2k-blue/25" />
                   <p className="text-sm font-medium text-ink">{PLACEHOLDER_LABELS[activeCategory]}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Photo coming soon — representative of our fresh bakes
-                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">Photo coming soon</p>
                 </div>
               </div>
             ))}
@@ -110,20 +109,7 @@ function GalleryPage() {
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {currentItems.map((product) => (
-              <div key={product.id} className="overflow-hidden rounded-3xl bg-white ring-1 ring-border/60">
-                <div className="flex aspect-[5/4] items-center justify-center bg-white p-8">
-                  <img
-                    src={product.cardAsset}
-                    alt={product.name}
-                    className="max-h-full max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-5 text-sm">
-                  <div className="font-medium text-ink">{product.name}</div>
-                  <div className="mt-0.5 text-k2k-blue">{product.price}</div>
-                </div>
-              </div>
+              <K2KProductCard key={product.id} product={product} showCta={false} />
             ))}
           </div>
         )}

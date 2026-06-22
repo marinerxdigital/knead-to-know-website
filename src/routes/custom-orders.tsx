@@ -2,7 +2,8 @@ import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { Section, SectionHeading } from "@/components/sections/Section";
-import { PRODUCTS, type Product } from "@/lib/products";
+import { K2KProductCard } from "@/components/ui/K2KProductCard";
+import { PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
 export const Route = createFileRoute("/custom-orders")({
@@ -110,35 +111,17 @@ function CustomOrdersPage() {
             <h2 className="font-display text-2xl text-ink mb-4">Choose your bakes</h2>
             <p className="text-sm text-muted-foreground mb-6">Tap any card to add or remove. You can select multiple items.</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[620px] overflow-auto pr-1">
-              {PRODUCTS.map((product) => {
-                const isSelected = selectedIds.includes(product.id);
-                return (
-                  <button
-                    key={product.id}
-                    type="button"
-                    onClick={() => toggleProduct(product.id)}
-                    className={`group text-left overflow-hidden rounded-2xl ring-1 transition ${isSelected ? "ring-forest bg-forest/5" : "ring-border/60 hover:ring-forest/40 bg-white"}`}
-                  >
-                    <div className="bg-white p-3 flex justify-center aspect-[16/11]">
-                      <img
-                        src={product.cardAsset}
-                        alt={product.name}
-                        className="max-h-[86%] object-contain"
-                      />
-                    </div>
-                    <div className="p-3.5 flex justify-between text-sm border-t">
-                      <span className="font-medium">{product.name}</span>
-                      <span className="text-forest font-semibold tabular-nums">{product.price}</span>
-                    </div>
-                    {isSelected && (
-                      <div className="px-3.5 pb-2 text-[10px] tracking-widest text-forest flex items-center gap-1">
-                        <Check className="h-3 w-3" /> SELECTED
-                      </div>
-                    )}
-                  </button>
-                );
-              })}
+            <div className="grid max-h-[620px] grid-cols-1 gap-4 overflow-auto pr-1 sm:grid-cols-2">
+              {PRODUCTS.map((product) => (
+                <K2KProductCard
+                  key={product.id}
+                  product={product}
+                  selectable
+                  selected={selectedIds.includes(product.id)}
+                  onSelect={() => toggleProduct(product.id)}
+                  showCta={false}
+                />
+              ))}
             </div>
 
             <div className="mt-4 text-xs text-muted-foreground">

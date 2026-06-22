@@ -1,6 +1,6 @@
 // src/lib/products.ts
-// Official Knead To Know product data using the 16 branded product card assets.
-// Prices use placeholders per project rules. Cards are UI containers (photo areas empty for future photos).
+// Official Knead To Know product catalog — 16 signature sourdough items.
+// Prices use placeholders per project rules. cardAsset reserved for future product photography paths.
 
 export type ProductCategory = "bread" | "cookies" | "bagels" | "pastries" | "bakery-boxes" | "custom";
 

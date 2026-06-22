@@ -7,7 +7,7 @@ import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
-import { PORTFOLIO_IMAGES } from "@/lib/cake-photos";
+
 
 const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 const BANNER_URL = "/assets/knead-to-know/banners/Knead_To_Know_Promo_Banner_Strip.png";
@@ -116,14 +116,19 @@ function HomePage() {
             </div>
           </div>
           <div className="relative">
-            <div className="overflow-hidden rounded-[2rem] bg-white p-2 ring-1 ring-k2k-blue/15 shadow-[0_30px_60px_-40px_rgba(79,126,168,0.35)]">
+            <div className="k2k-product-card flex aspect-[4/5] flex-col items-center justify-center rounded-[2rem] p-10 text-center shadow-[0_30px_60px_-40px_rgba(79,126,168,0.35)]">
               <img
-                src={PORTFOLIO_IMAGES.plainSourdough.url}
-                alt={PORTFOLIO_IMAGES.plainSourdough.alt}
-                className="aspect-[4/5] w-full rounded-[1.6rem] object-contain"
-                width={1125}
-                height={1398}
+                src={LOGO_URL}
+                alt="Knead To Know Bakery"
+                className="h-40 w-40 rounded-full object-contain sm:h-48 sm:w-48"
               />
+              <p className="mt-6 font-display text-2xl text-ink">Small-batch sourdough</p>
+              <p className="mt-2 text-sm text-muted-foreground">Daniel Island · Est. 2026</p>
+              <div className="mt-8 flex gap-4 opacity-80">
+                <img src="/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png" alt="" className="h-8 w-8" aria-hidden />
+                <img src="/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png" alt="" className="h-8 w-8" aria-hidden />
+                <img src="/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png" alt="" className="h-8 w-8" aria-hidden />
+              </div>
             </div>
           </div>
         </div>
@@ -303,16 +308,9 @@ function HomePage() {
             View the Gallery <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {HOME_FEATURED_PRODUCTS.slice(0, 4).map((product) => (
-            <div key={product.id} className="overflow-hidden rounded-3xl border border-k2k-blue/15 bg-white p-4">
-              <img
-                src={product.cardAsset}
-                alt={product.name}
-                className="h-auto w-full object-contain"
-                loading="lazy"
-              />
-            </div>
+            <K2KProductCard key={product.id} product={product} showCta={false} />
           ))}
         </div>
       </Section>
