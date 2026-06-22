@@ -5,7 +5,7 @@ import { SectionDivider } from "@/components/sections/SectionDivider";
 import { CTASection } from "@/components/sections/CTASection";
 import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { HOME_FEATURED_PRODUCTS } from "@/lib/products";
+import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
 
@@ -116,19 +116,14 @@ function HomePage() {
             </div>
           </div>
           <div className="relative">
-            <div className="k2k-product-card flex aspect-[4/5] flex-col items-center justify-center rounded-[2rem] p-10 text-center shadow-[0_30px_60px_-40px_rgba(79,126,168,0.35)]">
+            <div className="overflow-hidden rounded-[2rem] bg-white p-2 ring-1 ring-k2k-blue/15 shadow-[0_30px_60px_-40px_rgba(79,126,168,0.35)]">
               <img
-                src={LOGO_URL}
-                alt="Knead To Know Bakery"
-                className="h-40 w-40 rounded-full object-contain sm:h-48 sm:w-48"
+                src={BAKERY_PHOTOS.hero}
+                alt="Fresh sourdough breads, cookies, and bagels from Knead To Know home bakery on Daniel Island"
+                className="aspect-[4/5] w-full rounded-[1.6rem] object-cover"
+                width={900}
+                height={1125}
               />
-              <p className="mt-6 font-display text-2xl text-ink">Small-batch sourdough</p>
-              <p className="mt-2 text-sm text-muted-foreground">Daniel Island · Est. 2026</p>
-              <div className="mt-8 flex gap-4 opacity-80">
-                <img src="/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png" alt="" className="h-8 w-8" aria-hidden />
-                <img src="/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png" alt="" className="h-8 w-8" aria-hidden />
-                <img src="/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png" alt="" className="h-8 w-8" aria-hidden />
-              </div>
             </div>
           </div>
         </div>

@@ -69,9 +69,9 @@ function MenuPage() {
 
       <Section bg="white">
         <SectionHeading
-          eyebrow="Official product cards"
+          eyebrow="Signature menu"
           title="Sourdough breads, cookies & bagels"
-          intro="All 16 signature items use our official branded product card presentation. Photo areas are reserved for future bakery photography."
+          intro="All 16 signature small-batch items. Product photography will be added as fresh bakes are captured."
         />
 
         {CARD_SECTIONS.map((section) => (

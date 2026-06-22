@@ -10,12 +10,25 @@ export interface Product {
   category: ProductCategory;
   description: string;
   price: string;
-  cardAsset: string; // path to KTK product card PNG under public
+  cardAsset: string;
+  photo: string;
   featured?: boolean;
   preorderAvailable?: boolean;
 }
 
 const CARD_BASE = "/assets/knead-to-know/product-cards";
+const PHOTO_BASE = "/assets/knead-to-know/photos";
+
+export const BAKERY_PHOTOS = {
+  hero: `${PHOTO_BASE}/hero-bakery-spread.jpg`,
+  plainSourdough: `${PHOTO_BASE}/plain-sourdough-bread.jpg`,
+  rosemarySourdough: `${PHOTO_BASE}/rosemary-sourdough-bread.jpg`,
+  cranberryWalnut: `${PHOTO_BASE}/cranberry-walnut-bread.jpg`,
+  chocolateChipCookies: `${PHOTO_BASE}/chocolate-chip-cookies.jpg`,
+  mangoMacadamiaCookies: `${PHOTO_BASE}/mango-macadamia-cookies.jpg`,
+  everythingBagel: `${PHOTO_BASE}/everything-bagel.jpg`,
+  sesameBagel: `${PHOTO_BASE}/sesame-bagel.jpg`,
+} as const;
 
 export const PRODUCTS: Product[] = [
   // Sourdough Breads (7)
@@ -26,6 +39,7 @@ export const PRODUCTS: Product[] = [
     description: "Classic artisan sourdough with a crisp crust and open crumb. Small batch, naturally leavened.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_01_Plain_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.plainSourdough,
     featured: true,
     preorderAvailable: true,
   },
@@ -36,6 +50,7 @@ export const PRODUCTS: Product[] = [
     description: "Fragrant rosemary folded into the dough for an herbal aroma and delicate flavor.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_02_Rosemary_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.rosemarySourdough,
     featured: true,
     preorderAvailable: true,
   },
@@ -46,6 +61,7 @@ export const PRODUCTS: Product[] = [
     description: "Roasted garlic and fresh rosemary bring warm, savory depth to our signature sourdough.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_03_Rosemary_Roasted_Garlic_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.rosemarySourdough,
     featured: true,
     preorderAvailable: true,
   },
@@ -56,6 +72,7 @@ export const PRODUCTS: Product[] = [
     description: "Sharp cheddar and pickled jalapeño for a bold, savory loaf with a subtle kick.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_04_Cheese_Jalapeno_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.plainSourdough,
     preorderAvailable: true,
   },
   {
@@ -65,6 +82,7 @@ export const PRODUCTS: Product[] = [
     description: "Sweet and rich with dark chocolate chips and swirls of Nutella in a sourdough base.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_05_Chocolate_Chip_Nutella_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.plainSourdough,
     preorderAvailable: true,
   },
   {
@@ -74,6 +92,7 @@ export const PRODUCTS: Product[] = [
     description: "Tart cranberries and toasted walnuts for a perfect balance of sweet and nutty.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_06_Cranberry_Walnut_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.cranberryWalnut,
     preorderAvailable: true,
   },
   {
@@ -83,6 +102,7 @@ export const PRODUCTS: Product[] = [
     description: "Briny olives baked into a savory sourdough. Excellent with cheese or charcuterie.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_07_Olive_Sourdough_Bread.png`,
+    photo: BAKERY_PHOTOS.rosemarySourdough,
     preorderAvailable: true,
   },
   // Sourdough Cookies (5)
@@ -93,6 +113,7 @@ export const PRODUCTS: Product[] = [
     description: "Crisp edges, chewy centers. Made with our sourdough starter for subtle tang.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_08_Chocolate_Chip_Cookies.png`,
+    photo: BAKERY_PHOTOS.chocolateChipCookies,
     featured: true,
     preorderAvailable: true,
   },
@@ -103,6 +124,7 @@ export const PRODUCTS: Product[] = [
     description: "Tart dried cranberries with rich chocolate chips in a sourdough cookie base.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_09_Cranberry_Chocolate_Chip_Cookies.png`,
+    photo: BAKERY_PHOTOS.chocolateChipCookies,
     preorderAvailable: true,
   },
   {
@@ -112,6 +134,7 @@ export const PRODUCTS: Product[] = [
     description: "Chewy sourdough cookies studded with cranberries and toasted walnuts.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_10_Cranberry_Walnut_Cookies.png`,
+    photo: BAKERY_PHOTOS.chocolateChipCookies,
     preorderAvailable: true,
   },
   {
@@ -121,6 +144,7 @@ export const PRODUCTS: Product[] = [
     description: "Tropical dried mango and buttery macadamia nuts in our signature sourdough cookie.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_11_Mango_Macadamia_Cookies.png`,
+    photo: BAKERY_PHOTOS.mangoMacadamiaCookies,
     featured: true,
     preorderAvailable: true,
   },
@@ -131,6 +155,7 @@ export const PRODUCTS: Product[] = [
     description: "Bright dried apricots and mango for a naturally sweet, small-batch treat.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_12_Apricot_Mango_Cookies.png`,
+    photo: BAKERY_PHOTOS.mangoMacadamiaCookies,
     preorderAvailable: true,
   },
   // Sourdough Bagels (4)
@@ -141,6 +166,7 @@ export const PRODUCTS: Product[] = [
     description: "Classic boiled and baked sourdough bagel with a chewy crust and tender interior.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_13_Plain_Bagel.png`,
+    photo: BAKERY_PHOTOS.sesameBagel,
     preorderAvailable: true,
   },
   {
@@ -150,6 +176,7 @@ export const PRODUCTS: Product[] = [
     description: "Classic everything seasoning on our house sourdough bagel. Perfect toasted.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_14_Everything_Bagel.png`,
+    photo: BAKERY_PHOTOS.everythingBagel,
     featured: true,
     preorderAvailable: true,
   },
@@ -160,6 +187,7 @@ export const PRODUCTS: Product[] = [
     description: "Toasted sesame seeds baked onto a naturally leavened sourdough bagel.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_15_Sesame_Bagel.png`,
+    photo: BAKERY_PHOTOS.sesameBagel,
     preorderAvailable: true,
   },
   {
@@ -169,6 +197,7 @@ export const PRODUCTS: Product[] = [
     description: "Poppy seeds give subtle crunch and visual appeal on our artisanal bagel.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_16_Poppy_Bagel.png`,
+    photo: BAKERY_PHOTOS.everythingBagel,
     preorderAvailable: true,
   },
 ];
