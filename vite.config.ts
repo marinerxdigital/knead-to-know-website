@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force Nitro to use Vercel preset for correct SSR deployment output (instead of default cloudflare-module).
+  // This ensures the build emits Vercel-compatible serverless functions + static assets.
+  nitro: {
+    preset: "vercel",
+  },
 });
