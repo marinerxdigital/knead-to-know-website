@@ -183,21 +183,23 @@ function AboutPage() {
         </div>
       </Section>
 
-      <Section bg="blush">
-        <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
-          <SectionHeading
-            eyebrow="Featured"
-            title={`Featured in ${PRESS_FEATURE.publication}.`}
-            intro="Read Alexandra's interview about her path from growing up in the kitchen to launching Knead To Know in Charleston."
-          />
-          <Link
-            to="/featured"
-            className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
-          >
-            Read the Feature <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </Section>
+      {PRESS_FEATURE && (
+        <Section bg="blush">
+          <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
+            <SectionHeading
+              eyebrow="Featured"
+              title={`Featured in ${PRESS_FEATURE.publication}.`}
+              intro="Read Alexandra's interview about her path from growing up in the kitchen to launching Knead To Know in Charleston."
+            />
+            <Link
+              to="/featured"
+              className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
+            >
+              Read the Feature <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </Section>
+      )}
 
       <Section>
         <div className="flex flex-wrap gap-3">

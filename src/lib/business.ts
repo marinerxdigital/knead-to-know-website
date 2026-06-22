@@ -17,5 +17,13 @@ export const BUSINESS = {
 } as const;
 
 // Note: Original Spilled Milk press feature removed as part of brand conversion.
-// Placeholder for future Knead To Know press if available.
-export const PRESS_FEATURE = null as const;
+// Placeholder for future Knead To Know press if available. The UI guards against null
+// so the homepage (and other pages) render safely without this legacy data.
+export interface PressFeature {
+  publication: string;
+  title: string;
+  description: string;
+  url: string;
+}
+
+export const PRESS_FEATURE: PressFeature | null = null;

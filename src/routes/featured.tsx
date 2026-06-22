@@ -40,37 +40,39 @@ function FeaturedPage() {
         </div>
       </section>
 
-      <Section>
-        <article className="grid items-center gap-10 rounded-3xl bg-white p-6 ring-1 ring-border/60 sm:p-10 lg:grid-cols-[1fr_1.1fr]">
-          <div className="overflow-hidden rounded-2xl bg-blush p-2">
-            <img
-              src={alexandraApron.url}
-              alt="Portrait of Alexandra Kowaleski, custom cake baker in Charleston"
-              className="aspect-[4/5] w-full rounded-xl object-cover"
-            />
-          </div>
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-forest">
-              {PRESS_FEATURE.publication}
-            </p>
-            <h2 className="mt-4 font-display text-3xl leading-snug text-ink sm:text-4xl">
-              {PRESS_FEATURE.title}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              {PRESS_FEATURE.description}
-            </p>
-            <a
-              href={PRESS_FEATURE.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
-            >
-              Read the Article
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </article>
-      </Section>
+      {PRESS_FEATURE ? (
+        <Section>
+          <article className="grid items-center gap-10 rounded-3xl bg-white p-6 ring-1 ring-border/60 sm:p-10 lg:grid-cols-[1fr_1.1fr]">
+            <div className="overflow-hidden rounded-2xl bg-blush p-2">
+              <img
+                src={alexandraApron.url}
+                alt="Portrait of Alexandra Kowaleski, custom cake baker in Charleston"
+                className="aspect-[4/5] w-full rounded-xl object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-forest">
+                {PRESS_FEATURE.publication}
+              </p>
+              <h2 className="mt-4 font-display text-3xl leading-snug text-ink sm:text-4xl">
+                {PRESS_FEATURE.title}
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                {PRESS_FEATURE.description}
+              </p>
+              <a
+                href={PRESS_FEATURE.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
+              >
+                Read the Article
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </article>
+        </Section>
+      ) : null}
 
       <Section bg="beige">
         <div className="mx-auto max-w-2xl text-center">

@@ -255,25 +255,27 @@ function HomePage() {
         </div>
       </Section>
 
-      <section className="border-y border-border/60 bg-beige/60 py-16">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-forest">
-            Featured in {PRESS_FEATURE.publication}
-          </p>
-          <p className="mt-5 font-display text-2xl leading-snug text-ink sm:text-3xl">
-            Read Alexandra&apos;s interview about her path from bakery and restaurant kitchens to
-            launching Knead To Know in Charleston.
-          </p>
-          <div className="mt-8">
-            <Link
-              to="/featured"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
-            >
-              Read the Feature <ArrowRight className="h-4 w-4" />
-            </Link>
+      {PRESS_FEATURE && (
+        <section className="border-y border-border/60 bg-beige/60 py-16">
+          <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-forest">
+              Featured in {PRESS_FEATURE.publication}
+            </p>
+            <p className="mt-5 font-display text-2xl leading-snug text-ink sm:text-3xl">
+              Read Alexandra&apos;s interview about her path from bakery and restaurant kitchens to
+              launching Knead To Know in Charleston.
+            </p>
+            <div className="mt-8">
+              <Link
+                to="/featured"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
+              >
+                Read the Feature <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CTASection
         eyebrow="Ready to begin"
