@@ -279,7 +279,7 @@ function CustomOrdersPage() {
                   value={formData.budget}
                   onChange={handleChange}
                   className="w-full h-11 rounded-xl border px-4 bg-white"
-                  placeholder="[PRICE TBD] — share your range"
+                  placeholder="Share your range — we'll confirm exact pricing"
                 />
               </div>
             </div>

@@ -115,7 +115,7 @@ function MenuPage() {
                 ))}
               </ul>
               <p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">
-                [ASK FOR AVAILABILITY]
+                Ask us about availability
               </p>
             </article>
           ))}

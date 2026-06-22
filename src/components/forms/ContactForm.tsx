@@ -118,7 +118,7 @@ export function ContactForm() {
       </div>
       <div className="grid gap-2">
         <Label>Phone (optional)</Label>
-        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="[INSERT PHONE]" />
+        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="(843) 555-0123" />
       </div>
       <div className="grid gap-2">
         <Label>Message / order notes</Label>
