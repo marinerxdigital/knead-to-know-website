@@ -1,7 +1,7 @@
 // TODO (launch): replace with the final production domain once it's live,
 // e.g. "https://kneadtoknowbakery.com". Canonical URLs, OG tags, and the sitemap
 // all read from this constant.
-export const SITE_URL = "https://knead-to-know-preview.vercel.app";
+export const SITE_URL = "https://knead-to-know-website-v2.pages.dev";
 
 export const BUSINESS = {
   name: "Knead To Know",

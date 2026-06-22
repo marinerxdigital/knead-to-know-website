@@ -1,0 +1,8 @@
+# Cloudflare Pages — Knead To Know Bakery client preview
+# Build: npm run build (Nitro preset: cloudflare-pages)
+# Output: dist/ (static assets + _worker.js Pages Functions SSR)
+
+name = "knead-to-know-website-v2"
+compatibility_date = "2026-06-19"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
