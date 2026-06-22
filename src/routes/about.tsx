@@ -68,23 +68,23 @@ function AboutPage() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="overflow-hidden rounded-3xl bg-white p-2 ring-1 ring-border/60">
-            <div className="aspect-[4/5] w-full rounded-2xl bg-white flex items-center justify-center p-10 text-center">
-              <div>
-                <div className="font-display text-5xl text-ink mb-2">K2K</div>
-                <p className="uppercase tracking-[3px] text-xs text-forest">
-                  EST. 2026 • DANIEL ISLAND
-                </p>
-              </div>
+          <div className="overflow-hidden rounded-3xl bg-[#f8fafc] p-2 ring-1 ring-border/60">
+            <div className="aspect-[4/5] w-full rounded-2xl bg-[#f8fafc] flex flex-col items-center justify-center gap-3 p-10 text-center">
+              <div className="mx-auto h-12 w-12 rounded-full border border-k2k-blue/25" />
+              <p className="font-display text-2xl text-ink">Wendy Mercado</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">
+                Founder &amp; Baker
+              </p>
+              <p className="text-xs text-muted-foreground">Photo coming soon</p>
             </div>
           </div>
           <div>
             <SectionHeading eyebrow="The bakery" title="Handcrafted in small batches." />
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                Knead To Know is a boutique home bakery focused on artisan sourdough products. We
-                bake in limited quantities each day using traditional methods and high-quality
-                ingredients.
+                Knead To Know is a boutique home bakery founded by Wendy Mercado, focused on artisan
+                sourdough products. We bake in limited quantities each day using traditional methods
+                and high-quality ingredients.
               </p>
               <p>
                 Our lineup centers on naturally leavened breads in classic and thoughtfully flavored
