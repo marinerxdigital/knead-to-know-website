@@ -1,0 +1,65 @@
+{
+  "brand": "Knead To Know",
+  "location": "Daniel Island, South Carolina",
+  "established": "2026",
+  "asset_count": 10,
+  "palette": {
+    "bright_white": "#FFFFFF",
+    "lowcountry_coastal_blue": "#4F7EA8",
+    "soft_harbor_blue": "#7FA7C7",
+    "soft_black": "#111111",
+    "deep_navy_accent": "#1F3447"
+  },
+  "assets": [
+    {
+      "file": "01_Primary_Button_Knead_To_Know.png",
+      "source_file": "blue_shop_now_button_design.png",
+      "usage": "Primary filled CTA button. Use for main actions such as Shop Now, Order Now, or Browse Menu."
+    },
+    {
+      "file": "02_Secondary_Button_Knead_To_Know.png",
+      "source_file": "order_custom_button_design.png",
+      "usage": "Secondary filled CTA button in softer harbor blue. Use for alternate actions such as Order Custom or View Specials."
+    },
+    {
+      "file": "03_Outline_Button_Knead_To_Know.png",
+      "source_file": "learn_more_button_design.png",
+      "usage": "Outlined CTA button. Use for low-commitment actions such as Learn More, About, or Details."
+    },
+    {
+      "file": "04_Container_Card_Knead_To_Know.png",
+      "source_file": "artisan_bakery_logo_design.png",
+      "usage": "Large branded container card with circular logo treatment and Daniel Island location cue."
+    },
+    {
+      "file": "05_Feature_Card_Knead_To_Know.png",
+      "source_file": "small_batch_crafted_elegance.png",
+      "usage": "Feature card for artisan process, small-batch quality, or brand values."
+    },
+    {
+      "file": "06_Product_Card_Knead_To_Know.png",
+      "source_file": "lemon_blueberry_bundt_cake_card.png",
+      "usage": "Product card visual for bakery product listings, menu sections, and featured goods."
+    },
+    {
+      "file": "07_Testimonial_Card_Knead_To_Know.png",
+      "source_file": "elegant_bakery_testimonial_design.png",
+      "usage": "Testimonial card for customer reviews and social proof sections."
+    },
+    {
+      "file": "08_Contact_Form_Input_Field_Knead_To_Know.png",
+      "source_file": "minimalist_input_field_mockup_design.png",
+      "usage": "Input field visual for contact/order forms and inquiry pages."
+    },
+    {
+      "file": "09_Icon_Set_Knead_To_Know.png",
+      "source_file": "minimalist_bakery_and_contact_icons.png",
+      "usage": "Icon set with bakery, contact, commerce, and local/location symbols."
+    },
+    {
+      "file": "10_Section_Divider_Knead_To_Know.png",
+      "source_file": "elegant_blue_line_divider_with_sprig.png",
+      "usage": "Section divider with coastal blue linework and wheat/botanical motif."
+    }
+  ]
+}

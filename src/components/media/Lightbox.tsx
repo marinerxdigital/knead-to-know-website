@@ -111,7 +111,6 @@ export function Lightbox({ slides, index, onClose, onIndexChange }: LightboxProp
             preload="auto"
             className="max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
           />
-
         ) : (
           <img
             src={current.url}

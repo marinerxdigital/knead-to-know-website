@@ -15,7 +15,10 @@ export const Route = createFileRoute("/gallery")({
           "A visual collection of Knead To Know breads, cookies, bagels, pastries, bakery boxes, and seasonal bakes on Daniel Island.",
       },
       { property: "og:title", content: "Gallery | Knead To Know" },
-      { property: "og:description", content: "Fresh sourdough bakes and custom orders from Knead To Know bakery." },
+      {
+        property: "og:description",
+        content: "Fresh sourdough bakes and custom orders from Knead To Know bakery.",
+      },
       { property: "og:url", content: `${SITE_URL}/gallery` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/gallery` }],
@@ -100,7 +103,9 @@ function GalleryPage() {
               >
                 <div className="text-center">
                   <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-k2k-blue/25" />
-                  <p className="text-sm font-medium text-ink">{PLACEHOLDER_LABELS[activeCategory]}</p>
+                  <p className="text-sm font-medium text-ink">
+                    {PLACEHOLDER_LABELS[activeCategory]}
+                  </p>
                   <p className="mt-1 text-xs text-muted-foreground">Photo coming soon</p>
                 </div>
               </div>
@@ -116,10 +121,14 @@ function GalleryPage() {
 
         <div className="mt-12 text-center">
           <p className="mx-auto max-w-md text-sm text-muted-foreground">
-            Interested in ordering or recreating something you see? Head to our menu or custom orders page.
+            Interested in ordering or recreating something you see? Head to our menu or custom
+            orders page.
           </p>
           <div className="mt-5 flex justify-center gap-3">
-            <Link to="/menu" className="inline-flex h-10 items-center rounded-full border px-6 text-sm">
+            <Link
+              to="/menu"
+              className="inline-flex h-10 items-center rounded-full border px-6 text-sm"
+            >
               View Menu
             </Link>
             <Link

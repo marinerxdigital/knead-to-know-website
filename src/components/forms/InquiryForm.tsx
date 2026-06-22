@@ -26,7 +26,9 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const ACCESS_KEY = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ?? "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
+const ACCESS_KEY =
+  (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
+  "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const ERROR_MESSAGE = `Something went wrong while submitting your inquiry. Please try again or email us directly at ${BUSINESS.email}.`;
@@ -138,9 +140,13 @@ export function InquiryForm() {
         </Field>
         <Field label="Order type" error={errors.eventType?.message}>
           <Select {...register("eventType")} defaultValue="">
-            <option value="" disabled>Select an order type</option>
+            <option value="" disabled>
+              Select an order type
+            </option>
             {ORDER_TYPES.map((t) => (
-              <option key={t} value={t}>{t}</option>
+              <option key={t} value={t}>
+                {t}
+              </option>
             ))}
           </Select>
         </Field>
@@ -158,7 +164,10 @@ export function InquiryForm() {
           </Select>
         </Field>
         <Field label="Preferences (flavors / items)" optional error={errors.flavor?.message}>
-          <Input {...register("flavor")} placeholder="Sourdough, chocolate chip, everything bagels…" />
+          <Input
+            {...register("flavor")}
+            placeholder="Sourdough, chocolate chip, everything bagels…"
+          />
         </Field>
       </div>
 

@@ -2,7 +2,13 @@
 // Official Knead To Know product catalog — 16 signature sourdough items.
 // Prices use placeholders per project rules. cardAsset reserved for future product photography paths.
 
-export type ProductCategory = "bread" | "cookies" | "bagels" | "pastries" | "bakery-boxes" | "custom";
+export type ProductCategory =
+  | "bread"
+  | "cookies"
+  | "bagels"
+  | "pastries"
+  | "bakery-boxes"
+  | "custom";
 
 export interface Product {
   id: string;
@@ -36,7 +42,8 @@ export const PRODUCTS: Product[] = [
     id: "plain-sourdough",
     name: "Plain Sourdough Bread",
     category: "bread",
-    description: "Classic artisan sourdough with a crisp crust and open crumb. Small batch, naturally leavened.",
+    description:
+      "Classic artisan sourdough with a crisp crust and open crumb. Small batch, naturally leavened.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_01_Plain_Sourdough_Bread.png`,
     photo: BAKERY_PHOTOS.plainSourdough,
@@ -58,7 +65,8 @@ export const PRODUCTS: Product[] = [
     id: "rosemary-garlic-sourdough",
     name: "Rosemary & Roasted Garlic Sourdough Bread",
     category: "bread",
-    description: "Roasted garlic and fresh rosemary bring warm, savory depth to our signature sourdough.",
+    description:
+      "Roasted garlic and fresh rosemary bring warm, savory depth to our signature sourdough.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_03_Rosemary_Roasted_Garlic_Sourdough_Bread.png`,
     photo: BAKERY_PHOTOS.rosemarySourdough,
@@ -79,7 +87,8 @@ export const PRODUCTS: Product[] = [
     id: "chocolate-nutella",
     name: "Chocolate Chip Nutella Sourdough Bread",
     category: "bread",
-    description: "Sweet and rich with dark chocolate chips and swirls of Nutella in a sourdough base.",
+    description:
+      "Sweet and rich with dark chocolate chips and swirls of Nutella in a sourdough base.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_05_Chocolate_Chip_Nutella_Sourdough_Bread.png`,
     photo: BAKERY_PHOTOS.plainSourdough,
@@ -99,7 +108,8 @@ export const PRODUCTS: Product[] = [
     id: "olive-sourdough",
     name: "Olive Sourdough Bread",
     category: "bread",
-    description: "Briny olives baked into a savory sourdough. Excellent with cheese or charcuterie.",
+    description:
+      "Briny olives baked into a savory sourdough. Excellent with cheese or charcuterie.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_07_Olive_Sourdough_Bread.png`,
     photo: BAKERY_PHOTOS.rosemarySourdough,
@@ -141,7 +151,8 @@ export const PRODUCTS: Product[] = [
     id: "mango-macadamia-cookies",
     name: "Mango & Macadamia Sourdough Cookies",
     category: "cookies",
-    description: "Tropical dried mango and buttery macadamia nuts in our signature sourdough cookie.",
+    description:
+      "Tropical dried mango and buttery macadamia nuts in our signature sourdough cookie.",
     price: "[INSERT PRICE]",
     cardAsset: `${CARD_BASE}/KTK_Product_Card_11_Mango_Macadamia_Cookies.png`,
     photo: BAKERY_PHOTOS.mangoMacadamiaCookies,
@@ -214,15 +225,27 @@ export const HOME_FEATURED_PRODUCTS = [
   PRODUCTS.find((p) => p.id === "sesame-bagel")!,
 ];
 
-export const ALL_BREADS = PRODUCTS.filter(p => p.category === "bread");
-export const ALL_COOKIES = PRODUCTS.filter(p => p.category === "cookies");
-export const ALL_BAGELS = PRODUCTS.filter(p => p.category === "bagels");
+export const ALL_BREADS = PRODUCTS.filter((p) => p.category === "bread");
+export const ALL_COOKIES = PRODUCTS.filter((p) => p.category === "cookies");
+export const ALL_BAGELS = PRODUCTS.filter((p) => p.category === "bagels");
 
 // Broader categories for menu display (non-card or supplemental)
 export const BROADER_MENU = {
   breads: ["Sourdough Loaf", "Country Loaf", "Focaccia", "Dinner Rolls", "Seasonal Bread"],
-  cookies: ["Chocolate Chip Cookies", "Brown Butter Sugar Cookies", "Oatmeal Cookies", "Seasonal Cookies", "Cookie Boxes"],
+  cookies: [
+    "Chocolate Chip Cookies",
+    "Brown Butter Sugar Cookies",
+    "Oatmeal Cookies",
+    "Seasonal Cookies",
+    "Cookie Boxes",
+  ],
   pastries: ["Croissants", "Morning Buns", "Muffins", "Scones", "Seasonal Pastries"],
   bakeryBoxes: ["Cookie Box", "Breakfast Box", "Mixed Pastry Box", "Event Box"],
-  custom: ["Bread Orders", "Cookie Trays", "Brunch Platters", "Custom Bakery Requests", "Seasonal Specials"],
+  custom: [
+    "Bread Orders",
+    "Cookie Trays",
+    "Brunch Platters",
+    "Custom Bakery Requests",
+    "Seasonal Specials",
+  ],
 };

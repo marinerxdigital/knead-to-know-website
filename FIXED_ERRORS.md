@@ -1,6 +1,7 @@
 # Fixed Errors
 
 ## ERR-001 (2026-06-22) — Phase 1 — Bun missing
+
 - Date fixed: 2026-06-22
 - Original symptom: Bun command not available.
 - Root cause: Environment missing Bun.
@@ -11,26 +12,28 @@
 No other fixes in Phase 1. Build verification and preservation rules were satisfied without code bugs.
 
 ## FIX-002 (2026-06-22) — Vercel 404 deployment resolution
+
 - Date fixed: 2026-06-22
 - Original symptom: Production Vercel URL showed 404 NOT_FOUND despite `npm run build` succeeding locally and push to GitHub main.
 - Root cause: Output Directory set to dist/client (SSR mismatch + no index.html), missing vercel.json, wrong Nitro preset (cloudflare default).
-- Final fix: 
+- Final fix:
   - Edit vite.config.ts to enable `nitro: { preset: "vercel" }` (forces correct nodejs24 + web entry for Vercel).
   - Add vercel.json at root locking install/build and `outputDirectory: ".vercel/output"`, `framework: null`.
-  - Build produces proper Nitro Vercel structure (.vercel/output/functions + static + config.json with /* -> __server).
+  - Build produces proper Nitro Vercel structure (.vercel/output/functions + static + config.json with /\* -> \_\_server).
 - Files changed: vite.config.ts, vercel.json (new)
 - Commands run: npm install (success), npm run build (success, multiple), git status (pre/post), git add (only safe files), commit, push origin main.
 - Commit: 5f99c4f "Fix Vercel deployment 404 for Knead To Know preview"
 - Push result: success (main updated)
-- Not committed: .grok/, node_modules/, dist/, .vercel/, 00_*, zips, .env
+- Not committed: .grok/, node*modules/, dist/, .vercel/, 00*\*, zips, .env
 - Current live status: Pushed; pending Vercel build + recommended dashboard Output Directory clear. See DEPLOYMENT.md + 00_PROJECT_NOTES/GROK_PHASE_2_REPORT.md for 15-point record.
 - Regression prevention: Always verify `dist/client/index.html` absence + SSR nature before choosing static; prefer nitro preset + vercel.json for this stack. Document all deploy settings.
 
 ## FIX-003 (2026-06-22) — Vercel SSR null .publication crash
+
 - Date fixed: 2026-06-22
 - Symptom: Live deployment crashed with `Cannot read properties of null (reading 'publication')` on homepage SSR.
 - Root cause: Legacy `PRESS_FEATURE = null` from brand conversion + unguarded property reads in HomePage (and siblings).
-- Final fix: 
+- Final fix:
   - Conditional render guards in index.tsx, about.tsx, featured.tsx.
   - Typed the export in business.ts.
   - Removed all direct unsafe `.publication` (and related) accesses from render path.

@@ -13,7 +13,10 @@ export const Route = createFileRoute("/faq")({
           "Frequently asked questions about ordering bread, cookies, bagels, custom orders, and catering from Knead To Know on Daniel Island.",
       },
       { property: "og:title", content: "FAQ | Knead To Know" },
-      { property: "og:description", content: "Answers to common questions about Knead To Know bakery orders and services." },
+      {
+        property: "og:description",
+        content: "Answers to common questions about Knead To Know bakery orders and services.",
+      },
       { property: "og:url", content: `${SITE_URL}/faq` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/faq` }],
@@ -85,11 +88,17 @@ function FAQPage() {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">Still have a question?</p>
-          <Link to="/contact" className="mt-3 inline-flex h-11 items-center rounded-full border border-forest/30 px-7 text-sm text-forest hover:bg-white">
+          <Link
+            to="/contact"
+            className="mt-3 inline-flex h-11 items-center rounded-full border border-forest/30 px-7 text-sm text-forest hover:bg-white"
+          >
             Contact us
           </Link>
           <span className="mx-3 text-muted-foreground">or</span>
-          <Link to="/custom-orders" className="inline-flex h-11 items-center rounded-full bg-forest px-7 text-sm text-white">
+          <Link
+            to="/custom-orders"
+            className="inline-flex h-11 items-center rounded-full bg-forest px-7 text-sm text-white"
+          >
             Start a custom order
           </Link>
         </div>

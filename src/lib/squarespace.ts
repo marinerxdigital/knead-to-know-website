@@ -9,8 +9,7 @@
 
 // 1. Confirmed Order Payment Link
 // For customers whose order has already been confirmed.
-export const CONFIRMED_ORDER_PAYMENT_LINK =
-  "PASTE_SQUARESPACE_CONFIRMED_ORDER_PAYMENT_LINK_HERE";
+export const CONFIRMED_ORDER_PAYMENT_LINK = "PASTE_SQUARESPACE_CONFIRMED_ORDER_PAYMENT_LINK_HERE";
 
 export const SHOW_PAYMENT_SECTION = false;
 

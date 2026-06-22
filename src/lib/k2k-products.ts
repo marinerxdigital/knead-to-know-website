@@ -1,14 +1,14 @@
 /**
  * Knead To Know official product data derived from PRODUCT_CARD_MANIFEST.md
  * in 00_BRAND_ASSETS/Knead_To_Know_Product_Cards_Package/
- * 
+ *
  * All 16 product cards reference the official PNG assets in:
  * /public/assets/knead-to-know/product-cards/KTK_Product_Card_XX_....png
- * 
+ *
  * These are branded transparent PNG card frames (preserve decorative borders).
  */
 
-export type K2KProductCategory = 'Sourdough Bread' | 'Sourdough Cookies' | 'Sourdough Bagels';
+export type K2KProductCategory = "Sourdough Bread" | "Sourdough Cookies" | "Sourdough Bagels";
 
 export interface K2KProduct {
   id: string;

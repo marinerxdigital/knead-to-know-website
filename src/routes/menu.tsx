@@ -49,11 +49,15 @@ function MenuPage() {
       <section className="border-b border-border/40 bg-white pb-12 pt-16 sm:pt-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">Daniel Island, SC</p>
-            <h1 className="mt-3 font-display text-5xl leading-[1.02] text-ink sm:text-6xl">Our Menu</h1>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
+              Daniel Island, SC
+            </p>
+            <h1 className="mt-3 font-display text-5xl leading-[1.02] text-ink sm:text-6xl">
+              Our Menu
+            </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Small-batch sourdough breads, cookies, and bagels. Fresh daily. Pre-order for pickup or
-              delivery in the Charleston area.
+              Small-batch sourdough breads, cookies, and bagels. Fresh daily. Pre-order for pickup
+              or delivery in the Charleston area.
             </p>
           </div>
         </div>
@@ -110,7 +114,9 @@ function MenuPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">[ASK FOR AVAILABILITY]</p>
+              <p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">
+                [ASK FOR AVAILABILITY]
+              </p>
             </article>
           ))}
         </div>
@@ -126,17 +132,18 @@ function MenuPage() {
             </div>
             <div className="rounded-2xl border border-border/40 p-6">
               <div className="mb-1 font-medium text-k2k-blue">2. Submit inquiry</div>
-              <p className="text-muted-foreground">Use the custom orders form with quantities and pickup date.</p>
+              <p className="text-muted-foreground">
+                Use the custom orders form with quantities and pickup date.
+              </p>
             </div>
             <div className="rounded-2xl border border-border/40 p-6">
               <div className="mb-1 font-medium text-k2k-blue">3. Confirm</div>
-              <p className="text-muted-foreground">We confirm availability and details. Fresh baked for you.</p>
+              <p className="text-muted-foreground">
+                We confirm availability and details. Fresh baked for you.
+              </p>
             </div>
           </div>
-          <Link
-            to="/custom-orders"
-            className="mt-8 inline-flex k2k-button k2k-button-primary"
-          >
+          <Link to="/custom-orders" className="mt-8 inline-flex k2k-button k2k-button-primary">
             Start Your Pre-Order
           </Link>
         </div>

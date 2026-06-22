@@ -54,12 +54,12 @@ function CustomOrdersPage() {
   const selectedProducts = PRODUCTS.filter((p) => selectedIds.includes(p.id));
 
   const toggleProduct = (id: string) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
+    setSelectedIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value as any }));
   };
@@ -79,14 +79,30 @@ function CustomOrdersPage() {
         </div>
         <h1 className="font-display text-4xl text-ink">Thank you — order request received.</h1>
         <p className="mt-4 text-muted-foreground">
-          We have your request for {selectedProducts.length ? selectedProducts.map(p => p.name).join(", ") : "custom items"}.
-          Our team will confirm availability, pricing for your quantity, pickup or delivery details, and next steps within 1 business day.
+          We have your request for{" "}
+          {selectedProducts.length
+            ? selectedProducts.map((p) => p.name).join(", ")
+            : "custom items"}
+          . Our team will confirm availability, pricing for your quantity, pickup or delivery
+          details, and next steps within 1 business day.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/menu" className="rounded-full border px-6 h-11 inline-flex items-center text-sm">Back to Menu</Link>
-          <Link to="/" className="rounded-full bg-forest px-6 h-11 inline-flex items-center text-sm text-white">Return Home</Link>
+          <Link
+            to="/menu"
+            className="rounded-full border px-6 h-11 inline-flex items-center text-sm"
+          >
+            Back to Menu
+          </Link>
+          <Link
+            to="/"
+            className="rounded-full bg-forest px-6 h-11 inline-flex items-center text-sm text-white"
+          >
+            Return Home
+          </Link>
         </div>
-        <p className="mt-10 text-xs text-muted-foreground">Daniel Island, SC • Small-batch bakery</p>
+        <p className="mt-10 text-xs text-muted-foreground">
+          Daniel Island, SC • Small-batch bakery
+        </p>
       </div>
     );
   }
@@ -109,7 +125,9 @@ function CustomOrdersPage() {
           {/* PRODUCT SELECTOR using cards */}
           <div>
             <h2 className="font-display text-2xl text-ink mb-4">Choose your bakes</h2>
-            <p className="text-sm text-muted-foreground mb-6">Tap any card to add or remove. You can select multiple items.</p>
+            <p className="text-sm text-muted-foreground mb-6">
+              Tap any card to add or remove. You can select multiple items.
+            </p>
 
             <div className="grid max-h-[620px] grid-cols-1 gap-4 overflow-auto pr-1 sm:grid-cols-2">
               {PRODUCTS.map((product) => (
@@ -135,41 +153,89 @@ function CustomOrdersPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Name</label>
-                <input name="name" required value={formData.name} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="Your full name" />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Name
+                </label>
+                <input
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                  placeholder="Your full name"
+                />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Email</label>
-                <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="you@email.com" />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                  placeholder="you@email.com"
+                />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Phone</label>
-                <input name="phone" required value={formData.phone} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="(843) 555-0123" />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Phone
+                </label>
+                <input
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                  placeholder="(843) 555-0123"
+                />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Requested pickup / event date</label>
-                <input type="date" name="date" required value={formData.date} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Requested pickup / event date
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  value={formData.date}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                />
               </div>
             </div>
 
             <div>
-              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Products selected</label>
+              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                Products selected
+              </label>
               <div className="min-h-[42px] rounded-xl border bg-white px-4 py-2 text-sm">
                 {selectedProducts.length > 0 ? (
                   selectedProducts.map((p) => p.name).join(" • ")
                 ) : (
-                  <span className="text-muted-foreground">Select items above or describe your request below.</span>
+                  <span className="text-muted-foreground">
+                    Select items above or describe your request below.
+                  </span>
                 )}
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Order type</label>
-                <select name="orderType" value={formData.orderType} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white">
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Order type
+                </label>
+                <select
+                  name="orderType"
+                  value={formData.orderType}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                >
                   <option value="pre-order">Pre-Order</option>
                   <option value="bakery-box">Bakery Box</option>
                   <option value="cookie-tray">Cookie Tray</option>
@@ -178,48 +244,113 @@ function CustomOrdersPage() {
                 </select>
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Occasion / event type</label>
-                <input name="occasion" value={formData.occasion} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="Everyday, brunch, gift, celebration..." />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Occasion / event type
+                </label>
+                <input
+                  name="occasion"
+                  value={formData.occasion}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                  placeholder="Everyday, brunch, gift, celebration..."
+                />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Estimated quantity (total items / loaves)</label>
-                <input name="quantity" value={formData.quantity} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="e.g. 2 loaves + 12 cookies" />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Estimated quantity (total items / loaves)
+                </label>
+                <input
+                  name="quantity"
+                  value={formData.quantity}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                  placeholder="e.g. 2 loaves + 12 cookies"
+                />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Budget range (optional)</label>
-                <input name="budget" value={formData.budget} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="[PRICE TBD] — share your range" />
+                <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                  Budget range (optional)
+                </label>
+                <input
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  className="w-full h-11 rounded-xl border px-4 bg-white"
+                  placeholder="[PRICE TBD] — share your range"
+                />
               </div>
             </div>
 
             <div>
-              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Pickup or delivery?</label>
-              <select name="preference" value={formData.preference} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white">
+              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                Pickup or delivery?
+              </label>
+              <select
+                name="preference"
+                value={formData.preference}
+                onChange={handleChange}
+                className="w-full h-11 rounded-xl border px-4 bg-white"
+              >
                 <option value="pickup">Pickup (Daniel Island)</option>
                 <option value="delivery">Delivery (local area)</option>
               </select>
             </div>
 
             <div>
-              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Allergy notes or dietary requests</label>
-              <textarea name="allergies" value={formData.allergies} onChange={handleChange} rows={2} className="w-full rounded-xl border p-4 bg-white" placeholder="E.g. Contains nuts, gluten free request (note: we are not a dedicated GF facility)" />
+              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                Allergy notes or dietary requests
+              </label>
+              <textarea
+                name="allergies"
+                value={formData.allergies}
+                onChange={handleChange}
+                rows={2}
+                className="w-full rounded-xl border p-4 bg-white"
+                placeholder="E.g. Contains nuts, gluten free request (note: we are not a dedicated GF facility)"
+              />
             </div>
 
             <div>
-              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Special instructions / custom request</label>
-              <textarea name="instructions" value={formData.instructions} onChange={handleChange} rows={3} className="w-full rounded-xl border p-4 bg-white" placeholder="E.g. Need a mixed bakery box for a brunch, or 3 rosemary loaves sliced, etc." />
+              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                Special instructions / custom request
+              </label>
+              <textarea
+                name="instructions"
+                value={formData.instructions}
+                onChange={handleChange}
+                rows={3}
+                className="w-full rounded-xl border p-4 bg-white"
+                placeholder="E.g. Need a mixed bakery box for a brunch, or 3 rosemary loaves sliced, etc."
+              />
             </div>
 
             <div>
-              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">Preferred contact method</label>
+              <label className="text-xs uppercase tracking-[0.12em] text-muted-foreground block mb-1.5">
+                Preferred contact method
+              </label>
               <div className="flex gap-4 text-sm">
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="contactMethod" value="email" checked={formData.contactMethod === "email"} onChange={handleChange} /> Email
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value="email"
+                    checked={formData.contactMethod === "email"}
+                    onChange={handleChange}
+                  />{" "}
+                  Email
                 </label>
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="contactMethod" value="phone" checked={formData.contactMethod === "phone"} onChange={handleChange} /> Phone
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value="phone"
+                    checked={formData.contactMethod === "phone"}
+                    onChange={handleChange}
+                  />{" "}
+                  Phone
                 </label>
               </div>
             </div>
@@ -232,7 +363,8 @@ function CustomOrdersPage() {
             </button>
 
             <p className="text-[10px] text-center text-muted-foreground pt-1">
-              This is a request. We will reply to confirm pricing, exact availability, and timing. Standard pricing from menu applies unless custom work is required.
+              This is a request. We will reply to confirm pricing, exact availability, and timing.
+              Standard pricing from menu applies unless custom work is required.
             </p>
           </form>
         </div>
@@ -241,7 +373,13 @@ function CustomOrdersPage() {
       <Section bg="blush">
         <div className="text-sm max-w-prose">
           <p className="font-medium">Need something larger or different?</p>
-          <p className="mt-1 text-muted-foreground">We also handle full catering spreads, corporate orders, and seasonal specials. Visit our <Link to="/catering" className="underline">Catering page</Link> or call with questions.</p>
+          <p className="mt-1 text-muted-foreground">
+            We also handle full catering spreads, corporate orders, and seasonal specials. Visit our{" "}
+            <Link to="/catering" className="underline">
+              Catering page
+            </Link>{" "}
+            or call with questions.
+          </p>
         </div>
       </Section>
     </>

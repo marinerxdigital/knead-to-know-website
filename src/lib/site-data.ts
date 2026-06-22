@@ -1,10 +1,26 @@
 export const OCCASIONS = [
-  { title: "Artisan Breads", description: "Daily sourdough loaves and specialty breads.", label: "Breads" },
-  { title: "Sourdough Cookies", description: "Signature chewy cookies in multiple flavors.", label: "Cookies" },
+  {
+    title: "Artisan Breads",
+    description: "Daily sourdough loaves and specialty breads.",
+    label: "Breads",
+  },
+  {
+    title: "Sourdough Cookies",
+    description: "Signature chewy cookies in multiple flavors.",
+    label: "Cookies",
+  },
   { title: "Fresh Bagels", description: "Boiled and baked sourdough bagels.", label: "Bagels" },
-  { title: "Pastries & Treats", description: "Seasonal pastries and sweet bakes.", label: "Pastries" },
+  {
+    title: "Pastries & Treats",
+    description: "Seasonal pastries and sweet bakes.",
+    label: "Pastries",
+  },
   { title: "Bakery Boxes", description: "Curated boxes for gifting and sharing.", label: "Boxes" },
-  { title: "Custom Orders", description: "Special requests and larger gatherings.", label: "Custom" },
+  {
+    title: "Custom Orders",
+    description: "Special requests and larger gatherings.",
+    label: "Custom",
+  },
 ] as const;
 
 export const GALLERY_CATEGORIES = [
@@ -15,20 +31,12 @@ export const GALLERY_CATEGORIES = [
   "Seasonal & Custom",
 ] as const;
 
-export const GALLERY_CATEGORY_DESCRIPTIONS: Record<
-  (typeof GALLERY_CATEGORIES)[number],
-  string
-> = {
-  "Artisan Breads":
-    "Daily sourdough loaves and specialty breads.",
-  "Sourdough Cookies":
-    "Signature chewy cookies in multiple flavors.",
-  "Fresh Bagels":
-    "Boiled and baked sourdough bagels.",
-  "Bakery Boxes":
-    "Curated boxes for gifting and sharing.",
-  "Seasonal & Custom":
-    "Seasonal pastries and special requests.",
+export const GALLERY_CATEGORY_DESCRIPTIONS: Record<(typeof GALLERY_CATEGORIES)[number], string> = {
+  "Artisan Breads": "Daily sourdough loaves and specialty breads.",
+  "Sourdough Cookies": "Signature chewy cookies in multiple flavors.",
+  "Fresh Bagels": "Boiled and baked sourdough bagels.",
+  "Bakery Boxes": "Curated boxes for gifting and sharing.",
+  "Seasonal & Custom": "Seasonal pastries and special requests.",
 };
 
 export const GALLERY = [
@@ -38,28 +46,11 @@ export const GALLERY = [
   { category: "Fresh Bagels", caption: "Everything Bagels", aspect: "landscape" },
 ] as const;
 
-export const FLAVORS = [
-  "Classic Sourdough",
-  "Rosemary",
-  "Olive",
-  "Cranberry Walnut",
-  "Seasonal",
-];
+export const FLAVORS = ["Classic Sourdough", "Rosemary", "Olive", "Cranberry Walnut", "Seasonal"];
 
-export const FILLINGS = [
-  "None",
-  "Butter",
-  "Cream Cheese",
-  "Nutella",
-  "Jam",
-];
+export const FILLINGS = ["None", "Butter", "Cream Cheese", "Nutella", "Jam"];
 
-export const FROSTINGS = [
-  "None",
-  "Light Glaze",
-  "Cinnamon Sugar",
-  "Everything Seasoning",
-];
+export const FROSTINGS = ["None", "Light Glaze", "Cinnamon Sugar", "Everything Seasoning"];
 
 export const POPULAR_PAIRINGS = [
   "Rosemary Sourdough + Butter",
@@ -112,17 +103,9 @@ export const COOKIES = [
   "Apricot Mango",
 ];
 
-export const BAGELS = [
-  "Plain",
-  "Everything",
-  "Sesame",
-  "Poppy",
-];
+export const BAGELS = ["Plain", "Everything", "Sesame", "Poppy"];
 
-export const PASTRIES = [
-  "Seasonal specials rotate weekly.",
-  "Custom requests welcome.",
-];
+export const PASTRIES = ["Seasonal specials rotate weekly.", "Custom requests welcome."];
 
 export const EVENT_TYPES = [
   "Everyday Treat",

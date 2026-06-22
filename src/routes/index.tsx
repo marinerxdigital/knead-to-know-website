@@ -8,25 +8,54 @@ import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
-
 const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 const BANNER_URL = "/assets/knead-to-know/banners/Knead_To_Know_Promo_Banner_Strip.png";
 const DIVIDER_URL = "/assets/knead-to-know/badges/Knead_To_Know_Section_Divider.png";
 
 const TRUST_ITEMS = [
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png", label: "Daniel Island, SC" },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
+    label: "Daniel Island, SC",
+  },
   { icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png", label: "Small-Batch Daily" },
   { icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png", label: "Artisan Sourdough" },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png", label: "Pre-Orders Welcome" },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+    label: "Pre-Orders Welcome",
+  },
 ];
 
 const FEATURED_OFFERINGS = [
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png", title: "Artisan Breads", text: "Naturally leavened sourdough loaves baked in small batches." },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png", title: "Cookies", text: "Chewy sourdough cookies in signature and seasonal flavors." },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png", title: "Pastries", text: "Morning buns, croissants, muffins, and rotating seasonal bakes." },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png", title: "Seasonal Bakes", text: "Limited runs highlighting fresh Lowcountry ingredients." },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png", title: "Bakery Boxes", text: "Curated boxes for gifting, brunch, and gatherings." },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png", title: "Custom Orders", text: "Bread orders, cookie trays, and bespoke bakery requests." },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+    title: "Artisan Breads",
+    text: "Naturally leavened sourdough loaves baked in small batches.",
+  },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
+    title: "Cookies",
+    text: "Chewy sourdough cookies in signature and seasonal flavors.",
+  },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
+    title: "Pastries",
+    text: "Morning buns, croissants, muffins, and rotating seasonal bakes.",
+  },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png",
+    title: "Seasonal Bakes",
+    text: "Limited runs highlighting fresh Lowcountry ingredients.",
+  },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
+    title: "Bakery Boxes",
+    text: "Curated boxes for gifting, brunch, and gatherings.",
+  },
+  {
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+    title: "Custom Orders",
+    text: "Bread orders, cookie trays, and bespoke bakery requests.",
+  },
 ];
 
 const HOME_FAQS = [
@@ -133,9 +162,14 @@ function HomePage() {
       <section className="border-y border-k2k-blue/10 bg-[#f8fafc]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-5 py-8 sm:grid-cols-4 sm:px-8">
           {TRUST_ITEMS.map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
+            <div
+              key={item.label}
+              className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left"
+            >
               <img src={item.icon} alt="" className="h-8 w-8 object-contain" aria-hidden />
-              <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink/80">{item.label}</span>
+              <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink/80">
+                {item.label}
+              </span>
             </div>
           ))}
         </div>
@@ -252,7 +286,8 @@ function HomePage() {
               aria-hidden
             />
             <p className="text-center text-sm text-muted-foreground">
-              Bread orders · Cookie trays · Brunch platters · Seasonal specials · Custom bakery requests
+              Bread orders · Cookie trays · Brunch platters · Seasonal specials · Custom bakery
+              requests
             </p>
           </div>
         </div>
@@ -330,8 +365,14 @@ function HomePage() {
           </div>
           <div className="flex items-center justify-center rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-12 text-center">
             <div>
-              <img src={LOGO_URL} alt="Knead To Know" className="mx-auto h-32 w-32 rounded-full object-contain" />
-              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-k2k-blue">Est. 2026 · Daniel Island</p>
+              <img
+                src={LOGO_URL}
+                alt="Knead To Know"
+                className="mx-auto h-32 w-32 rounded-full object-contain"
+              />
+              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-k2k-blue">
+                Est. 2026 · Daniel Island
+              </p>
             </div>
           </div>
         </div>

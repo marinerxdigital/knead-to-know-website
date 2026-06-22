@@ -9,7 +9,11 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60 bg-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
-          <img src={LOGO_SRC} alt="Knead To Know Bakery" className="h-16 w-16 rounded-full object-contain" />
+          <img
+            src={LOGO_SRC}
+            alt="Knead To Know Bakery"
+            className="h-16 w-16 rounded-full object-contain"
+          />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
             A boutique Daniel Island bakery for fresh artisan breads, sourdough cookies, bagels,
             pastries, bakery boxes, and custom orders. Serving the Charleston area since 2026.
@@ -19,13 +23,41 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-medium uppercase tracking-[0.18em] text-k2k-blue">Explore</h4>
           <ul className="mt-5 space-y-3 text-sm text-ink/80">
-            <li><Link to="/menu" className="hover:text-k2k-blue">Menu</Link></li>
-            <li><Link to="/custom-orders" className="hover:text-k2k-blue">Custom Orders</Link></li>
-            <li><Link to="/catering" className="hover:text-k2k-blue">Catering</Link></li>
-            <li><Link to="/gallery" className="hover:text-k2k-blue">Gallery</Link></li>
-            <li><Link to="/faq" className="hover:text-k2k-blue">FAQ</Link></li>
-            <li><Link to="/about" className="hover:text-k2k-blue">About</Link></li>
-            <li><Link to="/contact" className="hover:text-k2k-blue">Contact</Link></li>
+            <li>
+              <Link to="/menu" className="hover:text-k2k-blue">
+                Menu
+              </Link>
+            </li>
+            <li>
+              <Link to="/custom-orders" className="hover:text-k2k-blue">
+                Custom Orders
+              </Link>
+            </li>
+            <li>
+              <Link to="/catering" className="hover:text-k2k-blue">
+                Catering
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery" className="hover:text-k2k-blue">
+                Gallery
+              </Link>
+            </li>
+            <li>
+              <Link to="/faq" className="hover:text-k2k-blue">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-k2k-blue">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-k2k-blue">
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -66,7 +98,9 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-muted-foreground sm:flex-row sm:px-8">
           <p>© 2026 {BUSINESS.name}. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <Link to="/privacy" className="hover:text-k2k-blue">Privacy Policy</Link>
+            <Link to="/privacy" className="hover:text-k2k-blue">
+              Privacy Policy
+            </Link>
             <p className="font-display italic">Daniel Island, South Carolina</p>
           </div>
         </div>

@@ -1,0 +1,59 @@
+:root {
+  --k2k-white: #ffffff;
+  --k2k-blue: #4f7ea8;
+  --k2k-harbor-blue: #7fa7c7;
+  --k2k-black: #111111;
+  --k2k-navy: #1f3447;
+  --k2k-border: rgba(79, 126, 168, 0.35);
+  --k2k-radius-lg: 28px;
+  --k2k-radius-pill: 999px;
+  --k2k-shadow-soft: 0 18px 45px rgba(17, 17, 17, 0.08);
+}
+
+.k2k-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 52px;
+  padding: 0 2rem;
+  border-radius: var(--k2k-radius-pill);
+  font-family: serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.k2k-button:hover {
+  transform: translateY(-1px);
+}
+
+.k2k-button-primary {
+  color: var(--k2k-white);
+  background: var(--k2k-blue);
+  border: 1px solid var(--k2k-blue);
+}
+
+.k2k-button-secondary {
+  color: var(--k2k-white);
+  background: var(--k2k-harbor-blue);
+  border: 1px solid var(--k2k-harbor-blue);
+}
+
+.k2k-button-outline {
+  color: var(--k2k-blue);
+  background: transparent;
+  border: 1px solid var(--k2k-blue);
+}
+
+.k2k-card {
+  background: var(--k2k-white);
+  border: 1px solid var(--k2k-border);
+  border-radius: var(--k2k-radius-lg);
+  box-shadow: var(--k2k-shadow-soft);
+}

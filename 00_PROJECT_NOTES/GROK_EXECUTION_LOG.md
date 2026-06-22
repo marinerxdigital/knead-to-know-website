@@ -31,7 +31,7 @@ Files affected: reports only (lint run was verification only; no --fix applied).
 Next step: Optional dedicated `npm run format` pass later.
 
 [2026-06-22] Action: Fixed live Vercel SSR crash on homepage (null .publication).
-Diagnosis: Read index.tsx, business.ts, site-data, squarespace, grepped for publication + similar. Root: PRESS_FEATURE=null accessed directly in HomePage + /featured + /about. 
+Diagnosis: Read index.tsx, business.ts, site-data, squarespace, grepped for publication + similar. Root: PRESS_FEATURE=null accessed directly in HomePage + /featured + /about.
 Fix: Conditional guards around legacy press sections (no deref when null). Updated type + docs. No other unsafe nulls found.
 Commands: npm install, npm run build (success), attempted npx vite preview + route curls for / /about etc. (preview env limitation for full SSR but source safe).
 Git: staged only src/ fixes, commit a84cf97, push success.
@@ -41,24 +41,25 @@ Files: src/routes/index.tsx, about.tsx, featured.tsx, lib/business.ts + MD repor
 
 [2026-06-22] Action: User confirmed and instructed to run production deployment.
 Command: `vercel deploy --prebuilt --prod` (after fresh `npm run build`).
-Result: Success. 
+Result: Success.
+
 - Production alias activated: https://knead-to-know-website.vercel.app
 - Deploy: https://knead-to-know-website-hhxkc79yl-mariner-x-digital.vercel.app
 - Verified: Homepage and /about load correctly with full K2K content, no runtime crash.
 - All safety checks passed prior (preview validated, git clean, build clean).
-Next: Production is now live. No further action unless issues reported.
-Result: Structure established.
-Files affected: 01_SOURCE/, 02_BRAND/, 03_CONTENT/, 04_SEO/, 05_ASSETS/, 06_DEVELOPMENT/, 07_QA/, 08_DELIVERABLES/
-Next step: Inspect asset packages from 00_SOURCE_PACKAGES, extract and read docs.
+  Next: Production is now live. No further action unless issues reported.
+  Result: Structure established.
+  Files affected: 01_SOURCE/, 02_BRAND/, 03_CONTENT/, 04_SEO/, 05_ASSETS/, 06_DEVELOPMENT/, 07_QA/, 08_DELIVERABLES/
+  Next step: Inspect asset packages from 00_SOURCE_PACKAGES, extract and read docs.
 
-[2026-06-22] Action: Asset intake complete — 3 packages extracted/read, logo + all product cards + UI refs copied to public/assets/knead-to-know/* per spec. ASSET_INVENTORY.md created.
+[2026-06-22] Action: Asset intake complete — 3 packages extracted/read, logo + all product cards + UI refs copied to public/assets/knead-to-know/\* per spec. ASSET_INVENTORY.md created.
 Result: Assets organized, documented.
 Files affected: public/assets/knead-to-know/, 05_ASSETS/ASSET_INVENTORY.md
 Next step: Brand audit + content conversion.
 
 [2026-06-22] Action: Brand removal + content conversion (business, header, footer, forms, about, index hero/meta, titles across routes). NAV updated. BRAND_REMOVAL_AUDIT.md created.
 Result: Major Spilled Milk references removed from active code.
-Files affected: src/lib/*, src/components/layout/*, src/routes/*, 07_QA/BRAND_REMOVAL_AUDIT.md
+Files affected: src/lib/_, src/components/layout/_, src/routes/\*, 07_QA/BRAND_REMOVAL_AUDIT.md
 Next step: Build verification + reports + git check.
 
 [2026-06-22] Action: npm install + npm run build (Phase 1 npm path).
@@ -73,5 +74,5 @@ Next step: Write blocker, save all self-reports, update controls, stop before pu
 
 [2026-06-22] Action: Created blocker report, GROK_PHASE_2_REPORT.md, FINAL_SUMMARY.md, updated MEMORY/SOURCE/etc, created required folder structure + content docs.
 Result: All self-saved reports complete. Conversion largely achieved. Push blocked per rules.
-Files affected: 00_PROJECT_NOTES/* (multiple), 05-08 folders, controls at root.
+Files affected: 00_PROJECT_NOTES/\* (multiple), 05-08 folders, controls at root.
 Next step: User resolves git. Re-run Phase 2 push step if needed. Ready for visual inspection once preview branch live.

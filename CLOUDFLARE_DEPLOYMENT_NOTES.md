@@ -56,8 +56,8 @@ Create a `.env` file in the project root:
 VITE_WEB3FORMS_ACCESS_KEY=replace_with_actual_key
 ```
 
-| Variable | Used by | Notes |
-|---|---|---|
+| Variable                    | Used by                                                                        | Notes                                                                                                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `VITE_WEB3FORMS_ACCESS_KEY` | `src/components/forms/InquiryForm.tsx`, `src/components/forms/ContactForm.tsx` | Public Web3Forms access key. If unset, both forms fall back to a hardcoded key currently inlined in those two files — search for `ACCESS_KEY` and replace if you want to rotate. |
 
 No other env vars are required for the static/SSR build.
@@ -127,10 +127,12 @@ For this export they have been **downloaded into
 the new local path (`/lovable-assets/{asset_id}/{filename}`).
 
 Result: components that do
+
 ```ts
 import hero from "@/assets/hero-cake.jpg.asset.json";
 <img src={hero.url} />
 ```
+
 continue to work unchanged, served from your own origin.
 
 If you'd prefer to move assets into `src/assets/` and use Vite's normal
@@ -143,10 +145,10 @@ on Cloudflare with zero code changes.
 
 Both forms POST to `https://api.web3forms.com/submit`.
 
-| Form | File | Notes |
-|---|---|---|
+| Form          | File                                   | Notes                   |
+| ------------- | -------------------------------------- | ----------------------- |
 | Order Inquiry | `src/components/forms/InquiryForm.tsx` | Includes honeypot field |
-| Contact | `src/components/forms/ContactForm.tsx` | Includes honeypot field |
+| Contact       | `src/components/forms/ContactForm.tsx` | Includes honeypot field |
 
 To test after deploy: submit each form and confirm an email arrives at
 the address configured in the Web3Forms dashboard (currently
@@ -161,8 +163,8 @@ File: `src/lib/squarespace.ts`
 ```ts
 export const SHOW_PAYMENT_SECTION = false;
 export const SHOW_BOOKING_SECTION = false;
-export const PAYMENT_URL = "https://...";   // Squarespace payment link
-export const BOOKING_URL = "https://...";   // Squarespace booking link
+export const PAYMENT_URL = "https://..."; // Squarespace payment link
+export const BOOKING_URL = "https://..."; // Squarespace booking link
 ```
 
 - Flip `SHOW_PAYMENT_SECTION = true` to surface the payment CTA.

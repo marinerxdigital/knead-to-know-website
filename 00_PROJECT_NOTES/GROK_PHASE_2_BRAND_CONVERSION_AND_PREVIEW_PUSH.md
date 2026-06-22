@@ -321,15 +321,15 @@ The final site must use this visual language:
 
 Use these colors as the site foundation:
 
-| Token | Hex | Usage |
-|---|---:|---|
-| Bright White | `#FFFFFF` | Primary background, cards, forms |
-| Lowcountry Coastal Blue | `#4F7EA8` | CTA fill, borders, accent lines, badges |
-| Soft Harbor Blue | `#7FA7C7` | Secondary accents, subtle lines, softer UI |
-| Soft Black | `#111111` | Primary text, headlines, high-contrast details |
-| Deep Navy Accent | `#1F3447` | Premium dark text/accent when black feels too harsh |
-| Light Mist Background | `#F7FAFC` | Very light section contrast only |
-| Border Mist | `#DCE7EF` | Thin borders, dividers, placeholder outlines |
+| Token                   |       Hex | Usage                                               |
+| ----------------------- | --------: | --------------------------------------------------- |
+| Bright White            | `#FFFFFF` | Primary background, cards, forms                    |
+| Lowcountry Coastal Blue | `#4F7EA8` | CTA fill, borders, accent lines, badges             |
+| Soft Harbor Blue        | `#7FA7C7` | Secondary accents, subtle lines, softer UI          |
+| Soft Black              | `#111111` | Primary text, headlines, high-contrast details      |
+| Deep Navy Accent        | `#1F3447` | Premium dark text/accent when black feels too harsh |
+| Light Mist Background   | `#F7FAFC` | Very light section contrast only                    |
+| Border Mist             | `#DCE7EF` | Thin borders, dividers, placeholder outlines        |
 
 The website should be primarily bright white. Use blue as a controlled brand accent, not as a heavy background. Use black/deep navy for premium typography and readability.
 
@@ -430,15 +430,15 @@ Final navigation:
 
 Use the existing skeleton intelligently.
 
-| Existing Spilled Milk Page | New Knead To Know Page |
-|---|---|
-| Cakes page | Menu or Custom Orders |
-| Wedding Cakes page | Catering / Events or remove if not relevant |
-| Birthday Cakes page | Custom Orders, rewritten broadly |
-| Gallery page | Bakery Gallery |
-| Contact page | Contact / Order Inquiry |
-| FAQ page | Bakery FAQ |
-| About page | About Knead To Know |
+| Existing Spilled Milk Page | New Knead To Know Page                      |
+| -------------------------- | ------------------------------------------- |
+| Cakes page                 | Menu or Custom Orders                       |
+| Wedding Cakes page         | Catering / Events or remove if not relevant |
+| Birthday Cakes page        | Custom Orders, rewritten broadly            |
+| Gallery page               | Bakery Gallery                              |
+| Contact page               | Contact / Order Inquiry                     |
+| FAQ page                   | Bakery FAQ                                  |
+| About page                 | About Knead To Know                         |
 
 Document routing changes in:
 
@@ -568,10 +568,10 @@ These are reusable branded product card frames, not product photos. They contain
 
 Known product prices from manifest/user notes:
 
-| Product | Price |
-|---|---:|
-| Plain Sourdough Bread | `$12` |
-| Rosemary Sourdough Bread | `$15` |
+| Product                                   | Price |
+| ----------------------------------------- | ----: |
+| Plain Sourdough Bread                     | `$12` |
+| Rosemary Sourdough Bread                  | `$15` |
 | Rosemary & Roasted Garlic Sourdough Bread | `$15` |
 
 For any product where the manifest does not clearly define price, do not invent pricing. Use:
@@ -641,15 +641,21 @@ The site should support a clean preorder flow, even if initially form-based.
 
 ```ts
 type Product = {
-  id: string
-  name: string
-  category: 'sourdoughBread' | 'sourdoughCookies' | 'sourdoughBagels' | 'pastries' | 'bakeryBoxes' | 'seasonal'
-  price: string
-  cardAsset: string
-  photoAsset?: string
-  description?: string
-  cta: 'Pre-Order' | 'Request'
-}
+  id: string;
+  name: string;
+  category:
+    | "sourdoughBread"
+    | "sourdoughCookies"
+    | "sourdoughBagels"
+    | "pastries"
+    | "bakeryBoxes"
+    | "seasonal";
+  price: string;
+  cardAsset: string;
+  photoAsset?: string;
+  description?: string;
+  cta: "Pre-Order" | "Request";
+};
 ```
 
 Document preorder/form requirements in:

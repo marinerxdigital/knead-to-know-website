@@ -1,6 +1,7 @@
 # Errors
 
 ## ERR-001 (2026-06-22) — Phase 1
+
 - Date: 2026-06-22
 - Severity: Low (non-blocking)
 - Area: Environment / Tooling
@@ -11,6 +12,7 @@
 - Next action: Prefer `bun` when user environment has it. Document in all future runs. Add note to install Bun for full fidelity if needed. No code change required.
 
 ## ERR-002 (2026-06-22) — Phase 1
+
 - Date: 2026-06-22
 - Severity: Info
 - Area: Build output structure
@@ -24,26 +26,28 @@ No other unresolved errors at end of Phase 1.
 All required verification steps passed.
 
 ## ERR-003 (2026-06-22) — Vercel 404 NOT_FOUND (deployment)
+
 - Date: 2026-06-22
 - Severity: High (blocks live preview)
 - Area: Deployment / Vercel config
 - Symptom: https://knead-to-know-website.vercel.app returns "404: NOT_FOUND" after successful local build + git push to main.
-- Root cause: 
+- Root cause:
   1. Project settings Output Directory = "dist/client" (no index.html present — SSR app).
   2. No vercel.json to override build settings.
   3. Nitro build defaulted to cloudflare preset (via @lovable wrapper) instead of vercel preset.
   4. No SSR function wiring for TanStack Start server entry.
 - Files inspected: package.json, vite.config.ts, src/server.ts, CLOUDFLARE_DEPLOYMENT_NOTES.md, dist/ after build, .gitignore.
-- Attempted fixes (in this session): 
+- Attempted fixes (in this session):
   - Set nitro: { preset: "vercel" } in vite.config.ts.
   - Added vercel.json with correct build + outputDirectory: ".vercel/output", framework: null.
-  - Verified multiple clean `npm run build` producing .vercel/output/static + functions/__server.func.
+  - Verified multiple clean `npm run build` producing .vercel/output/static + functions/\_\_server.func.
   - Committed + pushed to main.
-- Current status: Config fix committed/pushed. Live URL still 404 on last poll (possible dashboard override of output dir or build in progress). 
+- Current status: Config fix committed/pushed. Live URL still 404 on last poll (possible dashboard override of output dir or build in progress).
 - Next action: In Vercel dashboard clear Output Directory (set blank or `.vercel/output`), trigger "Clear Build Cache & Redeploy". See DEPLOYMENT.md for full record.
 - Verification commands run: npm install, npm run build (x3), git status checks.
 
 ## ERR-005 (2026-06-22) — Vercel SSR Runtime Crash (post 404)
+
 - Date: 2026-06-22
 - Severity: High (crashed live preview)
 - Area: SSR render / Legacy data guard
@@ -56,6 +60,7 @@ All required verification steps passed.
 - Commands run: npm install, npm run build, vercel deploy --prebuilt.
 
 ## ERR-004 (2026-06-22) — Lint run (non-blocking for deployment fix)
+
 - Date: 2026-06-22
 - Severity: Low (pre-existing formatting state)
 - Area: Linting / Formatting

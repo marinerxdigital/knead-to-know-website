@@ -26,12 +26,30 @@ export const Route = createFileRoute("/about")({
 });
 
 const VALUES = [
-  { title: "Small-batch sourdough", text: "Long-fermented doughs for superior flavor, texture, and digestibility." },
-  { title: "Thoughtful inclusions", text: "Rosemary, olives, cranberries, chocolate — every add-in chosen to complement the bread." },
-  { title: "Local & seasonal", text: "Ingredients sourced with care. Limited runs highlight what is fresh in the Lowcountry." },
-  { title: "Handcrafted quality", text: "Every loaf, cookie, and bagel is shaped and baked by hand in small quantities." },
-  { title: "Community focus", text: "Serving Daniel Island and the greater Charleston area with reliable, delicious bakes." },
-  { title: "Custom & approachable", text: "From simple loaves to full custom orders and catering — we make it easy to order." },
+  {
+    title: "Small-batch sourdough",
+    text: "Long-fermented doughs for superior flavor, texture, and digestibility.",
+  },
+  {
+    title: "Thoughtful inclusions",
+    text: "Rosemary, olives, cranberries, chocolate — every add-in chosen to complement the bread.",
+  },
+  {
+    title: "Local & seasonal",
+    text: "Ingredients sourced with care. Limited runs highlight what is fresh in the Lowcountry.",
+  },
+  {
+    title: "Handcrafted quality",
+    text: "Every loaf, cookie, and bagel is shaped and baked by hand in small quantities.",
+  },
+  {
+    title: "Community focus",
+    text: "Serving Daniel Island and the greater Charleston area with reliable, delicious bakes.",
+  },
+  {
+    title: "Custom & approachable",
+    text: "From simple loaves to full custom orders and catering — we make it easy to order.",
+  },
 ];
 
 function AboutPage() {
@@ -54,24 +72,28 @@ function AboutPage() {
             <div className="aspect-[4/5] w-full rounded-2xl bg-white flex items-center justify-center p-10 text-center">
               <div>
                 <div className="font-display text-5xl text-ink mb-2">K2K</div>
-                <p className="uppercase tracking-[3px] text-xs text-forest">EST. 2026 • DANIEL ISLAND</p>
+                <p className="uppercase tracking-[3px] text-xs text-forest">
+                  EST. 2026 • DANIEL ISLAND
+                </p>
               </div>
             </div>
           </div>
           <div>
-            <SectionHeading
-              eyebrow="The bakery"
-              title="Handcrafted in small batches."
-            />
+            <SectionHeading eyebrow="The bakery" title="Handcrafted in small batches." />
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                Knead To Know is a boutique home bakery focused on artisan sourdough products. We bake in limited quantities each day using traditional methods and high-quality ingredients.
+                Knead To Know is a boutique home bakery focused on artisan sourdough products. We
+                bake in limited quantities each day using traditional methods and high-quality
+                ingredients.
               </p>
               <p>
-                Our lineup centers on naturally leavened breads in classic and thoughtfully flavored varieties, chewy sourdough cookies, and boiled sourdough bagels — alongside seasonal pastries and curated bakery boxes.
+                Our lineup centers on naturally leavened breads in classic and thoughtfully flavored
+                varieties, chewy sourdough cookies, and boiled sourdough bagels — alongside seasonal
+                pastries and curated bakery boxes.
               </p>
               <p>
-                We serve neighbors on Daniel Island and the Charleston area with reliable daily offerings and personal custom orders.
+                We serve neighbors on Daniel Island and the Charleston area with reliable daily
+                offerings and personal custom orders.
               </p>
             </div>
           </div>
@@ -111,18 +133,23 @@ function AboutPage() {
 
       <Section bg="blush">
         <div className="max-w-3xl mx-auto text-center">
-          <SectionHeading
-            eyebrow="Daniel Island roots"
-            title="Baking for our community."
-          />
+          <SectionHeading eyebrow="Daniel Island roots" title="Baking for our community." />
           <p className="mt-4 text-muted-foreground">
-            Based on Daniel Island, we are proud to serve the Charleston Lowcountry with fresh, honest baked goods. Whether you are stopping by for a morning bagel, ordering a weekly loaf, or planning a larger gathering, we are here to make it special.
+            Based on Daniel Island, we are proud to serve the Charleston Lowcountry with fresh,
+            honest baked goods. Whether you are stopping by for a morning bagel, ordering a weekly
+            loaf, or planning a larger gathering, we are here to make it special.
           </p>
           <div className="mt-8 flex justify-center gap-3">
-            <Link to="/menu" className="inline-flex h-11 items-center rounded-full border border-forest/20 px-7 text-sm font-medium text-forest hover:border-forest/40">
+            <Link
+              to="/menu"
+              className="inline-flex h-11 items-center rounded-full border border-forest/20 px-7 text-sm font-medium text-forest hover:border-forest/40"
+            >
               Browse the Menu
             </Link>
-            <Link to="/custom-orders" className="inline-flex h-11 items-center rounded-full bg-forest px-7 text-sm font-medium text-white hover:bg-forest-dark">
+            <Link
+              to="/custom-orders"
+              className="inline-flex h-11 items-center rounded-full bg-forest px-7 text-sm font-medium text-white hover:bg-forest-dark"
+            >
               Place a Custom Order <ArrowRight className="ml-1.5 h-4 w-4" />
             </Link>
           </div>

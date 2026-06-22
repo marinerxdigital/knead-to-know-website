@@ -90,9 +90,14 @@ function ContactPage() {
               <p className="font-display text-lg text-k2k-navy">Ordering note</p>
               <p className="mt-2 text-muted-foreground">
                 For custom orders, bakery boxes, and larger quantities, use the
-                <Link to="/custom-orders" className="mx-1 underline">Custom Orders</Link>
+                <Link to="/custom-orders" className="mx-1 underline">
+                  Custom Orders
+                </Link>
                 form. For events and catering, visit the
-                <Link to="/catering" className="mx-1 underline">Catering page</Link>.
+                <Link to="/catering" className="mx-1 underline">
+                  Catering page
+                </Link>
+                .
               </p>
             </div>
 

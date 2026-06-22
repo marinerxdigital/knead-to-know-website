@@ -15,8 +15,16 @@ export const Route = createFileRoute("/flavors")({
 function FlavorsRedirect() {
   return (
     <div className="max-w-3xl mx-auto px-5 py-20 text-center">
-      <SectionHeading title="Our menu has moved" intro="Please visit the full Menu page for breads, cookies, bagels and more." />
-      <Link to="/menu" className="mt-8 inline-flex h-11 rounded-full bg-forest px-8 text-white items-center">View the Menu</Link>
+      <SectionHeading
+        title="Our menu has moved"
+        intro="Please visit the full Menu page for breads, cookies, bagels and more."
+      />
+      <Link
+        to="/menu"
+        className="mt-8 inline-flex h-11 rounded-full bg-forest px-8 text-white items-center"
+      >
+        View the Menu
+      </Link>
     </div>
   );
 }

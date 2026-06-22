@@ -17,12 +17,7 @@ const ASPECT = {
 
 export function CakeImage({ src, alt, aspect = "portrait", className }: Props) {
   return (
-    <div
-      className={cn(
-        "overflow-hidden rounded-3xl bg-white ring-1 ring-border/60",
-        className,
-      )}
-    >
+    <div className={cn("overflow-hidden rounded-3xl bg-white ring-1 ring-border/60", className)}>
       <img
         src={src}
         alt={alt}

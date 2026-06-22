@@ -40,7 +40,10 @@ function ProductPhotoArea({ product }: { product: Product }) {
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
           loading="lazy"
         />
-        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-k2k-blue/10" aria-hidden />
+        <div
+          className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-k2k-blue/10"
+          aria-hidden
+        />
       </div>
     );
   }
@@ -49,8 +52,15 @@ function ProductPhotoArea({ product }: { product: Product }) {
     <div className="k2k-product-photo relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f8fafc]">
       <div className="absolute inset-0 rounded-2xl border border-k2k-blue/10" aria-hidden />
       <div className="flex h-full flex-col items-center justify-center gap-3 px-6 py-8 text-center">
-        <img src={CATEGORY_ICONS[product.category]} alt="" className="h-10 w-10 object-contain opacity-70" aria-hidden />
-        <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/60">Photo coming soon</p>
+        <img
+          src={CATEGORY_ICONS[product.category]}
+          alt=""
+          className="h-10 w-10 object-contain opacity-70"
+          aria-hidden
+        />
+        <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/60">
+          Photo coming soon
+        </p>
       </div>
     </div>
   );

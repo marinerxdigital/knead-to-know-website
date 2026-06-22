@@ -3,6 +3,7 @@
 ## Homepage (per Phase 2 spec)
 
 Hero:
+
 - Eyebrow: Daniel Island, SC
 - Headline options used: "Fresh Bread, Cookies, and Bakes Worth Knowing"
 - Subheadline: "Knead To Know is a small-batch bakery on Daniel Island serving fresh breads, cookies, pastries, seasonal baked goods, bakery boxes, and custom orders for everyday treats, gatherings, and special occasions."
@@ -10,6 +11,7 @@ Hero:
 - Secondary CTA: Request an Order → /contact
 
 Featured Offerings:
+
 1. Artisan Breads
 2. Sourdough Cookies
 3. Sourdough Bagels

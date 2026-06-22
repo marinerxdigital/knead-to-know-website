@@ -50,9 +50,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-white px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-3xl text-ink">Something went wrong</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Please try again or head back home.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">Please try again or head back home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
