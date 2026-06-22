@@ -34,14 +34,15 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {NAV.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               className={cn(
-                "text-sm tracking-wide text-ink/75 transition hover:text-k2k-blue",
-                pathname === item.to && "text-k2k-blue",
+                "relative text-sm tracking-wide text-ink/75 transition hover:text-k2k-blue",
+                "after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-k2k-blue after:transition-all after:content-['']",
+                pathname === item.to && "text-k2k-blue after:w-full",
               )}
             >
               {item.label}
@@ -61,7 +62,7 @@ export function Header() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-ink xl:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-ink lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -69,7 +70,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-border/60 bg-white xl:hidden">
+        <div className="border-t border-border/60 bg-white lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
             {NAV.map((item) => (
               <Link
