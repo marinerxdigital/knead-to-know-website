@@ -24,7 +24,7 @@ const CATEGORY_LABELS: Record<Product["category"], string> = {
 const CATEGORY_ICONS: Record<Product["category"], string> = {
   bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
   cookies: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-  bagels: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+  bagels: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
   pastries: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
   "bakery-boxes": "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
   custom: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
@@ -86,7 +86,15 @@ export function K2KProductCard({
               {CATEGORY_LABELS[product.category]}
             </p>
           </div>
-          <p className="shrink-0 text-sm font-medium tabular-nums text-k2k-navy">{product.price}</p>
+          {product.price ? (
+            <p className="shrink-0 text-sm font-medium tabular-nums text-k2k-navy">
+              {product.price}
+            </p>
+          ) : (
+            <span className="k2k-badge-wheat shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
+              Ask for pricing
+            </span>
+          )}
         </div>
 
         {product.description && (
