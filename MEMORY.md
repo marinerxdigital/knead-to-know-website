@@ -2,6 +2,23 @@
 
 Long-term project memory. Update after every meaningful session.
 
+## Visual Upgrade Session (2026-06-22) — Forms, SEO, homepage restructure
+
+- Agent: Grok Build (14-task wave execution on `visual-upgrade-2026-06-22`)
+- Visual upgrade: Fraunces display font, wheat `#C2A878` accent token, scoring-line `SectionDivider` motif, focus-visible rings
+- Homepage restructured from 11 sections to 6 (hero, trust strip, featured products, how-to-order, about teaser, FAQ + CTA)
+- `business.ts`: Wendy Mercado name, honest placeholders; null phone/email/social with conditional Footer/Contact rendering
+- Products: all 16 prices → "Ask for pricing" wheat pill; removed 4 mismatched product photos
+- About page: Wendy Mercado name + styled photo-pending slot
+- Gallery: 3 populated categories only, Lightbox wired
+- Forms: Custom Orders + Catering wired to Web3Forms (fallback key pattern from ContactForm) — functionally demo-ready, not production-keyed
+- SEO: robots.txt/sitemap fixed, OG image → real K2K hero photo, Bakery JSON-LD added
+- Deleted 25 orphaned Spilled Milk `.asset.json` pointers + backing `lovable-assets` folders
+- Build + lint pass; placeholder bracket sweep clean in `src/`
+- Still outstanding per `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md`: Wendy's real phone, email, address, hours, social links, pricing, founder photo/story, testimonials
+- Live preview: https://knead-to-know-website-v2.pages.dev
+- `VITE_WEB3FORMS_ACCESS_KEY`: verify/set in Cloudflare Pages build env before real customer traffic
+
 ## Handoff Session (2026-06-22) — Lint fix + Claude Code handoff
 
 - Agent: Grok Build
