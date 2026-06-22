@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { K2KProductCard } from "@/components/ui/K2KProductCard";
+import { Lightbox } from "@/components/media/Lightbox";
 import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 
@@ -26,42 +27,30 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
-const GALLERY_CATEGORIES = [
-  "Breads",
-  "Cookies",
-  "Bagels",
-  "Pastries",
-  "Seasonal Bakes",
-  "Bakery Boxes",
-  "Catering / Events",
-  "Custom Orders",
-] as const;
+const GALLERY_CATEGORIES = ["Breads", "Cookies", "Bagels"] as const;
 
 type Category = (typeof GALLERY_CATEGORIES)[number];
 
-const PLACEHOLDER_LABELS: Record<Category, string> = {
-  Breads: "Artisan Sourdough Loaves",
-  Cookies: "Fresh Sourdough Cookies",
-  Bagels: "Boiled & Baked Bagels",
-  Pastries: "Seasonal Pastries",
-  "Seasonal Bakes": "Limited Seasonal Items",
-  "Bakery Boxes": "Curated Gift & Brunch Boxes",
-  "Catering / Events": "Platters & Spreads",
-  "Custom Orders": "Bespoke Requests",
-};
-
 function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<Category>("Breads");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const getItemsForCategory = (cat: Category) => {
     if (cat === "Breads") return ALL_BREADS;
     if (cat === "Cookies") return ALL_COOKIES;
-    if (cat === "Bagels") return ALL_BAGELS;
-    return [];
+    return ALL_BAGELS;
   };
 
   const currentItems = getItemsForCategory(activeCategory);
-  const isPlaceholderCategory = currentItems.length === 0;
+  const slides = currentItems
+    .filter((p) => p.photo)
+    .map((p) => ({
+      id: p.id,
+      url: p.photo as string,
+      alt: `${p.name} from Knead To Know home bakery`,
+      caption: p.name,
+      category: activeCategory,
+    }));
 
   return (
     <>
@@ -71,7 +60,7 @@ function GalleryPage() {
             as="h1"
             eyebrow="Gallery"
             title="Fresh from the bakery"
-            intro="A look at our breads, cookies, bagels, boxes, and seasonal offerings. Product photos will be added as they are captured."
+            intro="A look at our breads, cookies, and bagels. More categories will be added as photos are captured."
           />
         </div>
       </section>
@@ -94,30 +83,21 @@ function GalleryPage() {
           ))}
         </div>
 
-        {isPlaceholderCategory ? (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div
-                key={n}
-                className="k2k-product-card flex aspect-[4/3] items-center justify-center p-8"
-              >
-                <div className="text-center">
-                  <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-k2k-blue/25" />
-                  <p className="text-sm font-medium text-ink">
-                    {PLACEHOLDER_LABELS[activeCategory]}
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">Photo coming soon</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {currentItems.map((product) => (
-              <K2KProductCard key={product.id} product={product} showCta={false} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {currentItems.map((product, i) => (
+            <button
+              key={product.id}
+              type="button"
+              onClick={() =>
+                product.photo && setLightboxIndex(slides.findIndex((s) => s.id === product.id))
+              }
+              className="text-left"
+              disabled={!product.photo}
+            >
+              <K2KProductCard product={product} showCta={false} />
+            </button>
+          ))}
+        </div>
 
         <div className="mt-12 text-center">
           <p className="mx-auto max-w-md text-sm text-muted-foreground">
@@ -140,6 +120,15 @@ function GalleryPage() {
           </div>
         </div>
       </Section>
+
+      {lightboxIndex !== null && slides.length > 0 && (
+        <Lightbox
+          slides={slides}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onIndexChange={setLightboxIndex}
+        />
+      )}
     </>
   );
 }
