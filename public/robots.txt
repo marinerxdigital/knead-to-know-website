@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /flavors-pricing
+
+Sitemap: https://spilled-milk-cake-builder.lovable.app/sitemap.xml
