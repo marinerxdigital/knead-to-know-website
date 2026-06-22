@@ -54,31 +54,36 @@ function ContactPage() {
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-k2k-blue" />
                 <div>
                   <p className="text-ink">{BUSINESS.address}</p>
-                  <p className="text-ink">{BUSINESS.city}</p>
                   <p className="text-sm text-muted-foreground">{BUSINESS.serviceArea}</p>
                 </div>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 shrink-0 text-k2k-blue" />
-                <span className="text-ink">{BUSINESS.phone}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 shrink-0 text-k2k-blue" />
-                <a href={`mailto:${BUSINESS.email}`} className="text-ink hover:text-k2k-blue">
-                  {BUSINESS.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Instagram className="h-5 w-5 shrink-0 text-k2k-blue" />
-                <a
-                  href={BUSINESS.instagramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-ink hover:text-k2k-blue"
-                >
-                  {BUSINESS.instagramHandle}
-                </a>
-              </li>
+              {BUSINESS.phone && (
+                <li className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 shrink-0 text-k2k-blue" />
+                  <span className="text-ink">{BUSINESS.phone}</span>
+                </li>
+              )}
+              {BUSINESS.email && (
+                <li className="flex items-center gap-3">
+                  <Mail className="h-5 w-5 shrink-0 text-k2k-blue" />
+                  <a href={`mailto:${BUSINESS.email}`} className="text-ink hover:text-k2k-blue">
+                    {BUSINESS.email}
+                  </a>
+                </li>
+              )}
+              {BUSINESS.instagramUrl && BUSINESS.instagramHandle && (
+                <li className="flex items-center gap-3">
+                  <Instagram className="h-5 w-5 shrink-0 text-k2k-blue" />
+                  <a
+                    href={BUSINESS.instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-ink hover:text-k2k-blue"
+                  >
+                    {BUSINESS.instagramHandle}
+                  </a>
+                </li>
+              )}
             </ul>
 
             <div className="mt-4 rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-6 text-sm">
@@ -87,17 +92,9 @@ function ContactPage() {
             </div>
 
             <div className="rounded-3xl border border-k2k-blue/15 bg-white p-6 text-sm">
-              <p className="font-display text-lg text-k2k-navy">Ordering note</p>
+              <p className="font-display text-lg text-k2k-navy">Send us a message</p>
               <p className="mt-2 text-muted-foreground">
-                For custom orders, bakery boxes, and larger quantities, use the
-                <Link to="/custom-orders" className="mx-1 underline">
-                  Custom Orders
-                </Link>
-                form. For events and catering, visit the
-                <Link to="/catering" className="mx-1 underline">
-                  Catering page
-                </Link>
-                .
+                The fastest way to reach Wendy is the form below — we reply within 1 business day.
               </p>
             </div>
 

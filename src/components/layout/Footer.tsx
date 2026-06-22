@@ -69,28 +69,39 @@ export function Footer() {
               <span>
                 {BUSINESS.address}
                 <br />
-                {BUSINESS.city}
-                <br />
                 <span className="text-muted-foreground">{BUSINESS.serviceArea}</span>
               </span>
             </li>
-            <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4 shrink-0 text-k2k-blue" />
-              <a href={`mailto:${BUSINESS.email}`} className="hover:text-k2k-blue">
-                {BUSINESS.email}
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Instagram className="h-4 w-4 shrink-0 text-k2k-blue" />
-              <a
-                href={BUSINESS.instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-k2k-blue"
-              >
-                {BUSINESS.instagramHandle}
-              </a>
-            </li>
+            {BUSINESS.email && (
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-k2k-blue" />
+                <a href={`mailto:${BUSINESS.email}`} className="hover:text-k2k-blue">
+                  {BUSINESS.email}
+                </a>
+              </li>
+            )}
+            {BUSINESS.instagramUrl && BUSINESS.instagramHandle && (
+              <li className="flex items-center gap-2">
+                <Instagram className="h-4 w-4 shrink-0 text-k2k-blue" />
+                <a
+                  href={BUSINESS.instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-k2k-blue"
+                >
+                  {BUSINESS.instagramHandle}
+                </a>
+              </li>
+            )}
+            {!BUSINESS.email && !BUSINESS.instagramUrl && (
+              <li className="text-muted-foreground">
+                Use the{" "}
+                <Link to="/contact" className="underline hover:text-k2k-blue">
+                  contact form
+                </Link>{" "}
+                to reach us.
+              </li>
+            )}
           </ul>
         </div>
       </div>

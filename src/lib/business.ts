@@ -5,19 +5,19 @@ export const SITE_URL = "https://knead-to-know-website-v2.pages.dev";
 
 export const BUSINESS = {
   name: "Knead To Know",
-  owner: "[INSERT OWNER NAME]",
-  shortOwner: "[INSERT SHORT NAME]",
-  address: "[INSERT ADDRESS]",
+  owner: "Wendy Mercado",
+  shortOwner: "Wendy",
+  address: "Pickup by appointment — Daniel Island, SC",
   city: "Daniel Island, SC",
   serviceArea: "Daniel Island and Charleston area",
-  phone: "[INSERT PHONE]",
-  email: "[INSERT EMAIL]",
-  hours: "[INSERT HOURS]",
-  instagramHandle: "[INSERT INSTAGRAM]",
-  instagramUrl: "[INSERT INSTAGRAM URL]",
-  facebookUrl: "[INSERT FACEBOOK]",
-  mapsUrl: "[INSERT GOOGLE MAPS LINK]",
-  orderingUrl: "[INSERT ORDERING LINK]",
+  phone: null as string | null,
+  email: null as string | null,
+  hours: "By appointment",
+  instagramHandle: null as string | null,
+  instagramUrl: null as string | null,
+  facebookUrl: null as string | null,
+  mapsUrl: null as string | null,
+  orderingUrl: null as string | null,
 } as const;
 
 // Legacy press feature removed during brand conversion to Knead To Know.
