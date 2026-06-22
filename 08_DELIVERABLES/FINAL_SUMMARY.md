@@ -33,6 +33,7 @@ npm run dev
   - Clear build cache & redeploy latest main commit.
 - See DEPLOYMENT.md, GROK_PHASE_2_REPORT.md (Vercel 404 section with 15-point record), and vercel.json for exact config.
 - Local: `npm run build && npm run preview` (note: preview is limited for full SSR).
+- Lint: `npm run lint` completed with 9615 problems (99%+ prettier formatting, pre-existing). Non-blocking for deployment. Separate `npm run format` can clean if wanted.
 
 **What Codex should polish next:**
 - Implement proper ProductCard / Menu grid consuming the KTK product card PNGs + manifest data.

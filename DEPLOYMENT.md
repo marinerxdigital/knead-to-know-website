@@ -82,6 +82,7 @@ Because vercel.json overrides are per-deployment but dashboard Project Settings 
 - Once dashboard Output Directory cleared and redeploy runs, the site should render correctly via the Nitro server function.
 - No secrets, no content/brand changes made for this fix.
 - Local `npm run preview` may not fully simulate SSR prod; use deployed URL for final test.
+- Lint note: `npm run lint` was executed per instructions. Result: 9615 problems (almost entirely prettier formatting from skeleton + prior edits). Exit 1. Non-blocking for the deployment config fix. See ERRORS.md for details. Use `npm run format` separately if cleaning formatting.
 
 ## References
 - Updated in: GROK_PHASE_2_REPORT.md, GROK_EXECUTION_LOG.md, ERRORS.md, FIXED_ERRORS.md, CODEX.md, 08_DELIVERABLES/FINAL_SUMMARY.md, this file.

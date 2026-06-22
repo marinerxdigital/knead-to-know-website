@@ -24,6 +24,11 @@ Steps: Read package.json, vite.config.ts, server.ts, dist structure (confirmed n
 Result: Config committed and pushed (latest 5f99c4f). Local builds clean. Live URL polls still 404 (dashboard override or propagation). Stopped per rules. Full record in DEPLOYMENT.md + GROK_PHASE_2_REPORT.md.
 Files affected: vite.config.ts, vercel.json, ERRORS.md, FIXED_ERRORS.md, DEPLOYMENT.md (new), CODEX.md, 00_PROJECT_NOTES/GROK_PHASE_2_REPORT.md, 00_PROJECT_NOTES/GROK_EXECUTION_LOG.md, 08_DELIVERABLES/FINAL_SUMMARY.md
 Next step: User to clear Vercel Output Directory to blank/.vercel/output + redeploy from dashboard. URL: https://knead-to-know-website.vercel.app should then serve site.
+
+[2026-06-22] Action: Ran `npm run lint` (as instructed for existing scripts).
+Result: 9615 problems (9597 errors, 18 warnings), exit 1. All shown issues in tail were prettier/prettier formatting (line wrapping, attribute placement, etc.). No new deployment-related errors introduced. This is pre-existing state from skeleton + brand edits. Non-blocking for the 404 fix. Recorded in ERRORS.md / DEPLOYMENT.md.
+Files affected: reports only (lint run was verification only; no --fix applied).
+Next step: Optional dedicated `npm run format` pass later.
 Result: Structure established.
 Files affected: 01_SOURCE/, 02_BRAND/, 03_CONTENT/, 04_SEO/, 05_ASSETS/, 06_DEVELOPMENT/, 07_QA/, 08_DELIVERABLES/
 Next step: Inspect asset packages from 00_SOURCE_PACKAGES, extract and read docs.

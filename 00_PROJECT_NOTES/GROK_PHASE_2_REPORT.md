@@ -86,6 +86,7 @@ All READMEs, manifests, and implementation notes read. Used as source of truth.
 13. Vercel redeploy result: push received; URL polls returned 404 (pending successful Vercel build + possible UI setting sync).
 14. Final working Vercel URL: https://knead-to-know-website.vercel.app (or current production alias); currently 404 — see DEPLOYMENT.md for manual steps.
 15. Any remaining warnings: build has non-fatal "unused import" from TanStack internals; npm audit notes 1 low vuln (unrelated); no secrets staged.
+- Additional verification: `npm run lint` executed. Result: 9615 problems (9597 prettier formatting errors). All pre-existing; not caused by vercel.json or nitro preset changes. See ERRORS.md for details. Not addressed in this deployment fix commit.
 
 **Action for user:** In Vercel dashboard set Output Directory to blank (or `.vercel/output`), Redeploy with cache clear. The committed config + preset is correct.
 

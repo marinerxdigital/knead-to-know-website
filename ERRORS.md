@@ -42,3 +42,13 @@ All required verification steps passed.
 - Current status: Config fix committed/pushed. Live URL still 404 on last poll (possible dashboard override of output dir or build in progress). 
 - Next action: In Vercel dashboard clear Output Directory (set blank or `.vercel/output`), trigger "Clear Build Cache & Redeploy". See DEPLOYMENT.md for full record.
 - Verification commands run: npm install, npm run build (x3), git status checks.
+
+## ERR-004 (2026-06-22) — Lint run (non-blocking for deployment fix)
+- Date: 2026-06-22
+- Severity: Low (pre-existing formatting state)
+- Area: Linting / Formatting
+- Symptom: `npm run lint` (which runs eslint with prettier rules) reported 9615 problems (9597 errors, 18 warnings). Exit code 1.
+- Root cause: Nearly all errors are `prettier/prettier` (formatting: line lengths, indentation, object formatting, template literals, etc.). Originated from Lovable skeleton export + prior brand-conversion edits. No critical logic or TypeScript errors surfaced in the tail.
+- Current status: Does not block the Vercel 404 deployment fix. The deployment changes (vercel.json + nitro preset) did not introduce new lint issues.
+- Next action: Run `npm run format` (prettier --write .) in a dedicated formatting pass if desired. Do not mix with deployment config commits. Recorded for completeness per instruction to run existing lint script.
+- Note: `npm run format` exists separately and can auto-fix most issues.
