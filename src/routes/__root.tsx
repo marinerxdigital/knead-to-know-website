@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import ogImage from "../assets/og-image.jpg.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE_URL } from "../lib/business";
 import { Header } from "../components/layout/Header";
@@ -108,10 +107,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, seasonal baked goods, and custom orders by inquiry or pre-order.",
       },
-      { property: "og:image", content: `${SITE_URL}${ogImage.url}` },
-      { property: "og:image:width", content: "1280" },
-      { property: "og:image:height", content: "672" },
-      { name: "twitter:image", content: `${SITE_URL}${ogImage.url}` },
+      {
+        property: "og:image",
+        content: `${SITE_URL}/assets/knead-to-know/photos/hero-bakery-spread.jpg`,
+      },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "1500" },
+      {
+        name: "twitter:image",
+        content: `${SITE_URL}/assets/knead-to-know/photos/hero-bakery-spread.jpg`,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Bakery",
+          name: "Knead To Know",
+          url: SITE_URL,
+          description:
+            "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, and custom orders.",
+          image: `${SITE_URL}/assets/knead-to-know/photos/hero-bakery-spread.jpg`,
+          areaServed: "Daniel Island, South Carolina",
+          founder: { "@type": "Person", name: "Wendy Mercado" },
+        }),
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

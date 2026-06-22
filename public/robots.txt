@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 
 Disallow: /flavors-pricing
+Disallow: /inquiry
+Disallow: /featured
 
-Sitemap: https://spilled-milk-cake-builder.lovable.app/sitemap.xml
+Sitemap: https://knead-to-know-website-v2.pages.dev/sitemap.xml

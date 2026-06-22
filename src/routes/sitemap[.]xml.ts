@@ -11,11 +11,12 @@ interface SitemapEntry {
 // Public, indexable routes only. Exclude /flavors-pricing (redirect-only).
 const ENTRIES: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/gallery", changefreq: "weekly", priority: "0.9" },
-  { path: "/flavors", changefreq: "monthly", priority: "0.8" },
-  { path: "/inquiry", changefreq: "monthly", priority: "0.9" },
+  { path: "/menu", changefreq: "weekly", priority: "0.9" },
+  { path: "/custom-orders", changefreq: "monthly", priority: "0.9" },
+  { path: "/catering", changefreq: "monthly", priority: "0.8" },
+  { path: "/gallery", changefreq: "weekly", priority: "0.7" },
   { path: "/about", changefreq: "monthly", priority: "0.7" },
-  { path: "/featured", changefreq: "monthly", priority: "0.6" },
+  { path: "/faq", changefreq: "monthly", priority: "0.6" },
   { path: "/contact", changefreq: "monthly", priority: "0.7" },
   { path: "/privacy", changefreq: "yearly", priority: "0.3" },
 ];
