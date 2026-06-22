@@ -1,56 +1,9 @@
-import heartPinkVintage from "@/assets/cake-heart-pink-vintage.png.asset.json";
-import heartEngagedIvory from "@/assets/cake-heart-engaged-ivory.png.asset.json";
-import rainbowBirthday from "@/assets/cake-rainbow-birthday.png.asset.json";
-import holidayMini from "@/assets/cake-holiday-mini.png.asset.json";
-import cherryMiniBrick from "@/assets/cake-cherry-mini-brick.png.asset.json";
-import blueButterfly from "@/assets/cake-blue-butterfly.png.asset.json";
-import mermaidPink from "@/assets/cake-mermaid-pink.png.asset.json";
-import cake360_1 from "@/assets/cake-360-1.mp4.asset.json";
-import cake360_2 from "@/assets/cake-360-2.mp4.asset.json";
-import cake360_3 from "@/assets/cake-360-3.mp4.asset.json";
-import cake360_1_poster from "@/assets/cake-360-1-poster.jpg.asset.json";
-import cake360_2_poster from "@/assets/cake-360-2-poster.jpg.asset.json";
-import cake360_3_poster from "@/assets/cake-360-3-poster.jpg.asset.json";
+// NOTE: Legacy cake-photos module has been cleaned for Knead To Know brand conversion.
+// Old cake assets and data removed. This now exports safe bakery-focused
+// product references using public K2K assets and placeholders. Gallery and hero sections
+// in customer pages have been updated to use these or ImagePlaceholder.
 
-
-export interface PortfolioVideo {
-  id: string;
-  kind: "video";
-  url: string;
-  poster?: string;
-  alt: string;
-  caption: string;
-}
-
-export const GALLERY_VIDEOS: PortfolioVideo[] = [
-  {
-    id: "cake-360-1",
-    kind: "video",
-    url: cake360_1.url,
-    poster: cake360_1_poster.url,
-    alt: "360-degree rotating view of a custom cake",
-    caption: "360° view",
-  },
-  {
-    id: "cake-360-2",
-    kind: "video",
-    url: cake360_2.url,
-    poster: cake360_2_poster.url,
-    alt: "360-degree rotating view of a custom cake",
-    caption: "360° view",
-  },
-  {
-    id: "cake-360-3",
-    kind: "video",
-    url: cake360_3.url,
-    poster: cake360_3_poster.url,
-    alt: "360-degree rotating view of a custom cake",
-    caption: "360° view",
-  },
-];
-
-
-
+import type { ReactNode } from "react";
 
 export type PortfolioAspect = "square" | "portrait" | "landscape" | "wide" | "tall";
 
@@ -63,123 +16,105 @@ export interface PortfolioImage {
   aspect: PortfolioAspect;
 }
 
+// Direct public paths to K2K product card assets (safe, new brand).
+const PRODUCT_BASE = "/assets/knead-to-know/product-cards";
+
 export const PORTFOLIO_IMAGES = {
-  blueButterfly: {
-    id: "blue-butterfly",
-    url: blueButterfly.url,
-    alt: "White buttercream cake with soft blue butterfly details on a marble stand",
-    caption: "Refined white buttercream cake with blue butterfly details",
-    tags: ["Wedding", "Buttercream", "Butterfly"],
-    aspect: "portrait",
+  plainSourdough: {
+    id: "plain-sourdough",
+    url: `${PRODUCT_BASE}/KTK_Product_Card_01_Plain_Sourdough_Bread.png`,
+    alt: "Plain sourdough bread loaf from Knead To Know bakery",
+    caption: "Classic plain sourdough",
+    tags: ["Bread", "Sourdough"],
+    aspect: "portrait" as const,
   },
-  engagedHeart: {
-    id: "engaged-heart",
-    url: heartEngagedIvory.url,
-    alt: "Ivory heart-shaped engagement cake with piped florals, pearl details, and hand-lettered engaged text",
-    caption: "Vintage heart engagement cake with piped florals",
-    tags: ["Engagement", "Heart Cake", "Pearls"],
-    aspect: "portrait",
+  rosemarySourdough: {
+    id: "rosemary-sourdough",
+    url: `${PRODUCT_BASE}/KTK_Product_Card_02_Rosemary_Sourdough_Bread.png`,
+    alt: "Rosemary sourdough bread",
+    caption: "Rosemary sourdough loaf",
+    tags: ["Bread", "Herb"],
+    aspect: "portrait" as const,
   },
-  vintagePinkHeart: {
-    id: "vintage-pink-heart",
-    url: heartPinkVintage.url,
-    alt: "Pink heart-shaped cake with vintage shell piping on a silver cake stand",
-    caption: "Pink heart cake with vintage shell piping",
-    tags: ["Birthday", "Vintage", "Piping"],
-    aspect: "portrait",
+  cranberryWalnut: {
+    id: "cranberry-walnut",
+    url: `${PRODUCT_BASE}/KTK_Product_Card_06_Cranberry_Walnut_Sourdough_Bread.png`,
+    alt: "Cranberry walnut sourdough bread",
+    caption: "Cranberry walnut sourdough",
+    tags: ["Bread", "Fruit & Nut"],
+    aspect: "portrait" as const,
   },
-  rainbowBirthday: {
-    id: "rainbow-birthday",
-    url: rainbowBirthday.url,
-    alt: "Rainbow birthday cake with retro piped borders and bright buttercream stripes",
-    caption: "Custom rainbow birthday cake",
-    tags: ["Birthday", "Rainbow", "Celebration"],
-    aspect: "portrait",
+  chocolateChipCookie: {
+    id: "chocolate-chip-cookie",
+    url: `${PRODUCT_BASE}/KTK_Product_Card_08_Chocolate_Chip_Cookies.png`,
+    alt: "Fresh chocolate chip cookies",
+    caption: "Classic chocolate chip cookies",
+    tags: ["Cookies", "Sourdough"],
+    aspect: "square" as const,
   },
-  cherryMini: {
-    id: "cherry-mini",
-    url: cherryMiniBrick.url,
-    alt: "White buttercream mini cake topped with cherries against a Charleston brick backdrop",
-    caption: "White buttercream cake with cherry details",
-    tags: ["Cherries", "Mini Cake", "Buttercream"],
-    aspect: "portrait",
+  cranberryChocolateChip: {
+    id: "cranberry-chocolate-chip",
+    url: `${PRODUCT_BASE}/KTK_Product_Card_09_Cranberry_Chocolate_Chip_Cookies.png`,
+    alt: "Cranberry chocolate chip cookies",
+    caption: "Cranberry chocolate chip cookies",
+    tags: ["Cookies"],
+    aspect: "square" as const,
   },
-  holidayMini: {
-    id: "holiday-mini",
-    url: holidayMini.url,
-    alt: "Mini white buttercream cake with piped holiday details displayed on a gold pedestal stand",
-    caption: "Mini celebration cake styled on a gold pedestal",
-    tags: ["Display", "Mini Cake", "Details"],
-    aspect: "portrait",
-  },
-  mermaidPink: {
-    id: "mermaid-pink",
-    url: mermaidPink.url,
-    alt: "Blush buttercream celebration cake with seashell-inspired piping and sculpted mermaid tail details",
-    caption: "Blush celebration cake with piped details",
-    tags: ["Celebration", "Blush", "Piping"],
-    aspect: "portrait",
+  plainBagel: {
+    id: "plain-bagel",
+    url: `${PRODUCT_BASE}/KTK_Product_Card_13_Plain_Bagel.png`,
+    alt: "Plain sourdough bagel",
+    caption: "Plain bagel",
+    tags: ["Bagels"],
+    aspect: "square" as const,
   },
 } as const satisfies Record<string, PortfolioImage>;
 
-export const HOME_HERO_IMAGE = PORTFOLIO_IMAGES.blueButterfly;
+// Homepage hero uses one of the clean bread product images.
+export const HOME_HERO_IMAGE = PORTFOLIO_IMAGES.plainSourdough;
 
-// One curated, deduplicated portfolio. Each image appears exactly once.
-export const GALLERY_IMAGES: PortfolioImage[] = [
-  PORTFOLIO_IMAGES.blueButterfly,
-  PORTFOLIO_IMAGES.engagedHeart,
-  PORTFOLIO_IMAGES.vintagePinkHeart,
-  PORTFOLIO_IMAGES.rainbowBirthday,
-  PORTFOLIO_IMAGES.cherryMini,
-  PORTFOLIO_IMAGES.mermaidPink,
-  PORTFOLIO_IMAGES.holidayMini,
+// Gallery preview and main use safe product images.
+export const HOME_GALLERY_PREVIEW: PortfolioImage[] = [
+  PORTFOLIO_IMAGES.plainSourdough,
+  PORTFOLIO_IMAGES.rosemarySourdough,
+  PORTFOLIO_IMAGES.cranberryWalnut,
+  PORTFOLIO_IMAGES.chocolateChipCookie,
+  PORTFOLIO_IMAGES.cranberryChocolateChip,
 ];
 
-// Short, neutral captions (no fake event names).
+export const GALLERY_IMAGES: PortfolioImage[] = [
+  PORTFOLIO_IMAGES.plainSourdough,
+  PORTFOLIO_IMAGES.rosemarySourdough,
+  PORTFOLIO_IMAGES.cranberryWalnut,
+  PORTFOLIO_IMAGES.chocolateChipCookie,
+  PORTFOLIO_IMAGES.cranberryChocolateChip,
+  PORTFOLIO_IMAGES.plainBagel,
+];
+
 export const GALLERY_CAPTIONS: Record<string, string> = {
-  "blue-butterfly": "Wedding cake with butterfly details",
-  "engaged-heart": "Vintage heart engagement cake",
-  "vintage-pink-heart": "Pink heart cake with piping",
-  "rainbow-birthday": "Custom rainbow birthday cake",
-  "cherry-mini": "Buttercream cake with cherries",
-  "mermaid-pink": "Blush celebration cake",
-  "holiday-mini": "Mini cake on a gold pedestal",
+  "plain-sourdough": "Fresh plain sourdough loaf",
+  "rosemary-sourdough": "Rosemary sourdough bread",
+  "cranberry-walnut": "Cranberry walnut sourdough",
+  "chocolate-chip-cookie": "Chocolate chip cookies",
+  "cranberry-chocolate-chip": "Cranberry chocolate chip cookies",
+  "plain-bagel": "Freshly baked plain bagel",
 };
 
-// Homepage preview: 5 strongest unique images, teaser only.
-export const HOME_GALLERY_PREVIEW: PortfolioImage[] = [
-  PORTFOLIO_IMAGES.engagedHeart,
-  PORTFOLIO_IMAGES.vintagePinkHeart,
-  PORTFOLIO_IMAGES.rainbowBirthday,
-  PORTFOLIO_IMAGES.cherryMini,
-  PORTFOLIO_IMAGES.mermaidPink,
-];
-
-// Photos used by the homepage "What we make" cards. Unique per slot.
+// Back-compat exports for any remaining references (point to safe data).
 export const OCCASION_PORTFOLIO_PHOTOS: PortfolioImage[] = [
-  PORTFOLIO_IMAGES.blueButterfly,
-  PORTFOLIO_IMAGES.rainbowBirthday,
-  PORTFOLIO_IMAGES.engagedHeart,
-  PORTFOLIO_IMAGES.vintagePinkHeart,
-  PORTFOLIO_IMAGES.holidayMini,
-  PORTFOLIO_IMAGES.mermaidPink,
+  PORTFOLIO_IMAGES.plainSourdough,
+  PORTFOLIO_IMAGES.rosemarySourdough,
+  PORTFOLIO_IMAGES.cranberryWalnut,
+  PORTFOLIO_IMAGES.chocolateChipCookie,
 ];
 
-export type GalleryMediaItem =
-  | ({ kind: "image" } & PortfolioImage)
-  | PortfolioVideo;
+// Video support removed (old rotating videos were previous brand content).
+export const GALLERY_VIDEOS: any[] = [];
 
-// Mixed gallery feed: images interspersed with 360° rotating videos.
-export const GALLERY_MEDIA: GalleryMediaItem[] = [
-  { kind: "image", ...PORTFOLIO_IMAGES.blueButterfly },
-  { kind: "image", ...PORTFOLIO_IMAGES.engagedHeart },
-  GALLERY_VIDEOS[0],
-  { kind: "image", ...PORTFOLIO_IMAGES.vintagePinkHeart },
-  { kind: "image", ...PORTFOLIO_IMAGES.rainbowBirthday },
-  GALLERY_VIDEOS[1],
-  { kind: "image", ...PORTFOLIO_IMAGES.cherryMini },
-  { kind: "image", ...PORTFOLIO_IMAGES.mermaidPink },
-  GALLERY_VIDEOS[2],
-  { kind: "image", ...PORTFOLIO_IMAGES.holidayMini },
-];
+// Mixed gallery now image-only using K2K products. Kept type for Lightbox compat.
+export type GalleryMediaItem = ({ kind: "image" } & PortfolioImage) | any;
 
+export const GALLERY_MEDIA: GalleryMediaItem[] = GALLERY_IMAGES.map((img) => ({
+  kind: "image" as const,
+  ...img,
+}));

@@ -1,26 +1,23 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Instagram, MapPin } from "lucide-react";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { CTASection } from "@/components/sections/CTASection";
-import { FAQS } from "@/lib/site-data";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Spilled Milk Cake Boutique" },
+      { title: "Contact | Knead To Know" },
       {
         name: "description",
         content:
-          "Contact Spilled Milk Cake Boutique for custom cake questions, event inquiries, availability, and service area details.",
+          "Contact Knead To Know bakery on Daniel Island. Questions, custom orders, catering inquiries, and availability.",
       },
-      { property: "og:title", content: "Contact | Spilled Milk Cake Boutique" },
+      { property: "og:title", content: "Contact | Knead To Know" },
       {
         property: "og:description",
         content:
-          "Reach out with questions, or use the order inquiry form for custom cake requests.",
+          "Reach out to Knead To Know for orders, questions, or catering on Daniel Island and Charleston.",
       },
       { property: "og:url", content: `${SITE_URL}/contact` },
     ],
@@ -32,13 +29,13 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
-      <section className="bg-blush pb-12 pt-16 sm:pt-24">
+      <section className="bg-white pb-12 pt-16 sm:pt-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             as="h1"
             eyebrow="Contact"
-            title="Contact Spilled Milk Cake Boutique."
-            intro="Have a question before submitting an inquiry? Reach out below. For custom cake orders, please use the order inquiry form so Alexandra can collect the details needed to review your request."
+            title="Reach the bakery."
+            intro="Have a question or need help with an order? Use the form below, or reach us directly by email and Instagram."
           />
         </div>
       </section>
@@ -75,28 +72,33 @@ function ContactPage() {
                 </div>
               </li>
             </ul>
-            <div className="mt-6 rounded-3xl bg-blush p-6">
+
+            <div className="mt-6 rounded-3xl bg-white p-6 text-sm">
               <p className="font-display text-lg italic text-forest-dark">A quick note</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                For custom cakes, please use the order inquiry form so Alexandra can collect the
-                details needed to check availability and prepare an estimate.
+              <p className="mt-2 text-muted-foreground">
+                For custom orders, bakery boxes, and larger quantities, we recommend using the
+                <Link to="/custom-orders" className="mx-1 underline">Custom Orders form</Link>.
+                For events and catering, please use the
+                <Link to="/catering" className="mx-1 underline">Catering page</Link>.
               </p>
             </div>
+
+            <div className="pt-2">
+              <Link
+                to="/custom-orders"
+                className="inline-flex h-11 items-center justify-center rounded-full bg-forest px-7 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
+              >
+                Request an Order
+              </Link>
+            </div>
           </div>
-          <ContactForm />
+
+          <div>
+            <h3 className="font-medium mb-4 text-sm uppercase tracking-wider">Send a message</h3>
+            <ContactForm />
+          </div>
         </div>
       </Section>
-
-      <Section bg="beige">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="FAQ" title="Frequently asked questions." />
-          <div className="mt-6">
-            <FAQAccordion items={FAQS} />
-          </div>
-        </div>
-      </Section>
-
-      <CTASection />
     </>
   );
 }

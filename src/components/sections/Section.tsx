@@ -4,19 +4,20 @@ import { cn } from "@/lib/utils";
 export function Section({
   children,
   className,
-  bg = "cream",
+  bg = "white",
   id,
 }: {
   children: ReactNode;
   className?: string;
-  bg?: "cream" | "blush" | "beige" | "white";
+  bg?: "white" | "cream" | "blush" | "beige";
   id?: string;
 }) {
+  // Remapped to new white + soft light palette; cream/blush/beige now near-white
   const bgClass = {
-    cream: "bg-cream",
-    blush: "bg-blush",
-    beige: "bg-beige/60",
     white: "bg-white",
+    cream: "bg-white",
+    blush: "bg-white",
+    beige: "bg-[#f8fafc]",
   }[bg];
   return (
     <section id={id} className={cn("py-20 sm:py-28", bgClass, className)}>
@@ -27,7 +28,7 @@ export function Section({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <p className="text-xs font-medium uppercase tracking-[0.22em] text-forest">{children}</p>
+    <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">{children}</p>
   );
 }
 

@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
 import { cn } from "@/lib/utils";
+
+const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/menu", label: "Menu" },
-  { to: "/custom-orders", label: "Custom Orders" },
-  { to: "/catering", label: "Catering" },
   { to: "/gallery", label: "Gallery" },
-  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -23,7 +21,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-white/85 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logo.url} alt="Knead To Know" className="h-14 w-auto md:h-16 lg:h-12" />
+          <img src={LOGO_URL} alt="Knead To Know" className="h-14 w-auto md:h-16 lg:h-12 rounded-full" />
           <span className="sr-only">Knead To Know</span>
         </Link>
 
@@ -70,8 +68,8 @@ export function Header() {
                 to={item.to}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "rounded-xl px-3 py-3 text-base text-ink/80 hover:bg-blush",
-                  pathname === item.to && "bg-blush text-forest",
+                  "rounded-xl px-3 py-3 text-base text-ink/80 hover:bg-white",
+                  pathname === item.to && "bg-white text-forest",
                 )}
               >
                 {item.label}

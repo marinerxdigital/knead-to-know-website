@@ -11,7 +11,6 @@ export interface LightboxSlide {
   category?: string;
 }
 
-
 interface LightboxProps {
   slides: LightboxSlide[];
   index: number;
@@ -52,7 +51,7 @@ export function Lightbox({ slides, index, onClose, onIndexChange }: LightboxProp
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Cake media viewer"
+      aria-label="Media viewer"
       className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/85 backdrop-blur-sm"
       onClick={onClose}
     >

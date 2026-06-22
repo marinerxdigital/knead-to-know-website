@@ -1,11 +1,7 @@
 {
   "version": 1,
-  "asset_id": "ac5bbfb3-f5df-4910-b283-1ffc9b44870d",
-  "project_id": "ffabad84-8696-4ec6-826d-536fef63671e",
-  "url": "/lovable-assets/ac5bbfb3-f5df-4910-b283-1ffc9b44870d/logo.png",
-  "r2_key": "a/v1/ffabad84-8696-4ec6-826d-536fef63671e/ac5bbfb3-f5df-4910-b283-1ffc9b44870d/logo.png",
-  "original_filename": "logo.png",
-  "size": 587076,
-  "content_type": "image/png",
-  "created_at": "2026-06-16T18:58:17Z"
+  "asset_id": "k2k-circular-logo",
+  "url": "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png",
+  "original_filename": "Knead_To_Know_Primary_Circular_Logo.png",
+  "content_type": "image/png"
 }

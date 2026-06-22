@@ -19,7 +19,7 @@ import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-cream px-4">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4">
       <div className="max-w-md text-center">
         <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">404</p>
         <h1 className="mt-4 font-display text-4xl text-ink">Page not found</h1>
@@ -47,7 +47,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-cream px-4">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-3xl text-ink">Something went wrong</h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -80,21 +80,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Knead To Know | Charleston Custom Cakes" },
+      { title: "Knead To Know | Daniel Island Bakery" },
       {
         name: "description",
         content:
-          "Modern custom cakes for weddings, birthdays, engagements, and beautiful celebrations in Charleston, SC.",
+          "Knead To Know is a small-batch bakery on Daniel Island serving fresh breads, cookies, pastries, seasonal baked goods and custom orders in the Charleston area.",
       },
       { name: "theme-color", content: "#FFFDF8" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Knead To Know" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Knead To Know | Charleston Custom Cakes" },
-      { name: "twitter:title", content: "Knead To Know | Charleston Custom Cakes" },
-      { name: "description", content: "Modern custom cakes for weddings, birthdays, engagements, and special celebrations in Charleston, SC. Browse designs and submit an inquiry." },
-      { property: "og:description", content: "Modern custom cakes for weddings, birthdays, engagements, and special celebrations in Charleston, SC. Browse designs and submit an inquiry." },
-      { name: "twitter:description", content: "Modern custom cakes for weddings, birthdays, engagements, and special celebrations in Charleston, SC. Browse designs and submit an inquiry." },
+      { property: "og:title", content: "Knead To Know | Daniel Island Bakery" },
+      { name: "twitter:title", content: "Knead To Know | Daniel Island Bakery" },
+      { name: "description", content: "Fresh breads, cookies, pastries and seasonal bakes from Knead To Know bakery on Daniel Island. Browse the menu and place your order." },
+      { property: "og:description", content: "Fresh breads, cookies, pastries and seasonal bakes from Knead To Know bakery on Daniel Island. Browse the menu and place your order." },
+      { name: "twitter:description", content: "Fresh breads, cookies, pastries and seasonal bakes from Knead To Know bakery on Daniel Island. Browse the menu and place your order." },
       { property: "og:image", content: `${SITE_URL}${ogImage.url}` },
       { property: "og:image:width", content: "1280" },
       { property: "og:image:height", content: "672" },

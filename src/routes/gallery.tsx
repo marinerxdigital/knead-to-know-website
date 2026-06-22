@@ -1,27 +1,20 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import { Play } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/sections/Section";
-import { CTASection } from "@/components/sections/CTASection";
-import { Lightbox } from "@/components/media/Lightbox";
-import { GALLERY_MEDIA, GALLERY_CAPTIONS, type GalleryMediaItem } from "@/lib/cake-photos";
+import { PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Cake Portfolio | Spilled Milk Cake Boutique" },
+      { title: "Gallery | Knead To Know" },
       {
         name: "description",
         content:
-          "A curated portfolio of custom cakes by Spilled Milk Cake Boutique — weddings, birthdays, engagements, showers, and special celebrations in Charleston.",
+          "A visual collection of Knead To Know breads, cookies, bagels, pastries, bakery boxes, and seasonal bakes on Daniel Island.",
       },
-      { property: "og:title", content: "Cake Portfolio | Spilled Milk Cake Boutique" },
-      {
-        property: "og:description",
-        content: "A curated look at custom cakes by Spilled Milk Cake Boutique.",
-      },
+      { property: "og:title", content: "Gallery | Knead To Know" },
+      { property: "og:description", content: "Fresh sourdough bakes and custom orders from Knead To Know bakery." },
       { property: "og:url", content: `${SITE_URL}/gallery` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/gallery` }],
@@ -29,123 +22,124 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
+const GALLERY_CATEGORIES = [
+  "Breads",
+  "Cookies",
+  "Bagels",
+  "Pastries",
+  "Seasonal Bakes",
+  "Bakery Boxes",
+  "Catering & Events",
+  "Custom Orders",
+] as const;
+
+type Category = (typeof GALLERY_CATEGORIES)[number];
+
+const PLACEHOLDER_LABELS: Record<Category, string> = {
+  Breads: "Artisan Sourdough Loaves",
+  Cookies: "Fresh Sourdough Cookies",
+  Bagels: "Boiled & Baked Bagels",
+  Pastries: "Seasonal Pastries",
+  "Seasonal Bakes": "Limited Seasonal Items",
+  "Bakery Boxes": "Curated Gift & Brunch Boxes",
+  "Catering & Events": "Platters & Spreads",
+  "Custom Orders": "Bespoke Requests",
+};
+
 function GalleryPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
+  const [activeCategory, setActiveCategory] = useState<Category>("Breads");
 
-  const slides = GALLERY_MEDIA.map((item) => ({
-    id: item.id,
-    url: item.url,
-    alt: item.alt,
-    caption:
-      item.kind === "image"
-        ? GALLERY_CAPTIONS[item.id] ?? item.caption
-        : item.caption,
-    kind: item.kind,
-    poster: item.kind === "video" ? item.poster : undefined,
-  }));
+  // Use product cards for Breads / Cookies / Bagels
+  const breads = PRODUCTS.filter((p) => p.category === "sourdoughBreads");
+  const cookies = PRODUCTS.filter((p) => p.category === "cookies");
+  const bagels = PRODUCTS.filter((p) => p.category === "bagels");
 
+  const getItemsForCategory = (cat: Category) => {
+    if (cat === "Breads") return breads;
+    if (cat === "Cookies") return cookies;
+    if (cat === "Bagels") return bagels;
+    return [];
+  };
+
+  const currentItems = getItemsForCategory(activeCategory);
+  const isPlaceholderCategory = currentItems.length === 0;
 
   return (
     <>
-      <section className="bg-blush pb-12 pt-16 sm:pt-24">
+      <section className="bg-white pb-12 pt-16 sm:pt-24">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <SectionHeading
             as="h1"
-            eyebrow="Portfolio"
-            title="Cake Portfolio"
-            intro="A curated look at custom cakes by Spilled Milk Cake Boutique, from weddings and birthdays to engagements, showers, and special celebrations. Browse recent designs for inspiration, then submit an inquiry to start planning a cake for your own celebration."
+            eyebrow="Gallery"
+            title="Fresh from the bakery"
+            intro="A look at our breads, cookies, bagels, boxes, and seasonal offerings. Photos are representative; actual bakes vary with the season."
           />
         </div>
       </section>
 
-      <Section bg="cream">
-        <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5 [&>*]:break-inside-avoid">
-          {GALLERY_MEDIA.map((item, index) => (
-            <GalleryTile
-              key={item.id}
-              item={item}
-              onOpen={() => setOpenIndex(index)}
-              prefersReducedMotion={prefersReducedMotion}
-            />
+      <Section>
+        {/* Category tabs */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {GALLERY_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2 rounded-full text-sm border transition ${
+                activeCategory === cat
+                  ? "bg-forest text-white border-forest"
+                  : "bg-white text-ink/70 border-border/60 hover:border-forest/40"
+              }`}
+            >
+              {cat}
+            </button>
           ))}
         </div>
-      </Section>
 
-      <CTASection
-        eyebrow="Start the process"
-        title="Have a cake idea in mind?"
-        text="Share your event date, guest count, flavor ideas, and inspiration. Alexandra will review the details and follow up with availability and next steps."
-        primaryLabel="Start an Inquiry"
-      />
-
-      {openIndex !== null && (
-        <Lightbox
-          slides={slides}
-          index={openIndex}
-          onClose={() => setOpenIndex(null)}
-          onIndexChange={setOpenIndex}
-        />
-      )}
-    </>
-  );
-}
-
-function GalleryTile({
-  item,
-  onOpen,
-  prefersReducedMotion,
-}: {
-  item: GalleryMediaItem;
-  onOpen: () => void;
-  prefersReducedMotion: boolean;
-}) {
-  const isVideo = item.kind === "video";
-  return (
-    <figure className="group relative overflow-hidden rounded-3xl bg-white ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-[0_20px_40px_-25px_rgba(31,77,54,0.25)]">
-      <button
-        type="button"
-        onClick={onOpen}
-        aria-label={
-          isVideo ? `Play 360° rotating cake video` : `View ${item.caption} larger`
-        }
-        className="block w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
-      >
-        {isVideo ? (
-          <>
-            {prefersReducedMotion ? (
-              <img
-                src={item.poster}
-                alt={item.alt}
-                loading="lazy"
-                className="block h-auto w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-              />
-            ) : (
-              <video
-                src={item.url}
-                poster={item.poster}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                aria-label={item.alt}
-                className="block h-auto w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-              />
-            )}
-            <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-ink/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-white">
-              <Play className="h-3 w-3" /> {prefersReducedMotion ? "360°" : "360°"}
-            </span>
-          </>
+        {isPlaceholderCategory ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div
+                key={n}
+                className="aspect-[16/11] rounded-3xl bg-white ring-1 ring-border/40 flex items-center justify-center p-8"
+              >
+                <div className="text-center">
+                  <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-forest/30" />
+                  <p className="text-sm font-medium text-ink">{PLACEHOLDER_LABELS[activeCategory]}</p>
+                  <p className="text-xs mt-1 text-muted-foreground">Photo coming soon — representative of our fresh bakes</p>
+                </div>
+              </div>
+            ))}
+          </div>
         ) : (
-          <img
-            src={item.url}
-            alt={item.alt}
-            loading="lazy"
-            className="block h-auto w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {currentItems.map((product) => (
+              <div key={product.id} className="overflow-hidden rounded-3xl bg-white ring-1 ring-border/60">
+                <div className="bg-white p-8 flex items-center justify-center aspect-[5/4]">
+                  <img
+                    src={product.cardAsset}
+                    alt={product.name}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="p-5 text-sm">
+                  <div className="font-medium text-ink">{product.name}</div>
+                  <div className="text-forest mt-0.5">{product.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
-      </button>
-    </figure>
+
+        <div className="mt-12 text-center">
+          <p className="text-muted-foreground text-sm max-w-md mx-auto">
+            Interested in ordering or recreating something you see? Head to our menu or custom orders page.
+          </p>
+          <div className="mt-5 flex justify-center gap-3">
+            <Link to="/menu" className="rounded-full border px-6 h-10 inline-flex items-center text-sm">View Menu</Link>
+            <Link to="/custom-orders" className="rounded-full bg-forest text-white px-6 h-10 inline-flex items-center text-sm">Request Custom</Link>
+          </div>
+        </div>
+      </Section>
+    </>
   );
 }

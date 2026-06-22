@@ -19,7 +19,7 @@ type Values = z.infer<typeof schema>;
 const ACCESS_KEY = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ?? "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
-const ERROR_MESSAGE = `Something went wrong while sending your message. Please try again or email Alexandra directly at ${BUSINESS.email}.`;
+const ERROR_MESSAGE = `Something went wrong while sending your message. Please try again or email us directly at ${BUSINESS.email}.`;
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -78,11 +78,11 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="rounded-3xl bg-blush p-8 text-center">
+      <div className="rounded-3xl bg-white p-8 text-center">
         <CheckCircle2 className="mx-auto h-9 w-9 text-forest" />
         <h3 className="mt-4 font-display text-2xl text-ink">Thank you for reaching out.</h3>
         <p className="mt-2 text-sm text-muted-foreground">
-          Alexandra will follow up with you soon.
+          We will follow up with you soon.
         </p>
       </div>
     );

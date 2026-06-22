@@ -16,9 +16,9 @@ export const BUSINESS = {
   instagramUrl: "[INSERT INSTAGRAM URL]",
 } as const;
 
-// Note: Original Spilled Milk press feature removed as part of brand conversion.
-// Placeholder for future Knead To Know press if available. The UI guards against null
-// so the homepage (and other pages) render safely without this legacy data.
+// Legacy press feature removed during brand conversion to Knead To Know.
+// Set to null; all consuming pages have had the references removed to prevent
+// any unsafe access to .publication or other fields.
 export interface PressFeature {
   publication: string;
   title: string;

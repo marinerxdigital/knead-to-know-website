@@ -6,7 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { EVENT_TYPES } from "@/lib/site-data";
+import { ORDER_TYPES } from "@/lib/site-data";
 import { BUSINESS } from "@/lib/business";
 
 const schema = z.object({
@@ -14,7 +14,7 @@ const schema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
   eventDate: z.string().trim().min(1, "Please choose a date"),
-  eventType: z.string().min(1, "Select an event type"),
+  eventType: z.string().min(1, "Select an order type"),
   location: z.string().trim().max(200).optional().or(z.literal("")),
   servings: z.string().trim().max(50).optional().or(z.literal("")),
   fulfillment: z.enum(["Pickup", "Delivery request", "Not sure yet"]),
@@ -29,7 +29,7 @@ type FormValues = z.infer<typeof schema>;
 const ACCESS_KEY = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ?? "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
-const ERROR_MESSAGE = `Something went wrong while submitting your inquiry. Please try again or email Alexandra directly at ${BUSINESS.email}.`;
+const ERROR_MESSAGE = `Something went wrong while submitting your inquiry. Please try again or email us directly at ${BUSINESS.email}.`;
 
 export function InquiryForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -74,13 +74,13 @@ export function InquiryForm() {
           name: values.name,
           email: values.email,
           phone: values.phone || "",
-          event_date: values.eventDate,
-          event_type: values.eventType,
-          event_location: values.location || "",
-          servings: values.servings || "",
+          needed_by: values.eventDate,
+          order_type: values.eventType,
+          location: values.location || "",
+          quantity: values.servings || "",
           fulfillment: values.fulfillment,
-          flavor_preferences: values.flavor || "",
-          design_inspiration: values.inspiration || "",
+          preferences: values.flavor || "",
+          details: values.inspiration || "",
           notes: values.notes || "",
           source: "Order Inquiry Form",
           botcheck: "",
@@ -101,7 +101,7 @@ export function InquiryForm() {
         <CheckCircle2 className="mx-auto h-10 w-10 text-forest" />
         <h3 className="mt-4 font-display text-3xl text-ink">Thank you for your inquiry.</h3>
         <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-          Alexandra will review your event details and follow up with availability and next steps.
+          We will review your details and follow up with availability and next steps.
         </p>
       </div>
     );
@@ -133,22 +133,22 @@ export function InquiryForm() {
         <Field label="Phone" optional error={errors.phone?.message}>
           <Input type="tel" {...register("phone")} autoComplete="tel" />
         </Field>
-        <Field label="Event date" error={errors.eventDate?.message}>
+        <Field label="Needed by" error={errors.eventDate?.message}>
           <Input type="date" {...register("eventDate")} />
         </Field>
-        <Field label="Event type" error={errors.eventType?.message}>
+        <Field label="Order type" error={errors.eventType?.message}>
           <Select {...register("eventType")} defaultValue="">
-            <option value="" disabled>Select an event type</option>
-            {EVENT_TYPES.map((t) => (
+            <option value="" disabled>Select an order type</option>
+            {ORDER_TYPES.map((t) => (
               <option key={t} value={t}>{t}</option>
             ))}
           </Select>
         </Field>
-        <Field label="Event location" optional error={errors.location?.message}>
+        <Field label="Location" optional error={errors.location?.message}>
           <Input {...register("location")} placeholder="Venue, neighborhood, or city" />
         </Field>
-        <Field label="Guest count / servings needed" optional error={errors.servings?.message}>
-          <Input {...register("servings")} placeholder="e.g. 40" />
+        <Field label="Quantity / servings" optional error={errors.servings?.message}>
+          <Input {...register("servings")} placeholder="e.g. 2 loaves or 24 cookies" />
         </Field>
         <Field label="Pickup or delivery" error={errors.fulfillment?.message}>
           <Select {...register("fulfillment")}>
@@ -157,16 +157,16 @@ export function InquiryForm() {
             <option value="Not sure yet">Not sure yet</option>
           </Select>
         </Field>
-        <Field label="Cake flavor (if known)" optional error={errors.flavor?.message}>
-          <Input {...register("flavor")} placeholder="Vanilla bean, lemon, chocolate…" />
+        <Field label="Preferences (flavors / items)" optional error={errors.flavor?.message}>
+          <Input {...register("flavor")} placeholder="Sourdough, chocolate chip, everything bagels…" />
         </Field>
       </div>
 
-      <Field label="Design inspiration" optional error={errors.inspiration?.message}>
+      <Field label="Details or inspiration" optional error={errors.inspiration?.message}>
         <Textarea
           rows={4}
           {...register("inspiration")}
-          placeholder="Tell us about colors, style, vibe, florals, references…"
+          placeholder="Tell us about quantities, style, dietary needs, references…"
         />
       </Field>
 
@@ -174,7 +174,7 @@ export function InquiryForm() {
         <Textarea
           rows={3}
           {...register("notes")}
-          placeholder="Allergies, dietary needs, anything else we should know"
+          placeholder="Allergies, timing, anything else we should know"
         />
       </Field>
 
@@ -204,7 +204,7 @@ export function InquiryForm() {
         disabled={isSubmitting}
         className="mt-2 inline-flex h-12 w-full items-center justify-center rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground transition hover:bg-forest-dark disabled:opacity-60 sm:w-auto sm:self-start sm:px-10"
       >
-        {isSubmitting ? "Sending…" : "Submit Cake Inquiry"}
+        {isSubmitting ? "Sending…" : "Submit Order Inquiry"}
       </button>
     </form>
   );
