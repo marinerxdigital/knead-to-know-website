@@ -84,14 +84,18 @@ export function Footer() {
         <FooterScoringDivider />
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:px-8 sm:py-16 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
         {/* Brand column */}
-        <div className="lg:pr-6">
-          <div className="flex items-start gap-4">
-            <BrandLogo variant="footer" />
-            <div>
-              <p className="font-display text-lg leading-tight text-ink">{BUSINESS.name}</p>
-              <p className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.26em] text-k2k-blue/75">
+        <div className="sm:col-span-2 lg:col-span-1 lg:pr-6">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <BrandLogo
+              variant="footer"
+              className="!h-14 !w-14 sm:!h-16 sm:!w-16 lg:!h-[4.5rem] lg:!w-[4.5rem]"
+            />
+            <div className="min-w-0 pt-0.5">
+              <p className="k2k-wordmark-title text-base sm:text-lg">Knead To Know</p>
+              <p className="k2k-wordmark-tagline mt-0.5">Sweet &amp; Sour</p>
+              <p className="mt-2 text-[0.65rem] font-medium uppercase tracking-[0.26em] text-k2k-blue/75">
                 Est. {BUSINESS.established}
               </p>
             </div>
@@ -108,12 +112,12 @@ export function Footer() {
             <Compass className="h-3.5 w-3.5 shrink-0" aria-hidden />
             Explore
           </h4>
-          <ul className="mt-5 space-y-2.5">
+          <ul className="mt-4 space-y-1 sm:mt-5 sm:space-y-1.5">
             {EXPLORE_LINKS.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="text-sm text-ink/75 transition-colors hover:text-k2k-blue"
+                  className="inline-flex min-h-11 items-center py-1 text-sm font-medium text-ink/75 transition-colors hover:text-k2k-blue"
                 >
                   {link.label}
                 </Link>
@@ -128,12 +132,12 @@ export function Footer() {
             <BookOpen className="h-3.5 w-3.5 shrink-0" aria-hidden />
             About
           </h4>
-          <ul className="mt-5 space-y-2.5">
+          <ul className="mt-4 space-y-1 sm:mt-5 sm:space-y-1.5">
             {ABOUT_LINKS.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="text-sm text-ink/75 transition-colors hover:text-k2k-blue"
+                  className="inline-flex min-h-11 items-center py-1 text-sm font-medium text-ink/75 transition-colors hover:text-k2k-blue"
                 >
                   {link.label}
                 </Link>
@@ -143,12 +147,12 @@ export function Footer() {
         </div>
 
         {/* Contact column */}
-        <div>
+        <div className="sm:col-span-2 lg:col-span-1">
           <h4 className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
             <Mail className="h-3.5 w-3.5 shrink-0" aria-hidden />
             Contact
           </h4>
-          <ul className="mt-5 space-y-3.5 text-sm text-ink/80">
+          <ul className="mt-4 space-y-2.5 text-sm text-ink/80 sm:mt-5 sm:space-y-3">
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-k2k-blue" />
               <span>
@@ -160,7 +164,10 @@ export function Footer() {
             {BUSINESS.phone && (
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-k2k-blue" />
-                <a href={BUSINESS.phoneTel} className="transition-colors hover:text-k2k-blue">
+                <a
+                  href={BUSINESS.phoneTel}
+                  className="inline-flex min-h-11 items-center transition-colors hover:text-k2k-blue"
+                >
                   {BUSINESS.phone}
                 </a>
               </li>
@@ -170,7 +177,7 @@ export function Footer() {
                 <Mail className="h-4 w-4 shrink-0 text-k2k-blue" />
                 <a
                   href={`mailto:${BUSINESS.email}`}
-                  className="transition-colors hover:text-k2k-blue"
+                  className="inline-flex min-h-11 items-center break-all transition-colors hover:text-k2k-blue"
                 >
                   {BUSINESS.email}
                 </a>
@@ -183,7 +190,7 @@ export function Footer() {
                   href={BUSINESS.instagramUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="transition-colors hover:text-k2k-blue"
+                  className="inline-flex min-h-11 items-center transition-colors hover:text-k2k-blue"
                 >
                   {BUSINESS.instagramHandle}
                 </a>

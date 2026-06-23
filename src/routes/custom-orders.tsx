@@ -15,10 +15,10 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "w-full h-12 rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
+  "min-h-12 h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
 
 const textareaClass =
-  "w-full rounded-xl border border-[#111] bg-white p-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
+  "min-h-[120px] w-full resize-y rounded-xl border border-[#111] bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70 block mb-1.5";
 
@@ -72,13 +72,16 @@ type Search = { product?: string };
 
 function OrderStepIndicator() {
   return (
-    <nav aria-label="Order steps">
-      <ol className="flex flex-wrap items-center gap-3 sm:gap-5">
+    <nav aria-label="Order steps" className="w-full min-w-0">
+      <ol className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
         {STEPS.map((step, i) => (
-          <li key={step.num} className="flex items-center gap-2.5 sm:gap-3">
+          <li
+            key={step.num}
+            className="flex min-w-0 flex-col items-center gap-1.5 sm:flex-row sm:gap-3"
+          >
             <span
               className={cn(
-                "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors sm:h-10 sm:w-10",
+                "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold leading-none transition-colors sm:h-10 sm:w-10",
                 i === 0
                   ? "border border-[#111] bg-k2k-blue text-white shadow-[0_8px_24px_-8px_rgba(59,110,145,0.55)]"
                   : "border border-[#111] bg-white text-k2k-navy/70",
@@ -86,7 +89,7 @@ function OrderStepIndicator() {
             >
               {step.num}
             </span>
-            <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-k2k-navy/80 sm:text-xs sm:tracking-[0.12em]">
+            <span className="text-center text-[9px] font-medium uppercase tracking-[0.12em] text-k2k-navy/80 sm:text-left sm:text-xs sm:tracking-[0.12em]">
               <span className="hidden sm:inline">{step.label}</span>
               <span className="sm:hidden">{step.short}</span>
             </span>
@@ -361,7 +364,7 @@ function CustomOrdersPage() {
             what you want? Add details in the special instructions field below.
           </p>
 
-          <div className="k2k-accent-rail k2k-surface rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 pl-5 p-5 sm:pl-7 sm:p-7">
+          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-5 pl-5 sm:p-7 sm:pl-7">
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {PRODUCTS.map((product, index) => {
                 const delay = (index % 5) as 0 | 1 | 2 | 3 | 4;
@@ -384,7 +387,7 @@ function CustomOrdersPage() {
 
       <Section bg="beige" reveal={false}>
         <ScrollReveal>
-          <div className="k2k-accent-rail k2k-card rounded-[2rem] border-t-2 border-t-k2k-blue/25 pl-5 p-6 sm:pl-7 sm:p-10">
+          <div className="k2k-accent-rail k2k-card min-w-0 overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-10">
             <div className="grid gap-12 lg:grid-cols-[1fr_280px] lg:gap-16">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <input
@@ -467,7 +470,7 @@ function CustomOrdersPage() {
 
                 <div>
                   <label className={labelClass}>Products selected</label>
-                  <div className="k2k-surface min-h-[44px] rounded-xl bg-[#f8fafc] px-4 py-2.5 text-sm">
+                  <div className="k2k-surface flex min-h-12 items-center rounded-xl bg-[#f8fafc] px-4 py-2.5 text-sm">
                     {selectedProducts.length > 0 ? (
                       <span className="text-ink">
                         {selectedProducts.map((p) => p.name).join(" • ")}

@@ -82,7 +82,7 @@ export function InteractiveMenuBuilder() {
           </p>
           <a
             href={BUSINESS.phoneTel}
-            className="k2k-button k2k-button-primary inline-flex !min-h-10 items-center gap-2 !px-5 !text-[10px]"
+            className="k2k-button k2k-button-primary inline-flex !min-h-11 items-center gap-2 !px-5 !text-xs"
           >
             <Phone className="h-4 w-4" aria-hidden />
             Call Wendy
@@ -93,7 +93,7 @@ export function InteractiveMenuBuilder() {
       {/* Search + category */}
       <div className="border-b border-k2k-black/10 bg-k2k-cream">
         <div className="mx-auto max-w-7xl px-5 py-6 sm:px-8">
-          <div className="k2k-surface k2k-accent-rail overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/30 p-5 sm:p-6">
+          <div className="k2k-surface k2k-accent-rail rounded-[1.75rem] border-t-2 border-t-k2k-blue/30 p-5 sm:p-6">
             <div className="relative mb-5 max-w-md">
               <Search
                 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-k2k-navy/50"
@@ -105,11 +105,15 @@ export function InteractiveMenuBuilder() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search breads, cookies, bagels…"
                 aria-label="Search menu"
-                className="h-12 w-full rounded-full border border-k2k-black bg-white pl-11 pr-4 text-sm transition focus:outline-none focus:ring-2 focus:ring-k2k-blue/25"
+                className="h-11 min-h-[44px] w-full rounded-full border border-k2k-black bg-white pl-11 pr-4 text-sm text-ink placeholder:text-muted-foreground/70 transition focus:border-k2k-blue focus:outline-none focus:ring-2 focus:ring-k2k-blue/25 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/30"
               />
             </div>
 
-            <div className="flex flex-wrap gap-2" role="tablist" aria-label="Menu categories">
+            <div
+              className="flex min-w-0 flex-wrap gap-1.5 sm:gap-2"
+              role="tablist"
+              aria-label="Menu categories"
+            >
               {MENU_CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
@@ -118,7 +122,7 @@ export function InteractiveMenuBuilder() {
                   aria-selected={category === cat.id}
                   onClick={() => setCategory(cat.id)}
                   className={cn(
-                    "group inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.1em] transition duration-300",
+                    "group inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-[10px] font-medium uppercase tracking-[0.1em] transition duration-300 sm:px-4 sm:text-xs",
                     category === cat.id
                       ? "border-k2k-black bg-k2k-blue text-white shadow-sm"
                       : "border-k2k-black bg-white text-k2k-navy hover:bg-k2k-blue/5",
@@ -146,8 +150,8 @@ export function InteractiveMenuBuilder() {
       </div>
 
       {/* Menu grid + tray */}
-      <div className="bg-white pb-28 lg:pb-16">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[1fr_320px] lg:gap-10 xl:grid-cols-[1fr_340px]">
+      <div className="bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-16">
+        <div className="mx-auto grid max-w-7xl items-start gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,320px)] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(300px,340px)]">
           <div>
             {filtered.length === 0 ? (
               <div className="k2k-surface rounded-[2rem] border-dashed px-8 py-16 text-center">
@@ -165,7 +169,10 @@ export function InteractiveMenuBuilder() {
                 </button>
               </div>
             ) : (
-              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3" role="tabpanel">
+              <div
+                className="grid auto-rows-fr items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3"
+                role="tabpanel"
+              >
                 {filtered.map((product, index) => (
                   <ScrollReveal
                     key={product.id}

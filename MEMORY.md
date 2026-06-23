@@ -4,6 +4,15 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Revamp #5 — Final Client Review Polish (2026-06-22)
+
+- 4 parallel UI/UX agents: layout/nav, homepage/about/gallery, menu/tray, contact/forms
+- Fixes: mobile nav drawer positioning, 44px touch targets, menu tray vs MobileOrderBar conflict, hero typography scale, 3D carousel mobile height, equal-height cards, 48px form fields, global overflow-x clip
+- Docs: `docs/WENDY_WALKTHROUGH_GUIDE.md`, master guide updated
+- Pushed to `main`, Cloudflare deploy
+
+---
+
 ## Harbor Deep Blue Palette (2026-06-22)
 
 - Refined coastal blue per client feedback (old `#4F7EA8` felt gray/washed)
@@ -35,6 +44,7 @@ Long-term project memory. **Update after every meaningful session.**
 ### What was built
 
 #### Revamp #3–#4 (full-site UI)
+
 - Black borders on all containers (`k2k-surface`, `k2k-card`, `k2k-product-card`, buttons)
 - Darker bold nav (Menu / About / FAQ / Contact)
 - Wordmark: Knead To Know `font-weight 700` black; **Sweet & Sour blue** `#3B6E91` (Harbor Deep)
@@ -44,12 +54,14 @@ Long-term project memory. **Update after every meaningful session.**
 - Contact page: phone pulse, pin pulse, quick-action chips, accent rails
 
 #### Homepage
+
 - Full-bleed client hero photo
 - **Product3DCarousel** — 3D CSS coverflow, 7 featured products, autoplay/swipe/a11y
 - Neighbor stories: **black text**, **black icons** (`k2k-icon-black`)
 - Hero location text: Daniel Island + service area in black
 
 #### Menu page — Interactive Menu Builder
+
 - `InteractiveMenuBuilder` — category tabs, search, product cards
 - `PreOrderTray` — desktop sticky sidebar + mobile bottom drawer
 - Quantity controls, product detail dialog
@@ -60,25 +72,28 @@ Long-term project memory. **Update after every meaningful session.**
 - No checkout, no payment, no fake data
 
 #### New files (key)
-| File | Purpose |
-|------|---------|
-| `src/components/products/Product3DCarousel.tsx` | Homepage 3D carousel |
-| `src/components/menu/InteractiveMenuBuilder.tsx` | Menu builder |
-| `src/components/menu/PreOrderTray.tsx` | Order tray |
-| `src/data/menu.ts` | MenuProduct schema |
-| `src/lib/preorder-tray.ts` | Cart + SMS logic |
-| `src/components/brand/BrandLogo.tsx` | Responsive logo |
-| `src/components/sections/PageHero.tsx` | Inner page heroes |
-| `src/components/motion/ScrollReveal.tsx` | Scroll animations |
-| `docs/FULL_SITE_STATUS_REPORT.md` | Complete site audit |
+
+| File                                             | Purpose              |
+| ------------------------------------------------ | -------------------- |
+| `src/components/products/Product3DCarousel.tsx`  | Homepage 3D carousel |
+| `src/components/menu/InteractiveMenuBuilder.tsx` | Menu builder         |
+| `src/components/menu/PreOrderTray.tsx`           | Order tray           |
+| `src/data/menu.ts`                               | MenuProduct schema   |
+| `src/lib/preorder-tray.ts`                       | Cart + SMS logic     |
+| `src/components/brand/BrandLogo.tsx`             | Responsive logo      |
+| `src/components/sections/PageHero.tsx`           | Inner page heroes    |
+| `src/components/motion/ScrollReveal.tsx`         | Scroll animations    |
+| `docs/FULL_SITE_STATUS_REPORT.md`                | Complete site audit  |
 
 ### Verified business data (unchanged)
+
 - **Knead To Know Sweet & Sour** — Wendy Mercado
 - Phone: `(843) 973-0309` / `tel:8439730309` / `sms:8439730309`
 - 16 menu items with verified pricing in `products.ts`
 - Pre-orders only · Freshly baked to order
 
 ### Build / lint / deploy
+
 - `npm run build` — **PASS**
 - `npm run lint` — **0 errors**, 8 warnings (pre-existing shadcn + cake-photos)
 - No `typecheck` script
@@ -86,10 +101,12 @@ Long-term project memory. **Update after every meaningful session.**
 - Cloudflare Pages deploy — **SUCCESS**
 
 ### Still blocked on Wendy
+
 - Email, hours, Instagram/social, founder photo, real testimonials, maps URL
 - `VITE_WEB3FORMS_ACCESS_KEY` — operator must set in Cloudflare (forms wired but need key)
 
 ### Orphan routes (not in nav — consider removing)
+
 - `/flavors`, `/flavors-pricing`, `/featured`, `/inquiry`
 
 ---

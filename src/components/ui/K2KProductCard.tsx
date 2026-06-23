@@ -10,6 +10,8 @@ interface K2KProductCardProps {
   selectable?: boolean;
   selected?: boolean;
   onSelect?: () => void;
+  /** Tighter layout for carousel and dense grids */
+  compact?: boolean;
 }
 
 const CATEGORY_LABELS: Record<Product["category"], string> = {
@@ -102,35 +104,56 @@ export function K2KProductCard({
   selectable = false,
   selected = false,
   onSelect,
+  compact = false,
 }: K2KProductCardProps) {
   const body = (
     <>
       <ProductPhotoArea product={product} />
 
-      <div className="flex flex-1 flex-col px-1 pt-5">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="min-w-0 font-display text-xl leading-[1.15] tracking-tight text-ink">
+      <div
+        className={cn(
+          "flex flex-1 flex-col px-1",
+          compact ? "min-h-[5.5rem] pt-3" : "min-h-[7rem] pt-5",
+        )}
+      >
+        <div className="flex items-start justify-between gap-2 sm:gap-3">
+          <h3
+            className={cn(
+              "min-w-0 flex-1 font-display leading-[1.15] tracking-tight text-ink",
+              compact ? "line-clamp-2 text-base" : "text-xl",
+            )}
+          >
             {product.name}
           </h3>
           {product.price ? (
-            <span className="shrink-0 rounded-full border border-k2k-black bg-k2k-blue/8 px-3 py-1 text-sm font-medium tabular-nums text-k2k-navy">
+            <span
+              className={cn(
+                "mt-0.5 shrink-0 self-start rounded-full border border-k2k-black bg-k2k-blue/8 font-medium leading-none tabular-nums text-k2k-navy",
+                compact ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-xs sm:px-3 sm:text-sm",
+              )}
+            >
               {product.price}
             </span>
           ) : (
-            <span className="k2k-badge-wheat shrink-0 rounded-full border border-k2k-black px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
+            <span className="k2k-badge-wheat mt-0.5 shrink-0 self-start rounded-full border border-k2k-black px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
               Ask for pricing
             </span>
           )}
         </div>
 
         {product.description && (
-          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+          <p
+            className={cn(
+              "line-clamp-2 leading-relaxed text-muted-foreground",
+              compact ? "mt-2 text-xs" : "mt-3 text-sm",
+            )}
+          >
             {product.description}
           </p>
         )}
 
-        {product.ingredients && (
-          <p className="mt-2.5 text-[11px] leading-relaxed text-k2k-navy/60">
+        {product.ingredients && !compact && (
+          <p className="mt-2.5 line-clamp-2 text-[11px] leading-relaxed text-k2k-navy/60">
             <span className="font-medium uppercase tracking-[0.12em] text-k2k-navy/75">
               Ingredients:{" "}
             </span>
@@ -140,7 +163,8 @@ export function K2KProductCard({
 
         <div
           className={cn(
-            "mt-auto flex items-center gap-2 border-t border-k2k-black/10 pt-5",
+            "mt-auto flex items-center gap-2 border-t border-k2k-black/10",
+            compact ? "pt-3" : "pt-5",
             selectable ? "justify-between" : "justify-end",
           )}
         >

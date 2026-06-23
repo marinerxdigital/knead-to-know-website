@@ -31,8 +31,8 @@ function wrapOffset(index: number, activeIndex: number, total: number): number {
 }
 
 function getCardPose(offset: number, compact: boolean): CardPose {
-  const xUnit = compact ? 155 : 260;
-  const zUnit = compact ? 90 : 150;
+  const xUnit = compact ? 132 : 260;
+  const zUnit = compact ? 72 : 150;
 
   const poses: Record<string, Omit<CardPose, "offset">> = {
     "0": {
@@ -217,7 +217,7 @@ export function Product3DCarousel({
           aria-roledescription="carousel"
           aria-label="Featured bakery products"
         >
-          <K2KProductCard product={activeProduct} className="w-full" />
+          <K2KProductCard product={activeProduct} compact className="w-full" />
         </div>
         <CarouselControls
           activeIndex={activeIndex}
@@ -280,8 +280,9 @@ export function Product3DCarousel({
                 >
                   <K2KProductCard
                     product={product}
+                    compact
                     className={cn(
-                      "k2k-3d-carousel-card w-[min(100%,280px)] sm:w-[min(100%,300px)] md:w-[320px]",
+                      "k2k-3d-carousel-card w-[min(92vw,260px)] sm:w-[min(100%,300px)] md:w-[320px]",
                       offset === 0 && "shadow-[var(--k2k-shadow-lg)]",
                     )}
                   />
@@ -370,7 +371,7 @@ function CarouselControls({
       </div>
 
       <div
-        className="flex flex-wrap items-center justify-center gap-2"
+        className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2"
         role="tablist"
         aria-label="Product slides"
       >
@@ -382,11 +383,16 @@ function CarouselControls({
             aria-selected={i === activeIndex}
             aria-label={`Go to product ${i + 1}`}
             onClick={() => onGoTo(i)}
-            className={cn(
-              "h-2 rounded-full border border-k2k-black transition-all duration-300",
-              i === activeIndex ? "w-7 bg-k2k-blue" : "w-2 bg-k2k-cream hover:bg-k2k-harbor/40",
-            )}
-          />
+            className="inline-flex min-h-11 min-w-11 items-center justify-center p-2"
+          >
+            <span
+              className={cn(
+                "block h-2 rounded-full border border-k2k-black transition-all duration-300",
+                i === activeIndex ? "w-7 bg-k2k-blue" : "w-2 bg-k2k-cream hover:bg-k2k-harbor/40",
+              )}
+              aria-hidden
+            />
+          </button>
         ))}
       </div>
     </div>

@@ -144,12 +144,12 @@ function IconSectionHeading({
         </div>
         <div className={cn("min-w-0", align === "center" && "text-center sm:text-left")}>
           {eyebrow && <Eyebrow decorative>{eyebrow}</Eyebrow>}
-          <h2 className="mt-3 font-display text-4xl leading-[1.05] text-ink text-balance sm:text-5xl">
+          <h2 className="mt-4 font-display text-3xl leading-[1.05] text-ink text-balance sm:mt-5 sm:text-5xl">
             {title}
           </h2>
-          <HarborLine className="mt-3 h-2 w-28" />
+          <HarborLine className="mt-4 h-2 w-28 sm:mt-5" />
           {intro && (
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:mt-5 sm:text-lg">
               {intro}
             </p>
           )}
@@ -287,9 +287,9 @@ function AboutPage() {
       </PageHero>
 
       <Section variant="editorial">
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-14">
           <ScrollReveal className="space-y-5">
-            <div className="k2k-surface overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-8 text-center">
+            <div className="k2k-surface overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-6 text-center sm:p-8">
               <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border-2 border-dashed border-[#111]/20 bg-[#f8f4ed]">
                 <img src={ICONS.wheat} alt="" className="h-10 w-10 opacity-50" aria-hidden />
               </div>
@@ -317,7 +317,7 @@ function AboutPage() {
               eyebrow="The bakery"
               title="Freshly baked to order"
             />
-            <div className="k2k-accent-rail k2k-surface mt-8 space-y-5 rounded-2xl border-t-2 border-t-k2k-blue/25 pl-5 p-7 text-base leading-[1.75] text-muted-foreground sm:pl-7">
+            <div className="k2k-accent-rail k2k-surface mt-6 space-y-4 rounded-2xl border-t-2 border-t-k2k-blue/25 p-5 pl-5 text-base leading-[1.75] text-muted-foreground sm:mt-8 sm:space-y-5 sm:p-7 sm:pl-7">
               <p>
                 {BUSINESS.name} is run by {BUSINESS.owner} on Daniel Island, South Carolina. Every
                 loaf, cookie, and bagel is baked fresh to order — pre-orders only.
@@ -348,7 +348,7 @@ function AboutPage() {
       </Section>
 
       <Section bg="beige" variant="editorial">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-12 sm:gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <IconSectionHeading
               icon={ICONS.dough}
@@ -385,25 +385,31 @@ function AboutPage() {
               eyebrow="The process"
               title="From starter to pickup"
             />
-            <ol className="relative mt-8 space-y-0">
+            <ol className="relative mt-6 space-y-0 sm:mt-8">
               {PROCESS_STEPS.map((step, i) => (
-                <li key={step.title} className="relative flex gap-5 pb-6 last:pb-0">
-                  <div className="flex flex-col items-center">
+                <li
+                  key={step.title}
+                  className="relative flex gap-4 pb-8 last:pb-0 sm:gap-5 sm:pb-10"
+                >
+                  <div className="flex flex-col items-center pt-1">
                     <span
-                      className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#111] bg-k2k-blue font-display text-lg text-white shadow-sm"
+                      className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#111] bg-k2k-blue font-display text-base text-white shadow-sm sm:h-11 sm:w-11 sm:text-lg"
                       aria-hidden
                     >
                       {i + 1}
                     </span>
                     {i < PROCESS_STEPS.length - 1 && (
-                      <div className="mt-2 w-0.5 flex-1 min-h-[2.5rem] bg-[#111]/15" aria-hidden />
+                      <div
+                        className="mt-2 w-0.5 flex-1 min-h-[3rem] bg-[#111]/15 sm:min-h-[3.5rem]"
+                        aria-hidden
+                      />
                     )}
                   </div>
                   <ScrollReveal
                     delay={Math.min(i + 1, 4) as 0 | 1 | 2 | 3 | 4}
-                    className="mb-2 flex-1"
+                    className="mb-1 flex-1 sm:mb-2"
                   >
-                    <div className="k2k-surface k2k-hover-lift rounded-2xl border-t-2 border-t-k2k-blue/15 p-5 transition duration-300 hover:border-t-k2k-blue/35">
+                    <div className="k2k-surface k2k-hover-lift rounded-2xl border-t-2 border-t-k2k-blue/15 p-4 transition duration-300 hover:border-t-k2k-blue/35 sm:p-5">
                       <h3 className="font-display text-lg text-ink">{step.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         {step.desc}

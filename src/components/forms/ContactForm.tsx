@@ -29,7 +29,7 @@ const ERROR_MESSAGE = BUSINESS.email
   : `Something went wrong while sending your message. Please try again or call ${BUSINESS.phone}.`;
 
 const fieldClass =
-  "h-12 rounded-xl border border-k2k-black bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(59,110,145,0.25)]";
+  "min-h-12 h-12 w-full rounded-xl border border-k2k-black bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(59,110,145,0.25)]";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70";
 
@@ -47,7 +47,7 @@ function FormField({
   children: ReactNode;
 }) {
   return (
-    <div className="group relative grid gap-2">
+    <div className="group relative space-y-2">
       <Label className={labelClass} htmlFor={id}>
         {label}
         {optional && (
@@ -61,7 +61,16 @@ function FormField({
           aria-hidden="true"
         />
       </div>
-      {error && <p className="text-xs text-destructive">{error}</p>}
+      <p
+        className={cn(
+          "min-h-[1.125rem] text-xs leading-snug text-destructive transition-opacity",
+          error ? "opacity-100" : "opacity-0",
+        )}
+        role={error ? "alert" : undefined}
+        aria-live="polite"
+      >
+        {error ?? "\u00a0"}
+      </p>
     </div>
   );
 }
@@ -161,7 +170,7 @@ export function ContactForm() {
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate
-        className="group k2k-card grid gap-6 rounded-[1.75rem] p-6 sm:p-8"
+        className="group k2k-card grid min-w-0 gap-5 rounded-[1.75rem] p-5 sm:gap-6 sm:p-7"
       >
         <div
           className="flex items-center gap-3 border-b border-k2k-black/10 pb-5"
@@ -227,7 +236,7 @@ export function ContactForm() {
             rows={5}
             {...register("message")}
             className={cn(
-              "min-h-[140px] rounded-xl border border-k2k-black bg-white px-4 py-3 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(59,110,145,0.25)]",
+              "min-h-[140px] w-full resize-y rounded-xl border border-k2k-black bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(59,110,145,0.25)]",
               errors.message && "border-destructive/50",
             )}
           />

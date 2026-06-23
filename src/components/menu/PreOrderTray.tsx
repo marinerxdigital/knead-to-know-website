@@ -1,4 +1,4 @@
-import { MessageCircle, Phone, ShoppingBag, Trash2, X } from "lucide-react";
+import { MessageCircle, Phone, ShoppingBag, ShoppingCart, Trash2, X } from "lucide-react";
 import type { TrayLine } from "@/lib/preorder-tray";
 import {
   buildSmsHref,
@@ -44,15 +44,20 @@ function TrayContent({
 
       {isEmpty ? (
         <div className="flex flex-1 flex-col items-center justify-center px-6 py-10 text-center">
-          <p className="font-display text-lg text-ink">
-            Build your preorder by selecting items from the menu.
+          <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-k2k-black/15 bg-k2k-cream/60">
+            <ShoppingCart className="h-6 w-6 text-k2k-blue" aria-hidden />
+          </span>
+          <p className="font-display text-xl text-ink">Your tray is empty</p>
+          <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-muted-foreground">
+            Tap any menu item to add it here. When you&apos;re ready, text Wendy your tray — no
+            checkout, just a quick SMS.
           </p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Pre-orders only. Everything is baked fresh to order.
+          <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-k2k-blue/80">
+            Pre-order only · Baked fresh to order
           </p>
           <a
             href={BUSINESS.phoneTel}
-            className="k2k-button k2k-button-primary mt-6 inline-flex items-center gap-2"
+            className="k2k-button k2k-button-outline mt-6 inline-flex !min-h-11 items-center gap-2 !px-6 !text-xs"
           >
             <Phone className="h-4 w-4" aria-hidden />
             Call Wendy
@@ -79,7 +84,7 @@ function TrayContent({
                     type="button"
                     onClick={() => onRemove(line.productId)}
                     aria-label={`Remove ${line.product.name} from tray`}
-                    className="shrink-0 rounded-full p-1 text-k2k-navy/50 transition hover:bg-k2k-cream hover:text-k2k-navy"
+                    className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full text-k2k-navy/50 transition hover:bg-k2k-cream hover:text-k2k-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-k2k-blue/30"
                   >
                     <Trash2 className="h-4 w-4" aria-hidden />
                   </button>
@@ -113,17 +118,17 @@ function TrayContent({
               Final order timing and availability are confirmed directly with Wendy.
             </p>
 
-            <div className="mt-4 flex flex-col gap-2">
+            <div className="mt-4 flex flex-col gap-2.5">
               <a
                 href={buildSmsHref(lines)}
-                className="k2k-button k2k-button-primary inline-flex w-full items-center justify-center gap-2"
+                className="k2k-button k2k-button-primary inline-flex w-full !min-h-11 items-center justify-center gap-2 !text-xs"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden />
                 Text Wendy
               </a>
               <a
                 href={BUSINESS.phoneTel}
-                className="k2k-button k2k-button-outline inline-flex w-full items-center justify-center gap-2"
+                className="k2k-button k2k-button-outline inline-flex w-full !min-h-11 items-center justify-center gap-2 !text-xs"
               >
                 <Phone className="h-4 w-4" aria-hidden />
                 Call Wendy
@@ -157,7 +162,7 @@ export function PreOrderTraySidebar({
 }) {
   return (
     <aside
-      className="k2k-preorder-tray-sidebar k2k-surface sticky top-[5.5rem] hidden max-h-[calc(100vh-6.5rem)] overflow-hidden rounded-[1.75rem] lg:flex lg:flex-col"
+      className="k2k-preorder-tray-sidebar k2k-surface sticky top-[5.5rem] hidden h-fit w-full max-h-[calc(100vh-6.5rem)] min-w-[280px] max-w-[340px] overflow-hidden rounded-[1.75rem] lg:flex lg:flex-col lg:self-start"
       aria-label="Pre-order tray"
     >
       <TrayContent lines={lines} onSetQty={onSetQty} onRemove={onRemove} onClear={onClear} />
@@ -185,7 +190,7 @@ export function PreOrderTrayMobile({
   const total = estimatedTotal(lines);
 
   return (
-    <div className="k2k-preorder-tray-mobile fixed inset-x-0 bottom-0 z-30 lg:hidden">
+    <div className="k2k-preorder-tray-mobile fixed inset-x-0 bottom-0 z-40 lg:hidden">
       {expanded && (
         <button
           type="button"
@@ -202,17 +207,21 @@ export function PreOrderTrayMobile({
         )}
       >
         {!expanded && (
-          <div className="flex items-center gap-3 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <div className="flex items-center gap-2.5 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <div className="flex min-w-0 flex-1 items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-k2k-black bg-k2k-blue text-sm font-bold text-white">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-k2k-black bg-k2k-blue text-sm font-bold text-white">
                 {count}
               </span>
               <div className="min-w-0">
                 <p className="truncate text-sm font-medium text-ink">
                   {count === 0 ? "Pre-Order Tray" : `${count} item${count === 1 ? "" : "s"}`}
                 </p>
-                {count > 0 && (
+                {count > 0 ? (
                   <p className="text-xs tabular-nums text-k2k-blue">Est. {formatMoney(total)}</p>
+                ) : (
+                  <p className="truncate text-xs text-muted-foreground">
+                    Tap items to build your tray
+                  </p>
                 )}
               </div>
             </div>
@@ -221,14 +230,14 @@ export function PreOrderTrayMobile({
               onClick={onToggle}
               aria-expanded={expanded}
               aria-controls="mobile-preorder-tray"
-              className="k2k-button k2k-button-primary !min-h-10 shrink-0 !px-5 !text-[10px]"
+              className="k2k-button k2k-button-primary !min-h-11 shrink-0 !px-4 !text-[10px] sm:!px-5"
             >
-              {count === 0 ? "View Pre-Order" : "Review Order"}
+              {count === 0 ? "View Tray" : "Review Order"}
             </button>
             {count === 0 && (
               <a
                 href={BUSINESS.phoneTel}
-                className="k2k-button k2k-button-outline !min-h-10 shrink-0 !px-4"
+                className="k2k-button k2k-button-outline inline-flex !min-h-11 !min-w-11 shrink-0 items-center justify-center !px-0"
                 aria-label="Call Wendy"
               >
                 <Phone className="h-4 w-4" />
@@ -246,7 +255,7 @@ export function PreOrderTrayMobile({
               type="button"
               onClick={onToggle}
               aria-label="Close tray"
-              className="absolute right-4 top-4 z-10 rounded-full border border-k2k-black/20 p-1.5"
+              className="absolute right-4 top-4 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-k2k-black/20"
             >
               <X className="h-4 w-4" aria-hidden />
             </button>

@@ -247,43 +247,43 @@ function HomePage() {
           delay="3s"
         />
 
-        <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:max-w-[54rem] lg:py-28">
-          <div className="k2k-stagger-1 mb-8 flex items-center gap-5 sm:gap-6">
-            <BrandLogo variant="hero" className="ring-offset-4" />
-            <div>
-              <div className="flex items-center gap-3">
+        <div className="relative mx-auto flex min-h-[min(88vh,52rem)] max-w-7xl flex-col justify-center px-4 py-16 sm:min-h-[88vh] sm:px-8 sm:py-20 lg:max-w-[54rem] lg:py-28">
+          <div className="k2k-stagger-1 mb-6 flex flex-col items-start gap-4 sm:mb-8 sm:flex-row sm:items-center sm:gap-5 lg:gap-6">
+            <BrandLogo variant="hero" className="ring-offset-2 sm:ring-offset-4" />
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="h-px w-6 bg-k2k-black/15" aria-hidden="true" />
-                <p className="text-xs font-medium uppercase tracking-[0.24em] text-ink text-balance">
+                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-ink text-balance sm:text-xs sm:tracking-[0.24em]">
                   {BUSINESS.city}
                 </p>
                 <span className="h-1 w-1 shrink-0 rounded-full bg-wheat" aria-hidden="true" />
               </div>
-              <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-ink">
+              <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink sm:text-[11px] sm:tracking-[0.22em]">
                 Serving {BUSINESS.serviceArea}
               </p>
             </div>
           </div>
 
-          <h1 className="k2k-stagger-2 max-w-[16ch] font-display text-[clamp(2.5rem,6.5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] text-ink">
+          <h1 className="k2k-stagger-2 max-w-[14ch] font-display text-[clamp(1.875rem,5.2vw+0.5rem,4.75rem)] leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:max-w-[18ch] sm:leading-[1.03] md:max-w-[20ch]">
             Fresh Sourdough Baked to Order on Daniel Island
           </h1>
 
-          <p className="k2k-stagger-3 mt-6 max-w-xl text-lg leading-relaxed text-ink/75 sm:text-xl">
+          <p className="k2k-stagger-3 mt-5 max-w-xl text-base leading-relaxed text-ink/75 text-pretty sm:mt-6 sm:text-lg md:text-xl">
             Artisan sourdough breads, cookies, and bagels — {BUSINESS.orderingModel.toLowerCase()},
             baked fresh by {BUSINESS.owner}.
           </p>
 
-          <div className="k2k-stagger-4 mt-10 flex flex-wrap items-center gap-3">
+          <div className="k2k-stagger-4 mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               to="/custom-orders"
-              className="k2k-button k2k-button-primary inline-flex h-14 items-center justify-center gap-2 px-10 text-[0.75rem] shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)] hover:bg-k2k-navy"
+              className="k2k-button k2k-button-primary inline-flex min-h-12 w-full items-center justify-center gap-2 px-6 text-[0.7rem] shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)] hover:bg-k2k-navy sm:h-14 sm:w-auto sm:px-10 sm:text-[0.75rem]"
             >
               Pre-Order Your Bakes
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
             <Link
               to="/menu"
-              className="k2k-button k2k-button-outline inline-flex h-14 items-center justify-center px-8"
+              className="k2k-button k2k-button-outline inline-flex min-h-12 w-full items-center justify-center px-6 sm:h-14 sm:w-auto sm:px-8"
             >
               View Menu
             </Link>
@@ -603,25 +603,27 @@ function HomePage() {
             </span>
           }
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-3">
           {[
             { n: 1, icon: ICONS.heart },
             { n: 2, icon: ICONS.wheat },
             { n: 3, icon: ICONS.gift },
           ].map((item, index) => (
             <ScrollReveal key={item.n} delay={Math.min(index, 2) as 0 | 1 | 2}>
-              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col rounded-2xl border-t-2 border-t-k2k-blue/15 p-8 text-center">
-                <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-k2k-black bg-k2k-cream">
-                  <img
-                    src={item.icon}
-                    alt=""
-                    className="k2k-icon-black k2k-icon-hover h-5 w-5 object-contain"
-                    aria-hidden
-                  />
+              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col items-center rounded-2xl border-t-2 border-t-k2k-blue/15 px-6 py-7 text-center sm:px-8 sm:py-8">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-k2k-black bg-k2k-cream">
+                    <img
+                      src={item.icon}
+                      alt=""
+                      className="k2k-icon-black k2k-icon-hover h-5 w-5 object-contain"
+                      aria-hidden
+                    />
+                  </div>
+                  <WheatScoringMark className="k2k-float-gentle w-14 opacity-35 sm:w-16" />
                 </div>
-                <WheatScoringMark className="k2k-float-gentle mx-auto mb-4 w-16 opacity-35" />
-                <p className="font-display text-lg text-ink">Neighbor story #{item.n}</p>
-                <p className="mt-2 flex-1 text-sm text-ink">
+                <p className="mt-5 font-display text-lg text-ink">Neighbor story #{item.n}</p>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   Testimonial coming soon — we're baking relationships one loaf at a time.
                 </p>
               </div>

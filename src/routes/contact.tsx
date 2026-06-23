@@ -151,7 +151,7 @@ function PhoneLink({
         variant === "hero" &&
           "k2k-surface inline-flex items-center gap-3 rounded-full px-5 py-3 hover:shadow-md",
         variant === "cta" &&
-          "block font-display text-4xl leading-none text-ink hover:text-k2k-blue sm:text-5xl lg:text-6xl",
+          "block max-w-full font-display text-[clamp(1.625rem,7vw,3rem)] leading-tight tracking-tight text-ink hover:text-k2k-blue sm:text-4xl lg:text-5xl",
         variant === "inline" && "inline-flex items-center gap-2",
         className,
       )}
@@ -243,7 +243,7 @@ function ContactPage() {
           <span className="font-display text-lg text-ink">{BUSINESS.phone}</span>
         </PhoneLink>
 
-        <div className="mt-6 flex flex-wrap items-center gap-2">
+        <div className="mt-6 flex min-w-0 flex-wrap items-center gap-2.5 sm:gap-3">
           {QUICK_ACTIONS.map((action) => (
             <QuickActionChip key={action.to} {...action} />
           ))}
@@ -251,10 +251,10 @@ function ContactPage() {
       </PageHero>
 
       <Section bg="beige">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-          <div className="space-y-6">
+        <div className="grid min-w-0 gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+          <div className="min-w-0 space-y-6">
             <ScrollReveal delay={0}>
-              <div className="k2k-accent-rail k2k-surface overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 pl-5 p-7 sm:pl-7 sm:p-9">
+              <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-9">
                 <IconSectionHeading icon={ICONS.envelope} title="Bakery details" />
 
                 <div className="k2k-surface mt-8 overflow-hidden !rounded-2xl !border-[#111] !border-t-k2k-blue/30 !bg-[#f8f4ed] !p-0">
@@ -356,9 +356,9 @@ function ContactPage() {
             </ScrollReveal>
           </div>
 
-          <div className="space-y-8">
+          <div className="min-w-0 space-y-8">
             <ScrollReveal delay={1}>
-              <div className="k2k-accent-rail k2k-surface overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 pl-5 p-7 sm:pl-7 sm:p-9">
+              <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-9">
                 <IconSectionHeading icon={ICONS.envelope} eyebrow="Message" title="Send a note" />
                 <div className="mt-8 border-t border-k2k-blue/10 pt-8">
                   <ContactForm />

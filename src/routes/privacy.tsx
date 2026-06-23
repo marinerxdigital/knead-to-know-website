@@ -167,11 +167,16 @@ const SECTIONS = [
 
 function PrivacySectionHeading({ icon, children }: { icon: string; children: ReactNode }) {
   return (
-    <h2 className="flex items-center gap-4 font-display text-2xl text-ink">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#111]/10 bg-[#f8f4ed]">
-        <img src={icon} alt="" className="h-7 w-7 object-contain opacity-85" aria-hidden />
+    <h2 className="flex min-w-0 items-start gap-3 font-display text-xl leading-snug text-ink sm:items-center sm:gap-4 sm:text-2xl">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#111]/10 bg-[#f8f4ed] sm:h-12 sm:w-12">
+        <img
+          src={icon}
+          alt=""
+          className="h-6 w-6 object-contain opacity-85 sm:h-7 sm:w-7"
+          aria-hidden
+        />
       </div>
-      {children}
+      <span className="min-w-0 pt-0.5 sm:pt-0">{children}</span>
     </h2>
   );
 }
@@ -195,10 +200,15 @@ function PrivacyPage() {
 
       <Section bg="beige" reveal={false}>
         <ScrollReveal>
-          <div className="mx-auto max-w-3xl space-y-6">
+          <div className="mx-auto min-w-0 max-w-prose space-y-6 sm:max-w-2xl lg:max-w-[42rem]">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed">
+              This policy explains how we handle information you share when you contact us or submit
+              an order request. Plain language, no fine print surprises.
+            </p>
+
             <nav
               aria-label="Privacy policy sections"
-              className="k2k-surface flex flex-wrap gap-2 rounded-[1.75rem] p-5 sm:p-6"
+              className="k2k-surface flex min-w-0 flex-wrap gap-2 rounded-[1.75rem] p-4 sm:gap-2.5 sm:p-6"
             >
               <div className="mb-1 flex w-full items-center gap-3 pb-2">
                 <img
@@ -213,7 +223,7 @@ function PrivacyPage() {
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#111] bg-white px-3.5 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.14em] text-k2k-navy transition hover:bg-k2k-blue/5"
+                  className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#111] bg-white px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.12em] text-k2k-navy transition hover:bg-k2k-blue/5 sm:px-3.5 sm:tracking-[0.14em]"
                 >
                   <img
                     src={section.icon}
@@ -234,7 +244,7 @@ function PrivacyPage() {
                   className={cn("k2k-surface scroll-mt-28 rounded-[1.75rem] p-6 sm:p-8")}
                 >
                   <PrivacySectionHeading icon={section.icon}>{section.title}</PrivacySectionHeading>
-                  <div className="mt-5 border-t border-[#111]/8 pt-5 text-base leading-[1.8] text-muted-foreground">
+                  <div className="mt-5 border-t border-[#111]/8 pt-5 text-[0.9375rem] leading-[1.75] text-muted-foreground sm:text-base sm:leading-[1.8]">
                     {section.content}
                   </div>
                 </article>

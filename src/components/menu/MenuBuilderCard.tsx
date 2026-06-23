@@ -27,7 +27,7 @@ export function MenuBuilderCard({
   return (
     <article
       className={cn(
-        "k2k-product-card k2k-hover-lift group flex h-full flex-col overflow-hidden transition duration-300",
+        "k2k-product-card k2k-hover-lift group flex h-full min-h-0 flex-col overflow-hidden p-4 transition duration-300 sm:p-5",
         justAdded && "k2k-tray-add-pulse",
       )}
     >
@@ -60,35 +60,41 @@ export function MenuBuilderCard({
           )}
         </div>
 
-        <div className="flex flex-1 flex-col px-1 pt-4">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-display text-lg leading-tight text-ink">{product.name}</h3>
-            <span className="shrink-0 rounded-full border border-k2k-black bg-k2k-blue/8 px-2.5 py-0.5 text-xs font-medium tabular-nums text-k2k-navy">
+        <div className="flex min-h-[7.5rem] flex-1 flex-col pt-4">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="min-w-0 flex-1 font-display text-lg leading-tight text-ink">
+              {product.name}
+            </h3>
+            <span className="mt-0.5 shrink-0 self-start rounded-full border border-k2k-black bg-k2k-blue/8 px-2.5 py-1 text-xs font-medium leading-none tabular-nums text-k2k-navy">
               {product.priceLabel}
             </span>
           </div>
           <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.14em] text-k2k-blue/80">
             Freshly baked to order
           </p>
-          {product.description && (
-            <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{product.description}</p>
+          {product.description ? (
+            <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+              {product.description}
+            </p>
+          ) : (
+            <div className="mt-2 flex-1" aria-hidden />
           )}
         </div>
       </button>
 
-      <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-k2k-black/10 px-1 pb-1 pt-4">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-k2k-black/10 pt-4">
         <QuantityControl value={qty} onChange={setQty} min={1} label={product.name} compact />
         <button
           type="button"
           onClick={() => onAdd(qty)}
-          className="k2k-button k2k-button-primary !min-h-9 !px-4 !text-[9px] !tracking-[0.14em]"
+          className="k2k-button k2k-button-primary !min-h-11 !px-4 !text-[10px] !tracking-[0.12em]"
         >
           Add to Pre-Order
         </button>
       </div>
 
       {trayQuantity > 0 && (
-        <p className="px-1 pb-3 text-center text-[10px] font-medium uppercase tracking-wider text-k2k-blue">
+        <p className="pb-1 pt-2 text-center text-[10px] font-medium uppercase tracking-wider text-k2k-blue">
           {trayQuantity} in tray
         </p>
       )}

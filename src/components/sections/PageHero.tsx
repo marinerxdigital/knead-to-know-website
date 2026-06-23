@@ -88,7 +88,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "group relative overflow-hidden border-b border-k2k-black bg-k2k-cream pb-16 pt-16 sm:pb-20 sm:pt-24",
+        "group relative overflow-hidden border-b border-k2k-black bg-k2k-cream pb-14 pt-14 sm:pb-20 sm:pt-24",
         hasBgImage && "min-h-[42vh]",
         className,
       )}
@@ -125,9 +125,9 @@ export function PageHero({
 
       <div
         className={cn(
-          "relative mx-auto max-w-7xl px-5 sm:px-8",
+          "relative mx-auto max-w-7xl min-w-0 px-[var(--k2k-section-x)]",
           image && imagePosition === "right"
-            ? "grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]"
+            ? "grid items-center gap-8 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr]"
             : "max-w-4xl",
           isCenter && "text-center",
         )}
@@ -135,12 +135,12 @@ export function PageHero({
         <div className={cn(isCenter && "mx-auto")}>
           <div
             className={cn(
-              "k2k-stagger-1 mb-5 flex items-center gap-3",
+              "k2k-stagger-1 mb-4 flex items-center gap-3 sm:mb-5",
               isCenter && "justify-center",
             )}
           >
             <span className="h-px w-8 bg-k2k-black/20" aria-hidden />
-            <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue sm:text-xs sm:tracking-[0.24em]">
               {eyebrow}
             </p>
             {WHEAT_SVG}
@@ -148,7 +148,7 @@ export function PageHero({
 
           <h1
             className={cn(
-              "k2k-stagger-2 font-display text-4xl leading-[1.04] text-ink sm:text-5xl lg:text-6xl",
+              "k2k-stagger-2 font-display text-[clamp(1.875rem,4.5vw+0.5rem,3.75rem)] leading-[1.06] text-ink text-balance sm:text-5xl sm:leading-[1.04] lg:text-6xl",
               isCenter && "mx-auto max-w-3xl",
             )}
           >
@@ -158,7 +158,7 @@ export function PageHero({
           {intro && (
             <p
               className={cn(
-                "k2k-stagger-3 mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl",
+                "k2k-stagger-3 mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:mt-5 sm:text-lg md:text-xl",
                 isCenter ? "mx-auto max-w-2xl" : "max-w-2xl",
               )}
             >

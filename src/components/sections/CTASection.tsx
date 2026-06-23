@@ -72,7 +72,7 @@ export function CTASection({
   compact?: boolean;
 }) {
   return (
-    <section className={cn("px-5 sm:px-8", compact ? "pb-12 sm:pb-16" : "pb-20 sm:pb-28")}>
+    <section className={cn("px-4 sm:px-8", compact ? "pb-12 sm:pb-16" : "pb-16 sm:pb-28")}>
       <ScrollReveal>
         <div
           className={cn(
@@ -151,8 +151,8 @@ export function CTASection({
 
           <div
             className={cn(
-              "relative grid items-center gap-10 px-6 sm:px-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16",
-              compact ? "py-12 sm:py-14 lg:py-16" : "py-16 sm:py-20 lg:py-28",
+              "relative grid items-center gap-8 px-5 sm:gap-10 sm:px-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16",
+              compact ? "py-10 sm:py-14 lg:py-16" : "py-12 sm:py-20 lg:py-28",
             )}
           >
             {/* Text block */}
@@ -177,18 +177,18 @@ export function CTASection({
               </p>
               <h2
                 className={cn(
-                  "mt-5 max-w-2xl font-display leading-[1.02] text-white text-balance lg:mx-0",
+                  "mt-4 max-w-2xl font-display leading-[1.06] text-white text-balance sm:mt-5 sm:leading-[1.02] lg:mx-0",
                   compact
-                    ? "text-4xl sm:text-5xl lg:text-[3.25rem]"
-                    : "text-5xl sm:text-6xl lg:text-[4.25rem]",
+                    ? "text-3xl sm:text-5xl lg:text-[3.25rem]"
+                    : "text-[clamp(1.875rem,5vw+0.5rem,4.25rem)] sm:text-6xl lg:text-[4.25rem]",
                 )}
               >
                 {title}
               </h2>
               <p
                 className={cn(
-                  "mx-auto mt-6 max-w-xl leading-relaxed text-white/85 text-pretty lg:mx-0",
-                  compact ? "text-sm sm:text-base" : "text-base sm:text-lg",
+                  "mx-auto mt-4 max-w-xl leading-relaxed text-white/85 text-pretty sm:mt-6 lg:mx-0",
+                  compact ? "text-sm sm:text-base" : "text-sm sm:text-lg",
                 )}
               >
                 {text}
@@ -198,26 +198,26 @@ export function CTASection({
             {/* Actions block */}
             <ScrollReveal
               delay={2}
-              className="flex flex-col items-center gap-4 lg:items-start lg:pl-4"
+              className="flex w-full flex-col items-stretch gap-3 sm:items-center sm:gap-4 lg:items-start lg:pl-4"
             >
               <Link
                 to={primaryTo}
                 className={cn(
-                  "k2k-hover-lift inline-flex w-full items-center justify-center gap-2 rounded-full border border-k2k-black bg-white font-medium text-k2k-navy shadow-[0_14px_36px_-10px_rgba(17,17,17,0.35)] transition hover:bg-white/95 sm:w-auto",
-                  compact ? "h-11 px-7 text-sm" : "h-12 px-8 text-base",
+                  "k2k-hover-lift inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-full border border-k2k-black bg-white px-5 text-sm font-medium text-k2k-navy shadow-[0_14px_36px_-10px_rgba(17,17,17,0.35)] transition hover:bg-white/95 sm:w-auto sm:min-h-12 sm:px-8 sm:text-base",
+                  compact && "sm:min-h-11 sm:px-7 sm:text-sm",
                 )}
               >
                 {primaryLabel}
-                <ArrowRight className="k2k-icon-hover h-4 w-4" />
+                <ArrowRight className="k2k-icon-hover h-4 w-4 shrink-0" />
               </Link>
 
-              <div className="flex w-full flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <div className="flex w-full flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 lg:justify-start">
                 {secondaryLabel && secondaryTo && secondaryIsPhone ? (
                   <a
                     href={secondaryTo}
                     className={cn(
-                      "k2k-hover-lift inline-flex items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 font-medium text-white transition hover:border-white/65 hover:bg-white/10",
-                      compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
+                      "k2k-hover-lift inline-flex min-h-11 w-full items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 px-5 text-sm font-medium text-white transition hover:border-white/65 hover:bg-white/10 sm:w-auto sm:px-7",
+                      compact && "sm:min-h-11",
                     )}
                   >
                     {secondaryLabel}
@@ -228,8 +228,8 @@ export function CTASection({
                     <Link
                       to={secondaryTo as RouteTo}
                       className={cn(
-                        "k2k-hover-lift inline-flex items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 font-medium text-white transition hover:border-white/65 hover:bg-white/10",
-                        compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
+                        "k2k-hover-lift inline-flex min-h-11 w-full items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 px-5 text-sm font-medium text-white transition hover:border-white/65 hover:bg-white/10 sm:w-auto sm:px-7",
+                        compact && "sm:min-h-11",
                       )}
                     >
                       {secondaryLabel}
@@ -240,8 +240,8 @@ export function CTASection({
                   <Link
                     to={tertiaryTo}
                     className={cn(
-                      "k2k-hover-lift inline-flex items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 font-medium text-white transition hover:border-white/65 hover:bg-white/10",
-                      compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
+                      "k2k-hover-lift inline-flex min-h-11 w-full items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 px-5 text-sm font-medium text-white transition hover:border-white/65 hover:bg-white/10 sm:w-auto sm:px-7",
+                      compact && "sm:min-h-11",
                     )}
                   >
                     {tertiaryLabel}

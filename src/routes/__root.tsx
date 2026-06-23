@@ -21,24 +21,28 @@ const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
 
 function NotFoundComponent() {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4 py-12">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,158,192,0.12),transparent_55%)]"
         aria-hidden
       />
-      <div className="relative max-w-md text-center">
+      <div className="k2k-bordered k2k-surface relative w-full max-w-md rounded-[1.75rem] px-6 py-10 text-center sm:px-8 sm:py-12">
         <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
-          <span className="h-px w-10 bg-k2k-blue/20" />
-          <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-50" />
-          <span className="h-px w-10 bg-k2k-blue/20" />
+          <span className="h-px w-10 bg-k2k-blue/25" />
+          <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-60" />
+          <span className="h-px w-10 bg-k2k-blue/25" />
         </div>
-        <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">404</p>
-        <h1 className="mt-4 font-display text-4xl text-ink sm:text-5xl">Page not found</h1>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-xs font-bold uppercase tracking-[0.24em] text-k2k-blue">404</p>
+        <h1 className="mt-4 font-display text-3xl text-ink sm:text-4xl">Page not found</h1>
+        <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
+        <div className="mt-4 flex flex-col items-center gap-1">
+          <p className="k2k-wordmark-title text-base">Knead To Know</p>
+          <p className="k2k-wordmark-tagline">Sweet &amp; Sour</p>
+        </div>
         <div className="mt-8">
-          <Link to="/" className="k2k-button k2k-button-primary inline-flex">
+          <Link to="/" className="k2k-button k2k-button-primary inline-flex !min-h-12 !px-8">
             Back to home
           </Link>
         </div>
@@ -193,14 +197,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-white">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-full focus-visible:bg-k2k-blue focus-visible:px-5 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-white"
-        >
+        <a href="#main-content" className="k2k-skip-link">
           Skip to content
         </a>
         <Header />
-        <main id="main-content" className="k2k-page-enter flex-1 pb-20 md:pb-0">
+        <main id="main-content" className="k2k-page-enter k2k-main-mobile-pad flex-1">
           <Outlet />
         </main>
         <Footer />

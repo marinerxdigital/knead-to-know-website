@@ -32,7 +32,7 @@ export function ProductDetailDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] max-w-lg overflow-y-auto rounded-[1.75rem] border border-k2k-black p-0">
+      <DialogContent className="fixed inset-x-3 bottom-3 top-auto z-50 flex max-h-[min(88dvh,calc(100dvh-1.5rem))] w-[calc(100%-1.5rem)] max-w-lg translate-x-0 translate-y-0 flex-col overflow-hidden rounded-[1.75rem] border border-k2k-black p-0 sm:inset-auto sm:left-[50%] sm:top-[50%] sm:max-h-[min(90dvh,720px)] sm:w-full sm:translate-x-[-50%] sm:translate-y-[-50%]">
         {product.image && (
           <div className="aspect-[16/10] overflow-hidden rounded-t-[1.65rem] border-b border-k2k-black/10">
             <img
@@ -42,7 +42,7 @@ export function ProductDetailDialog({
             />
           </div>
         )}
-        <div className="p-6 sm:p-8">
+        <div className="overflow-y-auto overscroll-contain p-6 sm:p-8">
           <DialogHeader>
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue">
               {product.displayCategory}

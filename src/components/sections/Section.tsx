@@ -12,19 +12,25 @@ const bgClasses: Record<SectionBg, string> = {
   beige: "bg-k2k-cream",
 };
 
+const sectionPadding = "py-[var(--k2k-section-y-md)] sm:py-[var(--k2k-section-y-lg)]";
+const sectionX = "px-[var(--k2k-section-x)]";
+
 const variantClasses: Record<SectionVariant, { section: string; inner: string }> = {
   default: {
-    section: "py-20 sm:py-28",
-    inner: "mx-auto max-w-7xl px-5 sm:px-8",
+    section: sectionPadding,
+    inner: cn("mx-auto max-w-7xl min-w-0", sectionX),
   },
   editorial: {
-    section: "relative py-24 sm:py-32",
-    inner: "relative mx-auto max-w-7xl px-5 sm:px-8",
+    section: cn("relative", sectionPadding),
+    inner: cn("relative mx-auto max-w-7xl min-w-0", sectionX),
   },
   inset: {
-    section: "py-16 sm:py-20",
-    inner:
-      "mx-auto max-w-7xl px-5 sm:px-8 [&>div]:rounded-[2rem] [&>div]:border [&>div]:border-k2k-black [&>div]:bg-white [&>div]:p-8 [&>div]:shadow-[var(--k2k-shadow-sm)] sm:[&>div]:p-12",
+    section: "py-[var(--k2k-section-y-sm)] sm:py-[var(--k2k-section-y-md)]",
+    inner: cn(
+      "mx-auto max-w-7xl min-w-0",
+      sectionX,
+      "[&>div]:rounded-[2rem] [&>div]:border [&>div]:border-k2k-black [&>div]:bg-white [&>div]:p-8 [&>div]:shadow-[var(--k2k-shadow-sm)] sm:[&>div]:p-12",
+    ),
   },
 };
 
@@ -169,14 +175,18 @@ export function SectionHeading({
         align === "center" && decorative && "flex flex-col items-center",
       )}
     >
-      {eyebrow && <Eyebrow decorative={decorative}>{eyebrow}</Eyebrow>}
+      {eyebrow && (
+        <Eyebrow decorative={decorative} className={decorative ? undefined : "mb-0"}>
+          {eyebrow}
+        </Eyebrow>
+      )}
       <As
         id={id}
         className={cn(
-          "mt-4 font-display leading-[1.05] text-ink text-balance",
+          "mt-4 font-display leading-[1.05] text-ink text-balance sm:mt-5",
           As === "h1"
-            ? "text-5xl sm:text-6xl lg:text-7xl"
-            : "text-4xl sm:text-5xl lg:text-[3.25rem]",
+            ? "text-4xl sm:text-6xl lg:text-7xl"
+            : "text-3xl sm:text-5xl lg:text-[3.25rem]",
           align === "center" && "mx-auto",
         )}
       >
@@ -185,7 +195,7 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-5 text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg sm:leading-relaxed",
+            "mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:mt-5 sm:text-lg sm:leading-relaxed",
             align === "center" && "mx-auto max-w-2xl",
           )}
         >
@@ -194,7 +204,10 @@ export function SectionHeading({
       )}
       {decorative && (
         <div
-          className={cn("mt-6 flex items-center gap-3", align === "center" && "justify-center")}
+          className={cn(
+            "mt-5 flex items-center gap-3 sm:mt-6",
+            align === "center" && "justify-center",
+          )}
           aria-hidden="true"
         >
           <span className="h-px w-12 bg-k2k-black/10" />

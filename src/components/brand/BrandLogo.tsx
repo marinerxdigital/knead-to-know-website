@@ -12,7 +12,7 @@ const sizeClasses: Record<BrandLogoVariant, string> = {
   "header-compact":
     "h-[2.75rem] w-[2.75rem] sm:h-[3rem] sm:w-[3rem] md:h-[3.25rem] md:w-[3.25rem] lg:h-[3.5rem] lg:w-[3.5rem]",
   footer: "h-[4rem] w-[4rem] sm:h-[4.5rem] sm:w-[4.5rem] lg:h-[5rem] lg:w-[5rem]",
-  hero: "h-[5rem] w-[5rem] sm:h-[6rem] sm:w-[6rem] md:h-[7rem] md:w-[7rem] lg:h-[8rem] lg:w-[8rem]",
+  hero: "h-[4.75rem] w-[4.75rem] min-[400px]:h-[5.5rem] min-[400px]:w-[5.5rem] sm:h-[7rem] sm:w-[7rem] md:h-[9rem] md:w-[9rem] lg:h-[10.5rem] lg:w-[10.5rem] xl:h-[12rem] xl:w-[12rem]",
 };
 
 export function BrandLogo({

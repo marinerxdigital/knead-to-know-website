@@ -79,18 +79,21 @@ function MenuPage() {
               <div className="mt-10 flex flex-wrap justify-center gap-3">
                 <Link
                   to="/custom-orders"
-                  className="group k2k-button k2k-button-primary inline-flex items-center gap-2 px-8 shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)]"
+                  className="group k2k-button k2k-button-primary inline-flex !min-h-11 items-center gap-2 !px-6 !text-xs shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)] sm:!px-8"
                 >
                   Full Order Form
                   <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
                 </Link>
                 <a
                   href={BUSINESS.phoneTel}
-                  className="k2k-button k2k-button-outline inline-flex px-8"
+                  className="k2k-button k2k-button-outline inline-flex !min-h-11 !px-6 !text-xs sm:!px-8"
                 >
                   {BUSINESS.phone}
                 </a>
-                <Link to="/catering" className="k2k-button k2k-button-outline inline-flex px-8">
+                <Link
+                  to="/catering"
+                  className="k2k-button k2k-button-outline inline-flex !min-h-11 !px-6 !text-xs sm:!px-8"
+                >
                   Catering &amp; Events
                 </Link>
               </div>

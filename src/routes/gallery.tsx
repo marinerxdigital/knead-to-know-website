@@ -66,9 +66,9 @@ function HarborLine({ className }: { className?: string }) {
 const MASONRY_ASPECTS = [
   "aspect-[4/5]",
   "aspect-[3/4]",
+  "aspect-[4/5]",
   "aspect-square",
   "aspect-[5/4]",
-  "aspect-[4/3]",
 ] as const;
 
 function getItemsForCategory(cat: Category) {
@@ -164,7 +164,7 @@ function GalleryPage() {
         </ScrollReveal>
 
         <div
-          className="columns-1 gap-6 sm:columns-2 lg:columns-3 xl:columns-4"
+          className="columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3 lg:gap-6 xl:columns-4"
           role="tabpanel"
           aria-label={`${activeCategory} gallery`}
         >
@@ -177,7 +177,7 @@ function GalleryPage() {
               <ScrollReveal
                 key={product.id}
                 delay={revealDelay}
-                className="mb-6 break-inside-avoid"
+                className="mb-4 break-inside-avoid sm:mb-5 lg:mb-6"
               >
                 <button
                   type="button"
@@ -197,7 +197,7 @@ function GalleryPage() {
                 >
                   <div
                     className={cn(
-                      "k2k-surface overflow-hidden rounded-[1.5rem] p-3 transition duration-300",
+                      "k2k-surface overflow-hidden rounded-[1.5rem] p-2.5 transition duration-300 sm:p-3",
                       hasPhoto && "group-hover:shadow-[0_28px_60px_-32px_rgba(17,17,17,0.25)]",
                       !hasPhoto && "border-dashed opacity-90",
                     )}
@@ -205,7 +205,9 @@ function GalleryPage() {
                     <div
                       className={cn(
                         "relative overflow-hidden rounded-xl border border-[#111] bg-[#f8fafc]",
-                        hasPhoto ? aspectClass : "aspect-[4/3]",
+                        hasPhoto
+                          ? cn(aspectClass, "min-h-[12rem]")
+                          : "aspect-[4/5] sm:aspect-[4/3]",
                       )}
                     >
                       {hasPhoto ? (

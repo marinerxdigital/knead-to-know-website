@@ -15,10 +15,10 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
+  "min-h-12 h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
 
 const textareaClass =
-  "w-full rounded-xl border border-[#111] bg-white p-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
+  "min-h-[120px] w-full resize-y rounded-xl border border-[#111] bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
 
 const CATERING_SERVICES = [
   {
@@ -281,10 +281,14 @@ function CateringPage() {
           decorative
           intro="Six ways to bring small-batch sourdough to your table — from cookie trays to fully custom platters."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid auto-rows-fr items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CATERING_SERVICES.map((service, index) => (
-            <ScrollReveal key={service.title} delay={Math.min(index % 3, 4) as 0 | 1 | 2 | 3 | 4}>
-              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col rounded-2xl border-t-2 border-t-k2k-blue/15 p-7 transition duration-300 hover:border-t-k2k-blue/35">
+            <ScrollReveal
+              key={service.title}
+              delay={Math.min(index % 3, 4) as 0 | 1 | 2 | 3 | 4}
+              className="h-full"
+            >
+              <div className="k2k-surface k2k-hover-lift group flex h-full min-h-full flex-col rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 sm:p-7 transition duration-300 hover:border-t-k2k-blue/35">
                 <div className="flex items-start justify-between gap-3">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 group-hover:scale-105 group-hover:bg-white group-hover:shadow-[0_4px_16px_-6px_rgba(17,17,17,0.15)]">
                     <img
@@ -345,8 +349,8 @@ function CateringPage() {
                       className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
                       aria-hidden
                     />
-                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border border-[#111] bg-k2k-blue text-[10px] font-medium text-white">
-                      {step.step.replace("0", "")}
+                    <span className="absolute -right-1.5 -top-1.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#111] bg-k2k-blue text-[11px] font-semibold leading-none text-white">
+                      {step.step}
                     </span>
                   </div>
                   <h3 className="font-display text-xl text-ink">{step.title}</h3>
@@ -362,7 +366,7 @@ function CateringPage() {
 
       <Section bg="white" variant="inset" id="catering-form">
         <ScrollReveal>
-          <div className="k2k-accent-rail k2k-surface overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-0 pl-5 shadow-[0_28px_60px_-44px_rgba(17,17,17,0.18)] sm:pl-7">
+          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-0 pl-5 shadow-[0_28px_60px_-44px_rgba(17,17,17,0.18)] sm:pl-7">
             <div className="border-b border-k2k-blue/10 px-6 py-8 sm:px-10 sm:py-10">
               <SectionHeading
                 eyebrow="Inquire"
