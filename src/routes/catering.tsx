@@ -190,7 +190,7 @@ function CateringPage() {
       <>
         <section className="relative overflow-hidden border-b border-k2k-blue/10 bg-[#f8f4ed] py-24 sm:py-32">
           <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(127,167,199,0.12),transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(106,158,192,0.12),transparent_55%)]"
             aria-hidden
           />
           <div className="relative mx-auto max-w-xl px-5 sm:px-8">

@@ -4,6 +4,16 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Harbor Deep Blue Palette (2026-06-22)
+
+- Refined coastal blue per client feedback (old `#4F7EA8` felt gray/washed)
+- **New tokens:** primary `#3B6E91`, harbor `#6A9EC0`, hover `#325F7D`
+- Centralized in `src/styles.css` via `--k2k-blue-rgb` / `--k2k-harbor-rgb` for rgba shadows
+- All hardcoded `rgba(79,126,168,…)` literals migrated in CSS + TSX
+- Build passes
+
+---
+
 ## Orphan Cleanup + Master Guide (2026-06-23)
 
 - Removed orphan routes: `/flavors`, `/flavors-pricing`, `/featured`, `/inquiry`
@@ -27,7 +37,7 @@ Long-term project memory. **Update after every meaningful session.**
 #### Revamp #3–#4 (full-site UI)
 - Black borders on all containers (`k2k-surface`, `k2k-card`, `k2k-product-card`, buttons)
 - Darker bold nav (Menu / About / FAQ / Contact)
-- Wordmark: Knead To Know `font-weight 700` black; **Sweet & Sour blue** `#4F7EA8`
+- Wordmark: Knead To Know `font-weight 700` black; **Sweet & Sour blue** `#3B6E91` (Harbor Deep)
 - Bolder primary buttons (54px min-height, font-weight 700)
 - Blue accent rails + harbor lines site-wide
 - ScrollReveal, icon hover, hero stagger, FAQ accordion motion

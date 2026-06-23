@@ -23,7 +23,7 @@ function NotFoundComponent() {
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(127,167,199,0.12),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,158,192,0.12),transparent_55%)]"
         aria-hidden
       />
       <div className="relative max-w-md text-center">

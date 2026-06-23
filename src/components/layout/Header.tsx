@@ -122,7 +122,7 @@ export function Header() {
             </a>
             <Link
               to="/custom-orders"
-              className="k2k-button k2k-button-primary hidden !min-h-10 !px-5 !text-[0.68rem] !tracking-[0.18em] shadow-[0_10px_28px_-8px_rgba(79,126,168,0.45)] hover:shadow-[0_14px_32px_-8px_rgba(79,126,168,0.55)] sm:inline-flex"
+              className="k2k-button k2k-button-primary hidden !min-h-10 !px-5 !text-[0.68rem] !tracking-[0.18em] shadow-[0_10px_28px_-8px_rgba(59,110,145,0.45)] hover:shadow-[0_14px_32px_-8px_rgba(59,110,145,0.55)] sm:inline-flex"
             >
               Pre-Order Now
             </Link>
@@ -203,7 +203,7 @@ export function Header() {
           <Link
             to="/custom-orders"
             onClick={() => setOpen(false)}
-            className="k2k-button k2k-button-primary mt-6 w-full !min-h-12 shadow-[0_10px_28px_-8px_rgba(79,126,168,0.45)]"
+            className="k2k-button k2k-button-primary mt-6 w-full !min-h-12 shadow-[0_10px_28px_-8px_rgba(59,110,145,0.45)]"
           >
             Pre-Order Now
           </Link>

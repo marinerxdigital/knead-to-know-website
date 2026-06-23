@@ -95,7 +95,7 @@ function IconSectionHeading({
 
 function InfoTile({ icon, title, children }: { icon: string; title: string; children: ReactNode }) {
   return (
-    <div className="k2k-surface k2k-hover-lift group rounded-2xl border-t-2 border-t-k2k-blue/15 p-5 transition duration-300 hover:border-t-k2k-blue/35 hover:shadow-[0_10px_28px_-14px_rgba(79,126,168,0.22)]">
+    <div className="k2k-surface k2k-hover-lift group rounded-2xl border-t-2 border-t-k2k-blue/15 p-5 transition duration-300 hover:border-t-k2k-blue/35 hover:shadow-[0_10px_28px_-14px_rgba(59,110,145,0.22)]">
       <div className="flex items-center gap-3">
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105 group-hover:border-k2k-blue/20">
           <img

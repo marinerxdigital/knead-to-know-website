@@ -42,7 +42,7 @@ function MenuPage() {
         imageAlt="Chocolate chip sourdough cookies from Knead To Know"
       >
         <div className="flex flex-wrap items-center gap-3">
-          <span className="group inline-flex items-center gap-2 rounded-full border border-k2k-black bg-k2k-blue px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_-10px_rgba(79,126,168,0.55)]">
+          <span className="group inline-flex items-center gap-2 rounded-full border border-k2k-black bg-k2k-blue px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_-10px_rgba(59,110,145,0.55)]">
             <Sparkles
               className="h-4 w-4 text-wheat transition duration-300 group-hover:scale-110 group-hover:rotate-12"
               aria-hidden
@@ -79,7 +79,7 @@ function MenuPage() {
               <div className="mt-10 flex flex-wrap justify-center gap-3">
                 <Link
                   to="/custom-orders"
-                  className="group k2k-button k2k-button-primary inline-flex items-center gap-2 px-8 shadow-[0_16px_40px_-12px_rgba(79,126,168,0.55)]"
+                  className="group k2k-button k2k-button-primary inline-flex items-center gap-2 px-8 shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)]"
                 >
                   Full Order Form
                   <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />

@@ -42,8 +42,8 @@
   --color-ink: var(--ink);
 
   /* New K2K tokens exposed as Tailwind colors */
-  --color-k2k-blue: #4f7ea8;
-  --color-k2k-harbor: #7fa7c7;
+  --color-k2k-blue: #3b6e91;
+  --color-k2k-harbor: #6a9ec0;
   --color-k2k-navy: #1f3447;
   --color-k2k-black: #111111;
 
@@ -60,16 +60,19 @@
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --radius: 0.875rem;
 
-  /* Knead To Know Official Palette */
+  /* Knead To Know Official Palette — Harbor Deep coastal blue (refined from #4F7EA8) */
   --k2k-white: #ffffff;
-  --k2k-blue: #4f7ea8;
-  --k2k-harbor-blue: #7fa7c7;
+  --k2k-blue: #3b6e91;
+  --k2k-blue-hover: #325f7d;
+  --k2k-blue-rgb: 59 110 145;
+  --k2k-harbor-blue: #6a9ec0;
+  --k2k-harbor-rgb: 106 158 192;
   --k2k-black: #111111;
   --k2k-navy: #1f3447;
   --k2k-wheat: #c2a878;
   --k2k-cream: #f8f4ed;
   --k2k-container-border: 1px solid #111111;
-  --k2k-border: rgba(79, 126, 168, 0.35);
+  --k2k-border: rgb(var(--k2k-blue-rgb) / 0.35);
   --k2k-radius-lg: 28px;
   --k2k-radius-pill: 999px;
 
@@ -81,7 +84,7 @@
   --k2k-shadow-lg: 0 22px 52px rgba(31, 52, 71, 0.09);
   --k2k-shadow-xl: 0 28px 64px rgba(31, 52, 71, 0.11);
   --k2k-shadow-2xl: 0 36px 80px rgba(31, 52, 71, 0.13);
-  --k2k-shadow-ring: 0 0 0 1px rgba(79, 126, 168, 0.14);
+  --k2k-shadow-ring: 0 0 0 1px rgb(var(--k2k-blue-rgb) / 0.14);
   --k2k-shadow-inner: inset 0 1px 2px rgba(31, 52, 71, 0.04);
 
   /* Transition curves */
@@ -108,8 +111,8 @@
   /* Remapped old vars to new coastal blue/white/navy (remove conflicting cake colors) */
   --cream: #ffffff;
   --blush: #ffffff;
-  --pink: #7fa7c7;
-  --forest: #4f7ea8;
+  --pink: #6a9ec0;
+  --forest: #3b6e91;
   --forest-dark: #1f3447;
   --beige: #f8f4ed;
   --ink: #111111;
@@ -121,19 +124,19 @@
   --card-foreground: #111111;
   --popover: #ffffff;
   --popover-foreground: #111111;
-  --primary: #4f7ea8;
+  --primary: #3b6e91;
   --primary-foreground: #ffffff;
-  --secondary: #7fa7c7;
+  --secondary: #6a9ec0;
   --secondary-foreground: #111111;
   --muted: #f8fafc;
   --muted-foreground: #4b5563;
-  --accent: #4f7ea8;
+  --accent: #3b6e91;
   --accent-foreground: #ffffff;
   --destructive: #b3261e;
   --destructive-foreground: #ffffff;
-  --border: rgba(79, 126, 168, 0.2);
+  --border: rgb(var(--k2k-blue-rgb) / 0.2);
   --input: #e5e7eb;
-  --ring: #4f7ea8;
+  --ring: #3b6e91;
 }
 
 /* Official K2K UI Tokens & Components (translated from knead-to-know-ui-tokens.css) */
@@ -175,7 +178,7 @@
 .k2k-button:focus-visible {
   outline: 2px solid var(--k2k-blue);
   outline-offset: 3px;
-  box-shadow: var(--k2k-shadow-md), 0 0 0 4px rgba(79, 126, 168, 0.18);
+  box-shadow: var(--k2k-shadow-md), 0 0 0 4px rgb(var(--k2k-blue-rgb) / 0.18);
 }
 
 .k2k-button-primary {
@@ -187,15 +190,15 @@
   min-height: 54px;
   box-shadow:
     var(--k2k-shadow-md),
-    0 10px 28px -8px rgba(79, 126, 168, 0.45);
+    0 10px 28px -8px rgb(var(--k2k-blue-rgb) / 0.45);
 }
 
 .k2k-button-primary:hover {
-  background: #46739a;
+  background: var(--k2k-blue-hover);
   border-color: var(--k2k-black);
   box-shadow:
     var(--k2k-shadow-lg),
-    0 14px 32px -8px rgba(79, 126, 168, 0.55);
+    0 14px 32px -8px rgb(var(--k2k-blue-rgb) / 0.55);
 }
 
 .k2k-button-secondary {
@@ -205,7 +208,7 @@
 }
 
 .k2k-button-secondary:hover {
-  background: #6f9ab8;
+  background: #5a8eb0;
   border-color: var(--k2k-black);
 }
 
@@ -217,7 +220,7 @@
 }
 
 .k2k-button-outline:hover {
-  background: rgba(79, 126, 168, 0.04);
+  background: rgb(var(--k2k-blue-rgb) / 0.04);
   border-color: var(--k2k-black);
   color: var(--k2k-navy);
 }
@@ -225,7 +228,7 @@
 .k2k-button-outline:focus-visible {
   outline: 2px solid var(--k2k-blue);
   outline-offset: 3px;
-  box-shadow: var(--k2k-shadow-sm), 0 0 0 4px rgba(79, 126, 168, 0.14);
+  box-shadow: var(--k2k-shadow-sm), 0 0 0 4px rgb(var(--k2k-blue-rgb) / 0.14);
 }
 
 .k2k-badge-wheat {
@@ -276,13 +279,13 @@
 
 .k2k-product-card:focus-within {
   outline: none;
-  border-color: rgba(79, 126, 168, 0.4);
-  box-shadow: var(--k2k-shadow-md), 0 0 0 3px rgba(79, 126, 168, 0.12);
+  border-color: rgb(var(--k2k-blue-rgb) / 0.4);
+  box-shadow: var(--k2k-shadow-md), 0 0 0 3px rgb(var(--k2k-blue-rgb) / 0.12);
 }
 
 .k2k-product-card-selected {
   border-color: var(--k2k-blue);
-  background: rgba(79, 126, 168, 0.04);
+  background: rgb(var(--k2k-blue-rgb) / 0.04);
   box-shadow: var(--k2k-shadow-md), 0 0 0 1px var(--k2k-blue);
 }
 
@@ -292,14 +295,14 @@
   border-radius: 1rem;
   background-color: #f8fafc;
   background-image:
-    radial-gradient(circle at 18% 22%, rgba(127, 167, 199, 0.1), transparent 48%),
-    radial-gradient(circle at 82% 78%, rgba(79, 126, 168, 0.06), transparent 42%);
+    radial-gradient(circle at 18% 22%, rgb(var(--k2k-harbor-rgb) / 0.1), transparent 48%),
+    radial-gradient(circle at 82% 78%, rgb(var(--k2k-blue-rgb) / 0.06), transparent 42%);
   box-shadow: var(--k2k-shadow-inner), var(--k2k-shadow-ring);
   transition: box-shadow var(--k2k-duration-base) var(--k2k-ease-out);
 }
 
 .k2k-product-card:hover .k2k-product-photo {
-  box-shadow: var(--k2k-shadow-inner), 0 0 0 1px rgba(79, 126, 168, 0.22);
+  box-shadow: var(--k2k-shadow-inner), 0 0 0 1px rgb(var(--k2k-blue-rgb) / 0.22);
 }
 
 /* ── K2K Design System Utilities ── */
@@ -423,7 +426,7 @@
     var(--k2k-shadow-xl),
     var(--k2k-shadow-ring),
     0 0 0 6px rgba(255, 255, 255, 0.9);
-  outline: 1px solid rgba(79, 126, 168, 0.18);
+  outline: 1px solid rgb(var(--k2k-blue-rgb) / 0.18);
   outline-offset: -1px;
 }
 
@@ -600,8 +603,8 @@
 .k2k-coastal-wash {
   background-color: var(--k2k-white);
   background-image:
-    radial-gradient(ellipse 90% 70% at 15% -10%, rgba(127, 167, 199, 0.035), transparent 55%),
-    radial-gradient(ellipse 80% 60% at 85% 110%, rgba(79, 126, 168, 0.028), transparent 50%);
+    radial-gradient(ellipse 90% 70% at 15% -10%, rgb(var(--k2k-harbor-rgb) / 0.035), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 85% 110%, rgb(var(--k2k-blue-rgb) / 0.028), transparent 50%);
 }
 
 /* ── 3D Product Carousel ── */
@@ -731,10 +734,10 @@
 @keyframes k2k-phone-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(79, 126, 168, 0);
+    box-shadow: 0 0 0 0 rgb(var(--k2k-blue-rgb) / 0);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(79, 126, 168, 0.14);
+    box-shadow: 0 0 0 8px rgb(var(--k2k-blue-rgb) / 0.14);
   }
 }
 
@@ -767,7 +770,7 @@
   position: absolute;
   inset: -10px;
   border-radius: 999px;
-  border: 2px solid rgba(79, 126, 168, 0.38);
+  border: 2px solid rgb(var(--k2k-blue-rgb) / 0.38);
   animation: k2k-pin-ring 2.6s var(--k2k-ease-out) infinite;
   pointer-events: none;
 }
@@ -800,10 +803,10 @@
 }
 
 .k2k-quick-chip:hover {
-  border-color: rgba(79, 126, 168, 0.45);
-  background: rgba(79, 126, 168, 0.06);
+  border-color: rgb(var(--k2k-blue-rgb) / 0.45);
+  background: rgb(var(--k2k-blue-rgb) / 0.06);
   color: var(--k2k-blue);
-  box-shadow: 0 4px 18px -8px rgba(79, 126, 168, 0.28);
+  box-shadow: 0 4px 18px -8px rgb(var(--k2k-blue-rgb) / 0.28);
   transform: translateY(-1px);
 }
 
@@ -819,10 +822,10 @@
 /* Pre-order tray */
 @keyframes k2k-tray-add-pulse {
   0% {
-    box-shadow: var(--k2k-shadow-sm), 0 0 0 0 rgba(79, 126, 168, 0.45);
+    box-shadow: var(--k2k-shadow-sm), 0 0 0 0 rgb(var(--k2k-blue-rgb) / 0.45);
   }
   70% {
-    box-shadow: var(--k2k-shadow-md), 0 0 0 10px rgba(79, 126, 168, 0);
+    box-shadow: var(--k2k-shadow-md), 0 0 0 10px rgb(var(--k2k-blue-rgb) / 0);
   }
   100% {
     box-shadow: var(--k2k-shadow-sm);
@@ -897,7 +900,7 @@
     text-wrap: balance;
   }
   ::selection {
-    background: rgba(79, 126, 168, 0.22);
+    background: rgb(var(--k2k-blue-rgb) / 0.22);
     color: var(--k2k-navy);
   }
   a:focus-visible,

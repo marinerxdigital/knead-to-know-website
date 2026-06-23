@@ -80,7 +80,7 @@ function OrderStepIndicator() {
               className={cn(
                 "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors sm:h-10 sm:w-10",
                 i === 0
-                  ? "border border-[#111] bg-k2k-blue text-white shadow-[0_8px_24px_-8px_rgba(79,126,168,0.55)]"
+                  ? "border border-[#111] bg-k2k-blue text-white shadow-[0_8px_24px_-8px_rgba(59,110,145,0.55)]"
                   : "border border-[#111] bg-white text-k2k-navy/70",
               )}
             >
@@ -245,7 +245,7 @@ function CustomOrdersPage() {
     return (
       <section className="relative overflow-hidden bg-[#f8f4ed] px-5 py-24 sm:px-8 sm:py-32">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(127,167,199,0.12),transparent_60%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(106,158,192,0.12),transparent_60%)]"
           aria-hidden
         />
 

@@ -248,8 +248,8 @@ function HomePage() {
         />
 
         <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:max-w-[54rem] lg:py-28">
-          <div className="k2k-stagger-1 mb-8 flex items-center gap-4">
-            <BrandLogo variant="hero" />
+          <div className="k2k-stagger-1 mb-8 flex items-center gap-5 sm:gap-6">
+            <BrandLogo variant="hero" className="ring-offset-4" />
             <div>
               <div className="flex items-center gap-3">
                 <span className="h-px w-6 bg-k2k-black/15" aria-hidden="true" />
@@ -276,7 +276,7 @@ function HomePage() {
           <div className="k2k-stagger-4 mt-10 flex flex-wrap items-center gap-3">
             <Link
               to="/custom-orders"
-              className="k2k-button k2k-button-primary inline-flex h-14 items-center justify-center gap-2 px-10 text-[0.75rem] shadow-[0_16px_40px_-12px_rgba(79,126,168,0.55)] hover:bg-k2k-navy"
+              className="k2k-button k2k-button-primary inline-flex h-14 items-center justify-center gap-2 px-10 text-[0.75rem] shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)] hover:bg-k2k-navy"
             >
               Pre-Order Your Bakes
               <ArrowRight className="h-4 w-4" />

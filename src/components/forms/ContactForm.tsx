@@ -29,7 +29,7 @@ const ERROR_MESSAGE = BUSINESS.email
   : `Something went wrong while sending your message. Please try again or call ${BUSINESS.phone}.`;
 
 const fieldClass =
-  "h-12 rounded-xl border border-k2k-black bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]";
+  "h-12 rounded-xl border border-k2k-black bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(59,110,145,0.25)]";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70";
 
@@ -227,7 +227,7 @@ export function ContactForm() {
             rows={5}
             {...register("message")}
             className={cn(
-              "min-h-[140px] rounded-xl border border-k2k-black bg-white px-4 py-3 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]",
+              "min-h-[140px] rounded-xl border border-k2k-black bg-white px-4 py-3 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(59,110,145,0.25)]",
               errors.message && "border-destructive/50",
             )}
           />

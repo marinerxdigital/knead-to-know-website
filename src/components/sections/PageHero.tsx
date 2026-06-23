@@ -110,7 +110,7 @@ export function PageHero({
 
       {!hasBgImage && (
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(127,167,199,0.14),transparent_55%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,158,192,0.14),transparent_55%)]"
           aria-hidden
         />
       )}

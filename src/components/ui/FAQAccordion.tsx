@@ -39,7 +39,7 @@ function FAQAccordionList({
           className={cn(
             "group/item mb-3 overflow-hidden rounded-2xl border border-k2k-black bg-white shadow-[0_4px_20px_-12px_rgba(17,17,17,0.08)] transition-all duration-300 ease-out last:mb-0",
             "hover:shadow-[var(--k2k-shadow-md)] data-[state=closed]:hover:-translate-y-0.5",
-            "data-[state=open]:border-k2k-blue data-[state=open]:shadow-[0_8px_28px_-14px_rgba(79,126,168,0.18)] data-[state=open]:translate-y-0",
+            "data-[state=open]:border-k2k-blue data-[state=open]:shadow-[0_8px_28px_-14px_rgba(59,110,145,0.18)] data-[state=open]:translate-y-0",
           )}
         >
           <AccordionTrigger
