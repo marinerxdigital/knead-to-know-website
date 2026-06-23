@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, MapPin } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/business";
 
 const LOGO_SRC = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
@@ -15,8 +15,8 @@ export function Footer() {
             className="h-16 w-16 rounded-full object-contain"
           />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            A boutique Daniel Island bakery for fresh artisan breads, sourdough cookies, bagels,
-            pastries, bakery boxes, and custom orders. Serving the Charleston area since 2026.
+            {BUSINESS.name} — freshly baked sourdough bread, cookies, and bagels by pre-order only.
+            Daniel Island, South Carolina. Est. {BUSINESS.established}.
           </p>
         </div>
 
@@ -72,6 +72,14 @@ export function Footer() {
                 <span className="text-muted-foreground">{BUSINESS.serviceArea}</span>
               </span>
             </li>
+            {BUSINESS.phone && (
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 shrink-0 text-k2k-blue" />
+                <a href={BUSINESS.phoneTel} className="hover:text-k2k-blue">
+                  {BUSINESS.phone}
+                </a>
+              </li>
+            )}
             {BUSINESS.email && (
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-k2k-blue" />
@@ -95,11 +103,15 @@ export function Footer() {
             )}
             {!BUSINESS.email && !BUSINESS.instagramUrl && (
               <li className="text-muted-foreground">
-                Use the{" "}
+                Call{" "}
+                <a href={BUSINESS.phoneTel} className="underline hover:text-k2k-blue">
+                  {BUSINESS.phone}
+                </a>{" "}
+                or use the{" "}
                 <Link to="/contact" className="underline hover:text-k2k-blue">
                   contact form
-                </Link>{" "}
-                to reach us.
+                </Link>
+                .
               </li>
             )}
           </ul>

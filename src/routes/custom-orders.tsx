@@ -4,7 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { PRODUCTS } from "@/lib/products";
-import { SITE_URL } from "@/lib/business";
+import { BUSINESS, SITE_URL } from "@/lib/business";
 
 const ACCESS_KEY =
   (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
@@ -110,7 +110,9 @@ function CustomOrdersPage() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       setSubmitError(
-        "Something went wrong sending your order request. Please try again or email us directly.",
+        BUSINESS.email
+          ? `Something went wrong sending your order request. Please try again or email us directly at ${BUSINESS.email}.`
+          : `Something went wrong sending your order request. Please try again or call ${BUSINESS.phone}.`,
       );
     } finally {
       setSubmitting(false);
@@ -160,8 +162,8 @@ function CustomOrdersPage() {
           <SectionHeading
             as="h1"
             eyebrow="Custom &amp; Pre-Orders"
-            title="Tell us what you need"
-            intro="Select from our signature collection or describe a custom bakery box, tray, or special request. We’ll confirm details and availability."
+            title="Request an Order"
+            intro="Pre-orders only. Select items, share quantities and preferred pickup timing. Call, text, DM, or submit this form to place your order."
           />
         </div>
       </section>
@@ -247,7 +249,7 @@ function CustomOrdersPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full h-11 rounded-xl border px-4 bg-white"
-                  placeholder="(843) 555-0123"
+                  placeholder="(843) 973-0309"
                 />
               </div>
               <div>
@@ -444,7 +446,11 @@ function CustomOrdersPage() {
             <Link to="/catering" className="underline">
               Catering page
             </Link>{" "}
-            or call with questions.
+            or call{" "}
+            <a href={BUSINESS.phoneTel} className="underline hover:text-k2k-blue">
+              {BUSINESS.phone}
+            </a>{" "}
+            with questions.
           </p>
         </div>
       </Section>

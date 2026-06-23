@@ -6,7 +6,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
-import { SITE_URL } from "@/lib/business";
+import { BUSINESS, SITE_URL } from "@/lib/business";
 
 const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 
@@ -15,7 +15,7 @@ const TRUST_ITEMS = [
     icon: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
     label: "Daniel Island, SC",
   },
-  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png", label: "Small-Batch Daily" },
+  { icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png", label: "Baked To Order" },
   { icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png", label: "Artisan Sourdough" },
   {
     icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
@@ -26,15 +26,15 @@ const TRUST_ITEMS = [
 const HOME_FAQS = [
   {
     q: "How do I place a pre-order?",
-    a: "Use the Custom Orders form to select items, share quantities and your preferred date. We confirm availability and next steps by email or phone.",
+    a: "Call, text, DM, or submit an order request with your items, quantities, and preferred pickup timing. Wendy confirms availability and next steps.",
   },
   {
     q: "Where is pickup located?",
-    a: "Pickup is on Daniel Island, South Carolina. Exact address and hours are confirmed after your order inquiry.",
+    a: "Pickup is on Daniel Island, South Carolina. Exact pickup details are confirmed after your order request.",
   },
   {
     q: "When are fresh bakes available?",
-    a: "Fresh breads, cookies, and bagels are baked in limited small batches. Availability varies — pre-ordering is recommended.",
+    a: "Everything is freshly baked to order. Pre-order availability varies — call or submit a request to check timing.",
   },
   {
     q: "Do you offer catering or event orders?",
@@ -46,12 +46,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Knead To Know Bakery | Boutique Sourdough & Small-Batch Bakes on Daniel Island",
+        title: "Knead To Know Sweet & Sour | Fresh Sourdough Baked To Order on Daniel Island",
       },
       {
         name: "description",
         content:
-          "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, seasonal baked goods, and custom orders by inquiry or pre-order.",
+          "Knead To Know Sweet & Sour offers freshly baked sourdough bread, sourdough cookies, and sourdough bagels by pre-order only. Call or submit a request to place your order on Daniel Island, SC.",
       },
       {
         property: "og:title",
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, seasonal baked goods, and custom orders by inquiry or pre-order.",
+          "Knead To Know Sweet & Sour offers freshly baked sourdough bread, sourdough cookies, and sourdough bagels by pre-order only. Call or submit a request to place your order on Daniel Island, SC.",
       },
       { property: "og:url", content: `${SITE_URL}/` },
     ],
@@ -83,30 +83,35 @@ function HomePage() {
             />
             <Eyebrow>Daniel Island, South Carolina</Eyebrow>
             <h1 className="mt-4 font-display text-5xl leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
-              Fresh Bread, Cookies, and Bakes Worth Knowing
+              Fresh Sourdough, Cookies &amp; Bagels Baked To Order
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Knead To Know is a small-batch bakery on Daniel Island serving fresh breads, cookies,
-              pastries, seasonal baked goods, bakery boxes, and custom orders for everyday treats,
-              gatherings, and special occasions.
+              {BUSINESS.name} offers freshly baked sourdough bread, sourdough cookies, and sourdough
+              bagels by pre-order only.
             </p>
             <p className="mt-4 text-sm text-ink/70">
-              Boutique sourdough and small-batch baked goods from Daniel Island, South Carolina.
+              Run by {BUSINESS.owner} · Daniel Island, South Carolina · Est. {BUSINESS.established}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                to="/menu"
+                to="/custom-orders"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-k2k-blue px-7 text-sm font-medium text-white hover:bg-k2k-navy"
               >
-                View Menu
+                Request an Order
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                to="/custom-orders"
+                to="/menu"
                 className="inline-flex h-12 items-center justify-center rounded-full border border-k2k-blue/30 bg-white px-7 text-sm font-medium text-k2k-blue transition hover:border-k2k-blue/50"
               >
-                Request an Order
+                View Menu
               </Link>
+              <a
+                href={BUSINESS.phoneTel}
+                className="inline-flex h-12 items-center justify-center rounded-full border border-k2k-blue/30 bg-white px-7 text-sm font-medium text-k2k-blue transition hover:border-k2k-blue/50"
+              >
+                Call Wendy
+              </a>
             </div>
           </div>
           <div className="relative">
@@ -170,42 +175,56 @@ function HomePage() {
       <Section bg="beige">
         <SectionHeading
           eyebrow="Ordering"
-          title="How to order"
+          title="Pre-Orders Only"
           align="center"
-          intro="Three steps from browsing to fresh bakes in hand."
+          intro="Everything is freshly baked to order. To place an order, call, text, DM, or submit an order request."
         />
+        <div className="mx-auto mt-8 max-w-xl text-center">
+          <p className="text-sm text-muted-foreground">
+            Phone:{" "}
+            <a href={BUSINESS.phoneTel} className="font-medium text-k2k-blue hover:text-k2k-navy">
+              {BUSINESS.phone}
+            </a>
+          </p>
+        </div>
         <div className="mx-auto mt-12 grid max-w-4xl gap-6 text-left sm:grid-cols-3">
           <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
             <div className="mb-2 font-display text-xl text-k2k-blue">Choose</div>
             <p className="text-sm text-muted-foreground">
-              Browse the menu and note what you would like, or describe a custom request.
+              Browse the menu and note your items and quantities.
             </p>
           </div>
           <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
-            <div className="mb-2 font-display text-xl text-k2k-blue">Submit inquiry</div>
+            <div className="mb-2 font-display text-xl text-k2k-blue">Request</div>
             <p className="text-sm text-muted-foreground">
-              Use the Custom Orders or Catering form with quantities and your date.
+              Call, text, DM, or submit an order request with your preferred pickup timing.
             </p>
           </div>
           <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
             <div className="mb-2 font-display text-xl text-k2k-blue">Confirm</div>
             <p className="text-sm text-muted-foreground">
-              We confirm availability and pricing, then bake fresh for you.
+              Wendy confirms availability, then bakes fresh for you.
             </p>
           </div>
         </div>
-        <div className="mt-10 flex justify-center gap-3">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link
             to="/custom-orders"
             className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-k2k-blue px-6 text-sm font-medium text-white hover:bg-k2k-navy"
           >
-            Start a Custom Order <ArrowRight className="h-4 w-4" />
+            Request an Order <ArrowRight className="h-4 w-4" />
           </Link>
-          <Link
-            to="/catering"
+          <a
+            href={BUSINESS.phoneTel}
             className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
           >
-            Explore Catering
+            Call Wendy
+          </a>
+          <Link
+            to="/menu"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
+          >
+            View Menu
           </Link>
         </div>
       </Section>
@@ -218,8 +237,8 @@ function HomePage() {
           <div>
             <SectionHeading
               eyebrow="About"
-              title="A boutique bakery on Daniel Island"
-              intro="Knead To Know is a local Daniel Island bakery founded by Wendy Mercado in 2026, focused on small-batch baked goods, artisan bread, cookies, pastries, bakery boxes, and seasonal offerings."
+              title="About Knead To Know Sweet &amp; Sour"
+              intro={`${BUSINESS.name} is a small-batch bakery by ${BUSINESS.owner}, offering freshly baked sourdough bread, sourdough cookies, and sourdough bagels by pre-order only.`}
             />
             <Link
               to="/about"
@@ -266,11 +285,14 @@ function HomePage() {
       <CTASection
         eyebrow="Ready to order"
         title="Ready for fresh bakes?"
-        text="Tell us about your order for breads, cookies, a custom box, or catering. We will review the details and follow up with availability and next steps."
+        text="Call, text, DM, or submit an order request. Everything is freshly baked to order."
         primaryLabel="Request an Order"
         primaryTo="/custom-orders"
-        secondaryLabel="View Menu"
-        secondaryTo="/menu"
+        secondaryLabel="Call Wendy"
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+        tertiaryLabel="View Menu"
+        tertiaryTo="/menu"
       />
     </>
   );

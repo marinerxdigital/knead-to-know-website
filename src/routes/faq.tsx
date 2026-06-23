@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { SITE_URL } from "@/lib/business";
+import { BUSINESS, SITE_URL } from "@/lib/business";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -55,7 +55,7 @@ const FAQS = [
   },
   {
     q: "What is the best way to contact you?",
-    a: "The fastest way is through the forms on this site (Custom Orders or Contact). You can also reach us via the email and Instagram listed on the Contact page.",
+    a: `Call or text ${BUSINESS.phone}, submit a Custom Orders or Contact form, or DM to place your order. Pre-orders only — everything is freshly baked to order.`,
   },
   {
     q: "Can I order for catering or events?",

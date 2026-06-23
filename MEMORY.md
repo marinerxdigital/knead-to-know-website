@@ -2,6 +2,17 @@
 
 Long-term project memory. Update after every meaningful session.
 
+## Final Data Integration Session (2026-06-22) — Verified menu + phone + client tracking
+
+- Agent: Grok Build (4-workstream parallel execution)
+- `business.ts`: full name "Knead To Know Sweet & Sour", phone `(843) 973-0309`, `tel:8439730309`, hours/email/social remain null (conditionally hidden)
+- `products.ts`: all 16 verified menu items with real pricing; removed invented descriptions and fake `BROADER_MENU` section from menu page
+- Homepage hero/ordering/about updated per client brief; phone CTAs on index, menu, about, contact, footer, custom-orders
+- About page: conservative safe copy only — no invented Wendy biography
+- `CLIENT_DELIVERABLES.md` created — confirmed vs still-needed checklist for Wendy
+- Build passes; lint 0 errors (9 pre-existing warnings); no `typecheck` script in package.json
+- Still outstanding from Wendy: email, hours, social links, founder story, founder photo
+
 ## Visual Upgrade Session (2026-06-22) — Forms, SEO, homepage restructure
 
 - Agent: Grok Build (14-task wave execution on `visual-upgrade-2026-06-22`)

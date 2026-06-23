@@ -22,7 +22,9 @@ const ACCESS_KEY =
   "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
-const ERROR_MESSAGE = `Something went wrong while sending your message. Please try again or email us directly at ${BUSINESS.email}.`;
+const ERROR_MESSAGE = BUSINESS.email
+  ? `Something went wrong while sending your message. Please try again or email us directly at ${BUSINESS.email}.`
+  : `Something went wrong while sending your message. Please try again or call ${BUSINESS.phone}.`;
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -118,7 +120,7 @@ export function ContactForm() {
       </div>
       <div className="grid gap-2">
         <Label>Phone (optional)</Label>
-        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="(843) 555-0123" />
+        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="(843) 973-0309" />
       </div>
       <div className="grid gap-2">
         <Label>Message / order notes</Label>

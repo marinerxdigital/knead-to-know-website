@@ -1,23 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { K2KProductCard } from "@/components/ui/K2KProductCard";
-import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS, BROADER_MENU } from "@/lib/products";
-import { SITE_URL } from "@/lib/business";
+import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS, CATEGORY_PRICING } from "@/lib/products";
+import { BUSINESS, SITE_URL } from "@/lib/business";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "Menu | Knead To Know | Daniel Island Bakery Breads, Cookies & Bagels" },
+      { title: "Menu | Knead To Know Sweet & Sour | Daniel Island Bakery" },
       {
         name: "description",
         content:
-          "Browse our menu of small-batch sourdough breads, sourdough cookies, and sourdough bagels. Pre-order fresh bakes from our Daniel Island bakery.",
+          "Browse our menu of sourdough breads, sourdough cookies, and sourdough bagels with verified pricing. Pre-order fresh bakes from Knead To Know Sweet & Sour on Daniel Island.",
       },
-      { property: "og:title", content: "Menu | Knead To Know | Daniel Island Bakery" },
+      { property: "og:title", content: "Menu | Knead To Know Sweet & Sour" },
       {
         property: "og:description",
         content:
-          "Our full menu: artisan sourdough breads, cookies, and bagels made fresh in small batches on Daniel Island, SC.",
+          "Our full menu: sourdough breads, cookies, and bagels — freshly baked to order on Daniel Island, SC.",
       },
       { property: "og:url", content: `${SITE_URL}/menu` },
     ],
@@ -30,17 +30,9 @@ const BANNER_PATH = "/assets/knead-to-know/banners/Knead_To_Know_Promo_Banner_St
 const BADGE_PATH = "/assets/knead-to-know/badges/Knead_To_Know_Badge_Label_Tag.png";
 
 const CARD_SECTIONS = [
-  { title: "Sourdough Bread", items: ALL_BREADS },
-  { title: "Sourdough Cookies", items: ALL_COOKIES },
-  { title: "Sourdough Bagels", items: ALL_BAGELS },
-] as const;
-
-const BROADER_SECTIONS = [
-  { title: "Breads", items: BROADER_MENU.breads },
-  { title: "Cookies", items: BROADER_MENU.cookies },
-  { title: "Pastries", items: BROADER_MENU.pastries },
-  { title: "Bakery Boxes", items: BROADER_MENU.bakeryBoxes },
-  { title: "Custom / Pre-Order Items", items: BROADER_MENU.custom },
+  { title: "Sourdough Bread", items: ALL_BREADS, categoryPricing: CATEGORY_PRICING.bread },
+  { title: "Sourdough Cookies", items: ALL_COOKIES, categoryPricing: CATEGORY_PRICING.cookies },
+  { title: "Sourdough Bagels", items: ALL_BAGELS, categoryPricing: CATEGORY_PRICING.bagels },
 ] as const;
 
 function MenuPage() {
@@ -56,8 +48,7 @@ function MenuPage() {
               Our Menu
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Small-batch sourdough breads, cookies, and bagels. Fresh daily. Pre-order for pickup
-              or delivery in the Charleston area.
+              Sourdough breads, cookies, and bagels — freshly baked to order. Pre-orders only.
             </p>
           </div>
         </div>
@@ -75,13 +66,18 @@ function MenuPage() {
         <SectionHeading
           eyebrow="Signature menu"
           title="Sourdough breads, cookies & bagels"
-          intro="All 16 signature small-batch items. Product photography will be added as fresh bakes are captured."
+          intro="Verified menu from Knead To Know Sweet & Sour. All items are available by pre-order."
         />
 
         {CARD_SECTIONS.map((section) => (
           <div key={section.title} className="mb-16 last:mb-0">
-            <div className="mb-6 flex items-center gap-4">
+            <div className="mb-6 flex flex-wrap items-center gap-4">
               <h2 className="font-display text-3xl tracking-tight text-ink">{section.title}</h2>
+              {section.categoryPricing && (
+                <span className="rounded-full bg-k2k-blue/10 px-3 py-1 text-sm font-medium text-k2k-navy">
+                  {section.categoryPricing}
+                </span>
+              )}
               <img src={BADGE_PATH} alt="" className="h-7 w-auto opacity-70" aria-hidden />
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -93,59 +89,46 @@ function MenuPage() {
         ))}
       </Section>
 
-      <Section bg="beige">
-        <SectionHeading
-          eyebrow="Broader bakery menu"
-          title="Pastries, boxes & seasonal offerings"
-          intro="Beyond our signature sourdough collection, Knead To Know offers pastries, curated bakery boxes, and custom pre-order items."
-        />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {BROADER_SECTIONS.map((section) => (
-            <article
-              key={section.title}
-              className="rounded-3xl border border-k2k-blue/15 bg-white p-7"
-            >
-              <h3 className="font-display text-2xl text-ink">{section.title}</h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                {section.items.map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <span className="h-1 w-1 rounded-full bg-k2k-blue" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">
-                Ask us about availability
-              </p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
       <Section bg="white">
         <div className="mx-auto max-w-2xl text-center">
-          <SectionHeading align="center" eyebrow="Ordering" title="How to order" />
+          <SectionHeading
+            align="center"
+            eyebrow="Ordering"
+            title="Pre-Orders Only"
+            intro="Everything is freshly baked to order. To place an order, call, text, DM, or submit an order request."
+          />
+          <p className="mt-4 text-sm text-muted-foreground">
+            Phone:{" "}
+            <a href={BUSINESS.phoneTel} className="font-medium text-k2k-blue hover:text-k2k-navy">
+              {BUSINESS.phone}
+            </a>
+          </p>
           <div className="mt-8 grid gap-6 text-left text-sm sm:grid-cols-3">
             <div className="rounded-2xl border border-border/40 p-6">
               <div className="mb-1 font-medium text-k2k-blue">1. Choose</div>
-              <p className="text-muted-foreground">Browse the menu and note what you would like.</p>
+              <p className="text-muted-foreground">Browse the menu and note your items.</p>
             </div>
             <div className="rounded-2xl border border-border/40 p-6">
-              <div className="mb-1 font-medium text-k2k-blue">2. Submit inquiry</div>
+              <div className="mb-1 font-medium text-k2k-blue">2. Request</div>
               <p className="text-muted-foreground">
-                Use the custom orders form with quantities and pickup date.
+                Call, text, DM, or submit an order request with quantities and timing.
               </p>
             </div>
             <div className="rounded-2xl border border-border/40 p-6">
               <div className="mb-1 font-medium text-k2k-blue">3. Confirm</div>
               <p className="text-muted-foreground">
-                We confirm availability and details. Fresh baked for you.
+                Wendy confirms availability and bakes fresh for you.
               </p>
             </div>
           </div>
-          <Link to="/custom-orders" className="mt-8 inline-flex k2k-button k2k-button-primary">
-            Start Your Pre-Order
-          </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link to="/custom-orders" className="inline-flex k2k-button k2k-button-primary">
+              Request an Order
+            </Link>
+            <a href={BUSINESS.phoneTel} className="inline-flex k2k-button k2k-button-outline">
+              Call Wendy
+            </a>
+          </div>
         </div>
       </Section>
     </>

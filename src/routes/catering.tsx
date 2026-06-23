@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Section, SectionHeading } from "@/components/sections/Section";
-import { SITE_URL } from "@/lib/business";
+import { BUSINESS, SITE_URL } from "@/lib/business";
 
 const ACCESS_KEY =
   (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
@@ -92,7 +92,9 @@ function CateringPage() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       setSubmitError(
-        "Something went wrong sending your catering request. Please try again or email us directly.",
+        BUSINESS.email
+          ? `Something went wrong sending your catering request. Please try again or email us at ${BUSINESS.email}.`
+          : `Something went wrong sending your catering request. Please try again or call ${BUSINESS.phone}.`,
       );
     } finally {
       setSubmitting(false);

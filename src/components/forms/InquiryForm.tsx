@@ -31,7 +31,9 @@ const ACCESS_KEY =
   "5f50a39a-f868-4696-b3e9-d390c1f7f4f0";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
-const ERROR_MESSAGE = `Something went wrong while submitting your inquiry. Please try again or email us directly at ${BUSINESS.email}.`;
+const ERROR_MESSAGE = BUSINESS.email
+  ? `Something went wrong while submitting your inquiry. Please try again or email us directly at ${BUSINESS.email}.`
+  : `Something went wrong while submitting your inquiry. Please try again or call ${BUSINESS.phone}.`;
 
 export function InquiryForm() {
   const [submitted, setSubmitted] = useState(false);

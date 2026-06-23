@@ -30,7 +30,7 @@ export function Header() {
             className="h-14 w-14 rounded-full object-contain md:h-16 md:w-16 lg:h-12 lg:w-12"
           />
           <span className="hidden font-display text-lg tracking-wide text-ink sm:block">
-            Knead To Know
+            Knead To Know Sweet &amp; Sour
           </span>
         </Link>
 

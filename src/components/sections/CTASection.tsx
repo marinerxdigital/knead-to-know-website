@@ -1,6 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
+type RouteTo =
+  | "/inquiry"
+  | "/gallery"
+  | "/flavors"
+  | "/about"
+  | "/contact"
+  | "/menu"
+  | "/custom-orders"
+  | "/catering"
+  | "/faq";
+
 export function CTASection({
   eyebrow = "Ready to begin",
   title = "Ready to order fresh bakes?",
@@ -9,32 +20,20 @@ export function CTASection({
   primaryTo = "/contact",
   secondaryLabel,
   secondaryTo,
+  secondaryIsPhone = false,
+  tertiaryLabel,
+  tertiaryTo,
 }: {
   eyebrow?: string;
   title?: string;
   text?: string;
   primaryLabel?: string;
-  primaryTo?:
-    | "/inquiry"
-    | "/gallery"
-    | "/flavors"
-    | "/about"
-    | "/contact"
-    | "/menu"
-    | "/custom-orders"
-    | "/catering"
-    | "/faq";
+  primaryTo?: RouteTo;
   secondaryLabel?: string;
-  secondaryTo?:
-    | "/inquiry"
-    | "/gallery"
-    | "/flavors"
-    | "/about"
-    | "/contact"
-    | "/menu"
-    | "/custom-orders"
-    | "/catering"
-    | "/faq";
+  secondaryTo?: RouteTo | string;
+  secondaryIsPhone?: boolean;
+  tertiaryLabel?: string;
+  tertiaryTo?: RouteTo;
 }) {
   return (
     <section className="px-5 pb-20 sm:px-8 sm:pb-28">
@@ -54,12 +53,30 @@ export function CTASection({
             {primaryLabel}
             <ArrowRight className="h-4 w-4" />
           </Link>
-          {secondaryLabel && secondaryTo && (
-            <Link
-              to={secondaryTo}
+          {secondaryLabel && secondaryTo && secondaryIsPhone ? (
+            <a
+              href={secondaryTo}
               className="inline-flex h-12 items-center justify-center rounded-full border border-primary-foreground/30 px-7 text-sm font-medium text-primary-foreground transition hover:border-primary-foreground/60"
             >
               {secondaryLabel}
+            </a>
+          ) : (
+            secondaryLabel &&
+            secondaryTo && (
+              <Link
+                to={secondaryTo as RouteTo}
+                className="inline-flex h-12 items-center justify-center rounded-full border border-primary-foreground/30 px-7 text-sm font-medium text-primary-foreground transition hover:border-primary-foreground/60"
+              >
+                {secondaryLabel}
+              </Link>
+            )
+          )}
+          {tertiaryLabel && tertiaryTo && (
+            <Link
+              to={tertiaryTo}
+              className="inline-flex h-12 items-center justify-center rounded-full border border-primary-foreground/30 px-7 text-sm font-medium text-primary-foreground transition hover:border-primary-foreground/60"
+            >
+              {tertiaryLabel}
             </Link>
           )}
         </div>

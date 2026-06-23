@@ -83,13 +83,27 @@ function PrivacyPage() {
             <h2 className="font-display text-2xl text-ink">Updates and removal</h2>
             <p className="mt-3 text-muted-foreground">
               If you would like to update or remove information you have shared with us, please
-              email us at{" "}
-              <a
-                href={`mailto:${BUSINESS.email}`}
-                className="text-forest underline hover:no-underline"
-              >
-                {BUSINESS.email}
-              </a>{" "}
+              {BUSINESS.email ? (
+                <>
+                  {" "}
+                  email us at{" "}
+                  <a
+                    href={`mailto:${BUSINESS.email}`}
+                    className="text-forest underline hover:no-underline"
+                  >
+                    {BUSINESS.email}
+                  </a>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  call us at{" "}
+                  <a href={BUSINESS.phoneTel} className="text-forest underline hover:no-underline">
+                    {BUSINESS.phone}
+                  </a>{" "}
+                  or use the contact form on this site
+                </>
+              )}{" "}
               and we will take care of it promptly.
             </p>
           </div>
@@ -97,13 +111,30 @@ function PrivacyPage() {
           <div>
             <h2 className="font-display text-2xl text-ink">Questions</h2>
             <p className="mt-3 text-muted-foreground">
-              Questions about this policy can be sent to{" "}
-              <a
-                href={`mailto:${BUSINESS.email}`}
-                className="text-forest underline hover:no-underline"
-              >
-                {BUSINESS.email}
+              Questions about this policy can be sent via the{" "}
+              <a href="/contact" className="text-forest underline hover:no-underline">
+                contact form
               </a>
+              {BUSINESS.email ? (
+                <>
+                  {" "}
+                  or to{" "}
+                  <a
+                    href={`mailto:${BUSINESS.email}`}
+                    className="text-forest underline hover:no-underline"
+                  >
+                    {BUSINESS.email}
+                  </a>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  or by calling{" "}
+                  <a href={BUSINESS.phoneTel} className="text-forest underline hover:no-underline">
+                    {BUSINESS.phone}
+                  </a>
+                </>
+              )}
               .
             </p>
           </div>

@@ -4,15 +4,20 @@
 export const SITE_URL = "https://knead-to-know-website-v2.pages.dev";
 
 export const BUSINESS = {
-  name: "Knead To Know",
+  name: "Knead To Know Sweet & Sour",
   owner: "Wendy Mercado",
   shortOwner: "Wendy",
+  established: 2026,
   address: "Pickup by appointment — Daniel Island, SC",
   city: "Daniel Island, SC",
   serviceArea: "Daniel Island and Charleston area",
-  phone: null as string | null,
+  phone: "(843) 973-0309",
+  phoneTel: "tel:8439730309",
   email: null as string | null,
-  hours: "By appointment",
+  hours: null as string | null,
+  orderingModel: "Pre-orders only",
+  fulfillment: "Freshly baked to order",
+  customerAction: "DM or call to place your order",
   instagramHandle: null as string | null,
   instagramUrl: null as string | null,
   facebookUrl: null as string | null,
