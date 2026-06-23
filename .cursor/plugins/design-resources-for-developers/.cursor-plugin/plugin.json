@@ -1,0 +1,12 @@
+{
+  "name": "design-resources-for-developers",
+  "version": "1.0.0",
+  "description": "Curated design and UI resources — fonts, colors, icons, stock photos, UI kits, and tools (Brad Traversy awesome list).",
+  "author": {
+    "name": "Brad Traversy",
+    "email": ""
+  },
+  "repository": "https://github.com/bradtraversy/design-resources-for-developers",
+  "license": "MIT",
+  "keywords": ["design", "ui", "fonts", "icons", "stock-photos", "resources", "frontend"]
+}
