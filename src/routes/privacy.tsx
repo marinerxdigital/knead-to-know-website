@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { CTASection } from "@/components/sections/CTASection";
 import { Eyebrow, Section } from "@/components/sections/Section";
 import { PageHero } from "@/components/sections/PageHero";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
@@ -123,12 +124,12 @@ const SECTIONS = [
     content: (
       <p>
         Questions about this policy can be sent via the{" "}
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="font-medium text-k2k-blue underline decoration-k2k-blue/30 underline-offset-2 transition hover:decoration-k2k-blue"
         >
           contact form
-        </a>
+        </Link>
         {BUSINESS.email ? (
           <>
             {" "}
@@ -259,6 +260,18 @@ function PrivacyPage() {
           </div>
         </ScrollReveal>
       </Section>
+
+      <CTASection
+        compact
+        eyebrow="Questions about privacy?"
+        title="We're here to help"
+        text="Reach out anytime about your information or how we handle form submissions."
+        primaryLabel="Contact us"
+        primaryTo="/contact"
+        secondaryLabel={BUSINESS.phone}
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+      />
     </>
   );
 }

@@ -287,8 +287,8 @@ function AboutPage() {
       </PageHero>
 
       <Section variant="editorial">
-        <div className="grid gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-14">
-          <ScrollReveal className="space-y-5">
+        <div className="grid min-w-0 gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-14">
+          <ScrollReveal className="min-w-0 space-y-5">
             <div className="k2k-surface relative overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-6 text-center sm:p-8">
               <img
                 src={KTK_DECOR.cornerFlourish}
@@ -326,7 +326,7 @@ function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={1} className="lg:pt-2">
+          <ScrollReveal delay={1} className="min-w-0 lg:pt-2">
             <IconSectionHeading
               icon={KTK_ICONS.wheat}
               eyebrow="The bakery"
@@ -363,8 +363,8 @@ function AboutPage() {
       </Section>
 
       <Section bg="beige" variant="editorial">
-        <div className="grid gap-12 sm:gap-14 lg:grid-cols-2 lg:gap-20">
-          <div>
+        <div className="grid min-w-0 gap-12 sm:gap-14 lg:grid-cols-2 lg:gap-20">
+          <div className="min-w-0">
             <IconSectionHeading
               icon={KTK_ICONS.dough}
               eyebrow="Our philosophy"
@@ -474,9 +474,13 @@ function AboutPage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(194,168,120,0.12),transparent_55%)]"
           aria-hidden
         />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white sm:h-20"
+          aria-hidden
+        />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <ScrollReveal>
+          <div className="grid min-w-0 items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <ScrollReveal className="min-w-0">
               <div className="group flex items-center gap-3">
                 <img
                   src={KTK_ICONS.location}
@@ -514,7 +518,7 @@ function AboutPage() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={1}>
+            <ScrollReveal delay={1} className="min-w-0">
               <MapPlaceholder variant="dark" />
             </ScrollReveal>
           </div>

@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -15,7 +16,11 @@ import { KTK_ICONS } from "../lib/design-assets";
 import { SITE_URL } from "../lib/business";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
-import { MobileOrderBar } from "../components/layout/MobileOrderBar";
+import {
+  isMobileOrderBarVisible,
+  MobileOrderBar,
+} from "../components/layout/MobileOrderBar";
+import { cn } from "../lib/utils";
 import { Toaster } from "../components/ui/sonner";
 
 const OG_IMAGE = "/assets/knead-to-know/logo/og-image-1200x630.png";
@@ -196,6 +201,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const showMobileBar = isMobileOrderBarVisible(pathname);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -204,10 +211,13 @@ function RootComponent() {
           Skip to content
         </a>
         <Header />
-        <main id="main-content" className="k2k-page-enter k2k-main-mobile-pad flex-1">
+        <main
+          id="main-content"
+          className={cn("k2k-page-enter flex-1", showMobileBar && "k2k-main-mobile-pad")}
+        >
           <Outlet />
         </main>
-        <Footer />
+        <Footer showMobileBarOffset={showMobileBar} />
         <MobileOrderBar />
         <Toaster />
       </div>

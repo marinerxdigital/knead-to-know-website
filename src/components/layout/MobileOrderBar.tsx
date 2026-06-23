@@ -2,12 +2,16 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/business";
 
-const HIDE_ON = ["/custom-orders", "/contact", "/menu"];
+const HIDE_ON = ["/custom-orders", "/contact", "/menu"] as const;
+
+export function isMobileOrderBarVisible(pathname: string) {
+  return !HIDE_ON.includes(pathname as (typeof HIDE_ON)[number]);
+}
 
 export function MobileOrderBar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  if (HIDE_ON.includes(pathname)) return null;
+  if (!isMobileOrderBarVisible(pathname)) return null;
 
   return (
     <div

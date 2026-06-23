@@ -70,7 +70,7 @@ function MenuPage() {
 
       <Section bg="beige" variant="editorial">
         <ScrollReveal>
-          <div className="k2k-surface k2k-accent-rail relative mx-auto max-w-4xl overflow-hidden rounded-[2.25rem] border-t-2 border-t-k2k-blue/30 pl-5 p-10 sm:pl-7 sm:p-14">
+          <div className="k2k-surface k2k-accent-rail relative mx-auto max-w-4xl overflow-hidden rounded-[2.25rem] border-t-2 border-t-k2k-blue/30 pt-10 pr-10 pb-10 pl-5 sm:pt-14 sm:pr-14 sm:pb-14 sm:pl-7">
             <div className="relative text-center">
               <SectionHeading
                 align="center"

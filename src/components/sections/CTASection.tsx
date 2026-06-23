@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
@@ -55,6 +56,7 @@ export function CTASection({
   tertiaryLabel,
   tertiaryTo,
   compact = false,
+  headingId: headingIdProp,
 }: {
   eyebrow?: string;
   title?: string;
@@ -67,14 +69,18 @@ export function CTASection({
   tertiaryLabel?: string;
   tertiaryTo?: RouteTo;
   compact?: boolean;
+  headingId?: string;
 }) {
+  const generatedHeadingId = useId();
+  const headingId = headingIdProp ?? generatedHeadingId;
+
   return (
     <section
       className={cn(
         "k2k-cta-section border-t border-k2k-black/[0.06] bg-white",
         compact ? "py-12 sm:py-16" : "py-16 sm:py-24",
       )}
-      aria-labelledby="k2k-cta-heading"
+      aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-7xl px-[var(--k2k-section-x)]">
         <ScrollReveal>
@@ -180,7 +186,7 @@ export function CTASection({
                   {eyebrow}
                 </p>
                 <h2
-                  id="k2k-cta-heading"
+                  id={headingId}
                   className={cn(
                     "mt-4 max-w-2xl font-display leading-[1.06] text-white text-balance sm:mt-5 sm:leading-[1.02] lg:mx-0",
                     compact

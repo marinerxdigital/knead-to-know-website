@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { CTASection } from "@/components/sections/CTASection";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/sections/Section";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
@@ -247,6 +248,7 @@ function CustomOrdersPage() {
 
   if (submitted) {
     return (
+      <>
       <section className="relative overflow-hidden bg-[#f8f4ed] px-5 py-24 sm:px-8 sm:py-32">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(106,158,192,0.12),transparent_60%)]"
@@ -333,6 +335,18 @@ function CustomOrdersPage() {
           </div>
         </div>
       </section>
+      <CTASection
+        compact
+        eyebrow="While you wait"
+        title="Browse the menu"
+        text="Explore our full sourdough collection — breads, cookies, and bagels — all available for pre-order."
+        primaryLabel="View Menu"
+        primaryTo="/menu"
+        secondaryLabel={BUSINESS.phone}
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+      />
+      </>
     );
   }
 
@@ -650,7 +664,7 @@ function CustomOrdersPage() {
 
       <Section bg="white">
         <ScrollReveal delay={1}>
-          <div className="k2k-surface max-w-prose rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-sm">
+          <div className="k2k-surface mx-auto max-w-prose rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-sm">
             <p className="font-display text-lg text-ink">Need something larger or different?</p>
             <p className="mt-2 leading-relaxed text-k2k-navy/90">
               We also handle full catering spreads, corporate orders, and seasonal specials. Visit
@@ -667,6 +681,20 @@ function CustomOrdersPage() {
           </div>
         </ScrollReveal>
       </Section>
+
+      <CTASection
+        compact
+        eyebrow="Questions?"
+        title="Need help with your order?"
+        text="Call or text Wendy with your tray, timing, or custom requests — she confirms availability and bakes fresh for pickup."
+        primaryLabel="Contact Wendy"
+        primaryTo="/contact"
+        secondaryLabel={BUSINESS.phone}
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+        tertiaryLabel="View Menu"
+        tertiaryTo="/menu"
+      />
     </>
   );
 }

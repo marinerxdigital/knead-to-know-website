@@ -3,6 +3,7 @@ import { BookOpen, Compass, Instagram, Mail, MapPin, Phone } from "lucide-react"
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { KTK_DECOR } from "@/lib/design-assets";
 import { BUSINESS } from "@/lib/business";
+import { cn } from "@/lib/utils";
 
 const EXPLORE_LINKS = [
   { to: "/menu" as const, label: "Menu" },
@@ -77,9 +78,14 @@ function NewsletterPlaceholder() {
   );
 }
 
-export function Footer() {
+export function Footer({ showMobileBarOffset = false }: { showMobileBarOffset?: boolean }) {
   return (
-    <footer className="relative mt-0 overflow-hidden border-t border-k2k-black/[0.06] bg-[#f8f4ed]">
+    <footer
+      className={cn(
+        "relative mt-0 overflow-hidden border-t border-k2k-black/[0.06] bg-[#f8f4ed]",
+        showMobileBarOffset && "k2k-footer-mobile-pad",
+      )}
+    >
       <img
         src={KTK_DECOR.cornerFlourish}
         alt=""

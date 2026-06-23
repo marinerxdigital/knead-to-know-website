@@ -189,7 +189,7 @@ function CateringPage() {
   if (submitted) {
     return (
       <>
-        <section className="relative overflow-hidden border-b border-k2k-blue/10 bg-[#f8f4ed] py-24 sm:py-32">
+        <section className="relative overflow-hidden bg-[#f8f4ed] py-24 sm:py-32">
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(106,158,192,0.12),transparent_55%)]"
             aria-hidden
@@ -251,6 +251,7 @@ function CateringPage() {
           </div>
         </section>
         <CTASection
+          compact
           eyebrow="While you wait"
           title="Browse the menu"
           text="Explore our full sourdough collection — breads, cookies, and bagels — all available for pre-order."
@@ -530,8 +531,8 @@ function CateringPage() {
 
       <CTASection
         eyebrow="Prefer to talk?"
-        title="Call Wendy about your event"
-        text="Have questions about guest counts, menu pairings, or timing? Reach out directly — we're happy to help plan your spread."
+        title="Plan your event spread"
+        text="Have questions about guest counts, menu pairings, or timing? Browse the menu or call Wendy directly — we're happy to help."
         primaryLabel="View Menu"
         primaryTo="/menu"
         secondaryLabel={BUSINESS.phone}

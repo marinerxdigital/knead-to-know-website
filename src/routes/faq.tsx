@@ -233,7 +233,7 @@ function FAQPage() {
         <ScrollReveal className="mx-auto min-w-0 max-w-3xl">
           <FAQPanel
             accentRail
-            className="border-t-2 border-t-k2k-blue/25 pl-5 sm:pl-7"
+            className="border-t-2 border-t-k2k-blue/25"
             header={
               <div className="flex items-center justify-between bg-[#f8f4ed]/50">
                 <div className="group flex items-center gap-3">

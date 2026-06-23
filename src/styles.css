@@ -642,8 +642,13 @@
   padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
 }
 
+.k2k-footer-mobile-pad {
+  padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+}
+
 @media (min-width: 768px) {
-  .k2k-main-mobile-pad {
+  .k2k-main-mobile-pad,
+  .k2k-footer-mobile-pad {
     padding-bottom: 0;
   }
 }
