@@ -16,10 +16,7 @@ export function SectionDivider({
   }[bg];
 
   return (
-    <div
-      className={cn(bgClass, "k2k-section-divider py-1 sm:py-1.5")}
-      aria-hidden="true"
-    >
+    <div className={cn(bgClass, "k2k-section-divider py-2 sm:py-3")} aria-hidden="true">
       <CoastalWaveDivider />
     </div>
   );

@@ -16,9 +16,9 @@ function wavePath(baseY: number, amplitude: number, periods: number, width: numb
 }
 
 const PERIODS = 4;
-const TOP_WAVE = wavePath(34, 10, PERIODS, WAVE_PERIOD);
-const GOLD_WAVE = wavePath(50, 14, PERIODS, WAVE_PERIOD);
-const BOTTOM_WAVE = wavePath(66, 10, PERIODS, WAVE_PERIOD);
+const TOP_WAVE = wavePath(32, 14, PERIODS, WAVE_PERIOD);
+const GOLD_WAVE = wavePath(50, 18, PERIODS, WAVE_PERIOD);
+const BOTTOM_WAVE = wavePath(68, 14, PERIODS, WAVE_PERIOD);
 
 function WaveSvg({
   paths,
@@ -41,8 +41,8 @@ function WaveSvg({
       <defs>
         <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="white" stopOpacity="0" />
-          <stop offset="6%" stopColor="white" stopOpacity="1" />
-          <stop offset="94%" stopColor="white" stopOpacity="1" />
+          <stop offset="4%" stopColor="white" stopOpacity="1" />
+          <stop offset="96%" stopColor="white" stopOpacity="1" />
           <stop offset="100%" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <mask id={maskRef}>
@@ -96,7 +96,7 @@ export function CoastalWaveDivider({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "k2k-coastal-wave-divider relative aspect-[96/10] w-full max-w-[100vw] overflow-hidden sm:aspect-[192/12]",
+        "k2k-coastal-wave-divider relative aspect-[96/14] w-full max-w-[100vw] overflow-hidden sm:aspect-[192/18]",
         className,
       )}
       aria-hidden="true"
@@ -104,17 +104,17 @@ export function CoastalWaveDivider({ className }: { className?: string }) {
       <DriftingWaveLayer
         driftClass="k2k-wave-layer-slow"
         maskId={`${layerId}-top`}
-        paths={[{ d: TOP_WAVE, stroke: "var(--k2k-blue)", strokeWidth: 1.35, opacity: 0.88 }]}
+        paths={[{ d: TOP_WAVE, stroke: "var(--k2k-blue)", strokeWidth: 3, opacity: 0.96 }]}
       />
       <DriftingWaveLayer
         driftClass="k2k-wave-layer-gold"
         maskId={`${layerId}-gold`}
-        paths={[{ d: GOLD_WAVE, stroke: "var(--k2k-wheat)", strokeWidth: 2.1, opacity: 0.92 }]}
+        paths={[{ d: GOLD_WAVE, stroke: "var(--k2k-wheat)", strokeWidth: 4.5, opacity: 1 }]}
       />
       <DriftingWaveLayer
         driftClass="k2k-wave-layer-fast"
         maskId={`${layerId}-bottom`}
-        paths={[{ d: BOTTOM_WAVE, stroke: "var(--k2k-blue)", strokeWidth: 1.35, opacity: 0.82 }]}
+        paths={[{ d: BOTTOM_WAVE, stroke: "var(--k2k-blue)", strokeWidth: 3, opacity: 0.94 }]}
       />
     </div>
   );
