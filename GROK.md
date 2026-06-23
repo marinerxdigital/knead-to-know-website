@@ -1,75 +1,113 @@
-# GROK.md
+# GROK.md — Grok Build Instructions
 
-Instructions specifically for Grok Build.
+**Project:** Knead To Know Sweet & Sour Website v2  
+**Client:** Wendy Mercado, Daniel Island, SC  
+**Current phase:** Client-review mockup — **DEPLOYED TO MAIN** (2026-06-23)
 
-## Build Objective (current phase)
+---
 
-Phase 1 complete: safe bootstrap of editable source from spilled-milk skeleton into clean project root + verified build. No visual or branding work performed.
+## Mission Status: COMPLETE (visual + interactive shell)
 
-## Folder / File Creation Rules
+The site is ready for Wendy to review. Content gaps (email, hours, social, testimonials) are intentional placeholders until she provides real info.
 
-- Never create nested copies of the skeleton (e.g. no "spilled-milk-export/" folder at root).
-- Intake organization lives only in 00\_\* folders. Working source (src/, public/, config) stays at root.
-- All new top-level docs (SOURCE_OF_TRUTH.md etc.) go at root.
-- .grok/skills must never be touched or overwritten.
-- When adding assets later: follow guidance in asset system READMEs (public/assets/... or equivalent).
+**Live URL:** https://knead-to-know-website-v2.pages.dev  
+**Git:** `main` @ `850cdcb`
 
-## Design Direction (do not apply until Phase 2+)
+---
 
-See SOURCE_OF_TRUTH.md. Skeleton is reference for layout/spacing/hierarchy only.
+## What Grok Built (Revamp #1–#4)
 
-## Asset Usage (intake only so far)
+| Deliverable | Status |
+|-------------|--------|
+| Full-site UI revamp (all 9 primary routes) | Done |
+| Black-bordered boutique design system | Done |
+| Homepage 3D product carousel | Done |
+| Interactive Menu Builder + Pre-Order Tray | Done |
+| SMS prefilled order to Wendy | Done |
+| Contact page interactions + blue accents | Done |
+| Verified 16-item menu + pricing | Done |
+| Web3Forms wiring (contact, custom-orders, catering) | Done (needs env key) |
+| Cloudflare Pages deploy | Done |
 
-- Original zips live in 00_SOURCE_PACKAGES (never delete).
-- Primary logo in 00_BRAND_ASSETS.
-- When implementing later: use PNG component references as visual guides only; rebuild buttons/forms/cards in real code (not as images).
+---
 
-## Pages / Components to Generate (future)
+## Read First (every new Grok session)
 
-Follow skeleton routes for now (index, about, contact, inquiry, etc.). Re-skin only after brand tokens and content are locked.
+1. `MEMORY.md` — what was done
+2. `docs/FULL_SITE_STATUS_REPORT.md` — page-by-page audit
+3. `SOURCE_OF_TRUTH.md` — brand rules
+4. `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` — Wendy checklist
 
-## Do-not-use Patterns (active)
+---
 
-- No generic AI slop (per anti-ai-slop skill).
-- No premature branding replacement.
-- No direct edits to skeleton Spilled Milk copy, owner, email, instagram, or images.
-- Do not run visual polish before Phase 2-4 gates.
+## Non-Negotiables
 
-## Expected Outputs (Phase 1)
+- **Knead To Know only** — never Spilled Milk on customer surfaces
+- **No invented** prices, testimonials, Wendy bio details, email, hours, social
+- **Cloudflare Pages** deploy target
+- **Do not delete** `00_*` intake folders or `.grok/skills`
+- Update `MEMORY.md` after meaningful work
 
-- Organized 00\_ intake
-- Working package.json + src/ + public/ at root
-- Successful `npm run build` (or bun)
-- Memory + source-of-truth docs
+---
 
-## Commands (use consistently)
+## Key Components
 
-Preferred (when Bun available): bun install, bun run dev, bun run build
-Current environment: npm install, npm run build (Bun absent — see MEMORY)
+| Component | Where used |
+|-----------|------------|
+| `Product3DCarousel` | Homepage featured products |
+| `InteractiveMenuBuilder` | `/menu` |
+| `PreOrderTray` | `/menu` (sidebar + mobile) |
+| `BrandLogo` | Header, footer, hero |
+| `PageHero` | All inner pages |
+| `K2KProductCard` | Custom orders, carousel cards |
+| `ContactForm` | Contact page |
 
-## After Any Work
+---
 
-- Update MEMORY.md
-- Re-run build verification
-- Confirm protected items (.grok, 00\_\*, zips) untouched
+## Data Authority
 
-## Phase 1 Results (recorded)
+- `src/lib/business.ts` — phone `tel:8439730309`, sms `sms:8439730309`
+- `src/lib/products.ts` — 16 products
+- `src/data/menu.ts` — builder schema (derived, no duplicate prices)
 
-- ZIP extracted: spilled-milk-cake-boutique-export.zip (from 00_SOURCE_PACKAGES)
-- Files placed: direct copy of inner project contents to root
-- package.json at root: YES
-- bun install: N/A (Bun missing)
-- npm install + build: both succeeded (exit 0)
-- Errors: none blocking
-- Safe for Phase 2: YES (per final report)
+---
 
-## Phase 2 Summary
+## Commands
 
-- Assets inspected + copied.
-- Brand conversion (removal of Spilled Milk + Knead To Know identity + approved copy/colors).
-- npm build passed.
-- **Git remote missing — push blocked. See BLOCKER_GIT_REMOTE.md**
-- Reports self-saved.
-- Ready for preview once git resolved.
+```bash
+npm install
+npm run dev
+npm run build
+npm run lint
+npx wrangler pages deploy dist --project-name=knead-to-know-website-v2
+```
 
-Read SOURCE_OF_TRUTH.md and MEMORY.md before any further action.
+Set `VITE_WEB3FORMS_ACCESS_KEY` in Cloudflare before production forms.
+
+---
+
+## Parallel Subagent Pattern (used successfully)
+
+1. **Architecture** — data layer, component structure
+2. **Animation/UI** — CSS motion, carousel, interactions
+3. **Page polish** — per-route accents and ScrollReveal
+4. **QA** — build, lint, status report
+
+Invoke `.grok/skills/superpowers` for brainstorming and verification-before-completion.
+
+---
+
+## What's Left (not Grok UI work)
+
+- Wendy provides: email, hours, Instagram, founder photo, testimonials
+- Operator sets Web3Forms key in Cloudflare
+- Codex: orphan route cleanup, custom domain, typecheck script
+- Final launch approval from Skyler + Wendy
+
+---
+
+## Handoff to Claude / Codex
+
+- `CLAUDE.md` + `docs/handoffs/CLAUDE_CODE_HANDOFF.md` for Claude Code
+- `CODEX.md` for Codex deployment and refactor
+- `docs/FULL_SITE_STATUS_REPORT.md` for complete audit

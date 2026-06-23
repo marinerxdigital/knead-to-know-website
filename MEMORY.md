@@ -1,105 +1,133 @@
-# MEMORY.md
+# MEMORY.md — Grok Build Project Memory
 
-Long-term project memory. Update after every meaningful session.
+Long-term project memory. **Update after every meaningful session.**
 
-## Final Data Integration Session (2026-06-22) — Verified menu + phone + client tracking
+---
 
-- Agent: Grok Build (4-workstream parallel execution)
-- `business.ts`: full name "Knead To Know Sweet & Sour", phone `(843) 973-0309`, `tel:8439730309`, hours/email/social remain null (conditionally hidden)
-- `products.ts`: all 16 verified menu items with real pricing; removed invented descriptions and fake `BROADER_MENU` section from menu page
-- Homepage hero/ordering/about updated per client brief; phone CTAs on index, menu, about, contact, footer, custom-orders
-- About page: conservative safe copy only — no invented Wendy biography
-- `CLIENT_DELIVERABLES.md` created — confirmed vs still-needed checklist for Wendy
-- Build passes; lint 0 errors (9 pre-existing warnings); no `typecheck` script in package.json
-- Still outstanding from Wendy: email, hours, social links, founder story, founder photo
+## Revamp #4 + Deploy Session (2026-06-23) — CLIENT REVIEW READY
 
-## Visual Upgrade Session (2026-06-22) — Forms, SEO, homepage restructure
+**Agent:** Grok Build + 4 parallel subagents  
+**Branch merged:** `ui-revamp-2026-06-22` → `main`  
+**Commit:** `850cdcb`  
+**Live:** https://knead-to-know-website-v2.pages.dev  
+**Deploy preview:** https://07075fdd.knead-to-know-website-v2.pages.dev
 
-- Agent: Grok Build (14-task wave execution on `visual-upgrade-2026-06-22`)
-- Visual upgrade: Fraunces display font, wheat `#C2A878` accent token, scoring-line `SectionDivider` motif, focus-visible rings
-- Homepage restructured from 11 sections to 6 (hero, trust strip, featured products, how-to-order, about teaser, FAQ + CTA)
-- `business.ts`: Wendy Mercado name, honest placeholders; null phone/email/social with conditional Footer/Contact rendering
-- Products: all 16 prices → "Ask for pricing" wheat pill; removed 4 mismatched product photos
-- About page: Wendy Mercado name + styled photo-pending slot
-- Gallery: 3 populated categories only, Lightbox wired
-- Forms: Custom Orders + Catering wired to Web3Forms (fallback key pattern from ContactForm) — functionally demo-ready, not production-keyed
-- SEO: robots.txt/sitemap fixed, OG image → real K2K hero photo, Bakery JSON-LD added
-- Deleted 25 orphaned Spilled Milk `.asset.json` pointers + backing `lovable-assets` folders
-- Build + lint pass; placeholder bracket sweep clean in `src/`
-- Still outstanding per `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md`: Wendy's real phone, email, address, hours, social links, pricing, founder photo/story, testimonials
-- Live preview: https://knead-to-know-website-v2.pages.dev
-- `VITE_WEB3FORMS_ACCESS_KEY`: verify/set in Cloudflare Pages build env before real customer traffic
+### What was built
 
-## Handoff Session (2026-06-22) — Lint fix + Claude Code handoff
+#### Revamp #3–#4 (full-site UI)
+- Black borders on all containers (`k2k-surface`, `k2k-card`, `k2k-product-card`, buttons)
+- Darker bold nav (Menu / About / FAQ / Contact)
+- Wordmark: Knead To Know `font-weight 700` black; **Sweet & Sour blue** `#4F7EA8`
+- Bolder primary buttons (54px min-height, font-weight 700)
+- Blue accent rails + harbor lines site-wide
+- ScrollReveal, icon hover, hero stagger, FAQ accordion motion
+- Contact page: phone pulse, pin pulse, quick-action chips, accent rails
 
-- Agent: Grok Build
-- Ran `npm run format` — fixed 5,857 Prettier CRLF lint errors project-wide
-- Added `.editorconfig` (`end_of_line = lf`) to prevent CRLF regression on Windows
-- Lint now: 3 `@typescript-eslint/no-explicit-any` errors + 6 `react-refresh` warnings (non-blocking)
-- Created `docs/handoffs/CLAUDE_CODE_HANDOFF.md` — comprehensive Claude Code takeover document (4 parallel audit agents)
-- Created `CLAUDE.md` — Claude entry point pointing to handoff
-- Live preview: https://knead-to-know-website-v2.pages.dev (Cloudflare Pages)
-- HEAD commit before this session: `e782049` (bakery photos)
-- Next agent (Claude): start with `business.ts`, form wiring, SEO fixes, then UI/UX revamp per handoff §8–11
+#### Homepage
+- Full-bleed client hero photo
+- **Product3DCarousel** — 3D CSS coverflow, 7 featured products, autoplay/swipe/a11y
+- Neighbor stories: **black text**, **black icons** (`k2k-icon-black`)
+- Hero location text: Daniel Island + service area in black
 
-## Phase 2 Session (2026-06-22) — Brand Conversion
+#### Menu page — Interactive Menu Builder
+- `InteractiveMenuBuilder` — category tabs, search, product cards
+- `PreOrderTray` — desktop sticky sidebar + mobile bottom drawer
+- Quantity controls, product detail dialog
+- Estimated total (bread × price, cookies × $5/order, bagels × $3)
+- **Text Wendy:** `sms:8439730309?body=...` prefilled order
+- **Call Wendy:** `tel:8439730309`
+- Data: `src/data/menu.ts` + `src/lib/preorder-tray.ts`
+- No checkout, no payment, no fake data
 
-- Asset packages inspected and key PNGs (logo + product cards + UI refs) copied to public/assets/knead-to-know/ structure.
-- Brand removal audit performed (see 07_QA/BRAND_REMOVAL_AUDIT.md).
-- Core files updated: business.ts, Header.tsx, Footer.tsx, forms, \_\_root.tsx, about.tsx, index.tsx, site-data, squarespace.
-- Homepage hero/meta updated to approved bakery copy and CTAs ("View Menu", "Request an Order").
-- New required folders created (01_SOURCE to 08_DELIVERABLES) + many spec'd .md files.
-- npm install + npm run build passed (using Phase 1 verified npm path).
-- Brand audit: major Spilled Milk references removed from active UI/code paths.
-- **BLOCKER:** No .git repository. git remote check failed. Preview branch/push not performed. Blocker report written.
-- Reports self-saved: GROK_PHASE_2_REPORT.md, EXECUTION_LOG, BLOCKER_GIT_REMOTE, ASSET_INVENTORY, BRAND_REMOVAL_AUDIT, etc.
-- Stopped before push per non-negotiable rules.
+#### New files (key)
+| File | Purpose |
+|------|---------|
+| `src/components/products/Product3DCarousel.tsx` | Homepage 3D carousel |
+| `src/components/menu/InteractiveMenuBuilder.tsx` | Menu builder |
+| `src/components/menu/PreOrderTray.tsx` | Order tray |
+| `src/data/menu.ts` | MenuProduct schema |
+| `src/lib/preorder-tray.ts` | Cart + SMS logic |
+| `src/components/brand/BrandLogo.tsx` | Responsive logo |
+| `src/components/sections/PageHero.tsx` | Inner page heroes |
+| `src/components/motion/ScrollReveal.tsx` | Scroll animations |
+| `docs/FULL_SITE_STATUS_REPORT.md` | Complete site audit |
 
-## Phase 1 Session (2026-06-22)
+### Verified business data (unchanged)
+- **Knead To Know Sweet & Sour** — Wendy Mercado
+- Phone: `(843) 973-0309` / `tel:8439730309` / `sms:8439730309`
+- 16 menu items with verified pricing in `products.ts`
+- Pre-orders only · Freshly baked to order
 
-- Date: 2026-06-22
-- Agent: Grok (following user Phase 1 instructions)
-- Work completed:
-  - Created intake structure: 00_SOURCE_PACKAGES, 00_BRAND_ASSETS, 00_PROJECT_NOTES, 00_TEMP_EXTRACT
-  - Moved all 5 original ZIP packages into 00_SOURCE_PACKAGES (preserved)
-  - Moved Knead_To_Know_Primary_Circular_Logo.png into 00_BRAND_ASSETS (preserved)
-  - Consolidated prior temp*extract*\* folders into 00_TEMP_EXTRACT
-  - Extracted spilled-milk-cake-boutique-export.zip to 00_TEMP_EXTRACT/spilled-milk-skeleton
-  - Inspected inner "spilled-milk-export/" (confirmed package.json, bun.lock, vite.config.ts, src/, public/, components.json etc.)
-  - Copied inner project contents **directly** to workspace root (no nesting)
-  - Preserved without modification: .grok/, 00\_\* folders, all zips (in archive), logo (in brand assets)
-  - Bun unavailable in PATH (Node v24 present)
-  - Ran `npm install` (supported fallback) → exit 0
-  - Ran `npm run build` → exit 0, produced dist/client + dist/server
-  - Created control files: SOURCE_OF_TRUTH.md, MEMORY.md, GROK.md, CODEX.md, ERRORS.md, FIXED_ERRORS.md
-- Files changed / created:
-  - New dirs: 00\_\*
-  - Zips relocated to archive
-  - Logo relocated
-  - Full source tree (src/, public/, package.json, etc.) now at root
-  - New md control files at root
-  - npm artifacts: node_modules/, package-lock.json, dist/
-- Important decisions:
-  - Use skeleton **only as structure** (per asset README)
-  - Strict separation of intake vs working source
-  - npm fallback documented (Bun preferred)
-- User preferences / constraints:
-  - Follow all 12 .grok/skills (esp. listed 5 for Phase 1)
-  - No branding, no redesign, no secret touches, preserve zips
-- Known constraints:
-  - Bun missing on this machine
-  - Skeleton contains Spilled Milk content + "lovable-assets" (will be replaced later)
-  - .workspace/ arrived from skeleton (keep for reference; distinct from our .grok)
-- Current status: Phase 1 complete. Build verified. Project root is now working app.
-- Open questions:
-  - Exact final domain for SITE_URL (to be set in Phase 5+)
-  - Web3Forms access key (user to provide)
-- Next recommended action: Proceed to Phase 2 only after user approval. Begin with brand token audit + foundation using brand-strategy... and design-system-token... skills. Update this file on every step.
+### Build / lint / deploy
+- `npm run build` — **PASS**
+- `npm run lint` — **0 errors**, 8 warnings (pre-existing shadcn + cake-photos)
+- No `typecheck` script
+- Pushed to `origin/main`
+- Cloudflare Pages deploy — **SUCCESS**
 
-## Prior State (pre-Phase 1)
+### Still blocked on Wendy
+- Email, hours, Instagram/social, founder photo, real testimonials, maps URL
+- `VITE_WEB3FORMS_ACCESS_KEY` — operator must set in Cloudflare (forms wired but need key)
 
-Workspace contained only zips, logo, .grok/skills, and temporary extract folders from inspection. No editable source.
+### Orphan routes (not in nav — consider removing)
+- `/flavors`, `/flavors-pricing`, `/featured`, `/inquiry`
 
-## Errors Encountered (Phase 1)
+---
 
-None blocking. Bun not in PATH (non-fatal; npm worked).
+## UI Revamp Session (2026-06-22) — Revamp #1–#2
+
+- Warm cream palette, PageHero all pages, product-copy.ts for all 16 items
+- eslint.config.js ignores for intake folders
+- Plan: `docs/superpowers/specs/2026-06-22-full-site-revamp-plan.md`
+- Commits: `48706b8`, `f0c0cbf`, `2b79be6`
+
+---
+
+## Final Data Integration (2026-06-22)
+
+- `business.ts`: full name, phone, null email/hours/social
+- `products.ts`: all 16 verified items
+- `CLIENT_DELIVERABLES.md` tracking checklist
+
+---
+
+## Visual Upgrade (2026-06-22)
+
+- Homepage 6-section structure, Web3Forms on contact/custom-orders/catering
+- Fraunces + wheat accent, SectionDivider motif
+
+---
+
+## Phase 2 — Brand Conversion (2026-06-22)
+
+- Spilled Milk skeleton → Knead To Know rebrand
+- Asset packages in `00_*` folders
+- Git repo established, Cloudflare Pages target
+
+---
+
+## Phase 1 — Bootstrap (2026-06-22)
+
+- Extracted TanStack Start skeleton to root
+- `npm install` + `npm run build` verified
+- Created SOURCE_OF_TRUTH.md, GROK.md, CODEX.md, MEMORY.md
+
+---
+
+## Commands
+
+```bash
+npm install
+npm run dev          # http://localhost:8080
+npm run build
+npm run lint
+npx wrangler pages deploy dist --project-name=knead-to-know-website-v2
+```
+
+## Handoff reading order
+
+1. `docs/FULL_SITE_STATUS_REPORT.md` — full audit
+2. `docs/handoffs/CLAUDE_CODE_HANDOFF.md` — architecture
+3. `SOURCE_OF_TRUTH.md` — brand rules
+4. `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` — Wendy checklist
+5. `CODEX.md` — Codex deployment/memory

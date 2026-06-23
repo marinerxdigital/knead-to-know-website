@@ -1,76 +1,146 @@
-# CODEX.md
+# CODEX.md — Codex Agent Memory & Instructions
 
-Instructions specifically for Codex (code polish, refactor, deployment prep).
+**Project:** Knead To Know Sweet & Sour Website v2  
+**Stack:** TanStack Start + React 19 + Tailwind v4 + Nitro (Cloudflare Pages)  
+**Status as of 2026-06-23:** Client-review mockup on `main` @ `850cdcb`  
+**Live:** https://knead-to-know-website-v2.pages.dev
 
-## Code Polish Responsibilities (future phases)
+---
 
-- Enforce strict TypeScript (no implicit any, proper narrowing).
-- Keep components small (see responsive-component-composition-architect limits).
-- Run `npm run lint` / typecheck equivalents before any commit of changes.
-- After any structural copy or later edits, run full build and verify no new errors.
-- Prefer npm/bun scripts that exist in package.json.
-- Document every change in MEMORY.md + FIXED_ERRORS.md when applicable.
+## Your Role
+
+Codex handles: TypeScript hardening, refactor cleanup, deployment prep, orphan route removal, form production wiring, and final launch gate.
+
+**Do not** redesign the UI unless Wendy requests changes. The visual revamp (#1–#4) is complete.
+
+---
+
+## Start Here
+
+1. `docs/FULL_SITE_STATUS_REPORT.md` — every page/feature status
+2. `MEMORY.md` — session history
+3. `SOURCE_OF_TRUTH.md` — brand non-negotiables
+4. `src/lib/business.ts` + `src/lib/products.ts` — data authority
+
+---
+
+## Architecture Map
+
+```
+src/
+  routes/           # File-based TanStack routes (primary pages)
+  components/
+    brand/          # BrandLogo
+    layout/         # Header, Footer, MobileOrderBar
+    sections/       # PageHero, Section, CTASection, SectionDivider
+    menu/           # InteractiveMenuBuilder, PreOrderTray, cards
+    products/       # Product3DCarousel (homepage only)
+    forms/          # ContactForm (Web3Forms)
+    motion/         # ScrollReveal
+  data/menu.ts      # MenuProduct schema (derived from products.ts)
+  lib/
+    business.ts     # Wendy, phone, tel, sms, null placeholders
+    products.ts     # 16 verified products
+    product-copy.ts # Descriptions + ingredients
+    preorder-tray.ts # Cart reducer, SMS body builder
+  styles.css        # k2k-* design system tokens
+```
+
+---
+
+## Key Features (do not break)
+
+### Interactive Menu Builder (`/menu`)
+- Category filter + search
+- Add to tray with quantity
+- Estimated total: bread (unit price), cookies ($5 per 2-cookie order), bagels ($3)
+- SMS: `BUSINESS.phoneSms` + `buildSmsHref(lines)` from `preorder-tray.ts`
+- Phone: `BUSINESS.phoneTel`
+- **No checkout**
+
+### Homepage 3D Carousel
+- `Product3DCarousel` uses `HOME_FEATURED_PRODUCTS` (7 items)
+- CSS 3D transforms only — no Framer Motion
+
+### Forms (Web3Forms)
+- Contact, Custom Orders, Catering
+- Pattern: `import.meta.env.VITE_WEB3FORMS_ACCESS_KEY`
+- **Production blocker:** key not set in Cloudflare env
+
+---
 
 ## Type Safety Rules
 
-- Project uses TS + strict expectations (from senior-full-stack skill).
-- Validate external inputs (forms, env, route data).
-- No `any` unless truly unavoidable and commented.
+- Fix 3 `@typescript-eslint/no-explicit-any` in `cake-photos.ts` when touching that file
+- `MenuProduct`, `TrayLine`, `Product` types are canonical — extend, don't duplicate
+- Guard `null` fields in `business.ts` (email, hours, social) with conditional render
 
-## Refactor Rules
+---
 
-- Do not refactor UI or design tokens until brand + design system skills have been applied (Phase 2+).
-- Preserve skeleton routing and component structure during bootstrap.
+## Deployment (Cloudflare Pages)
 
-## Deployment (Vercel 404 Fix Notes for Codex)
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name=knead-to-know-website-v2
+```
 
-- This project requires SSR deployment via Nitro + vercel preset. Never assume static Vite `dist/client` + index.html SPA fallback.
-- Key files for deploy: vercel.json, vite.config.ts (nitro.preset).
-- Always run `npm run build` and inspect `.vercel/output/` (static + functions) before pushing.
-- Update DEPLOYMENT.md + reports on any setting change.
-- If 404 returns after push: check dashboard Output Directory is blank or `.vercel/output`, clear cache.
-- Record: npm results, commit hash, push result, final URL in reports (GROK_PHASE_2_REPORT, FIXED_ERRORS, FINAL_SUMMARY).
+- Preset: `cloudflare-pages` in vite config (Nitro)
+- Output: `dist/` with `_worker.js`
+- Set `VITE_WEB3FORMS_ACCESS_KEY` in Cloudflare dashboard before launch
+- Update `SITE_URL` in `business.ts` when custom domain is live
 
-## SSR Runtime / Data Guard Rules (from null .publication crash)
+**Do not** use Vercel static fallback — this is SSR.
 
-- Legacy skeleton objects (PRESS_FEATURE, old .publication, .site etc.) may be deliberately set to null after brand conversion.
-- Always guard property access or conditionally render dependent UI.
-- Homepage and core routes must never throw during renderToReadableStream.
-- After any data change in lib/business or site-data, re-run full `npm run build` + deploy preview test.
-- Fix only the minimal null paths; preserve all K2K copy, sections, assets.
-- When later rebranding: update lib/business.ts, routes, metadata, assets carefully.
+---
+
+## PR / Launch Checklist
+
+- [ ] `npm run build` pass
+- [ ] `npm run lint` 0 errors
+- [ ] No Spilled Milk strings in `src/`
+- [ ] Orphan routes removed or redirected
+- [ ] Web3Forms key set + test submission
+- [ ] Wendy content filled (email, hours, social, photo)
+- [ ] Real testimonials replace placeholders
+- [ ] Lighthouse pass (optional, use web-perf skill)
+- [ ] Custom domain + SITE_URL update
+
+---
+
+## Files Safe to Delete (document first)
+
+- `src/lib/cake-photos.ts` — Spilled Milk legacy
+- `src/routes/flavors.tsx`, `flavors-pricing.tsx`, `featured.tsx`, `inquiry.tsx` — orphans
+- `src/components/forms/InquiryForm.tsx` — if unused
+- Duplicate `k2k-products.ts` if still present
+
+**Never delete:** `00_*` folders, `.grok/skills`, brand asset packages
+
+---
 
 ## Testing Commands
 
-- `npm run build`
-- `npm run lint`
-- Manual: dev server + form submissions + responsive checks (see production-qa skill)
+```bash
+npm run build
+npm run lint
+npm run dev   # preview at localhost:8080
+```
 
-## Deployment Instructions
+No `typecheck` script — add `"typecheck": "tsc --noEmit"` if desired.
 
-- Target: Cloudflare Workers (see CLOUDFLARE_DEPLOYMENT_NOTES.md and skeleton notes).
-- After build: dist/ (client + server) or .output/ equivalent.
-- Environment: VITE_WEB3FORMS_ACCESS_KEY (never commit; set in platform secrets).
-- Do not deploy until production-qa gatekeeper checklist passes.
+---
 
-## Git / GitHub Expectations
+## Codex-Specific Next Tasks (priority order)
 
-- Record major bootstrap steps.
-- Do not commit node_modules or secrets.
+1. Set Web3Forms env + verify form delivery
+2. Remove orphan routes + dead imports
+3. Fill Wendy nulls when client provides data
+4. Add `typecheck` script + fix any TS issues
+5. Custom domain deployment
+6. Consolidate `cake-photos.ts` removal
 
-## PR Review Checklist (for later)
+---
 
-- Build + lint + typecheck clean.
-- No accidental Spilled Milk strings or assets left after rebrand.
-- Protected folders untouched.
-- Follows all loaded .grok skills.
+## Session Log Reference
 
-Phase 1 note: No code changes performed beyond source extraction. All verification passed via npm path.
-
-Phase 2 updates:
-
-- Brand conversion + asset integration completed (see GROK_PHASE_2_REPORT).
-- Product card manifest available for Menu/Product components.
-- Use npm run build for verification.
-- Git push not performed (no repo).
-- Focus next: real ProductCard impl, new route pages (menu/custom/catering/faq), image placeholders swap.
+See `MEMORY.md` § Revamp #4 for full file list and commit `850cdcb`.
