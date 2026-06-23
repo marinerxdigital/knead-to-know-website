@@ -1,9 +1,11 @@
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
-import { Section, SectionHeading } from "@/components/sections/Section";
+import { ArrowRight, Check, Loader2, Sparkles } from "lucide-react";
+import { PageHero } from "@/components/sections/PageHero";
+import { Section } from "@/components/sections/Section";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { K2KProductCard } from "@/components/ui/K2KProductCard";
-import { PRODUCTS } from "@/lib/products";
+import { BAKERY_PHOTOS, PRODUCTS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
 
@@ -13,18 +15,36 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "w-full h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:outline-none";
+  "w-full h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)] focus:outline-none";
 
 const textareaClass =
-  "w-full rounded-xl border border-k2k-blue/18 bg-white p-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:outline-none";
+  "w-full rounded-xl border border-k2k-blue/18 bg-white p-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)] focus:outline-none";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70 block mb-1.5";
 
 const STEPS = [
-  { num: 1, label: "Choose bakes" },
-  { num: 2, label: "Your details" },
-  { num: 3, label: "Submit request" },
-];
+  { num: 1, label: "Choose bakes", short: "Choose" },
+  { num: 2, label: "Your details", short: "Details" },
+  { num: 3, label: "Submit request", short: "Submit" },
+] as const;
+
+const PROCESS_STEPS = [
+  {
+    num: 1,
+    title: "Choose",
+    desc: "Select the bakes you'd like from our menu — tap any card to add or remove items.",
+  },
+  {
+    num: 2,
+    title: "Details",
+    desc: "Share your preferred pickup date and time, quantities, and any special instructions.",
+  },
+  {
+    num: 3,
+    title: "Submit",
+    desc: `Send your request and ${BUSINESS.shortOwner} will confirm availability, pricing, and timing within 24 hours.`,
+  },
+] as const;
 
 export const Route = createFileRoute("/custom-orders")({
   head: () => ({
@@ -49,6 +69,84 @@ export const Route = createFileRoute("/custom-orders")({
 });
 
 type Search = { product?: string };
+
+function OrderStepIndicator() {
+  return (
+    <nav aria-label="Order steps">
+      <ol className="flex flex-wrap items-center gap-3 sm:gap-5">
+        {STEPS.map((step, i) => (
+          <li key={step.num} className="flex items-center gap-2.5 sm:gap-3">
+            <span
+              className={cn(
+                "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors sm:h-10 sm:w-10",
+                i === 0
+                  ? "bg-k2k-blue text-white shadow-[0_8px_24px_-8px_rgba(79,126,168,0.55)]"
+                  : "border border-k2k-blue/25 bg-white text-k2k-navy/70",
+              )}
+            >
+              {step.num}
+            </span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-k2k-navy/80 sm:text-xs sm:tracking-[0.12em]">
+              <span className="hidden sm:inline">{step.label}</span>
+              <span className="sm:hidden">{step.short}</span>
+            </span>
+            {i < STEPS.length - 1 && (
+              <span
+                className="mx-0.5 hidden h-px w-6 bg-k2k-blue/20 sm:mx-1 sm:block sm:w-10"
+                aria-hidden
+              />
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+function ProcessSidebar() {
+  return (
+    <aside className="hidden lg:block">
+      <div className="sticky top-28">
+        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/70">
+          How it works
+        </p>
+        <h3 className="mt-2 font-display text-2xl text-ink">Three simple steps</h3>
+
+        <ol className="mt-8 space-y-0">
+          {PROCESS_STEPS.map((step, i) => (
+            <li key={step.num} className="relative flex gap-4 pb-8 last:pb-0">
+              {i < PROCESS_STEPS.length - 1 && (
+                <span
+                  className="absolute left-[15px] top-9 h-[calc(100%-2rem)] w-px bg-k2k-blue/15"
+                  aria-hidden
+                />
+              )}
+              <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-k2k-blue/20 bg-[#f8f4ed] text-xs font-semibold text-k2k-blue">
+                {step.num}
+              </span>
+              <div className="pt-0.5">
+                <p className="font-display text-lg text-ink">{step.title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-8 overflow-hidden rounded-2xl border border-k2k-blue/10">
+          <img
+            src={BAKERY_PHOTOS.chocolateChipCookies}
+            alt=""
+            className="aspect-[4/3] w-full object-cover"
+            aria-hidden
+          />
+          <p className="px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+            {BUSINESS.orderingModel} — every bake is made fresh for your order.
+          </p>
+        </div>
+      </div>
+    </aside>
+  );
+}
 
 function CustomOrdersPage() {
   const search = useSearch({ from: "/custom-orders" }) as Search;
@@ -138,118 +236,123 @@ function CustomOrdersPage() {
 
   if (submitted) {
     return (
-      <div className="mx-auto max-w-2xl px-5 py-24 text-center">
-        <div className="k2k-card mx-auto max-w-lg rounded-[1.75rem] p-10">
-          <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full bg-k2k-blue/10">
-            <Check className="h-8 w-8 text-k2k-blue" />
+      <section className="relative overflow-hidden bg-[#f8f4ed] px-5 py-24 sm:px-8 sm:py-32">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(127,167,199,0.12),transparent_60%)]"
+          aria-hidden
+        />
+
+        <div className="relative mx-auto max-w-2xl">
+          <div className="k2k-card overflow-hidden rounded-[2rem] p-10 sm:p-12">
+            {/* Scoring accent */}
+            <div className="mb-8 flex items-center gap-3" aria-hidden="true">
+              <div className="relative h-px flex-1">
+                <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+              </div>
+              <Sparkles className="h-4 w-4 text-wheat" />
+              <div className="relative h-px flex-1">
+                <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+              </div>
+            </div>
+
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-k2k-blue/10 ring-4 ring-k2k-blue/5">
+              <Check className="h-8 w-8 text-k2k-blue" strokeWidth={2.5} />
+            </div>
+
+            <h1 className="mt-8 text-center font-display text-4xl text-ink sm:text-5xl">
+              Request received
+            </h1>
+            <p className="mx-auto mt-4 max-w-md text-center leading-relaxed text-muted-foreground">
+              Your pre-order request for{" "}
+              <span className="font-medium text-ink">
+                {selectedProducts.length
+                  ? selectedProducts.map((p) => p.name).join(", ")
+                  : "custom items"}
+              </span>{" "}
+              is on its way to {BUSINESS.shortOwner}.
+            </p>
+
+            <div className="mx-auto mt-8 max-w-sm rounded-2xl border border-k2k-blue/10 bg-[#f8f4ed]/60 px-5 py-4 text-center">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
+                What happens next
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                She will confirm availability, pricing, and pickup details within 24 hours via your
+                preferred contact method.
+              </p>
+            </div>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <Link to="/menu" className="inline-flex k2k-button k2k-button-outline">
+                Back to Menu
+              </Link>
+              <Link to="/" className="inline-flex k2k-button k2k-button-primary">
+                Return Home
+              </Link>
+            </div>
+
+            <p className="mt-10 text-center text-xs text-muted-foreground">
+              Daniel Island, SC · {BUSINESS.name}
+            </p>
           </div>
-          <h1 className="font-display text-4xl text-ink">Thank you!</h1>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            Your pre-order request for{" "}
-            {selectedProducts.length
-              ? selectedProducts.map((p) => p.name).join(", ")
-              : "custom items"}{" "}
-            is on its way to {BUSINESS.shortOwner}. She will confirm availability, pricing, and
-            pickup details within 24 hours.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link to="/menu" className="inline-flex k2k-button k2k-button-outline">
-              Back to Menu
-            </Link>
-            <Link to="/" className="inline-flex k2k-button k2k-button-primary">
-              Return Home
-            </Link>
-          </div>
-          <p className="mt-10 text-xs text-muted-foreground">
-            Daniel Island, SC • Small-batch bakery
-          </p>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white pb-14 pt-16 sm:pt-24">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(127,167,199,0.1),transparent_55%)]"
-          aria-hidden
-        />
-        <div className="relative mx-auto max-w-5xl px-5 sm:px-8">
-          <SectionHeading
-            as="h1"
-            eyebrow="Custom &amp; Pre-Orders"
-            title="Request an Order"
-            intro="Pre-orders only. Select items, share quantities and preferred pickup timing. Call, text, DM, or submit this form to place your order."
-          />
+      <PageHero
+        eyebrow="Custom & Pre-Orders"
+        title="Request an Order"
+        intro="Pre-orders only. Select items, share quantities and preferred pickup timing. Call, text, DM, or submit this form to place your order."
+        image={BAKERY_PHOTOS.hero}
+        imageAlt="Fresh bakery spread from Knead To Know"
+        imagePosition="right"
+      >
+        <OrderStepIndicator />
+      </PageHero>
 
-          <ol className="mt-10 flex flex-wrap items-center gap-3 sm:gap-6">
-            {STEPS.map((step, i) => (
-              <li key={step.num} className="flex items-center gap-3">
-                <span
-                  className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full text-xs font-medium",
-                    i === 0
-                      ? "bg-k2k-blue text-white"
-                      : "border border-k2k-blue/25 text-k2k-navy/70",
-                  )}
-                >
-                  {step.num}
-                </span>
-                <span className="text-xs font-medium uppercase tracking-[0.12em] text-k2k-navy/80">
-                  {step.label}
-                </span>
-                {i < STEPS.length - 1 && (
-                  <span className="hidden h-px w-8 bg-k2k-blue/20 sm:block" aria-hidden />
-                )}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+      <Section id="choose-bakes">
+        <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <div className="mb-6 flex items-end justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
-                  Step 1
-                </p>
-                <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                  Choose your bakes
-                </h2>
-              </div>
-              {selectedIds.length > 0 && (
-                <span className="rounded-full bg-k2k-blue/10 px-3 py-1 text-xs font-medium text-k2k-navy">
-                  {selectedIds.length} selected
-                </span>
-              )}
-            </div>
-            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-              Tap any card to add or remove. You can select multiple items.
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
+              Step 1
             </p>
+            <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">Choose your bakes</h2>
+          </div>
+          {selectedIds.length > 0 && (
+            <span className="rounded-full bg-k2k-blue/10 px-3 py-1 text-xs font-medium text-k2k-navy">
+              {selectedIds.length} selected
+            </span>
+          )}
+        </div>
+        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Tap any card to add or remove. You can select multiple items — don&apos;t see exactly what
+          you want? Add details in the special instructions field below.
+        </p>
 
-            <div className="grid grid-cols-1 gap-5 sm:max-h-[640px] sm:grid-cols-2 sm:overflow-auto sm:pr-2">
-              {PRODUCTS.map((product) => (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {PRODUCTS.map((product, index) => {
+            const delay = (index % 5) as 0 | 1 | 2 | 3 | 4;
+            return (
+              <ScrollReveal key={product.id} delay={delay}>
                 <K2KProductCard
-                  key={product.id}
                   product={product}
                   selectable
                   selected={selectedIds.includes(product.id)}
                   onSelect={() => toggleProduct(product.id)}
                   showCta={false}
                 />
-              ))}
-            </div>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+      </Section>
 
-            <p className="mt-5 text-xs text-muted-foreground">
-              Don&apos;t see exactly what you want? Add details in the special instructions field
-              below.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="k2k-card space-y-5 rounded-[1.75rem] p-6 sm:p-8">
+      <Section variant="inset" bg="beige" reveal={false}>
+        <div className="grid gap-12 lg:grid-cols-[1fr_280px] lg:gap-16">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <input
               type="text"
               tabIndex={-1}
@@ -264,7 +367,7 @@ function CustomOrdersPage() {
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
                 Step 2
               </p>
-              <h2 className="mt-1 font-display text-2xl text-ink">Your details</h2>
+              <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">Your details</h2>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -477,8 +580,17 @@ function CustomOrdersPage() {
                 disabled={submitting}
                 className="k2k-button k2k-button-primary flex w-full items-center justify-center gap-2 disabled:opacity-60"
               >
-                {submitting ? "Sending…" : "Submit Custom Order Request"}
-                <ArrowRight className="h-4 w-4" />
+                {submitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+                    Sending request…
+                  </>
+                ) : (
+                  <>
+                    Submit Custom Order Request
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
               </button>
 
               <p className="pt-3 text-center text-[10px] leading-relaxed text-muted-foreground">
@@ -487,10 +599,12 @@ function CustomOrdersPage() {
               </p>
             </div>
           </form>
+
+          <ProcessSidebar />
         </div>
       </Section>
 
-      <Section bg="beige">
+      <Section bg="white">
         <div className="max-w-prose text-sm">
           <p className="font-display text-lg text-ink">Need something larger or different?</p>
           <p className="mt-2 leading-relaxed text-muted-foreground">

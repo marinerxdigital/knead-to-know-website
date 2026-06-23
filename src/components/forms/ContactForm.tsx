@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -28,9 +28,42 @@ const ERROR_MESSAGE = BUSINESS.email
   : `Something went wrong while sending your message. Please try again or call ${BUSINESS.phone}.`;
 
 const fieldClass =
-  "h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0";
+  "h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70";
+
+function FormField({
+  id,
+  label,
+  optional,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  optional?: boolean;
+  error?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="group relative grid gap-2">
+      <Label className={labelClass} htmlFor={id}>
+        {label}
+        {optional && (
+          <span className="normal-case tracking-normal text-muted-foreground"> (optional)</span>
+        )}
+      </Label>
+      <div className="relative">
+        {children}
+        <span
+          className="pointer-events-none absolute inset-x-4 bottom-0 h-0.5 origin-left scale-x-0 rounded-full bg-k2k-blue transition-transform duration-300 ease-out group-focus-within:scale-x-100"
+          aria-hidden="true"
+        />
+      </div>
+      {error && <p className="text-xs text-destructive">{error}</p>}
+    </div>
+  );
+}
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -118,22 +151,16 @@ export function ContactForm() {
         style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
       />
 
-      <div className="grid gap-2">
-        <Label className={labelClass} htmlFor="contact-name">
-          Name
-        </Label>
+      <FormField id="contact-name" label="Name" error={errors.name?.message}>
         <Input
           id="contact-name"
           {...register("name")}
           autoComplete="name"
           className={cn(fieldClass, errors.name && "border-destructive/50")}
         />
-        {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
-      </div>
-      <div className="grid gap-2">
-        <Label className={labelClass} htmlFor="contact-email">
-          Email
-        </Label>
+      </FormField>
+
+      <FormField id="contact-email" label="Email" error={errors.email?.message}>
         <Input
           id="contact-email"
           type="email"
@@ -141,12 +168,9 @@ export function ContactForm() {
           autoComplete="email"
           className={cn(fieldClass, errors.email && "border-destructive/50")}
         />
-        {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
-      </div>
-      <div className="grid gap-2">
-        <Label className={labelClass} htmlFor="contact-phone">
-          Phone <span className="normal-case tracking-normal text-muted-foreground">(optional)</span>
-        </Label>
+      </FormField>
+
+      <FormField id="contact-phone" label="Phone" optional>
         <Input
           id="contact-phone"
           type="tel"
@@ -155,22 +179,19 @@ export function ContactForm() {
           placeholder="(843) 973-0309"
           className={fieldClass}
         />
-      </div>
-      <div className="grid gap-2">
-        <Label className={labelClass} htmlFor="contact-message">
-          Message / order notes
-        </Label>
+      </FormField>
+
+      <FormField id="contact-message" label="Message / order notes" error={errors.message?.message}>
         <Textarea
           id="contact-message"
           rows={5}
           {...register("message")}
           className={cn(
-            "min-h-[140px] rounded-xl border border-k2k-blue/18 bg-white px-4 py-3 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0",
+            "min-h-[140px] rounded-xl border border-k2k-blue/18 bg-white px-4 py-3 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]",
             errors.message && "border-destructive/50",
           )}
         />
-        {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
-      </div>
+      </FormField>
 
       {submitError && (
         <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
@@ -183,7 +204,14 @@ export function ContactForm() {
         disabled={isSubmitting}
         className="k2k-button k2k-button-primary w-full disabled:opacity-60"
       >
-        {isSubmitting ? "Sending…" : "Send message"}
+        {isSubmitting ? (
+          <span className="inline-flex items-center gap-2">
+            <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+            Sending message…
+          </span>
+        ) : (
+          "Send message"
+        )}
       </button>
     </form>
   );

@@ -17,20 +17,28 @@ import { Footer } from "../components/layout/Footer";
 import { MobileOrderBar } from "../components/layout/MobileOrderBar";
 import { Toaster } from "../components/ui/sonner";
 
+const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
+
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white px-4">
-      <div className="max-w-md text-center">
-        <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">404</p>
-        <h1 className="mt-4 font-display text-4xl text-ink">Page not found</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(127,167,199,0.12),transparent_55%)]"
+        aria-hidden
+      />
+      <div className="relative max-w-md text-center">
+        <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
+          <span className="h-px w-10 bg-k2k-blue/20" />
+          <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-50" />
+          <span className="h-px w-10 bg-k2k-blue/20" />
+        </div>
+        <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">404</p>
+        <h1 className="mt-4 font-display text-4xl text-ink sm:text-5xl">Page not found</h1>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground transition hover:bg-forest-dark"
-          >
+        <div className="mt-8">
+          <Link to="/" className="k2k-button k2k-button-primary inline-flex">
             Back to home
           </Link>
         </div>
@@ -47,24 +55,35 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white px-4">
-      <div className="max-w-md text-center">
-        <h1 className="font-display text-3xl text-ink">Something went wrong</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Please try again or head back home.</p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(194,168,120,0.1),transparent_50%)]"
+        aria-hidden
+      />
+      <div className="relative max-w-md text-center">
+        <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
+          <span className="h-px w-10 bg-wheat/50" />
+          <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-50" />
+          <span className="h-px w-10 bg-wheat/50" />
+        </div>
+        <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">
+          Unexpected error
+        </p>
+        <h1 className="mt-4 font-display text-3xl text-ink sm:text-4xl">Something went wrong</h1>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Please try again or head back home.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <button
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex h-11 items-center justify-center rounded-full bg-forest px-6 text-sm font-medium text-primary-foreground hover:bg-forest-dark"
+            className="k2k-button k2k-button-primary inline-flex"
           >
             Try again
           </button>
-          <a
-            href="/"
-            className="inline-flex h-11 items-center justify-center rounded-full border border-border bg-background px-6 text-sm font-medium text-foreground hover:bg-muted"
-          >
+          <a href="/" className="k2k-button k2k-button-outline inline-flex">
             Go home
           </a>
         </div>

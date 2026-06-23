@@ -1,8 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { PageHero } from "@/components/sections/PageHero";
 import { Section, SectionHeading } from "@/components/sections/Section";
+import { CTASection } from "@/components/sections/CTASection";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { BAKERY_PHOTOS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
+import { cn } from "@/lib/utils";
 
 const ACCESS_KEY =
   (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
@@ -53,6 +58,39 @@ const CATERING_SERVICES = [
     tier: "Bespoke",
   },
 ] as const;
+
+const CATERING_STEPS = [
+  {
+    step: "01",
+    title: "Share your event",
+    description:
+      "Tell us your date, guest count, and what you'd like — cookie trays, bread baskets, brunch spreads, or custom platters.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+  },
+  {
+    step: "02",
+    title: "Wendy confirms details",
+    description:
+      "We reply within one business day with menu selections, quantities, timing, and delivery or pickup arrangements.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+  },
+  {
+    step: "03",
+    title: "Fresh bakes, your way",
+    description:
+      "Everything is baked to order in small batches — ready for your Daniel Island gathering, office, or celebration.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
+  },
+] as const;
+
+const TIER_STYLES: Record<string, string> = {
+  Popular: "bg-k2k-blue/10 text-k2k-navy ring-k2k-blue/15",
+  Events: "bg-k2k-harbor/15 text-k2k-navy ring-k2k-harbor/25",
+  Morning: "bg-wheat/20 text-k2k-navy ring-wheat/35",
+  Gifting: "bg-k2k-blue/8 text-k2k-navy ring-k2k-blue/12",
+  Seasonal: "bg-k2k-navy/8 text-k2k-navy ring-k2k-navy/12",
+  Bespoke: "bg-k2k-blue/12 text-k2k-navy ring-k2k-blue/18",
+};
 
 export const Route = createFileRoute("/catering")({
   head: () => ({
@@ -149,73 +187,165 @@ function CateringPage() {
 
   if (submitted) {
     return (
-      <div className="mx-auto max-w-xl px-5 py-24 text-center">
-        <div className="k2k-card rounded-[1.75rem] p-10">
-          <h1 className="font-display text-4xl text-ink">Thank you. Catering request received.</h1>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            We will contact you shortly to confirm menu selections, quantities, timing, and
-            delivery/pickup arrangements for your event.
-          </p>
-          <Link to="/" className="mt-8 inline-flex k2k-button k2k-button-primary">
-            Return home
-          </Link>
-        </div>
-      </div>
+      <>
+        <section className="relative overflow-hidden border-b border-k2k-blue/10 bg-[#f8f4ed] py-24 sm:py-32">
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(127,167,199,0.12),transparent_55%)]"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-xl px-5 sm:px-8">
+            <div className="k2k-surface overflow-hidden rounded-[2rem] p-10 text-center sm:p-14">
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-k2k-blue/10 ring-1 ring-k2k-blue/20">
+                <CheckCircle2 className="h-8 w-8 text-k2k-blue" aria-hidden />
+              </div>
+              <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">
+                Request received
+              </p>
+              <h1 className="mt-4 font-display text-4xl leading-[1.05] text-ink sm:text-5xl">
+                Thank you — we&apos;ll be in touch soon.
+              </h1>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                Your catering request is on its way to Wendy. We will contact you shortly to confirm
+                menu selections, quantities, timing, and delivery or pickup arrangements for your
+                event on Daniel Island.
+              </p>
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
+                <Link to="/" className="k2k-button k2k-button-primary inline-flex items-center gap-2">
+                  Return home
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a href={BUSINESS.phoneTel} className="k2k-button k2k-button-outline inline-flex">
+                  {BUSINESS.phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <CTASection
+          eyebrow="While you wait"
+          title="Browse the menu"
+          text="Explore our full sourdough collection — breads, cookies, and bagels — all available for pre-order."
+          primaryLabel="View Menu"
+          primaryTo="/menu"
+          secondaryLabel={BUSINESS.phone}
+          secondaryTo={BUSINESS.phoneTel}
+          secondaryIsPhone
+        />
+      </>
     );
   }
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white pb-14 pt-16 sm:pt-24">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(194,168,120,0.08),transparent_50%)]"
-          aria-hidden
-        />
-        <div className="relative mx-auto max-w-5xl px-5 sm:px-8">
-          <SectionHeading
-            as="h1"
-            eyebrow="Catering &amp; Events"
-            title="Bakes for your gathering"
-            intro="From office breakfasts to neighborhood parties and holiday celebrations — we prepare bread baskets, cookie platters, bakery boxes, and full brunch spreads."
-          />
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Catering &amp; Events"
+        title="Bakes for your gathering"
+        intro={`From office breakfasts to neighborhood parties and holiday celebrations on Daniel Island — we prepare bread baskets, cookie platters, bakery boxes, and full brunch spreads for ${BUSINESS.serviceArea}.`}
+        image={BAKERY_PHOTOS.hero}
+        imageAlt="Artisan sourdough spread from Knead To Know bakery"
+      >
+        <span className="inline-flex items-center gap-2 rounded-full bg-k2k-blue/8 px-4 py-2 text-sm font-medium text-k2k-navy ring-1 ring-k2k-blue/15">
+          <span className="h-1.5 w-1.5 rounded-full bg-wheat" aria-hidden />
+          {BUSINESS.orderingModel} · Baked fresh for your event
+        </span>
+      </PageHero>
 
-      <Section>
-        <SectionHeading eyebrow="Formats" title="Popular catering formats" />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {CATERING_SERVICES.map((service) => (
-            <div
+      <Section variant="editorial">
+        <SectionHeading
+          eyebrow="Formats"
+          title="Popular catering formats"
+          decorative
+          intro="Six ways to bring small-batch sourdough to your table — from cookie trays to fully custom platters."
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {CATERING_SERVICES.map((service, index) => (
+            <ScrollReveal
               key={service.title}
-              className="k2k-card group flex flex-col rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1"
+              delay={Math.min(index % 3, 4) as 0 | 1 | 2 | 3 | 4}
             >
-              <div className="flex items-start justify-between gap-3">
-                <img
-                  src={service.icon}
-                  alt=""
-                  className="h-10 w-10 object-contain opacity-80"
-                  aria-hidden
-                />
-                <span className="rounded-full bg-k2k-blue/8 px-2.5 py-0.5 text-[9px] font-medium uppercase tracking-[0.16em] text-k2k-navy ring-1 ring-k2k-blue/10">
-                  {service.tier}
-                </span>
+              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col rounded-2xl p-7">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-k2k-blue/10 bg-[#f8f4ed]/80 transition duration-300 group-hover:border-k2k-blue/25 group-hover:bg-white">
+                    <img
+                      src={service.icon}
+                      alt=""
+                      className="h-7 w-7 object-contain opacity-80"
+                      aria-hidden
+                    />
+                  </span>
+                  <span
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[9px] font-medium uppercase tracking-[0.16em] ring-1",
+                      TIER_STYLES[service.tier] ?? "bg-k2k-blue/8 text-k2k-navy ring-k2k-blue/10",
+                    )}
+                  >
+                    {service.tier}
+                  </span>
+                </div>
+                <h3 className="mt-5 font-display text-xl text-ink">{service.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {service.desc}
+                </p>
+                <div className="mt-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] text-k2k-blue/60" aria-hidden>
+                  <span className="h-px flex-1 bg-k2k-blue/12" />
+                  <span>Pre-order</span>
+                </div>
               </div>
-              <h3 className="mt-4 font-display text-xl text-ink">{service.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {service.desc}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
 
       <Section bg="beige">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="Inquire" title="Event details" />
-          <form
-            onSubmit={handleSubmit}
-            className="k2k-card mt-10 space-y-5 rounded-[1.75rem] p-6 sm:p-8"
-          >
+        <SectionHeading
+          eyebrow="How catering works"
+          title="Three steps to your event spread"
+          align="center"
+          decorative
+          intro="From first inquiry to fresh pickup or delivery — Wendy handles every detail in small batches."
+        />
+
+        <div className="relative mx-auto mt-16 max-w-4xl">
+          <div
+            className="pointer-events-none absolute left-[12%] right-[12%] top-8 hidden h-px bg-gradient-to-r from-transparent via-k2k-blue/25 to-transparent sm:block"
+            aria-hidden
+          />
+          <ol className="grid gap-10 sm:grid-cols-3">
+            {CATERING_STEPS.map((step, index) => (
+              <ScrollReveal key={step.title} delay={index as 0 | 1 | 2 | 3 | 4}>
+                <li className="k2k-surface relative rounded-2xl p-6 text-center sm:text-left">
+                  <div className="relative mx-auto mb-5 flex h-14 w-14 items-center justify-center sm:mx-0">
+                    <img
+                      src={step.icon}
+                      alt=""
+                      className="h-7 w-7 object-contain opacity-80"
+                      aria-hidden
+                    />
+                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-k2k-blue text-[10px] font-medium text-white">
+                      {step.step.replace("0", "")}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl text-ink">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {step.description}
+                  </p>
+                </li>
+              </ScrollReveal>
+            ))}
+          </ol>
+        </div>
+      </Section>
+
+      <Section bg="white" variant="inset" id="catering-form">
+        <div className="k2k-surface !rounded-[1.75rem] !border-k2k-blue/12 !p-0 !shadow-[0_28px_60px_-44px_rgba(31,52,71,0.22)]">
+          <div className="border-b border-k2k-blue/8 px-6 py-8 sm:px-10 sm:py-10">
+            <SectionHeading
+              eyebrow="Inquire"
+              title="Event details"
+              intro="Share your gathering details and we'll confirm availability, menu, and timing within one business day."
+            />
+          </div>
+          <form onSubmit={handleSubmit} className="space-y-5 px-6 py-8 sm:px-10 sm:pb-10">
             <input
               type="text"
               tabIndex={-1}
@@ -347,7 +477,7 @@ function CateringPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section bg="beige" reveal={false}>
         <p className="mx-auto max-w-md text-center text-sm text-muted-foreground">
           For simple menu items in smaller quantities, you can also use the{" "}
           <Link to="/custom-orders" className="font-medium text-k2k-blue hover:text-k2k-navy">
@@ -356,6 +486,19 @@ function CateringPage() {
           .
         </p>
       </Section>
+
+      <CTASection
+        eyebrow="Prefer to talk?"
+        title="Call Wendy about your event"
+        text="Have questions about guest counts, menu pairings, or timing? Reach out directly — we're happy to help plan your spread."
+        primaryLabel="View Menu"
+        primaryTo="/menu"
+        secondaryLabel={BUSINESS.phone}
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+        tertiaryLabel="Custom Orders"
+        tertiaryTo="/custom-orders"
+      />
     </>
   );
 }

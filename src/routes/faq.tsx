@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
-import { Section, SectionHeading } from "@/components/sections/Section";
+import { PageHero } from "@/components/sections/PageHero";
+import { Section } from "@/components/sections/Section";
+import { CTASection } from "@/components/sections/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import type { FAQGroup } from "@/components/ui/FAQAccordion";
 import { BUSINESS, SITE_URL } from "@/lib/business";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -89,52 +92,95 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup> = [
   },
 ];
 
+const QUICK_LINKS = [
+  { to: "/custom-orders" as const, label: "Custom orders" },
+  { to: "/catering" as const, label: "Catering" },
+  { to: "/contact" as const, label: "Contact" },
+];
+
+function WheatScoringMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 56 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M2 16c8-14 18-14 22-4 4-10 14-10 18 2"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8 20c6-8 14-10 20-4"
+        stroke="currentColor"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        opacity="0.5"
+      />
+    </svg>
+  );
+}
+
 function FAQPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-white pb-14 pt-16 sm:pt-24">
+      <PageHero
+        align="center"
+        eyebrow="FAQ"
+        title="Common questions"
+        intro="Answers about ordering, timing, delivery, custom work, and more from Knead To Know."
+      >
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(127,167,199,0.08),transparent_65%)]"
+          className="mx-auto flex max-w-xl items-center gap-3 rounded-2xl border border-k2k-blue/15 bg-white/80 px-5 py-4 shadow-sm backdrop-blur-sm"
+          role="presentation"
           aria-hidden
-        />
-        <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
-          <SectionHeading
-            as="h1"
-            eyebrow="FAQ"
-            title="Common questions"
-            intro="Answers about ordering, timing, delivery, custom work, and more from Knead To Know."
-          />
-
-          <div
-            className="mt-10 flex items-center gap-3 rounded-2xl border border-k2k-blue/15 bg-[#f8fafc] px-5 py-4 shadow-sm"
-            role="presentation"
-            aria-hidden
-          >
-            <Search className="h-5 w-5 shrink-0 text-k2k-blue/50" />
-            <span className="text-sm text-muted-foreground/70">
-              Browse topics below — ordering, pickup, catering, and more
-            </span>
-          </div>
+        >
+          <Search className="h-5 w-5 shrink-0 text-k2k-blue/50" />
+          <span className="text-sm text-muted-foreground/70">
+            Browse topics below — ordering, pickup, catering, and more
+          </span>
         </div>
-      </section>
 
-      <Section>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+          {QUICK_LINKS.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={cn(
+                "inline-flex h-9 items-center rounded-full border border-k2k-blue/18 bg-white/90 px-4 text-xs font-medium uppercase tracking-[0.12em] text-k2k-navy transition",
+                "hover:border-k2k-blue/35 hover:bg-white hover:text-k2k-blue",
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </PageHero>
+
+      <Section bg="beige">
         <div className="mx-auto max-w-3xl">
-          <FAQAccordion groups={FAQ_GROUPS} />
-        </div>
-
-        <div className="mx-auto mt-16 max-w-lg text-center">
-          <p className="text-sm text-muted-foreground">Still have a question?</p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/contact" className="inline-flex k2k-button k2k-button-outline">
-              Contact us
-            </Link>
-            <Link to="/custom-orders" className="inline-flex k2k-button k2k-button-primary">
-              Start a custom order
-            </Link>
+          <div className="overflow-hidden rounded-[2rem] border border-k2k-blue/15 bg-white shadow-[0_28px_70px_-42px_rgba(31,52,71,0.3)] ring-1 ring-k2k-blue/8">
+            <div className="flex items-center justify-between border-b border-k2k-blue/10 bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06] px-6 py-4 sm:px-8">
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-blue/75">
+                All topics
+              </p>
+              <WheatScoringMark className="w-14 text-wheat/50" />
+            </div>
+            <div className="px-4 py-6 sm:px-6 sm:py-8">
+              <FAQAccordion groups={FAQ_GROUPS} />
+            </div>
           </div>
         </div>
       </Section>
+
+      <CTASection
+        eyebrow="Still have questions?"
+        title="We're here to help"
+        text="Call, text, or send a message — we'll confirm availability and walk you through your order."
+        primaryLabel="Contact us"
+        primaryTo="/contact"
+        secondaryLabel="Start a custom order"
+        secondaryTo="/custom-orders"
+        tertiaryLabel="Catering"
+        tertiaryTo="/catering"
+      />
     </>
   );
 }

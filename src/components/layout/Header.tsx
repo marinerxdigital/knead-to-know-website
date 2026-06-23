@@ -3,8 +3,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BUSINESS } from "@/lib/business";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 
-const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
 
 /** Center nav per premium brief — full nav remains in mobile drawer */
@@ -55,33 +55,27 @@ export function Header() {
         <div
           className={cn(
             "mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-5 transition-[height] duration-300 sm:px-8 lg:grid-cols-[1fr_auto_1fr]",
-            scrolled ? "h-[4.25rem]" : "h-20",
+            scrolled ? "h-[4.5rem] lg:h-[5rem]" : "h-[5.25rem] sm:h-[5.5rem] lg:h-[6.25rem]",
           )}
         >
           {/* Logo + wordmark */}
-          <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-            <span
-              className={cn(
-                "relative shrink-0 overflow-hidden rounded-full ring-1 transition-all duration-300",
-                scrolled
-                  ? "h-11 w-11 ring-k2k-blue/20"
-                  : "h-12 w-12 ring-k2k-blue/15 lg:h-14 lg:w-14",
-              )}
-            >
-              <img
-                src={LOGO_URL}
-                alt="Knead To Know Bakery"
-                className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-            </span>
-            <span className="hidden flex-col sm:flex">
+          <Link
+            to="/"
+            className="group flex min-w-0 items-center gap-3 sm:gap-4"
+            onClick={() => setOpen(false)}
+          >
+            <BrandLogo
+              variant={scrolled ? "header-compact" : "header"}
+              className="transition-all duration-300 group-hover:scale-[1.03]"
+            />
+            <span className="hidden min-w-0 flex-col md:flex">
               <span className="flex items-center gap-1.5">
-                <img src={WHEAT_ICON} alt="" className="h-3.5 w-3.5 opacity-70" aria-hidden />
-                <span className="font-display text-[1.02rem] leading-tight tracking-wide text-ink transition-colors group-hover:text-k2k-navy">
+                <img src={WHEAT_ICON} alt="" className="h-4 w-4 opacity-70" aria-hidden />
+                <span className="truncate font-display text-base leading-tight tracking-wide text-ink transition-colors group-hover:text-k2k-navy lg:text-lg">
                   Knead To Know
                 </span>
               </span>
-              <span className="text-[0.62rem] font-medium uppercase tracking-[0.28em] text-k2k-blue/75">
+              <span className="text-[0.65rem] font-medium uppercase tracking-[0.26em] text-k2k-blue/75 lg:text-[0.7rem]">
                 Sweet &amp; Sour
               </span>
             </span>
@@ -158,7 +152,7 @@ export function Header() {
 
       <div
         className={cn(
-          "fixed inset-x-0 top-[4.25rem] z-[35] max-h-[calc(100dvh-4.25rem)] overflow-y-auto border-b border-k2k-blue/15 bg-white shadow-[0_24px_48px_-16px_rgba(31,52,71,0.18)] transition-all duration-300 ease-out lg:hidden",
+          "fixed inset-x-0 top-[5.25rem] z-[35] sm:top-[5.5rem] lg:top-[6.25rem] max-h-[calc(100dvh-4.25rem)] overflow-y-auto border-b border-k2k-blue/15 bg-white shadow-[0_24px_48px_-16px_rgba(31,52,71,0.18)] transition-all duration-300 ease-out lg:hidden",
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0",
         )}
         role="dialog"

@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/business";
 
-const LOGO_SRC = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 
 const EXPLORE_LINKS = [
   { to: "/menu" as const, label: "Menu" },
@@ -21,7 +21,9 @@ const ABOUT_LINKS = [
 function FooterScoringDivider() {
   return (
     <div className="mx-auto flex max-w-7xl items-center gap-4 px-5 sm:px-8" aria-hidden="true">
-      <div className="h-px flex-1 bg-k2k-blue/15" />
+      <div className="relative h-px flex-1">
+        <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+      </div>
       <div className="flex items-center gap-2">
         <svg width="18" height="8" viewBox="0 0 18 8" fill="none" className="text-k2k-blue/50">
           <path
@@ -41,7 +43,36 @@ function FooterScoringDivider() {
           />
         </svg>
       </div>
-      <div className="h-px flex-1 bg-k2k-blue/15" />
+      <div className="relative h-px flex-1">
+        <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+      </div>
+    </div>
+  );
+}
+
+function NewsletterPlaceholder() {
+  return (
+    <div className="k2k-card mx-auto max-w-7xl rounded-[1.5rem] border border-k2k-blue/12 bg-white/80 px-6 py-5 sm:px-8">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <div>
+          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/70">
+            Stay in the loop
+          </p>
+          <p className="mt-1 font-display text-lg text-ink">Join our neighbor list — coming soon</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Seasonal drops, pickup reminders, and bakery news for Daniel Island neighbors.
+          </p>
+        </div>
+        <div
+          className="flex w-full shrink-0 items-center gap-3 rounded-full border border-k2k-blue/15 bg-[#f8f4ed]/60 px-5 py-3 sm:w-auto"
+          aria-hidden="true"
+        >
+          <span className="text-sm text-muted-foreground/70">your@email.com</span>
+          <span className="ml-auto rounded-full bg-k2k-blue/10 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-k2k-navy/60">
+            Soon
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -57,11 +88,7 @@ export function Footer() {
         {/* Brand column */}
         <div className="lg:pr-6">
           <div className="flex items-start gap-4">
-            <img
-              src={LOGO_SRC}
-              alt="Knead To Know Bakery"
-              className="h-16 w-16 shrink-0 rounded-full object-contain ring-1 ring-k2k-blue/15"
-            />
+            <BrandLogo variant="footer" />
             <div>
               <p className="font-display text-lg leading-tight text-ink">{BUSINESS.name}</p>
               <p className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.26em] text-k2k-blue/75">
@@ -168,6 +195,10 @@ export function Footer() {
             )}
           </ul>
         </div>
+      </div>
+
+      <div className="px-5 pb-12 sm:px-8">
+        <NewsletterPlaceholder />
       </div>
 
       <div className="border-t border-k2k-blue/10">

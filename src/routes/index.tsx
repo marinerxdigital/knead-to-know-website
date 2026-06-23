@@ -9,8 +9,8 @@ import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 
-const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
 
 const TRUST_ITEMS = [
@@ -184,11 +184,7 @@ function HomePage() {
 
         <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:max-w-[54rem] lg:py-28">
           <div className="k2k-stagger-1 mb-8 flex items-center gap-4">
-            <img
-              src={LOGO_URL}
-              alt="Knead To Know Bakery"
-              className="h-16 w-16 rounded-full object-contain ring-2 ring-k2k-blue/25 ring-offset-4 ring-offset-[#f8f4ed]/80 sm:h-20 sm:w-20"
-            />
+            <BrandLogo variant="hero" />
             <div>
               <Eyebrow>Daniel Island, South Carolina</Eyebrow>
               <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-navy/60">
