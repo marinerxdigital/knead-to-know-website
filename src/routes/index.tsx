@@ -8,6 +8,7 @@ import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
 const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
 const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
@@ -161,27 +162,28 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      {/* 1. Hero — full-bleed with warm overlay */}
-      <section className="relative min-h-[88vh] overflow-hidden">
-        <img
-          src={BAKERY_PHOTOS.hero}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+      {/* 1. Hero — full-bleed artisan spread (client hero photo) */}
+      <section className="relative min-h-[90vh] overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden" aria-hidden>
+          <img
+            src={BAKERY_PHOTOS.hero}
+            alt=""
+            className="k2k-hero-kenburns h-full w-full object-cover object-[68%_center] sm:object-[72%_center]"
+          />
+        </div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#f8f4ed]/98 via-[#f8f4ed]/92 to-[#f8f4ed]/15 sm:from-[#f8f4ed]/96 sm:via-[#f8f4ed]/72 sm:to-transparent"
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[#f8f4ed]/97 via-[#f8f4ed]/88 to-[#f8f4ed]/55 sm:from-[#f8f4ed]/95 sm:via-[#f8f4ed]/75 sm:to-transparent"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-k2k-navy/25 via-transparent to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-k2k-navy/20 via-transparent to-[#f8f4ed]/10"
           aria-hidden
         />
 
-        <WheatScoringMark className="absolute right-6 top-24 hidden w-28 opacity-40 lg:block xl:right-16" />
+        <WheatScoringMark className="k2k-float-gentle absolute right-6 top-24 hidden w-28 opacity-40 lg:block xl:right-16" />
 
         <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:max-w-[54rem] lg:py-28">
-          <div className="mb-8 flex items-center gap-4">
+          <div className="k2k-stagger-1 mb-8 flex items-center gap-4">
             <img
               src={LOGO_URL}
               alt="Knead To Know Bakery"
@@ -195,16 +197,16 @@ function HomePage() {
             </div>
           </div>
 
-          <h1 className="max-w-[16ch] font-display text-[clamp(2.5rem,6.5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] text-ink">
+          <h1 className="k2k-stagger-2 max-w-[16ch] font-display text-[clamp(2.5rem,6.5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] text-ink">
             Fresh Sourdough Baked to Order on Daniel Island
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75 sm:text-xl">
+          <p className="k2k-stagger-3 mt-6 max-w-xl text-lg leading-relaxed text-ink/75 sm:text-xl">
             Artisan sourdough breads, cookies, and bagels — pre-order only, baked fresh by{" "}
             {BUSINESS.owner}.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3">
+          <div className="k2k-stagger-4 mt-10 flex flex-wrap items-center gap-3">
             <Link
               to="/custom-orders"
               className="k2k-button k2k-button-primary inline-flex h-14 items-center justify-center gap-2 px-10 text-[0.75rem] shadow-[0_16px_40px_-12px_rgba(79,126,168,0.55)] hover:bg-k2k-navy"
@@ -229,7 +231,7 @@ function HomePage() {
       </section>
 
       {/* 2. Local trust strip */}
-      <section className="relative border-y border-k2k-blue/12 bg-[#f8fafc]">
+      <section className="relative border-y border-k2k-blue/12 bg-[#f8f4ed]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-stretch px-5 sm:px-8">
           {TRUST_ITEMS.map((item, index) => (
             <div
@@ -245,7 +247,7 @@ function HomePage() {
                 <img
                   src={item.icon}
                   alt=""
-                  className="h-5 w-5 object-contain transition duration-300 group-hover:-translate-y-0.5"
+                  className="k2k-breathe h-5 w-5 object-contain transition duration-300 group-hover:-translate-y-0.5 group-hover:animate-none"
                   aria-hidden
                 />
               </span>
@@ -289,14 +291,16 @@ function HomePage() {
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {HOME_FEATURED_PRODUCTS.map((product, index) => (
-            <K2KProductCard
+            <ScrollReveal
               key={product.id}
-              product={product}
-              className={cn(
-                "transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-36px_rgba(31,52,71,0.35)]",
-                index === 0 && "sm:col-span-2 lg:col-span-2",
-              )}
-            />
+              delay={Math.min(index, 4) as 0 | 1 | 2 | 3 | 4}
+              className={cn(index === 0 && "sm:col-span-2 lg:col-span-2")}
+            >
+              <K2KProductCard
+                product={product}
+                className="transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-36px_rgba(31,52,71,0.35)]"
+              />
+            </ScrollReveal>
           ))}
         </div>
       </Section>

@@ -15,7 +15,7 @@ export function SectionDivider({
     white: "bg-white",
     cream: "bg-white",
     blush: "bg-white",
-    beige: "bg-[#f8fafc]",
+    beige: "bg-[#f8f4ed]",
   }[bg];
 
   const isWheat = accent === "wheat";
@@ -29,7 +29,7 @@ export function SectionDivider({
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-5 py-3 sm:gap-5 sm:px-8 sm:py-4">
         {/* Primary scoring line */}
         <div className="relative h-px flex-1">
-          <div className={cn("absolute inset-0", lineClass)} />
+          <div className={cn("absolute inset-0 k2k-line-grow", lineClass)} />
           <div
             className={cn(
               "absolute inset-x-0 top-1/2 h-px -translate-y-1/2",
@@ -62,7 +62,7 @@ export function SectionDivider({
 
         {/* Mirrored scoring line */}
         <div className="relative h-px flex-1">
-          <div className={cn("absolute inset-0", lineClass)} />
+          <div className={cn("absolute inset-0 k2k-line-grow", lineClass)} />
           <div
             className={cn(
               "absolute inset-x-0 top-1/2 h-px -translate-y-1/2",

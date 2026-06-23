@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
 type SectionBg = "white" | "cream" | "blush" | "beige";
 type SectionVariant = "default" | "editorial" | "inset";
@@ -32,30 +33,59 @@ export function Section({
   className,
   bg = "white",
   variant = "default",
+  reveal = true,
   id,
 }: {
   children: ReactNode;
   className?: string;
   bg?: SectionBg;
   variant?: SectionVariant;
+  reveal?: boolean;
   id?: string;
 }) {
   const styles = variantClasses[variant];
 
-  return (
-    <section
-      id={id}
-      className={cn(styles.section, bgClasses[bg], variant === "editorial" && "relative", className)}
-    >
+  const inner = (
+    <>
       {variant === "editorial" && (
         <div
           className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-k2k-blue/8"
           aria-hidden="true"
         />
       )}
-      <div className={styles.inner}>
-        {variant === "inset" ? <div>{children}</div> : children}
-      </div>
+      <div className={styles.inner}>{variant === "inset" ? <div>{children}</div> : children}</div>
+    </>
+  );
+
+  if (reveal) {
+    return (
+      <ScrollReveal
+        as="section"
+        id={id}
+        delay={0}
+        className={cn(
+          styles.section,
+          bgClasses[bg],
+          variant === "editorial" && "relative",
+          className,
+        )}
+      >
+        {inner}
+      </ScrollReveal>
+    );
+  }
+
+  return (
+    <section
+      id={id}
+      className={cn(
+        styles.section,
+        bgClasses[bg],
+        variant === "editorial" && "relative",
+        className,
+      )}
+    >
+      {inner}
     </section>
   );
 }
@@ -120,7 +150,9 @@ export function SectionHeading({
       <As
         className={cn(
           "mt-4 font-display leading-[1.05] text-ink text-balance",
-          As === "h1" ? "text-5xl sm:text-6xl lg:text-7xl" : "text-4xl sm:text-5xl lg:text-[3.25rem]",
+          As === "h1"
+            ? "text-5xl sm:text-6xl lg:text-7xl"
+            : "text-4xl sm:text-5xl lg:text-[3.25rem]",
           align === "center" && "mx-auto",
         )}
       >
@@ -138,10 +170,7 @@ export function SectionHeading({
       )}
       {decorative && (
         <div
-          className={cn(
-            "mt-6 flex items-center gap-3",
-            align === "center" && "justify-center",
-          )}
+          className={cn("mt-6 flex items-center gap-3", align === "center" && "justify-center")}
           aria-hidden="true"
         >
           <span className="h-px w-12 bg-k2k-blue/20" />

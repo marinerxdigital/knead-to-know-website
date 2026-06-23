@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE_URL } from "../lib/business";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
+import { MobileOrderBar } from "../components/layout/MobileOrderBar";
 import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
@@ -180,10 +181,11 @@ function RootComponent() {
           Skip to content
         </a>
         <Header />
-        <main id="main-content" className="flex-1">
+        <main id="main-content" className="flex-1 pb-20 md:pb-0">
           <Outlet />
         </main>
         <Footer />
+        <MobileOrderBar />
         <Toaster />
       </div>
     </QueryClientProvider>
