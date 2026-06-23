@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/sections/Section";
 import { CTASection } from "@/components/sections/CTASection";
+import { FAQPanel } from "@/components/sections/FAQPanel";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import {
   Accordion,
@@ -150,16 +151,16 @@ function FAQAccordionBlack({ groups }: { groups: ReadonlyArray<FAQGroup & { icon
               <h3 className="shrink-0 font-display text-lg text-ink sm:text-xl">{group.title}</h3>
               <span className="h-px min-w-4 flex-1 bg-k2k-blue/12" aria-hidden />
             </div>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="k2k-faq-accordion-list w-full">
               {group.items.map((item, i) => (
                 <AccordionItem
                   key={`group-${gi}-item-${i}`}
                   value={`group-${gi}-item-${i}`}
-                  className="mb-3 overflow-hidden rounded-2xl border border-[#111] border-t-2 border-t-k2k-blue/10 bg-white shadow-[0_6px_24px_-14px_rgba(17,17,17,0.18)] transition-all duration-300 last:mb-0 data-[state=open]:border-k2k-blue data-[state=open]:border-t-k2k-blue/30 data-[state=open]:shadow-[0_12px_32px_-16px_rgba(17,17,17,0.22)]"
+                  className="overflow-hidden rounded-2xl border border-[#111] border-t-2 border-t-k2k-blue/10 bg-white shadow-[0_6px_24px_-14px_rgba(17,17,17,0.18)] transition-all duration-300 data-[state=open]:border-k2k-blue data-[state=open]:border-t-k2k-blue/30 data-[state=open]:shadow-[0_12px_32px_-16px_rgba(17,17,17,0.22)]"
                 >
                   <AccordionTrigger
                     className={cn(
-                      "relative px-5 py-4 text-left text-lg font-medium text-ink hover:no-underline sm:px-6 sm:py-5 sm:text-xl",
+                      "relative min-h-[3.25rem] px-5 py-4 text-left text-base font-medium text-ink hover:no-underline sm:min-h-[3.5rem] sm:px-6 sm:py-5 sm:text-lg",
                       "before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-r-full before:bg-transparent before:transition-colors before:duration-300",
                       "[&[data-state=open]]:text-k2k-navy [&[data-state=open]]:before:bg-wheat",
                     )}
@@ -230,34 +231,37 @@ function FAQPage() {
 
       <Section bg="beige">
         <ScrollReveal className="mx-auto min-w-0 max-w-3xl">
-          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden !rounded-[2rem] !border-t-2 !border-t-k2k-blue/25 !p-0 !pl-5 sm:!pl-7">
-            <div className="flex items-center justify-between border-b border-k2k-blue/10 bg-[#f8f4ed]/50 px-6 py-5 sm:px-8">
-              <div className="group flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#111] bg-white transition duration-300 group-hover:scale-105">
-                  <img
-                    src={KTK_ICONS.wheat}
-                    alt=""
-                    className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden
-                  />
-                </span>
-                <div>
-                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-navy/80">
-                    All topics
-                  </p>
-                  <HarborLine className="mt-2 h-2 w-20" />
+          <FAQPanel
+            accentRail
+            className="border-t-2 border-t-k2k-blue/25 pl-5 sm:pl-7"
+            header={
+              <div className="flex items-center justify-between bg-[#f8f4ed]/50">
+                <div className="group flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#111] bg-white transition duration-300 group-hover:scale-105">
+                    <img
+                      src={KTK_ICONS.wheat}
+                      alt=""
+                      className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden
+                    />
+                  </span>
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-navy/80">
+                      All topics
+                    </p>
+                    <HarborLine className="mt-2 h-2 w-20" />
+                  </div>
                 </div>
+                <span className="hidden rounded-full border border-[#111] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:inline">
+                  {FAQ_GROUPS.reduce((n, g) => n + g.items.length, 0)} answers
+                </span>
               </div>
-              <span className="hidden rounded-full border border-[#111] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:inline">
-                {FAQ_GROUPS.reduce((n, g) => n + g.items.length, 0)} answers
-              </span>
-            </div>
-            <div className="px-4 py-6 sm:px-6 sm:py-8">
-              <FAQAccordionBlack groups={FAQ_GROUPS} />
-            </div>
-          </div>
+            }
+          >
+            <FAQAccordionBlack groups={FAQ_GROUPS} />
+          </FAQPanel>
         </ScrollReveal>
       </Section>
 

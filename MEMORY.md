@@ -4,6 +4,17 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Global UI/UX Audit + Layout Fix Pass (2026-06-23)
+
+- FAQ: `FAQPanel` component, balanced padding, accordion gap spacing (all FAQ instances)
+- CTA: `CTASection` dedicated white band with symmetric py-16/24, centered card, clean footer separation
+- Footer: removed `mt-24` crowding; border-t separator
+- Section tokens: increased mobile/large vertical rhythm
+- Added compact CTA to `/menu` and `/contact`
+- Build: PASS · QA: `docs/QA_GLOBAL_UI_UX_AUDIT_2026-06-23.md`
+
+---
+
 ## Design System Integration + Logo Replacement (2026-06-23)
 
 - Integrated 19-asset KTK design system from `00_BRAND_ASSETS/Knead_To_Know_Design_Assets_Handoff/`

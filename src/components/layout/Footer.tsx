@@ -79,7 +79,7 @@ function NewsletterPlaceholder() {
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 overflow-hidden bg-[#f8f4ed]">
+    <footer className="relative mt-0 overflow-hidden border-t border-k2k-black/[0.06] bg-[#f8f4ed]">
       <img
         src={KTK_DECOR.cornerFlourish}
         alt=""

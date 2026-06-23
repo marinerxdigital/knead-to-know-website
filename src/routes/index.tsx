@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Section, SectionHeading } from "@/components/sections/Section";
 import { SectionDivider } from "@/components/sections/SectionDivider";
 import { CTASection } from "@/components/sections/CTASection";
+import { FAQPanel } from "@/components/sections/FAQPanel";
 import { Product3DCarousel } from "@/components/products/Product3DCarousel";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
@@ -580,9 +581,7 @@ function HomePage() {
                 <h3 className="mt-3 font-display text-2xl text-ink transition group-hover:text-k2k-blue">
                   {item.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/80">
-                  {item.text}
-                </p>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/80">{item.text}</p>
                 <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-k2k-blue">
                   Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </span>
@@ -656,34 +655,36 @@ function HomePage() {
             decorative
           />
           <ScrollReveal delay={1}>
-            <div className="k2k-surface mt-12 overflow-hidden rounded-[2rem]">
-              <div className="group flex items-center justify-between border-b border-k2k-black/8 bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06] px-6 py-4 sm:px-8">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={KTK_ICONS.calendar}
-                    alt=""
-                    className="k2k-icon-hover h-5 w-5 opacity-70"
-                    aria-hidden
-                  />
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
-                    Ordering &amp; pickup
-                  </p>
+            <FAQPanel
+              className="mt-12"
+              header={
+                <div className="group flex items-center justify-between bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06]">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={KTK_ICONS.calendar}
+                      alt=""
+                      className="k2k-icon-hover h-5 w-5 opacity-70"
+                      aria-hidden
+                    />
+                    <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
+                      Ordering &amp; pickup
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={KTK_ICONS.wheat}
+                      alt=""
+                      className="k2k-float-gentle h-5 w-5 opacity-40"
+                      style={{ animationDelay: "0.6s" }}
+                      aria-hidden
+                    />
+                    <WheatScoringMark className="k2k-float-gentle w-14 text-wheat/50" />
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <img
-                    src={KTK_ICONS.wheat}
-                    alt=""
-                    className="k2k-float-gentle h-5 w-5 opacity-40"
-                    style={{ animationDelay: "0.6s" }}
-                    aria-hidden
-                  />
-                  <WheatScoringMark className="k2k-float-gentle w-14 text-wheat/50" />
-                </div>
-              </div>
-              <div className="px-4 sm:px-6">
-                <FAQAccordion items={HOME_FAQS} />
-              </div>
-            </div>
+              }
+            >
+              <FAQAccordion items={HOME_FAQS} />
+            </FAQPanel>
           </ScrollReveal>
           <div className="mt-8 text-center">
             <Link

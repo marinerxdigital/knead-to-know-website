@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Eyebrow, Section } from "@/components/sections/Section";
+import { CTASection } from "@/components/sections/CTASection";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BUSINESS, SITE_URL } from "@/lib/business";
@@ -367,7 +368,11 @@ function ContactPage() {
           <div className="min-w-0 space-y-8">
             <ScrollReveal delay={1}>
               <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-9">
-                <IconSectionHeading icon={KTK_ICONS.envelope} eyebrow="Message" title="Send a note" />
+                <IconSectionHeading
+                  icon={KTK_ICONS.envelope}
+                  eyebrow="Message"
+                  title="Send a note"
+                />
                 <div className="mt-8 border-t border-k2k-blue/10 pt-8">
                   <ContactForm />
                 </div>
@@ -410,6 +415,18 @@ function ContactPage() {
           </div>
         </div>
       </Section>
+
+      <CTASection
+        compact
+        eyebrow="Prefer the menu?"
+        title="Browse & pre-order"
+        text="Build your tray on the menu page, then text or call Wendy to confirm pickup on Daniel Island."
+        primaryLabel="View Menu"
+        primaryTo="/menu"
+        secondaryLabel={`Call ${BUSINESS.shortOwner}`}
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+      />
     </>
   );
 }

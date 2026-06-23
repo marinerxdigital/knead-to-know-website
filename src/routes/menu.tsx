@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section, SectionHeading } from "@/components/sections/Section";
+import { CTASection } from "@/components/sections/CTASection";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { InteractiveMenuBuilder } from "@/components/menu/InteractiveMenuBuilder";
 import { BAKERY_PHOTOS } from "@/lib/products";
@@ -109,6 +110,20 @@ function MenuPage() {
           </div>
         </ScrollReveal>
       </Section>
+
+      <CTASection
+        compact
+        eyebrow="Questions?"
+        title="Need help with your order?"
+        text="Call or text Wendy with your tray, timing, or custom requests — she confirms availability and bakes fresh for pickup."
+        primaryLabel="Contact Wendy"
+        primaryTo="/contact"
+        secondaryLabel={BUSINESS.phone}
+        secondaryTo={BUSINESS.phoneTel}
+        secondaryIsPhone
+        tertiaryLabel="FAQ"
+        tertiaryTo="/faq"
+      />
     </>
   );
 }

@@ -103,10 +103,11 @@
   --k2k-tracking-eyebrow: 0.24em;
 
   /* Section padding */
-  --k2k-section-y-sm: 3rem;
+  --k2k-section-y-sm: 3.5rem;
   --k2k-section-y-md: 5rem;
-  --k2k-section-y-lg: 7rem;
+  --k2k-section-y-lg: 7.5rem;
   --k2k-section-x: clamp(1.25rem, 5vw, 3rem);
+  --k2k-cta-y: 6rem;
 
   /* Remapped old vars to new coastal blue/white/navy (remove conflicting cake colors) */
   --cream: #ffffff;
@@ -1120,6 +1121,52 @@
   .k2k-tray-drawer-open .k2k-tray-drawer-panel {
     animation: none;
   }
+}
+
+/* ── FAQ panel (balanced padding, natural height) ── */
+.k2k-faq-panel {
+  background: var(--k2k-white);
+  border: 1px solid #111111;
+  border-radius: var(--k2k-radius-lg);
+  box-shadow: var(--k2k-shadow-sm), var(--k2k-shadow-ring);
+}
+
+.k2k-faq-panel-header {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .k2k-faq-panel-header {
+    padding: 1.25rem 2rem;
+  }
+}
+
+.k2k-faq-panel-body {
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .k2k-faq-panel-body {
+    padding: 2rem;
+  }
+}
+
+.k2k-faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .k2k-faq-accordion-list {
+    gap: 1rem;
+  }
+}
+
+/* ── CTA band — dedicated section, centered card, clean page flow ── */
+.k2k-cta-section {
+  isolation: isolate;
 }
 
 .ktk-corner-flourish {
