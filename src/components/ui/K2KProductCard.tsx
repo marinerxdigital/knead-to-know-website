@@ -103,15 +103,12 @@ export function K2KProductCard({
           </p>
         )}
 
-        <div className="mt-auto flex items-center justify-between gap-2 pt-5">
-          {product.preorderAvailable ? (
-            <span className="rounded-full border border-k2k-blue/20 bg-k2k-blue/5 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-k2k-blue">
-              Pre-Order
-            </span>
-          ) : (
-            <span />
+        <div
+          className={cn(
+            "mt-auto flex items-center gap-2 pt-5",
+            selectable ? "justify-between" : "justify-end",
           )}
-
+        >
           {selectable && selected && (
             <span className="flex items-center gap-1 text-[10px] font-medium uppercase tracking-widest text-k2k-blue">
               <Check className="h-3 w-3" /> Selected
