@@ -4,6 +4,16 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Orphan Cleanup + Master Guide (2026-06-23)
+
+- Removed orphan routes: `/flavors`, `/flavors-pricing`, `/featured`, `/inquiry`
+- Deleted `InquiryForm.tsx` (unused)
+- Added `public/_redirects` — 301 to `/menu` and `/custom-orders`
+- Created `docs/WENDY_MOCK_TO_PRODUCTION_MASTER_GUIDE.md` — full mock→production doc for Wendy
+- Commit `f4bf5c5` pushed to `main`, Cloudflare deploy success
+
+---
+
 ## Revamp #4 + Deploy Session (2026-06-23) — CLIENT REVIEW READY
 
 **Agent:** Grok Build + 4 parallel subagents  
