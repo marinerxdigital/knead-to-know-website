@@ -70,14 +70,17 @@ export function Header() {
             />
             <span className="hidden min-w-0 flex-col md:flex">
               <span className="flex items-center gap-1.5">
-                <img src={WHEAT_ICON} alt="" className="h-4 w-4 opacity-70" aria-hidden />
-                <span className="truncate font-display text-base leading-tight tracking-wide text-ink transition-colors group-hover:text-k2k-navy lg:text-lg">
+                <img
+                  src={WHEAT_ICON}
+                  alt=""
+                  className="k2k-icon-hover h-4 w-4 opacity-70"
+                  aria-hidden
+                />
+                <span className="k2k-wordmark-title truncate group-hover:text-k2k-navy">
                   Knead To Know
                 </span>
               </span>
-              <span className="text-[0.65rem] font-medium uppercase tracking-[0.26em] text-k2k-blue/75 lg:text-[0.7rem]">
-                Sweet &amp; Sour
-              </span>
+              <span className="k2k-wordmark-tagline">Sweet &amp; Sour</span>
             </span>
           </Link>
 
@@ -90,8 +93,8 @@ export function Header() {
                   key={item.to}
                   to={item.to}
                   className={cn(
-                    "group relative px-4 py-2 text-sm tracking-wide transition-colors duration-200",
-                    isActive ? "text-k2k-blue" : "text-ink/70 hover:text-k2k-blue",
+                    "k2k-nav-link group relative px-4 py-2 text-sm",
+                    isActive && "k2k-nav-link--active",
                   )}
                 >
                   {item.label}
@@ -152,7 +155,7 @@ export function Header() {
 
       <div
         className={cn(
-          "fixed inset-x-0 top-[5.25rem] z-[35] sm:top-[5.5rem] lg:top-[6.25rem] max-h-[calc(100dvh-4.25rem)] overflow-y-auto border-b border-k2k-blue/15 bg-white shadow-[0_24px_48px_-16px_rgba(31,52,71,0.18)] transition-all duration-300 ease-out lg:hidden",
+          "fixed inset-x-0 top-[5.25rem] z-[35] sm:top-[5.5rem] lg:top-[6.25rem] max-h-[calc(100dvh-4.25rem)] overflow-y-auto border-b border-[#111111] bg-white shadow-[0_24px_48px_-16px_rgba(31,52,71,0.18)] transition-all duration-300 ease-out lg:hidden",
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0",
         )}
         role="dialog"
@@ -162,7 +165,7 @@ export function Header() {
         <nav className="mx-auto flex max-w-7xl flex-col px-5 py-6 sm:px-8">
           <a
             href={BUSINESS.phoneTel}
-            className="mb-4 flex items-center justify-center gap-2 rounded-2xl border border-k2k-blue/15 bg-[#f8f4ed] py-3.5 text-sm font-medium text-k2k-navy"
+            className="k2k-bordered mb-4 flex items-center justify-center gap-2 rounded-2xl bg-[#f8f4ed] py-3.5 text-sm font-bold text-k2k-navy"
           >
             <Phone className="h-4 w-4 text-k2k-blue" />
             {BUSINESS.phone}
@@ -177,10 +180,14 @@ export function Header() {
                     to={item.to}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "flex items-center justify-between rounded-2xl px-4 py-3.5 text-base transition-colors",
-                      isActive
-                        ? "bg-[#f8f4ed] font-medium text-k2k-blue"
-                        : "text-ink/80 hover:bg-[#f8f4ed]/80 hover:text-k2k-blue",
+                      "flex items-center justify-between rounded-2xl px-4 py-3.5 text-base font-bold transition-colors",
+                      PRIMARY_NAV.some((n) => n.to === item.to)
+                        ? isActive
+                          ? "bg-[#f8f4ed] text-k2k-navy"
+                          : "text-k2k-black hover:bg-[#f8f4ed]/80 hover:text-k2k-blue"
+                        : isActive
+                          ? "bg-[#f8f4ed] font-medium text-k2k-blue"
+                          : "text-ink/80 hover:bg-[#f8f4ed]/80 hover:text-k2k-blue",
                     )}
                   >
                     {item.label}

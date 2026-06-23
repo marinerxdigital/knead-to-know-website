@@ -2,7 +2,8 @@ import { useState, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, Mail } from "lucide-react";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -28,7 +29,7 @@ const ERROR_MESSAGE = BUSINESS.email
   : `Something went wrong while sending your message. Please try again or call ${BUSINESS.phone}.`;
 
 const fieldClass =
-  "h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]";
+  "h-12 rounded-xl border border-k2k-black bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70";
 
@@ -123,96 +124,139 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="k2k-card rounded-[1.75rem] p-10 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-k2k-blue/10">
-          <CheckCircle2 className="h-7 w-7 text-k2k-blue" />
+      <ScrollReveal>
+        <div className="group k2k-card overflow-hidden rounded-[1.75rem] p-10 text-center">
+          <div className="mb-6 flex items-center gap-3" aria-hidden="true">
+            <div className="relative h-px flex-1 overflow-hidden">
+              <div className="absolute inset-0 k2k-line-grow bg-k2k-black/10" />
+            </div>
+            <img
+              src="/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png"
+              alt=""
+              className="k2k-icon-hover h-5 w-5 opacity-70"
+            />
+            <div className="relative h-px flex-1 overflow-hidden">
+              <div
+                className="absolute inset-0 k2k-line-grow bg-k2k-black/10"
+                style={{ animationDelay: "0.2s" }}
+              />
+            </div>
+          </div>
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-k2k-black bg-k2k-blue/8">
+            <CheckCircle2 className="k2k-icon-hover h-8 w-8 text-k2k-blue" />
+          </div>
+          <h3 className="mt-6 font-display text-2xl text-ink sm:text-3xl">
+            Thank you for reaching out.
+          </h3>
+          <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            We will follow up with you soon.
+          </p>
         </div>
-        <h3 className="mt-5 font-display text-2xl text-ink">Thank you for reaching out.</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          We will follow up with you soon.
-        </p>
-      </div>
+      </ScrollReveal>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-      className="k2k-card grid gap-6 rounded-[1.75rem] p-6 sm:p-8"
-    >
-      {/* Honeypot — hidden from real users */}
-      <input
-        type="text"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        {...register("botcheck")}
-        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-      />
-
-      <FormField id="contact-name" label="Name" error={errors.name?.message}>
-        <Input
-          id="contact-name"
-          {...register("name")}
-          autoComplete="name"
-          className={cn(fieldClass, errors.name && "border-destructive/50")}
-        />
-      </FormField>
-
-      <FormField id="contact-email" label="Email" error={errors.email?.message}>
-        <Input
-          id="contact-email"
-          type="email"
-          {...register("email")}
-          autoComplete="email"
-          className={cn(fieldClass, errors.email && "border-destructive/50")}
-        />
-      </FormField>
-
-      <FormField id="contact-phone" label="Phone" optional>
-        <Input
-          id="contact-phone"
-          type="tel"
-          {...register("phone")}
-          autoComplete="tel"
-          placeholder="(843) 973-0309"
-          className={fieldClass}
-        />
-      </FormField>
-
-      <FormField id="contact-message" label="Message / order notes" error={errors.message?.message}>
-        <Textarea
-          id="contact-message"
-          rows={5}
-          {...register("message")}
-          className={cn(
-            "min-h-[140px] rounded-xl border border-k2k-blue/18 bg-white px-4 py-3 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]",
-            errors.message && "border-destructive/50",
-          )}
-        />
-      </FormField>
-
-      {submitError && (
-        <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
-          {submitError}
-        </p>
-      )}
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="k2k-button k2k-button-primary w-full disabled:opacity-60"
+    <ScrollReveal>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+        className="group k2k-card grid gap-6 rounded-[1.75rem] p-6 sm:p-8"
       >
-        {isSubmitting ? (
-          <span className="inline-flex items-center gap-2">
-            <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-            Sending message…
+        <div
+          className="flex items-center gap-3 border-b border-k2k-black/10 pb-5"
+          aria-hidden="true"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-k2k-black bg-[#f8f4ed]/80">
+            <Mail className="k2k-icon-hover h-4 w-4 text-k2k-blue" />
           </span>
-        ) : (
-          "Send message"
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
+              Get in touch
+            </p>
+            <p className="font-display text-lg text-ink">Send us a message</p>
+          </div>
+        </div>
+        {/* Honeypot — hidden from real users */}
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          {...register("botcheck")}
+          style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+        />
+
+        <FormField id="contact-name" label="Name" error={errors.name?.message}>
+          <Input
+            id="contact-name"
+            {...register("name")}
+            autoComplete="name"
+            className={cn(fieldClass, errors.name && "border-destructive/50")}
+          />
+        </FormField>
+
+        <FormField id="contact-email" label="Email" error={errors.email?.message}>
+          <Input
+            id="contact-email"
+            type="email"
+            {...register("email")}
+            autoComplete="email"
+            className={cn(fieldClass, errors.email && "border-destructive/50")}
+          />
+        </FormField>
+
+        <FormField id="contact-phone" label="Phone" optional>
+          <Input
+            id="contact-phone"
+            type="tel"
+            {...register("phone")}
+            autoComplete="tel"
+            placeholder="(843) 973-0309"
+            className={fieldClass}
+          />
+        </FormField>
+
+        <FormField
+          id="contact-message"
+          label="Message / order notes"
+          error={errors.message?.message}
+        >
+          <Textarea
+            id="contact-message"
+            rows={5}
+            {...register("message")}
+            className={cn(
+              "min-h-[140px] rounded-xl border border-k2k-black bg-white px-4 py-3 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0 focus-visible:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)]",
+              errors.message && "border-destructive/50",
+            )}
+          />
+        </FormField>
+
+        {submitError && (
+          <p
+            className="rounded-xl border border-k2k-black bg-destructive/10 px-4 py-3 text-sm text-destructive"
+            role="alert"
+          >
+            {submitError}
+          </p>
         )}
-      </button>
-    </form>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="k2k-button k2k-button-primary k2k-hover-lift w-full disabled:opacity-60"
+        >
+          {isSubmitting ? (
+            <span className="inline-flex items-center gap-2">
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+              Sending message…
+            </span>
+          ) : (
+            "Send message"
+          )}
+        </button>
+      </form>
+    </ScrollReveal>
   );
 }

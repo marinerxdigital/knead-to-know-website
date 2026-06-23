@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 type RouteTo =
@@ -13,11 +14,37 @@ type RouteTo =
   | "/catering"
   | "/faq";
 
-function ScoringLine({ className }: { className?: string }) {
+const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
+const BREAD_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png";
+const COOKIE_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png";
+
+function ScoringLine({ className, delay }: { className?: string; delay?: string }) {
   return (
-    <div className={cn("relative h-px flex-1", className)}>
-      <div className="absolute inset-0 k2k-line-grow bg-current opacity-100" />
+    <div className={cn("relative h-px flex-1 overflow-hidden", className)}>
+      <div
+        className="absolute inset-0 k2k-line-grow bg-current opacity-100"
+        style={delay ? { animationDelay: delay } : undefined}
+      />
     </div>
+  );
+}
+
+function ScoringWave({ className }: { className?: string }) {
+  return (
+    <svg
+      width="28"
+      height="12"
+      viewBox="0 0 28 12"
+      fill="none"
+      className={cn("shrink-0", className)}
+    >
+      <path
+        d="M1 8c5-8 11-8 14-2 3-6 9-6 12 2"
+        stroke="currentColor"
+        strokeWidth="1.35"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }
 
@@ -47,180 +74,208 @@ export function CTASection({
   compact?: boolean;
 }) {
   return (
-    <section
-      className={cn(
-        "px-5 sm:px-8",
-        compact ? "pb-12 sm:pb-16" : "pb-20 sm:pb-28",
-      )}
-    >
-      <div
-        className={cn(
-          "relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-k2k-blue",
-          compact && "rounded-[2rem]",
-        )}
-      >
-        {/* Layered background composition — solid shapes only, no gradients */}
+    <section className={cn("px-5 sm:px-8", compact ? "pb-12 sm:pb-16" : "pb-20 sm:pb-28")}>
+      <ScrollReveal>
         <div
           className={cn(
-            "pointer-events-none absolute -right-16 -top-16 rounded-full border border-white/10",
-            compact ? "h-48 w-48" : "h-64 w-64",
-          )}
-          aria-hidden="true"
-        />
-        <div
-          className={cn(
-            "pointer-events-none absolute right-0 top-0 bg-k2k-harbor/25",
-            compact ? "h-32 w-32" : "h-40 w-40",
-          )}
-          style={{ borderRadius: "0 0 0 100%" }}
-          aria-hidden="true"
-        />
-        <div
-          className={cn(
-            "pointer-events-none absolute -bottom-20 -left-12 rounded-full bg-k2k-navy/20",
-            compact ? "h-36 w-36" : "h-48 w-48",
-          )}
-          aria-hidden="true"
-        />
-
-        {/* Decorative scoring lines — top */}
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-x-8 flex items-center gap-3 text-white/15 sm:inset-x-12",
-            compact ? "top-6" : "top-8",
-          )}
-          aria-hidden="true"
-        >
-          <ScoringLine />
-          <svg width="24" height="10" viewBox="0 0 24 10" fill="none" className="shrink-0 text-wheat/80">
-            <path
-              d="M1 7c4-7 9-7 11-2 2-5 7-5 9 1"
-              stroke="currentColor"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-            />
-          </svg>
-          <span className="h-1 w-1 shrink-0 rounded-full bg-wheat/60" />
-          <ScoringLine />
-        </div>
-
-        <div
-          className={cn(
-            "relative grid items-center gap-10 px-6 sm:px-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16",
-            compact ? "py-12 sm:py-14 lg:py-16" : "py-16 sm:py-20 lg:py-24",
+            "group relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-k2k-black bg-k2k-blue",
+            compact && "rounded-[2rem]",
           )}
         >
-          {/* Text block — asymmetric on lg */}
-          <div className="text-center lg:text-left">
-            <p className="inline-flex items-center gap-2.5 text-xs font-medium uppercase tracking-[0.24em] text-white/70">
-              <span className="relative hidden h-px w-8 overflow-hidden lg:block" aria-hidden="true">
-                <span className="absolute inset-0 k2k-line-grow bg-wheat/50" />
-              </span>
-              {eyebrow}
-            </p>
-            <h2
-              className={cn(
-                "mt-4 max-w-xl font-display leading-[1.05] text-white text-balance lg:mx-0",
-                compact
-                  ? "text-3xl sm:text-4xl lg:text-[2.75rem]"
-                  : "text-4xl sm:text-5xl lg:text-[3.25rem]",
-              )}
-            >
-              {title}
-            </h2>
-            <p
-              className={cn(
-                "mx-auto mt-5 max-w-lg leading-relaxed text-white/80 text-pretty lg:mx-0",
-                compact ? "text-sm sm:text-base" : "text-sm sm:text-base",
-              )}
-            >
-              {text}
-            </p>
+          {/* Layered background composition */}
+          <div
+            className={cn(
+              "pointer-events-none absolute -right-16 -top-16 rounded-full border border-white/10",
+              compact ? "h-48 w-48" : "h-64 w-64",
+            )}
+            aria-hidden="true"
+          />
+          <div
+            className={cn(
+              "pointer-events-none absolute right-0 top-0 bg-k2k-harbor/25",
+              compact ? "h-32 w-32" : "h-40 w-40",
+            )}
+            style={{ borderRadius: "0 0 0 100%" }}
+            aria-hidden="true"
+          />
+          <div
+            className={cn(
+              "pointer-events-none absolute -bottom-20 -left-12 rounded-full bg-k2k-navy/20",
+              compact ? "h-36 w-36" : "h-48 w-48",
+            )}
+            aria-hidden="true"
+          />
+
+          {/* Decorative brand icons — floating */}
+          <img
+            src={WHEAT_ICON}
+            alt=""
+            className={cn(
+              "k2k-icon-hover pointer-events-none absolute k2k-float-gentle opacity-20",
+              compact ? "right-8 top-10 h-10 w-10" : "right-12 top-14 h-14 w-14",
+            )}
+            aria-hidden="true"
+          />
+          <img
+            src={BREAD_ICON}
+            alt=""
+            className={cn(
+              "k2k-icon-hover pointer-events-none absolute k2k-breathe opacity-15",
+              compact ? "bottom-16 left-6 h-9 w-9" : "bottom-20 left-10 h-12 w-12",
+            )}
+            aria-hidden="true"
+          />
+          <img
+            src={COOKIE_ICON}
+            alt=""
+            className={cn(
+              "k2k-icon-hover pointer-events-none absolute hidden k2k-float-gentle opacity-15 sm:block",
+              compact ? "left-[38%] top-8 h-8 w-8" : "left-[42%] top-10 h-10 w-10",
+            )}
+            style={{ animationDelay: "2s" }}
+            aria-hidden="true"
+          />
+
+          {/* Decorative scoring lines — top */}
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-x-6 flex items-center gap-4 text-white/20 sm:inset-x-10",
+              compact ? "top-5" : "top-7",
+            )}
+            aria-hidden="true"
+          >
+            <ScoringLine delay="0.1s" />
+            <ScoringWave className="text-wheat/70" />
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-wheat/60" />
+            <ScoringWave className="text-white/30" />
+            <ScoringLine delay="0.3s" />
           </div>
 
-          {/* Actions block — offset for asymmetric rhythm */}
-          <div className="flex flex-col items-center gap-3 lg:items-start lg:pl-4">
-            <Link
-              to={primaryTo}
-              className={cn(
-                "inline-flex w-full items-center justify-center gap-2 rounded-full bg-white font-medium text-k2k-navy shadow-[0_12px_32px_-8px_rgba(17,17,17,0.25)] transition hover:bg-white/95 sm:w-auto",
-                compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
-              )}
-            >
-              {primaryLabel}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-
-            <div className="flex w-full flex-wrap items-center justify-center gap-3 lg:justify-start">
-              {secondaryLabel && secondaryTo && secondaryIsPhone ? (
-                <a
-                  href={secondaryTo}
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full border border-white/35 font-medium text-white transition hover:border-white/60 hover:bg-white/5",
-                    compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
-                  )}
+          <div
+            className={cn(
+              "relative grid items-center gap-10 px-6 sm:px-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16",
+              compact ? "py-12 sm:py-14 lg:py-16" : "py-16 sm:py-20 lg:py-28",
+            )}
+          >
+            {/* Text block */}
+            <ScrollReveal delay={1} className="text-center lg:text-left">
+              <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-white/75 sm:text-sm">
+                <span
+                  className="relative hidden h-px w-10 overflow-hidden lg:block"
+                  aria-hidden="true"
                 >
-                  {secondaryLabel}
-                </a>
-              ) : (
-                secondaryLabel &&
-                secondaryTo && (
-                  <Link
-                    to={secondaryTo as RouteTo}
+                  <span
+                    className="absolute inset-0 k2k-line-grow bg-wheat/50"
+                    style={{ animationDelay: "0.2s" }}
+                  />
+                </span>
+                <img
+                  src={WHEAT_ICON}
+                  alt=""
+                  className="k2k-icon-hover h-4 w-4 shrink-0 opacity-70"
+                  aria-hidden="true"
+                />
+                {eyebrow}
+              </p>
+              <h2
+                className={cn(
+                  "mt-5 max-w-2xl font-display leading-[1.02] text-white text-balance lg:mx-0",
+                  compact
+                    ? "text-4xl sm:text-5xl lg:text-[3.25rem]"
+                    : "text-5xl sm:text-6xl lg:text-[4.25rem]",
+                )}
+              >
+                {title}
+              </h2>
+              <p
+                className={cn(
+                  "mx-auto mt-6 max-w-xl leading-relaxed text-white/85 text-pretty lg:mx-0",
+                  compact ? "text-sm sm:text-base" : "text-base sm:text-lg",
+                )}
+              >
+                {text}
+              </p>
+            </ScrollReveal>
+
+            {/* Actions block */}
+            <ScrollReveal
+              delay={2}
+              className="flex flex-col items-center gap-4 lg:items-start lg:pl-4"
+            >
+              <Link
+                to={primaryTo}
+                className={cn(
+                  "k2k-hover-lift inline-flex w-full items-center justify-center gap-2 rounded-full border border-k2k-black bg-white font-medium text-k2k-navy shadow-[0_14px_36px_-10px_rgba(17,17,17,0.35)] transition hover:bg-white/95 sm:w-auto",
+                  compact ? "h-11 px-7 text-sm" : "h-12 px-8 text-base",
+                )}
+              >
+                {primaryLabel}
+                <ArrowRight className="k2k-icon-hover h-4 w-4" />
+              </Link>
+
+              <div className="flex w-full flex-wrap items-center justify-center gap-3 lg:justify-start">
+                {secondaryLabel && secondaryTo && secondaryIsPhone ? (
+                  <a
+                    href={secondaryTo}
                     className={cn(
-                      "inline-flex items-center justify-center rounded-full border border-white/35 font-medium text-white transition hover:border-white/60 hover:bg-white/5",
+                      "k2k-hover-lift inline-flex items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 font-medium text-white transition hover:border-white/65 hover:bg-white/10",
                       compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
                     )}
                   >
                     {secondaryLabel}
+                  </a>
+                ) : (
+                  secondaryLabel &&
+                  secondaryTo && (
+                    <Link
+                      to={secondaryTo as RouteTo}
+                      className={cn(
+                        "k2k-hover-lift inline-flex items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 font-medium text-white transition hover:border-white/65 hover:bg-white/10",
+                        compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
+                      )}
+                    >
+                      {secondaryLabel}
+                    </Link>
+                  )
+                )}
+                {tertiaryLabel && tertiaryTo && (
+                  <Link
+                    to={tertiaryTo}
+                    className={cn(
+                      "k2k-hover-lift inline-flex items-center justify-center rounded-full border border-k2k-black/25 bg-white/5 font-medium text-white transition hover:border-white/65 hover:bg-white/10",
+                      compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
+                    )}
+                  >
+                    {tertiaryLabel}
                   </Link>
-                )
-              )}
-              {tertiaryLabel && tertiaryTo && (
-                <Link
-                  to={tertiaryTo}
-                  className={cn(
-                    "inline-flex items-center justify-center rounded-full border border-white/35 font-medium text-white transition hover:border-white/60 hover:bg-white/5",
-                    compact ? "h-11 px-6 text-sm" : "h-12 px-7 text-sm",
-                  )}
-                >
-                  {tertiaryLabel}
-                </Link>
-              )}
-            </div>
+                )}
+              </div>
 
-            {/* Wheat accent detail */}
-            <div className="mt-2 hidden items-center gap-2 lg:flex" aria-hidden="true">
-              <span className="relative h-px w-10 overflow-hidden">
-                <span className="absolute inset-0 k2k-line-grow bg-wheat/40" />
-              </span>
-              <span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-wheat/70">
-                Pre-order only
-              </span>
-            </div>
+              <div className="mt-1 hidden items-center gap-3 lg:flex" aria-hidden="true">
+                <ScoringLine className="w-12 text-wheat/40" delay="0.5s" />
+                <span className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-wheat/75">
+                  Pre-order only
+                </span>
+                <img src={BREAD_ICON} alt="" className="k2k-icon-hover h-4 w-4 opacity-50" />
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Decorative scoring lines — bottom */}
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-x-6 flex items-center gap-4 text-white/12 sm:inset-x-10",
+              compact ? "bottom-5" : "bottom-7",
+            )}
+            aria-hidden="true"
+          >
+            <ScoringLine delay="0.4s" />
+            <ScoringWave className="text-white/25" />
+            <span className="h-1 w-1 shrink-0 rounded-full bg-white/30" />
+            <ScoringLine delay="0.6s" />
           </div>
         </div>
-
-        {/* Decorative scoring lines — bottom */}
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-x-8 flex items-center gap-3 text-white/10 sm:inset-x-12",
-            compact ? "bottom-6" : "bottom-8",
-          )}
-          aria-hidden="true"
-        >
-          <ScoringLine />
-          <svg width="24" height="10" viewBox="0 0 24 10" fill="none" className="shrink-0 text-white/25">
-            <path
-              d="M1 3c4 7 9 7 11 2 2 5 7 5 9-1"
-              stroke="currentColor"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-            />
-          </svg>
-          <ScoringLine />
-        </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -5,7 +5,6 @@ import { Section } from "@/components/sections/Section";
 import { PageHero } from "@/components/sections/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { Lightbox } from "@/components/media/Lightbox";
 import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS, BAKERY_PHOTOS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
@@ -38,17 +37,48 @@ type Category = (typeof GALLERY_CATEGORIES)[number];
 
 type RevealDelay = 0 | 1 | 2 | 3 | 4;
 
+const CATEGORY_ICONS: Record<Category, string> = {
+  Breads: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+  Cookies: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
+  Bagels: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
+};
+
+const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
+
+function HarborLine({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 180 12"
+      fill="none"
+      aria-hidden
+      className={cn("text-k2k-harbor/60", className)}
+    >
+      <path
+        d="M2 8 C30 2 60 2 90 7 C120 2 150 2 178 8"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+const MASONRY_ASPECTS = [
+  "aspect-[4/5]",
+  "aspect-[3/4]",
+  "aspect-square",
+  "aspect-[5/4]",
+  "aspect-[4/3]",
+] as const;
+
 function getItemsForCategory(cat: Category) {
   if (cat === "Breads") return ALL_BREADS;
   if (cat === "Cookies") return ALL_COOKIES;
   return ALL_BAGELS;
 }
 
-function getGridSpan(index: number, hasPhoto: boolean) {
-  if (index === 0 && hasPhoto) {
-    return "sm:col-span-2 lg:col-span-2";
-  }
-  return "";
+function getMasonryAspect(index: number) {
+  return MASONRY_ASPECTS[index % MASONRY_ASPECTS.length];
 }
 
 function GalleryPage() {
@@ -80,113 +110,167 @@ function GalleryPage() {
       />
 
       <Section bg="beige" reveal={false}>
-        {/* Category tabs */}
         <ScrollReveal className="mb-12">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
-                Browse by category
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {photoCount} of {currentItems.length} items photographed
-              </p>
-            </div>
-            <div
-              className="flex flex-wrap gap-2.5"
-              role="tablist"
-              aria-label="Gallery categories"
-            >
-              {GALLERY_CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeCategory === cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={cn(
-                    "k2k-button !min-h-10 !px-6 !py-2 !text-[0.68rem] transition-all duration-300",
-                    activeCategory === cat ? "k2k-button-primary" : "k2k-button-outline",
-                  )}
-                >
-                  {cat}
-                </button>
-              ))}
+          <div className="k2k-accent-rail k2k-surface rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 pl-5 p-6 sm:pl-7 sm:p-8">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <div className="group flex items-center gap-2.5">
+                  <img
+                    src={CATEGORY_ICONS[activeCategory]}
+                    alt=""
+                    className="k2k-breathe h-6 w-6 object-contain transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    aria-hidden
+                  />
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
+                      Browse by category
+                    </p>
+                    <HarborLine className="mt-2 h-2 w-24" />
+                  </div>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {photoCount} of {currentItems.length} items photographed
+                </p>
+              </div>
+              <div
+                className="flex flex-wrap gap-2.5"
+                role="tablist"
+                aria-label="Gallery categories"
+              >
+                {GALLERY_CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeCategory === cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={cn(
+                      "group k2k-button !min-h-10 !gap-2 !px-5 !py-2 !text-[0.68rem] transition-all duration-300",
+                      activeCategory === cat ? "k2k-button-primary" : "k2k-button-outline",
+                    )}
+                  >
+                    <img
+                      src={CATEGORY_ICONS[cat]}
+                      alt=""
+                      className="h-4 w-4 object-contain transition duration-300 group-hover:scale-110"
+                      aria-hidden
+                    />
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Masonry-feel grid */}
         <div
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          className="columns-1 gap-6 sm:columns-2 lg:columns-3 xl:columns-4"
           role="tabpanel"
           aria-label={`${activeCategory} gallery`}
         >
           {currentItems.map((product, i) => {
             const hasPhoto = Boolean(product.photo);
             const revealDelay = (i % 5) as RevealDelay;
+            const aspectClass = getMasonryAspect(i);
 
             return (
               <ScrollReveal
                 key={product.id}
                 delay={revealDelay}
-                className={cn(getGridSpan(i, hasPhoto), i === 0 && hasPhoto && "lg:row-span-1")}
+                className="mb-6 break-inside-avoid"
               >
                 <button
                   type="button"
                   onClick={() =>
-                    hasPhoto &&
-                    setLightboxIndex(slides.findIndex((s) => s.id === product.id))
+                    hasPhoto && setLightboxIndex(slides.findIndex((s) => s.id === product.id))
                   }
                   disabled={!hasPhoto}
                   className={cn(
                     "group relative w-full text-left transition duration-300",
-                    hasPhoto
-                      ? "cursor-zoom-in hover:-translate-y-1"
-                      : "cursor-default",
+                    hasPhoto ? "cursor-zoom-in hover:-translate-y-1" : "cursor-default",
                   )}
                   aria-label={
-                    hasPhoto ? `View photo of ${product.name}` : `${product.name} — photo coming soon`
+                    hasPhoto
+                      ? `View photo of ${product.name}`
+                      : `${product.name} — photo coming soon`
                   }
                 >
-                  {/* View overlay — photo items only */}
-                  {hasPhoto && (
-                    <div
-                      className="pointer-events-none absolute inset-x-5 top-5 z-20 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl bg-k2k-navy/0 opacity-0 transition-all duration-300 group-hover:bg-k2k-navy/45 group-hover:opacity-100"
-                      aria-hidden
-                    >
-                      <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/95 px-5 py-2.5 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-k2k-navy shadow-lg backdrop-blur-sm">
-                        <Eye className="h-3.5 w-3.5" />
-                        View
-                      </span>
-                    </div>
-                  )}
-
-                  <K2KProductCard
-                    product={product}
-                    showCta={false}
+                  <div
                     className={cn(
-                      "h-full",
-                      hasPhoto && "group-hover:shadow-[0_28px_60px_-32px_rgba(79,126,168,0.35)]",
-                      !hasPhoto &&
-                        "border border-dashed border-k2k-blue/15 bg-white/60 opacity-90",
+                      "k2k-surface overflow-hidden rounded-[1.5rem] p-3 transition duration-300",
+                      hasPhoto && "group-hover:shadow-[0_28px_60px_-32px_rgba(17,17,17,0.25)]",
+                      !hasPhoto && "border-dashed opacity-90",
                     )}
-                  />
+                  >
+                    <div
+                      className={cn(
+                        "relative overflow-hidden rounded-xl border border-[#111] bg-[#f8fafc]",
+                        hasPhoto ? aspectClass : "aspect-[4/3]",
+                      )}
+                    >
+                      {hasPhoto ? (
+                        <>
+                          <img
+                            src={product.photo}
+                            alt={`${product.name} from Knead To Know home bakery`}
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                            loading="lazy"
+                          />
+                          <div
+                            className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#111]/0 opacity-0 transition-all duration-300 group-hover:bg-[#111]/40 group-hover:opacity-100"
+                            aria-hidden
+                          >
+                            <span className="inline-flex items-center gap-2 rounded-full border border-[#111] bg-white px-5 py-2.5 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-k2k-navy shadow-lg transition duration-300 group-hover:scale-105">
+                              <Eye className="h-3.5 w-3.5 transition duration-300 group-hover:scale-110" />
+                              View
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="flex h-full flex-col items-center justify-center gap-3 px-4 py-8 text-center">
+                          <span className="flex h-14 w-14 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]">
+                            <img
+                              src={CATEGORY_ICONS[activeCategory]}
+                              alt=""
+                              className="k2k-breathe h-8 w-8 object-contain opacity-50"
+                              aria-hidden
+                            />
+                          </span>
+                          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/50">
+                            Photo coming soon
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-3 px-1 pb-1">
+                      <h3 className="font-display text-lg leading-tight text-ink">
+                        {product.name}
+                      </h3>
+                      {product.price && (
+                        <p className="mt-1 text-sm font-medium tabular-nums text-k2k-navy">
+                          {product.price}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </button>
               </ScrollReveal>
             );
           })}
         </div>
 
-        {/* Empty category note */}
         {photoCount === 0 && (
           <ScrollReveal delay={1} className="mt-10">
-            <div className="k2k-surface mx-auto max-w-lg rounded-[1.75rem] p-10 text-center">
-              <img
-                src="/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png"
-                alt=""
-                className="mx-auto h-8 w-8 opacity-40"
-                aria-hidden
-              />
+            <div className="k2k-surface group mx-auto max-w-lg rounded-[1.75rem] border-t-2 border-t-k2k-blue/15 p-10 text-center">
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105">
+                <img
+                  src={WHEAT_ICON}
+                  alt=""
+                  className="k2k-breathe h-7 w-7 opacity-40 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  aria-hidden
+                />
+              </span>
               <p className="mt-4 font-display text-xl text-ink">Photos coming soon</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 We&apos;re capturing this category next. In the meantime, explore our menu or

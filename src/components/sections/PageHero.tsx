@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
+const DOUGH_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png";
+
 const WHEAT_SVG = (
   <svg width="22" height="10" viewBox="0 0 22 10" fill="none" className="text-wheat" aria-hidden>
     <path
@@ -11,6 +14,52 @@ const WHEAT_SVG = (
     />
   </svg>
 );
+
+function WheatScoringMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 80 32" fill="none" aria-hidden className={cn("text-wheat/40", className)}>
+      <path
+        d="M4 24 C20 4 36 4 40 16 C44 4 60 4 76 24"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+      <path d="M40 16 V4" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function HarborLine({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 140 10"
+      fill="none"
+      aria-hidden
+      className={cn("text-k2k-harbor/50", className)}
+    >
+      <path
+        d="M2 6 C35 1 70 1 70 5 C70 1 105 1 138 6"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function HeroIconAccent({ src, className }: { src: string; className?: string }) {
+  return (
+    <div
+      className={cn(
+        "k2k-float-gentle pointer-events-none absolute flex h-11 w-11 items-center justify-center rounded-full border border-k2k-black bg-white/90 shadow-[var(--k2k-shadow-sm)] backdrop-blur-sm",
+        className,
+      )}
+      aria-hidden
+    >
+      <img src={src} alt="" className="k2k-icon-hover h-5 w-5 object-contain opacity-75" />
+    </div>
+  );
+}
 
 export function PageHero({
   eyebrow,
@@ -39,7 +88,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "relative overflow-hidden border-b border-k2k-blue/10 bg-[#f8f4ed] pb-16 pt-16 sm:pb-20 sm:pt-24",
+        "group relative overflow-hidden border-b border-k2k-black bg-k2k-cream pb-16 pt-16 sm:pb-20 sm:pt-24",
         hasBgImage && "min-h-[42vh]",
         className,
       )}
@@ -53,7 +102,7 @@ export function PageHero({
             aria-hidden
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-[#f8f4ed]/98 via-[#f8f4ed]/88 to-[#f8f4ed]/55"
+            className="absolute inset-0 bg-gradient-to-r from-k2k-cream/98 via-k2k-cream/88 to-k2k-cream/55"
             aria-hidden
           />
         </>
@@ -65,6 +114,14 @@ export function PageHero({
           aria-hidden
         />
       )}
+
+      <WheatScoringMark className="pointer-events-none absolute left-6 top-20 hidden w-20 opacity-50 lg:block xl:left-12" />
+      <WheatScoringMark className="pointer-events-none absolute right-8 top-32 hidden w-16 scale-x-[-1] opacity-35 lg:block" />
+      <HeroIconAccent src={WHEAT_ICON} className="right-[12%] top-[18%] hidden lg:flex" />
+      <HeroIconAccent
+        src={DOUGH_ICON}
+        className="left-[8%] bottom-[22%] hidden opacity-80 lg:flex [animation-delay:2s]"
+      />
 
       <div
         className={cn(
@@ -78,11 +135,11 @@ export function PageHero({
         <div className={cn(isCenter && "mx-auto")}>
           <div
             className={cn(
-              "mb-5 flex items-center gap-3",
+              "k2k-stagger-1 mb-5 flex items-center gap-3",
               isCenter && "justify-center",
             )}
           >
-            <span className="h-px w-8 bg-k2k-blue/25" aria-hidden />
+            <span className="h-px w-8 bg-k2k-black/20" aria-hidden />
             <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">
               {eyebrow}
             </p>
@@ -91,7 +148,7 @@ export function PageHero({
 
           <h1
             className={cn(
-              "font-display text-4xl leading-[1.04] text-ink sm:text-5xl lg:text-6xl",
+              "k2k-stagger-2 font-display text-4xl leading-[1.04] text-ink sm:text-5xl lg:text-6xl",
               isCenter && "mx-auto max-w-3xl",
             )}
           >
@@ -101,7 +158,7 @@ export function PageHero({
           {intro && (
             <p
               className={cn(
-                "mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl",
+                "k2k-stagger-3 mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl",
                 isCenter ? "mx-auto max-w-2xl" : "max-w-2xl",
               )}
             >
@@ -109,11 +166,11 @@ export function PageHero({
             </p>
           )}
 
-          {children && <div className="mt-8">{children}</div>}
+          {children && <div className="k2k-stagger-4 mt-8">{children}</div>}
         </div>
 
         {image && imagePosition === "right" && (
-          <div className="k2k-hero-frame overflow-hidden rounded-[1.75rem] p-2">
+          <div className="k2k-stagger-4 k2k-hero-frame overflow-hidden rounded-[1.75rem] border border-k2k-black p-2">
             <img
               src={image}
               alt={imageAlt ?? ""}
@@ -122,6 +179,8 @@ export function PageHero({
           </div>
         )}
       </div>
+
+      <HarborLine className="pointer-events-none absolute bottom-6 left-1/2 w-40 -translate-x-1/2 sm:w-52" />
     </section>
   );
 }

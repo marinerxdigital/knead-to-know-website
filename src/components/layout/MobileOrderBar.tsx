@@ -11,7 +11,7 @@ export function MobileOrderBar() {
 
   return (
     <div
-      className="k2k-mobile-bar fixed inset-x-0 bottom-0 z-30 border-t border-k2k-black/10 bg-white/95 px-4 py-3 backdrop-blur-md md:hidden"
+      className="k2k-mobile-bar fixed inset-x-0 bottom-0 z-30 border-t border-[#111111] bg-white/95 px-4 py-3 backdrop-blur-md md:hidden"
       role="region"
       aria-label="Quick order actions"
     >

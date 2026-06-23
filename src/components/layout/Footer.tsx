@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { BookOpen, Compass, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/business";
 
 import { BrandLogo } from "@/components/brand/BrandLogo";
@@ -52,7 +52,7 @@ function FooterScoringDivider() {
 
 function NewsletterPlaceholder() {
   return (
-    <div className="k2k-card mx-auto max-w-7xl rounded-[1.5rem] border border-k2k-blue/12 bg-white/80 px-6 py-5 sm:px-8">
+    <div className="k2k-card k2k-bordered mx-auto max-w-7xl rounded-[1.5rem] bg-white/90 px-6 py-5 sm:px-8">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/70">
@@ -64,7 +64,7 @@ function NewsletterPlaceholder() {
           </p>
         </div>
         <div
-          className="flex w-full shrink-0 items-center gap-3 rounded-full border border-k2k-blue/15 bg-[#f8f4ed]/60 px-5 py-3 sm:w-auto"
+          className="flex w-full shrink-0 items-center gap-3 rounded-full border border-[#111111] bg-[#f8f4ed]/60 px-5 py-3 sm:w-auto"
           aria-hidden="true"
         >
           <span className="text-sm text-muted-foreground/70">your@email.com</span>
@@ -104,7 +104,10 @@ export function Footer() {
 
         {/* Explore column */}
         <div>
-          <h4 className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">Explore</h4>
+          <h4 className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
+            <Compass className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            Explore
+          </h4>
           <ul className="mt-5 space-y-2.5">
             {EXPLORE_LINKS.map((link) => (
               <li key={link.to}>
@@ -121,7 +124,10 @@ export function Footer() {
 
         {/* About column */}
         <div>
-          <h4 className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">About</h4>
+          <h4 className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
+            <BookOpen className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            About
+          </h4>
           <ul className="mt-5 space-y-2.5">
             {ABOUT_LINKS.map((link) => (
               <li key={link.to}>
@@ -138,7 +144,10 @@ export function Footer() {
 
         {/* Contact column */}
         <div>
-          <h4 className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">Contact</h4>
+          <h4 className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
+            <Mail className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            Contact
+          </h4>
           <ul className="mt-5 space-y-3.5 text-sm text-ink/80">
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-k2k-blue" />

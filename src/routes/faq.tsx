@@ -3,9 +3,16 @@ import { Search } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/sections/Section";
 import { CTASection } from "@/components/sections/CTASection";
-import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import type { FAQGroup } from "@/components/ui/FAQAccordion";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { BUSINESS, SITE_URL } from "@/lib/business";
+import { BAKERY_PHOTOS } from "@/lib/products";
+import type { FAQGroup } from "@/components/ui/FAQAccordion";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/faq")({
@@ -29,9 +36,38 @@ export const Route = createFileRoute("/faq")({
   component: FAQPage,
 });
 
-const FAQ_GROUPS: ReadonlyArray<FAQGroup> = [
+const ICONS = {
+  calendar: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+  pickup: "/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png",
+  gift: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
+  cookie: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
+  wheat: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
+  envelope: "/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png",
+  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+} as const;
+
+function HarborLine({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 180 12"
+      fill="none"
+      aria-hidden
+      className={cn("text-k2k-harbor/60", className)}
+    >
+      <path
+        d="M2 8 C30 2 60 2 90 7 C120 2 150 2 178 8"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+const FAQ_GROUPS: ReadonlyArray<FAQGroup & { icon: string }> = [
   {
     title: "Ordering & timing",
+    icon: ICONS.calendar,
     items: [
       {
         q: "How far in advance should I order?",
@@ -53,6 +89,7 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup> = [
   },
   {
     title: "Pickup & delivery",
+    icon: ICONS.pickup,
     items: [
       {
         q: "Do you offer pickup and delivery?",
@@ -62,6 +99,7 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup> = [
   },
   {
     title: "Custom & catering",
+    icon: ICONS.gift,
     items: [
       {
         q: "Can I order for catering or events?",
@@ -71,6 +109,7 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup> = [
   },
   {
     title: "Products & pricing",
+    icon: ICONS.cookie,
     items: [
       {
         q: "Can you accommodate allergies or special requests?",
@@ -93,28 +132,57 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup> = [
 ];
 
 const QUICK_LINKS = [
-  { to: "/custom-orders" as const, label: "Custom orders" },
-  { to: "/catering" as const, label: "Catering" },
-  { to: "/contact" as const, label: "Contact" },
+  { to: "/custom-orders" as const, label: "Custom orders", icon: ICONS.calendar },
+  { to: "/catering" as const, label: "Catering", icon: ICONS.gift },
+  { to: "/contact" as const, label: "Contact", icon: ICONS.envelope },
+  { to: "/menu" as const, label: "View menu", icon: ICONS.bread },
 ];
 
-function WheatScoringMark({ className }: { className?: string }) {
+function FAQAccordionBlack({ groups }: { groups: ReadonlyArray<FAQGroup & { icon: string }> }) {
   return (
-    <svg viewBox="0 0 56 24" fill="none" className={className} aria-hidden>
-      <path
-        d="M2 16c8-14 18-14 22-4 4-10 14-10 18 2"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-      />
-      <path
-        d="M8 20c6-8 14-10 20-4"
-        stroke="currentColor"
-        strokeWidth="0.75"
-        strokeLinecap="round"
-        opacity="0.5"
-      />
-    </svg>
+    <div className="space-y-12">
+      {groups.map((group, gi) => (
+        <ScrollReveal key={group.title} delay={Math.min(gi + 1, 4) as 0 | 1 | 2 | 3 | 4}>
+          <div>
+            <div className="group mb-5 flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105">
+                <img
+                  src={group.icon}
+                  alt=""
+                  className="k2k-breathe h-7 w-7 object-contain opacity-85 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  aria-hidden
+                />
+              </span>
+              <span className="h-px flex-1 bg-k2k-blue/12" aria-hidden />
+              <h3 className="shrink-0 font-display text-xl text-ink">{group.title}</h3>
+              <span className="h-px flex-1 bg-k2k-blue/12" aria-hidden />
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+              {group.items.map((item, i) => (
+                <AccordionItem
+                  key={`group-${gi}-item-${i}`}
+                  value={`group-${gi}-item-${i}`}
+                  className="mb-3 overflow-hidden rounded-2xl border border-[#111] border-t-2 border-t-k2k-blue/10 bg-white shadow-[0_6px_24px_-14px_rgba(17,17,17,0.18)] transition-all duration-300 last:mb-0 data-[state=open]:border-t-k2k-blue/25 data-[state=open]:shadow-[0_12px_32px_-16px_rgba(17,17,17,0.22)]"
+                >
+                  <AccordionTrigger
+                    className={cn(
+                      "relative px-5 py-5 text-left font-display text-lg text-ink hover:no-underline sm:px-6 sm:text-xl",
+                      "before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-r-full before:bg-transparent before:transition-colors before:duration-300",
+                      "[&[data-state=open]]:text-k2k-navy [&[data-state=open]]:before:bg-wheat",
+                    )}
+                  >
+                    <span className="pr-4 leading-snug">{item.q}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-5 pb-6 text-base leading-relaxed text-muted-foreground sm:px-6">
+                    <div className="border-t border-k2k-blue/10 pt-4">{item.a}</div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
   );
 }
 
@@ -122,32 +190,43 @@ function FAQPage() {
   return (
     <>
       <PageHero
-        align="center"
         eyebrow="FAQ"
         title="Common questions"
         intro="Answers about ordering, timing, delivery, custom work, and more from Knead To Know."
+        image={BAKERY_PHOTOS.mangoMacadamiaCookies}
+        imageAlt="Mango macadamia sourdough cookies from Knead To Know"
+        imagePosition="right"
       >
         <div
-          className="mx-auto flex max-w-xl items-center gap-3 rounded-2xl border border-k2k-blue/15 bg-white/80 px-5 py-4 shadow-sm backdrop-blur-sm"
+          className="group k2k-surface flex max-w-xl items-center gap-3 rounded-2xl px-5 py-4"
           role="presentation"
           aria-hidden
         >
-          <Search className="h-5 w-5 shrink-0 text-k2k-blue/50" />
-          <span className="text-sm text-muted-foreground/70">
+          <Search
+            className="h-5 w-5 shrink-0 text-k2k-blue/60 transition duration-300 group-hover:scale-110 group-hover:text-k2k-blue"
+            aria-hidden
+          />
+          <span className="text-sm text-muted-foreground">
             Browse topics below — ordering, pickup, catering, and more
           </span>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center gap-2">
           {QUICK_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               className={cn(
-                "inline-flex h-9 items-center rounded-full border border-k2k-blue/18 bg-white/90 px-4 text-xs font-medium uppercase tracking-[0.12em] text-k2k-navy transition",
-                "hover:border-k2k-blue/35 hover:bg-white hover:text-k2k-blue",
+                "group inline-flex h-10 items-center gap-2 rounded-full border border-[#111] bg-white px-4 text-xs font-medium uppercase tracking-[0.12em] text-k2k-navy transition",
+                "hover:border-[#111] hover:bg-k2k-blue/5 hover:text-k2k-blue",
               )}
             >
+              <img
+                src={link.icon}
+                alt=""
+                className="h-4 w-4 object-contain opacity-80 transition duration-300 group-hover:scale-110"
+                aria-hidden
+              />
               {link.label}
             </Link>
           ))}
@@ -155,19 +234,34 @@ function FAQPage() {
       </PageHero>
 
       <Section bg="beige">
-        <div className="mx-auto max-w-3xl">
-          <div className="overflow-hidden rounded-[2rem] border border-k2k-blue/15 bg-white shadow-[0_28px_70px_-42px_rgba(31,52,71,0.3)] ring-1 ring-k2k-blue/8">
-            <div className="flex items-center justify-between border-b border-k2k-blue/10 bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06] px-6 py-4 sm:px-8">
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-blue/75">
-                All topics
-              </p>
-              <WheatScoringMark className="w-14 text-wheat/50" />
+        <ScrollReveal className="mx-auto max-w-3xl">
+          <div className="k2k-accent-rail k2k-surface overflow-hidden !rounded-[2rem] !border-t-2 !border-t-k2k-blue/25 !p-0 !pl-5 sm:!pl-7">
+            <div className="flex items-center justify-between border-b border-k2k-blue/10 bg-[#f8f4ed]/50 px-6 py-5 sm:px-8">
+              <div className="group flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#111] bg-white transition duration-300 group-hover:scale-105">
+                  <img
+                    src={ICONS.wheat}
+                    alt=""
+                    className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    aria-hidden
+                  />
+                </span>
+                <div>
+                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-navy/80">
+                    All topics
+                  </p>
+                  <HarborLine className="mt-2 h-2 w-20" />
+                </div>
+              </div>
+              <span className="hidden rounded-full border border-[#111] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:inline">
+                {FAQ_GROUPS.reduce((n, g) => n + g.items.length, 0)} answers
+              </span>
             </div>
             <div className="px-4 py-6 sm:px-6 sm:py-8">
-              <FAQAccordion groups={FAQ_GROUPS} />
+              <FAQAccordionBlack groups={FAQ_GROUPS} />
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </Section>
 
       <CTASection

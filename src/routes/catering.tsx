@@ -15,10 +15,10 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "h-12 w-full rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:outline-none";
+  "h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
 
 const textareaClass =
-  "w-full rounded-xl border border-k2k-blue/18 bg-white p-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:outline-none";
+  "w-full rounded-xl border border-[#111] bg-white p-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
 
 const CATERING_SERVICES = [
   {
@@ -195,8 +195,29 @@ function CateringPage() {
           />
           <div className="relative mx-auto max-w-xl px-5 sm:px-8">
             <div className="k2k-surface overflow-hidden rounded-[2rem] p-10 text-center sm:p-14">
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-k2k-blue/10 ring-1 ring-k2k-blue/20">
-                <CheckCircle2 className="h-8 w-8 text-k2k-blue" aria-hidden />
+              <div className="mb-6 flex items-center justify-center gap-4">
+                <div className="group flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
+                  <img
+                    src="/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png"
+                    alt=""
+                    className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    aria-hidden
+                  />
+                </div>
+                <div className="group flex h-16 w-16 items-center justify-center rounded-full border border-[#111] bg-k2k-blue/10 ring-1 ring-k2k-blue/20 transition duration-300 hover:scale-105">
+                  <CheckCircle2
+                    className="h-8 w-8 text-k2k-blue transition duration-300 group-hover:scale-110"
+                    aria-hidden
+                  />
+                </div>
+                <div className="group flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
+                  <img
+                    src="/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png"
+                    alt=""
+                    className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    aria-hidden
+                  />
+                </div>
               </div>
               <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">
                 Request received
@@ -210,9 +231,12 @@ function CateringPage() {
                 event on Daniel Island.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Link to="/" className="k2k-button k2k-button-primary inline-flex items-center gap-2">
+                <Link
+                  to="/"
+                  className="group k2k-button k2k-button-primary inline-flex items-center gap-2"
+                >
                   Return home
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
                 </Link>
                 <a href={BUSINESS.phoneTel} className="k2k-button k2k-button-outline inline-flex">
                   {BUSINESS.phone}
@@ -244,7 +268,7 @@ function CateringPage() {
         image={BAKERY_PHOTOS.hero}
         imageAlt="Artisan sourdough spread from Knead To Know bakery"
       >
-        <span className="inline-flex items-center gap-2 rounded-full bg-k2k-blue/8 px-4 py-2 text-sm font-medium text-k2k-navy ring-1 ring-k2k-blue/15">
+        <span className="group inline-flex items-center gap-2 rounded-full border border-[#111] bg-k2k-blue/8 px-4 py-2 text-sm font-medium text-k2k-navy">
           <span className="h-1.5 w-1.5 rounded-full bg-wheat" aria-hidden />
           {BUSINESS.orderingModel} · Baked fresh for your event
         </span>
@@ -259,24 +283,21 @@ function CateringPage() {
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CATERING_SERVICES.map((service, index) => (
-            <ScrollReveal
-              key={service.title}
-              delay={Math.min(index % 3, 4) as 0 | 1 | 2 | 3 | 4}
-            >
-              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col rounded-2xl p-7">
+            <ScrollReveal key={service.title} delay={Math.min(index % 3, 4) as 0 | 1 | 2 | 3 | 4}>
+              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col rounded-2xl border-t-2 border-t-k2k-blue/15 p-7 transition duration-300 hover:border-t-k2k-blue/35">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-k2k-blue/10 bg-[#f8f4ed]/80 transition duration-300 group-hover:border-k2k-blue/25 group-hover:bg-white">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 group-hover:scale-105 group-hover:bg-white group-hover:shadow-[0_4px_16px_-6px_rgba(17,17,17,0.15)]">
                     <img
                       src={service.icon}
                       alt=""
-                      className="h-7 w-7 object-contain opacity-80"
+                      className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
                       aria-hidden
                     />
                   </span>
                   <span
                     className={cn(
-                      "rounded-full px-2.5 py-0.5 text-[9px] font-medium uppercase tracking-[0.16em] ring-1",
-                      TIER_STYLES[service.tier] ?? "bg-k2k-blue/8 text-k2k-navy ring-k2k-blue/10",
+                      "rounded-full border border-[#111] px-2.5 py-0.5 text-[9px] font-medium uppercase tracking-[0.16em]",
+                      TIER_STYLES[service.tier] ?? "bg-k2k-blue/8 text-k2k-navy",
                     )}
                   >
                     {service.tier}
@@ -286,7 +307,10 @@ function CateringPage() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {service.desc}
                 </p>
-                <div className="mt-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] text-k2k-blue/60" aria-hidden>
+                <div
+                  className="mt-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] text-k2k-blue/60"
+                  aria-hidden
+                >
                   <span className="h-px flex-1 bg-k2k-blue/12" />
                   <span>Pre-order</span>
                 </div>
@@ -313,15 +337,15 @@ function CateringPage() {
           <ol className="grid gap-10 sm:grid-cols-3">
             {CATERING_STEPS.map((step, index) => (
               <ScrollReveal key={step.title} delay={index as 0 | 1 | 2 | 3 | 4}>
-                <li className="k2k-surface relative rounded-2xl p-6 text-center sm:text-left">
-                  <div className="relative mx-auto mb-5 flex h-14 w-14 items-center justify-center sm:mx-0">
+                <li className="k2k-surface group relative rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-center transition duration-300 hover:border-t-k2k-blue/35 sm:text-left">
+                  <div className="relative mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105 sm:mx-0">
                     <img
                       src={step.icon}
                       alt=""
-                      className="h-7 w-7 object-contain opacity-80"
+                      className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
                       aria-hidden
                     />
-                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-k2k-blue text-[10px] font-medium text-white">
+                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border border-[#111] bg-k2k-blue text-[10px] font-medium text-white">
                       {step.step.replace("0", "")}
                     </span>
                   </div>
@@ -337,154 +361,158 @@ function CateringPage() {
       </Section>
 
       <Section bg="white" variant="inset" id="catering-form">
-        <div className="k2k-surface !rounded-[1.75rem] !border-k2k-blue/12 !p-0 !shadow-[0_28px_60px_-44px_rgba(31,52,71,0.22)]">
-          <div className="border-b border-k2k-blue/8 px-6 py-8 sm:px-10 sm:py-10">
-            <SectionHeading
-              eyebrow="Inquire"
-              title="Event details"
-              intro="Share your gathering details and we'll confirm availability, menu, and timing within one business day."
-            />
-          </div>
-          <form onSubmit={handleSubmit} className="space-y-5 px-6 py-8 sm:px-10 sm:pb-10">
-            <input
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              value={botcheck}
-              onChange={(e) => setBotcheck(e.target.value)}
-              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-            />
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                name="name"
-                required
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleChange}
-                className={fieldClass}
-              />
-              <input
-                name="email"
-                type="email"
-                required
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                className={fieldClass}
+        <ScrollReveal>
+          <div className="k2k-accent-rail k2k-surface overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-0 pl-5 shadow-[0_28px_60px_-44px_rgba(17,17,17,0.18)] sm:pl-7">
+            <div className="border-b border-k2k-blue/10 px-6 py-8 sm:px-10 sm:py-10">
+              <SectionHeading
+                eyebrow="Inquire"
+                title="Event details"
+                intro="Share your gathering details and we'll confirm availability, menu, and timing within one business day."
               />
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <form onSubmit={handleSubmit} className="space-y-5 px-6 py-8 sm:px-10 sm:pb-10">
               <input
-                name="phone"
-                required
-                placeholder="Phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={fieldClass}
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={botcheck}
+                onChange={(e) => setBotcheck(e.target.value)}
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
               />
-              <input
-                name="eventDate"
-                type="date"
-                required
-                placeholder="Event date"
-                value={formData.eventDate}
-                onChange={handleChange}
-                className={fieldClass}
-              />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                name="eventType"
-                placeholder="Event type (brunch, corporate, holiday, etc.)"
-                value={formData.eventType}
-                onChange={handleChange}
-                className={fieldClass}
-              />
-              <input
-                name="guestCount"
-                placeholder="Guest count / servings"
-                value={formData.guestCount}
-                onChange={handleChange}
-                className={fieldClass}
-              />
-            </div>
-            <div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  name="name"
+                  required
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  name="phone"
+                  required
+                  placeholder="Phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+                <input
+                  name="eventDate"
+                  type="date"
+                  required
+                  placeholder="Event date"
+                  value={formData.eventDate}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  name="eventType"
+                  placeholder="Event type (brunch, corporate, holiday, etc.)"
+                  value={formData.eventType}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+                <input
+                  name="guestCount"
+                  placeholder="Guest count / servings"
+                  value={formData.guestCount}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+              </div>
+              <div>
+                <textarea
+                  name="items"
+                  rows={3}
+                  placeholder="Requested items (e.g. 4 dozen mixed cookies, 6 loaves assorted breads, 1 bakery box for 20)"
+                  value={formData.items}
+                  onChange={handleChange}
+                  className={textareaClass}
+                />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <select
+                  name="preference"
+                  value={formData.preference}
+                  onChange={handleChange}
+                  className={fieldClass}
+                >
+                  <option value="delivery">Delivery</option>
+                  <option value="pickup">Pickup</option>
+                </select>
+                <input
+                  name="budget"
+                  placeholder="Budget range (optional)"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+              </div>
               <textarea
-                name="items"
-                rows={3}
-                placeholder="Requested items (e.g. 4 dozen mixed cookies, 6 loaves assorted breads, 1 bakery box for 20)"
-                value={formData.items}
+                name="allergies"
+                placeholder="Allergy or dietary notes"
+                value={formData.allergies}
                 onChange={handleChange}
                 className={textareaClass}
               />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <select
-                name="preference"
-                value={formData.preference}
+              <textarea
+                name="message"
+                rows={3}
+                placeholder="Additional details or special requests"
+                value={formData.message}
                 onChange={handleChange}
-                className={fieldClass}
-              >
-                <option value="delivery">Delivery</option>
-                <option value="pickup">Pickup</option>
-              </select>
-              <input
-                name="budget"
-                placeholder="Budget range (optional)"
-                value={formData.budget}
-                onChange={handleChange}
-                className={fieldClass}
+                className={textareaClass}
               />
-            </div>
-            <textarea
-              name="allergies"
-              placeholder="Allergy or dietary notes"
-              value={formData.allergies}
-              onChange={handleChange}
-              className={textareaClass}
-            />
-            <textarea
-              name="message"
-              rows={3}
-              placeholder="Additional details or special requests"
-              value={formData.message}
-              onChange={handleChange}
-              className={textareaClass}
-            />
 
-            {submitError && (
-              <p
-                className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive"
-                role="alert"
+              {submitError && (
+                <p
+                  className="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                  role="alert"
+                >
+                  {submitError}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="group k2k-button k2k-button-primary flex w-full items-center justify-center gap-2 disabled:opacity-60"
               >
-                {submitError}
+                {submitting ? "Sending…" : "Submit Catering Request"}
+                <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
+              </button>
+              <p className="text-center text-xs text-muted-foreground">
+                We reply within 1 business day to finalize details and availability.
               </p>
-            )}
-
-            <button
-              type="submit"
-              disabled={submitting}
-              className="k2k-button k2k-button-primary flex w-full items-center justify-center gap-2 disabled:opacity-60"
-            >
-              {submitting ? "Sending…" : "Submit Catering Request"}
-              <ArrowRight className="h-4 w-4" />
-            </button>
-            <p className="text-center text-xs text-muted-foreground">
-              We reply within 1 business day to finalize details and availability.
-            </p>
-          </form>
-        </div>
+            </form>
+          </div>
+        </ScrollReveal>
       </Section>
 
       <Section bg="beige" reveal={false}>
-        <p className="mx-auto max-w-md text-center text-sm text-muted-foreground">
-          For simple menu items in smaller quantities, you can also use the{" "}
-          <Link to="/custom-orders" className="font-medium text-k2k-blue hover:text-k2k-navy">
-            Custom Orders form
-          </Link>
-          .
-        </p>
+        <ScrollReveal delay={1}>
+          <p className="k2k-surface mx-auto max-w-md rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-center text-sm text-muted-foreground">
+            For simple menu items in smaller quantities, you can also use the{" "}
+            <Link to="/custom-orders" className="font-medium text-k2k-blue hover:text-k2k-navy">
+              Custom Orders form
+            </Link>
+            .
+          </p>
+        </ScrollReveal>
       </Section>
 
       <CTASection

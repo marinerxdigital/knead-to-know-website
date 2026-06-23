@@ -163,7 +163,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Inter:wght@300;400;500;600&display=swap",
       },
     ],
   }),
@@ -200,7 +200,7 @@ function RootComponent() {
           Skip to content
         </a>
         <Header />
-        <main id="main-content" className="flex-1 pb-20 md:pb-0">
+        <main id="main-content" className="k2k-page-enter flex-1 pb-20 md:pb-0">
           <Outlet />
         </main>
         <Footer />

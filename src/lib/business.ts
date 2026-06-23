@@ -13,6 +13,7 @@ export const BUSINESS = {
   serviceArea: "Daniel Island and Charleston area",
   phone: "(843) 973-0309",
   phoneTel: "tel:8439730309",
+  phoneSms: "sms:8439730309",
   email: null as string | null,
   hours: null as string | null,
   orderingModel: "Pre-orders only",

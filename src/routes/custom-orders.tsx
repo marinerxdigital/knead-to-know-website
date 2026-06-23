@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Check, Loader2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/sections/Section";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
@@ -15,10 +15,10 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "w-full h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)] focus:outline-none";
+  "w-full h-12 rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
 
 const textareaClass =
-  "w-full rounded-xl border border-k2k-blue/18 bg-white p-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-k2k-blue focus:ring-2 focus:ring-k2k-blue/15 focus:shadow-[0_4px_20px_-6px_rgba(79,126,168,0.25)] focus:outline-none";
+  "w-full rounded-xl border border-[#111] bg-white p-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
 
 const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70 block mb-1.5";
 
@@ -80,8 +80,8 @@ function OrderStepIndicator() {
               className={cn(
                 "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors sm:h-10 sm:w-10",
                 i === 0
-                  ? "bg-k2k-blue text-white shadow-[0_8px_24px_-8px_rgba(79,126,168,0.55)]"
-                  : "border border-k2k-blue/25 bg-white text-k2k-navy/70",
+                  ? "border border-[#111] bg-k2k-blue text-white shadow-[0_8px_24px_-8px_rgba(79,126,168,0.55)]"
+                  : "border border-[#111] bg-white text-k2k-navy/70",
               )}
             >
               {step.num}
@@ -114,35 +114,42 @@ function ProcessSidebar() {
 
         <ol className="mt-8 space-y-0">
           {PROCESS_STEPS.map((step, i) => (
-            <li key={step.num} className="relative flex gap-4 pb-8 last:pb-0">
+            <ScrollReveal
+              key={step.num}
+              delay={Math.min(i + 1, 4) as 0 | 1 | 2 | 3 | 4}
+              as="li"
+              className="relative flex gap-4 pb-8 last:pb-0"
+            >
               {i < PROCESS_STEPS.length - 1 && (
                 <span
                   className="absolute left-[15px] top-9 h-[calc(100%-2rem)] w-px bg-k2k-blue/15"
                   aria-hidden
                 />
               )}
-              <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-k2k-blue/20 bg-[#f8f4ed] text-xs font-semibold text-k2k-blue">
+              <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#111] bg-[#f8f4ed] text-xs font-semibold text-k2k-blue">
                 {step.num}
               </span>
               <div className="pt-0.5">
                 <p className="font-display text-lg text-ink">{step.title}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
               </div>
-            </li>
+            </ScrollReveal>
           ))}
         </ol>
 
-        <div className="mt-8 overflow-hidden rounded-2xl border border-k2k-blue/10">
-          <img
-            src={BAKERY_PHOTOS.chocolateChipCookies}
-            alt=""
-            className="aspect-[4/3] w-full object-cover"
-            aria-hidden
-          />
-          <p className="px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-            {BUSINESS.orderingModel} — every bake is made fresh for your order.
-          </p>
-        </div>
+        <ScrollReveal delay={2}>
+          <div className="k2k-card mt-8 overflow-hidden rounded-2xl">
+            <img
+              src={BAKERY_PHOTOS.chocolateChipCookies}
+              alt=""
+              className="aspect-[4/3] w-full object-cover"
+              aria-hidden
+            />
+            <p className="px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+              {BUSINESS.orderingModel} — every bake is made fresh for your order.
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </aside>
   );
@@ -249,14 +256,35 @@ function CustomOrdersPage() {
               <div className="relative h-px flex-1">
                 <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
               </div>
-              <Sparkles className="h-4 w-4 text-wheat" />
+              <Sparkles className="h-4 w-4 text-wheat transition duration-300 hover:scale-110 hover:rotate-12" />
               <div className="relative h-px flex-1">
                 <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
               </div>
             </div>
 
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-k2k-blue/10 ring-4 ring-k2k-blue/5">
-              <Check className="h-8 w-8 text-k2k-blue" strokeWidth={2.5} />
+            <div className="flex justify-center gap-4">
+              <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
+                <img
+                  src="/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png"
+                  alt=""
+                  className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  aria-hidden
+                />
+              </div>
+              <div className="group flex h-16 w-16 items-center justify-center rounded-full border border-[#111] bg-k2k-blue/10 ring-4 ring-k2k-blue/5 transition duration-300 hover:scale-105">
+                <CheckCircle2
+                  className="h-8 w-8 text-k2k-blue transition duration-300 group-hover:scale-110"
+                  strokeWidth={2}
+                />
+              </div>
+              <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
+                <img
+                  src="/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png"
+                  alt=""
+                  className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  aria-hidden
+                />
+              </div>
             </div>
 
             <h1 className="mt-8 text-center font-display text-4xl text-ink sm:text-5xl">
@@ -272,7 +300,7 @@ function CustomOrdersPage() {
               is on its way to {BUSINESS.shortOwner}.
             </p>
 
-            <div className="mx-auto mt-8 max-w-sm rounded-2xl border border-k2k-blue/10 bg-[#f8f4ed]/60 px-5 py-4 text-center">
+            <div className="k2k-surface mx-auto mt-8 max-w-sm rounded-2xl bg-[#f8f4ed]/60 px-5 py-4 text-center">
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
                 What happens next
               </p>
@@ -314,311 +342,322 @@ function CustomOrdersPage() {
       </PageHero>
 
       <Section id="choose-bakes">
-        <div className="mb-6 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
-              Step 1
-            </p>
-            <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">Choose your bakes</h2>
-          </div>
-          {selectedIds.length > 0 && (
-            <span className="rounded-full bg-k2k-blue/10 px-3 py-1 text-xs font-medium text-k2k-navy">
-              {selectedIds.length} selected
-            </span>
-          )}
-        </div>
-        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Tap any card to add or remove. You can select multiple items — don&apos;t see exactly what
-          you want? Add details in the special instructions field below.
-        </p>
-
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {PRODUCTS.map((product, index) => {
-            const delay = (index % 5) as 0 | 1 | 2 | 3 | 4;
-            return (
-              <ScrollReveal key={product.id} delay={delay}>
-                <K2KProductCard
-                  product={product}
-                  selectable
-                  selected={selectedIds.includes(product.id)}
-                  onSelect={() => toggleProduct(product.id)}
-                  showCta={false}
-                />
-              </ScrollReveal>
-            );
-          })}
-        </div>
-      </Section>
-
-      <Section variant="inset" bg="beige" reveal={false}>
-        <div className="grid gap-12 lg:grid-cols-[1fr_280px] lg:gap-16">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <input
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              value={botcheck}
-              onChange={(e) => setBotcheck(e.target.value)}
-              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-            />
-
+        <ScrollReveal>
+          <div className="mb-6 flex items-end justify-between gap-4">
             <div>
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
-                Step 2
+                Step 1
               </p>
-              <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">Your details</h2>
+              <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">Choose your bakes</h2>
             </div>
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label className={labelClass}>Name</label>
-                <input
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={fieldClass}
-                  placeholder="Your full name"
-                />
-              </div>
-              <div>
-                <label className={labelClass}>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={fieldClass}
-                  placeholder="you@email.com"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label className={labelClass}>Phone</label>
-                <input
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={fieldClass}
-                  placeholder="(843) 973-0309"
-                />
-              </div>
-              <div>
-                <label className={labelClass}>Preferred pickup date</label>
-                <input
-                  type="date"
-                  name="date"
-                  required
-                  value={formData.date}
-                  onChange={handleChange}
-                  className={fieldClass}
-                />
-              </div>
-              <div>
-                <label className={labelClass}>Preferred pickup time</label>
-                <input
-                  type="time"
-                  name="pickupTime"
-                  value={formData.pickupTime}
-                  onChange={handleChange}
-                  className={fieldClass}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Products selected</label>
-              <div className="min-h-[44px] rounded-xl border border-k2k-blue/18 bg-[#f8fafc] px-4 py-2.5 text-sm">
-                {selectedProducts.length > 0 ? (
-                  <span className="text-ink">
-                    {selectedProducts.map((p) => p.name).join(" • ")}
-                  </span>
-                ) : (
-                  <span className="text-muted-foreground">
-                    Select items above or describe your request below.
-                  </span>
-                )}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label className={labelClass}>Order type</label>
-                <select
-                  name="orderType"
-                  value={formData.orderType}
-                  onChange={handleChange}
-                  className={fieldClass}
-                >
-                  <option value="pre-order">Pre-Order</option>
-                  <option value="bakery-box">Bakery Box</option>
-                  <option value="cookie-tray">Cookie Tray</option>
-                  <option value="bread-order">Bread Order</option>
-                  <option value="custom">Custom Bakery Request</option>
-                </select>
-              </div>
-              <div>
-                <label className={labelClass}>Occasion / event type</label>
-                <input
-                  name="occasion"
-                  value={formData.occasion}
-                  onChange={handleChange}
-                  className={fieldClass}
-                  placeholder="Everyday, brunch, gift, celebration..."
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label className={labelClass}>Estimated quantity (total items / loaves)</label>
-                <input
-                  name="quantity"
-                  value={formData.quantity}
-                  onChange={handleChange}
-                  className={fieldClass}
-                  placeholder="e.g. 2 loaves + 12 cookies"
-                />
-              </div>
-              <div>
-                <label className={labelClass}>Budget range (optional)</label>
-                <input
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className={fieldClass}
-                  placeholder="Share your range — we'll confirm exact pricing"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Pickup or delivery?</label>
-              <select
-                name="preference"
-                value={formData.preference}
-                onChange={handleChange}
-                className={fieldClass}
-              >
-                <option value="pickup">Pickup (Daniel Island)</option>
-                <option value="delivery">Delivery (local area)</option>
-              </select>
-            </div>
-
-            <div>
-              <label className={labelClass}>Allergy notes or dietary requests</label>
-              <textarea
-                name="allergies"
-                value={formData.allergies}
-                onChange={handleChange}
-                rows={2}
-                className={textareaClass}
-                placeholder="E.g. Contains nuts, gluten free request (note: we are not a dedicated GF facility)"
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>Special instructions / custom request</label>
-              <textarea
-                name="instructions"
-                value={formData.instructions}
-                onChange={handleChange}
-                rows={3}
-                className={textareaClass}
-                placeholder="E.g. Need a mixed bakery box for a brunch, or 3 rosemary loaves sliced, etc."
-              />
-            </div>
-
-            <div>
-              <label className={labelClass}>Preferred contact method</label>
-              <div className="flex gap-6 text-sm">
-                <label className="flex cursor-pointer items-center gap-2">
-                  <input
-                    type="radio"
-                    name="contactMethod"
-                    value="email"
-                    checked={formData.contactMethod === "email"}
-                    onChange={handleChange}
-                    className="accent-k2k-blue"
-                  />
-                  Email
-                </label>
-                <label className="flex cursor-pointer items-center gap-2">
-                  <input
-                    type="radio"
-                    name="contactMethod"
-                    value="phone"
-                    checked={formData.contactMethod === "phone"}
-                    onChange={handleChange}
-                    className="accent-k2k-blue"
-                  />
-                  Phone
-                </label>
-              </div>
-            </div>
-
-            {submitError && (
-              <p
-                className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive"
-                role="alert"
-              >
-                {submitError}
-              </p>
+            {selectedIds.length > 0 && (
+              <span className="k2k-surface rounded-full px-3 py-1 text-xs font-medium text-k2k-navy">
+                {selectedIds.length} selected
+              </span>
             )}
+          </div>
+          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Tap any card to add or remove. You can select multiple items — don&apos;t see exactly
+            what you want? Add details in the special instructions field below.
+          </p>
 
-            <div className="border-t border-k2k-blue/10 pt-5">
-              <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
-                Step 3 — Submit
-              </p>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="k2k-button k2k-button-primary flex w-full items-center justify-center gap-2 disabled:opacity-60"
-              >
-                {submitting ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-                    Sending request…
-                  </>
-                ) : (
-                  <>
-                    Submit Custom Order Request
-                    <ArrowRight className="h-4 w-4" />
-                  </>
-                )}
-              </button>
-
-              <p className="pt-3 text-center text-[10px] leading-relaxed text-muted-foreground">
-                This is a request. We will reply to confirm pricing, exact availability, and timing.
-                Standard pricing from menu applies unless custom work is required.
-              </p>
+          <div className="k2k-accent-rail k2k-surface rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 pl-5 p-5 sm:pl-7 sm:p-7">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {PRODUCTS.map((product, index) => {
+                const delay = (index % 5) as 0 | 1 | 2 | 3 | 4;
+                return (
+                  <ScrollReveal key={product.id} delay={delay}>
+                    <K2KProductCard
+                      product={product}
+                      selectable
+                      selected={selectedIds.includes(product.id)}
+                      onSelect={() => toggleProduct(product.id)}
+                      showCta={false}
+                    />
+                  </ScrollReveal>
+                );
+              })}
             </div>
-          </form>
+          </div>
+        </ScrollReveal>
+      </Section>
 
-          <ProcessSidebar />
-        </div>
+      <Section bg="beige" reveal={false}>
+        <ScrollReveal>
+          <div className="k2k-accent-rail k2k-card rounded-[2rem] border-t-2 border-t-k2k-blue/25 pl-5 p-6 sm:pl-7 sm:p-10">
+            <div className="grid gap-12 lg:grid-cols-[1fr_280px] lg:gap-16">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={botcheck}
+                  onChange={(e) => setBotcheck(e.target.value)}
+                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                />
+
+                <div>
+                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
+                    Step 2
+                  </p>
+                  <h2 className="mt-1 font-display text-2xl text-ink sm:text-3xl">Your details</h2>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>Name</label>
+                    <input
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={fieldClass}
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={fieldClass}
+                      placeholder="you@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>Phone</label>
+                    <input
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className={fieldClass}
+                      placeholder="(843) 973-0309"
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Preferred pickup date</label>
+                    <input
+                      type="date"
+                      name="date"
+                      required
+                      value={formData.date}
+                      onChange={handleChange}
+                      className={fieldClass}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Preferred pickup time</label>
+                    <input
+                      type="time"
+                      name="pickupTime"
+                      value={formData.pickupTime}
+                      onChange={handleChange}
+                      className={fieldClass}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className={labelClass}>Products selected</label>
+                  <div className="k2k-surface min-h-[44px] rounded-xl bg-[#f8fafc] px-4 py-2.5 text-sm">
+                    {selectedProducts.length > 0 ? (
+                      <span className="text-ink">
+                        {selectedProducts.map((p) => p.name).join(" • ")}
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground">
+                        Select items above or describe your request below.
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>Order type</label>
+                    <select
+                      name="orderType"
+                      value={formData.orderType}
+                      onChange={handleChange}
+                      className={fieldClass}
+                    >
+                      <option value="pre-order">Pre-Order</option>
+                      <option value="bakery-box">Bakery Box</option>
+                      <option value="cookie-tray">Cookie Tray</option>
+                      <option value="bread-order">Bread Order</option>
+                      <option value="custom">Custom Bakery Request</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelClass}>Occasion / event type</label>
+                    <input
+                      name="occasion"
+                      value={formData.occasion}
+                      onChange={handleChange}
+                      className={fieldClass}
+                      placeholder="Everyday, brunch, gift, celebration..."
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>Estimated quantity (total items / loaves)</label>
+                    <input
+                      name="quantity"
+                      value={formData.quantity}
+                      onChange={handleChange}
+                      className={fieldClass}
+                      placeholder="e.g. 2 loaves + 12 cookies"
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Budget range (optional)</label>
+                    <input
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className={fieldClass}
+                      placeholder="Share your range — we'll confirm exact pricing"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className={labelClass}>Pickup or delivery?</label>
+                  <select
+                    name="preference"
+                    value={formData.preference}
+                    onChange={handleChange}
+                    className={fieldClass}
+                  >
+                    <option value="pickup">Pickup (Daniel Island)</option>
+                    <option value="delivery">Delivery (local area)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelClass}>Allergy notes or dietary requests</label>
+                  <textarea
+                    name="allergies"
+                    value={formData.allergies}
+                    onChange={handleChange}
+                    rows={2}
+                    className={textareaClass}
+                    placeholder="E.g. Contains nuts, gluten free request (note: we are not a dedicated GF facility)"
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>Special instructions / custom request</label>
+                  <textarea
+                    name="instructions"
+                    value={formData.instructions}
+                    onChange={handleChange}
+                    rows={3}
+                    className={textareaClass}
+                    placeholder="E.g. Need a mixed bakery box for a brunch, or 3 rosemary loaves sliced, etc."
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>Preferred contact method</label>
+                  <div className="flex gap-6 text-sm">
+                    <label className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="contactMethod"
+                        value="email"
+                        checked={formData.contactMethod === "email"}
+                        onChange={handleChange}
+                        className="accent-k2k-blue"
+                      />
+                      Email
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="contactMethod"
+                        value="phone"
+                        checked={formData.contactMethod === "phone"}
+                        onChange={handleChange}
+                        className="accent-k2k-blue"
+                      />
+                      Phone
+                    </label>
+                  </div>
+                </div>
+
+                {submitError && (
+                  <p
+                    className="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                    role="alert"
+                  >
+                    {submitError}
+                  </p>
+                )}
+
+                <div className="border-t border-k2k-blue/10 pt-5">
+                  <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
+                    Step 3 — Submit
+                  </p>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="group k2k-button k2k-button-primary flex w-full items-center justify-center gap-2 disabled:opacity-60"
+                  >
+                    {submitting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+                        Sending request…
+                      </>
+                    ) : (
+                      <>
+                        Submit Custom Order Request
+                        <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
+                      </>
+                    )}
+                  </button>
+
+                  <p className="pt-3 text-center text-[10px] leading-relaxed text-muted-foreground">
+                    This is a request. We will reply to confirm pricing, exact availability, and
+                    timing. Standard pricing from menu applies unless custom work is required.
+                  </p>
+                </div>
+              </form>
+
+              <ProcessSidebar />
+            </div>
+          </div>
+        </ScrollReveal>
       </Section>
 
       <Section bg="white">
-        <div className="max-w-prose text-sm">
-          <p className="font-display text-lg text-ink">Need something larger or different?</p>
-          <p className="mt-2 leading-relaxed text-muted-foreground">
-            We also handle full catering spreads, corporate orders, and seasonal specials. Visit our{" "}
-            <Link to="/catering" className="font-medium text-k2k-blue hover:text-k2k-navy">
-              Catering page
-            </Link>{" "}
-            or call{" "}
-            <a href={BUSINESS.phoneTel} className="font-medium text-k2k-blue hover:text-k2k-navy">
-              {BUSINESS.phone}
-            </a>{" "}
-            with questions.
-          </p>
-        </div>
+        <ScrollReveal delay={1}>
+          <div className="k2k-surface max-w-prose rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-sm">
+            <p className="font-display text-lg text-ink">Need something larger or different?</p>
+            <p className="mt-2 leading-relaxed text-muted-foreground">
+              We also handle full catering spreads, corporate orders, and seasonal specials. Visit
+              our{" "}
+              <Link to="/catering" className="font-medium text-k2k-blue hover:text-k2k-navy">
+                Catering page
+              </Link>{" "}
+              or call{" "}
+              <a href={BUSINESS.phoneTel} className="font-medium text-k2k-blue hover:text-k2k-navy">
+                {BUSINESS.phone}
+              </a>{" "}
+              with questions.
+            </p>
+          </div>
+        </ScrollReveal>
       </Section>
     </>
   );

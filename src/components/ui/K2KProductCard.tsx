@@ -13,12 +13,12 @@ interface K2KProductCardProps {
 }
 
 const CATEGORY_LABELS: Record<Product["category"], string> = {
-  bread: "Sourdough Bread",
-  cookies: "Sourdough Cookies",
-  bagels: "Sourdough Bagels",
+  bread: "Bread",
+  cookies: "Cookies",
+  bagels: "Bagels",
   pastries: "Pastries",
-  "bakery-boxes": "Bakery Boxes",
-  custom: "Custom Orders",
+  "bakery-boxes": "Bakery Box",
+  custom: "Custom",
 };
 
 const CATEGORY_ICONS: Record<Product["category"], string> = {
@@ -32,50 +32,60 @@ const CATEGORY_ICONS: Record<Product["category"], string> = {
 
 const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
 
-function ProductPhotoArea({ product }: { product: Product }) {
-  const categoryPill = (
-    <span className="absolute left-3 top-3 z-10 rounded-full bg-white/95 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.18em] text-k2k-navy shadow-sm ring-1 ring-k2k-blue/10 backdrop-blur-sm">
-      {CATEGORY_LABELS[product.category]}
+function CategoryIconBadge({ product }: { product: Product }) {
+  return (
+    <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-k2k-black bg-white/95 px-2.5 py-1 shadow-sm backdrop-blur-sm">
+      <img
+        src={CATEGORY_ICONS[product.category]}
+        alt=""
+        className="k2k-icon-hover h-4 w-4 object-contain"
+        aria-hidden
+      />
+      <span className="text-[8px] font-medium uppercase tracking-[0.16em] text-k2k-navy">
+        {CATEGORY_LABELS[product.category]}
+      </span>
     </span>
   );
+}
 
+function ProductPhotoArea({ product }: { product: Product }) {
   if (product.photo) {
     return (
-      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f8fafc]">
-        {categoryPill}
+      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-k2k-black bg-[#f8fafc]">
+        <CategoryIconBadge product={product} />
         <img
           src={product.photo}
           alt={`${product.name} from Knead To Know home bakery`}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
           loading="lazy"
         />
-        <div
-          className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-k2k-blue/10 transition group-hover:ring-k2k-blue/20"
-          aria-hidden
-        />
       </div>
     );
   }
 
   return (
-    <div className="k2k-product-photo relative aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-[#f8fafc] via-white to-[#f0f5fa]">
-      {categoryPill}
+    <div className="k2k-product-photo relative aspect-[4/3] overflow-hidden rounded-2xl border border-k2k-black bg-gradient-to-br from-[#f8fafc] via-white to-[#f0f5fa]">
+      <CategoryIconBadge product={product} />
       <div
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-wheat/50 to-transparent"
         aria-hidden
       />
-      <div className="absolute inset-0 rounded-2xl border border-k2k-blue/10" aria-hidden />
       <div className="flex h-full flex-col items-center justify-center gap-4 px-6 py-8 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_-12px_rgba(79,126,168,0.35)] ring-1 ring-k2k-blue/10">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-k2k-black bg-white shadow-[0_8px_24px_-12px_rgba(17,17,17,0.2)]">
           <img
             src={CATEGORY_ICONS[product.category]}
             alt=""
-            className="h-8 w-8 object-contain opacity-80"
+            className="k2k-icon-hover h-8 w-8 object-contain opacity-80"
             aria-hidden
           />
         </div>
         <div className="space-y-1.5">
-          <img src={WHEAT_ICON} alt="" className="mx-auto h-4 w-4 opacity-40" aria-hidden />
+          <img
+            src={WHEAT_ICON}
+            alt=""
+            className="k2k-icon-hover mx-auto h-4 w-4 opacity-40"
+            aria-hidden
+          />
           <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/55">
             Photo coming soon
           </p>
@@ -103,11 +113,11 @@ export function K2KProductCard({
             {product.name}
           </h3>
           {product.price ? (
-            <span className="shrink-0 rounded-full bg-k2k-blue/8 px-3 py-1 text-sm font-medium tabular-nums text-k2k-navy ring-1 ring-k2k-blue/12">
+            <span className="shrink-0 rounded-full border border-k2k-black bg-k2k-blue/8 px-3 py-1 text-sm font-medium tabular-nums text-k2k-navy">
               {product.price}
             </span>
           ) : (
-            <span className="k2k-badge-wheat shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
+            <span className="k2k-badge-wheat shrink-0 rounded-full border border-k2k-black px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
               Ask for pricing
             </span>
           )}
@@ -120,9 +130,9 @@ export function K2KProductCard({
         )}
 
         {product.ingredients && (
-          <p className="mt-2 text-[11px] leading-relaxed text-k2k-navy/55">
-            <span className="font-medium uppercase tracking-[0.12em] text-k2k-blue/60">
-              Key ingredients:{" "}
+          <p className="mt-2.5 text-[11px] leading-relaxed text-k2k-navy/60">
+            <span className="font-medium uppercase tracking-[0.12em] text-k2k-navy/75">
+              Ingredients:{" "}
             </span>
             {product.ingredients}
           </p>
@@ -130,7 +140,7 @@ export function K2KProductCard({
 
         <div
           className={cn(
-            "mt-auto flex items-center gap-2 border-t border-k2k-blue/8 pt-5",
+            "mt-auto flex items-center gap-2 border-t border-k2k-black/10 pt-5",
             selectable ? "justify-between" : "justify-end",
           )}
         >
@@ -147,7 +157,7 @@ export function K2KProductCard({
             <Link
               to="/custom-orders"
               search={{ product: product.id }}
-              className="k2k-button k2k-button-outline min-h-9 px-5 py-1.5 text-[10px] text-k2k-blue hover:bg-k2k-blue/5"
+              className="k2k-button k2k-button-outline !min-h-9 !px-5 !py-1.5 !text-[10px]"
             >
               Pre-Order
             </Link>
@@ -158,8 +168,7 @@ export function K2KProductCard({
   );
 
   const cardClass = cn(
-    "k2k-product-card group flex flex-col p-5 transition-all duration-300 ease-out",
-    !selectable && "hover:-translate-y-1",
+    "k2k-product-card k2k-hover-lift group flex flex-col p-5 transition-all duration-300 ease-out",
     className,
   );
 

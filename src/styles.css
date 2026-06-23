@@ -50,6 +50,9 @@
   /* Wheat accent — approved deviation from locked palette, small details only */
   --color-wheat: #c2a878;
   --color-k2k-cream: #f8f4ed;
+
+  --animate-accordion-down: accordion-down 0.32s var(--k2k-ease-out);
+  --animate-accordion-up: accordion-up 0.28s var(--k2k-ease-out);
 }
 
 :root {
@@ -65,6 +68,7 @@
   --k2k-navy: #1f3447;
   --k2k-wheat: #c2a878;
   --k2k-cream: #f8f4ed;
+  --k2k-container-border: 1px solid #111111;
   --k2k-border: rgba(79, 126, 168, 0.35);
   --k2k-radius-lg: 28px;
   --k2k-radius-pill: 999px;
@@ -178,11 +182,20 @@
   color: var(--k2k-white);
   background: var(--k2k-blue);
   border-color: var(--k2k-black);
+  font-weight: 700;
+  font-size: 0.84rem;
+  min-height: 54px;
+  box-shadow:
+    var(--k2k-shadow-md),
+    0 10px 28px -8px rgba(79, 126, 168, 0.45);
 }
 
 .k2k-button-primary:hover {
   background: #46739a;
   border-color: var(--k2k-black);
+  box-shadow:
+    var(--k2k-shadow-lg),
+    0 14px 32px -8px rgba(79, 126, 168, 0.55);
 }
 
 .k2k-button-secondary {
@@ -231,9 +244,13 @@
   box-shadow: var(--k2k-shadow-inner);
 }
 
+.k2k-bordered {
+  border: 1px solid #111111;
+}
+
 .k2k-card {
   background: var(--k2k-white);
-  border: 1px solid var(--k2k-border);
+  border: 1px solid #111111;
   border-radius: var(--k2k-radius-lg);
   box-shadow: var(--k2k-shadow-soft);
 }
@@ -241,7 +258,7 @@
 /* Premium boutique product cards — CSS layout, not PNG containers */
 .k2k-product-card {
   background: var(--k2k-white);
-  border: 1px solid rgba(79, 126, 168, 0.16);
+  border: 1px solid #111111;
   border-radius: 1.5rem;
   box-shadow: var(--k2k-shadow-sm);
   transition:
@@ -252,7 +269,7 @@
 }
 
 .k2k-product-card:hover {
-  border-color: rgba(79, 126, 168, 0.34);
+  border-color: #111111;
   box-shadow: var(--k2k-shadow-lg);
   transform: translateY(-3px);
 }
@@ -289,9 +306,109 @@
 
 .k2k-surface {
   background: var(--k2k-white);
-  border: 1px solid rgba(79, 126, 168, 0.1);
+  border: 1px solid #111111;
   border-radius: var(--k2k-radius-lg);
   box-shadow: var(--k2k-shadow-sm), var(--k2k-shadow-ring);
+}
+
+/* Nav, wordmark & micro-interaction utilities */
+.k2k-nav-link {
+  font-weight: 700;
+  color: var(--k2k-black);
+  letter-spacing: var(--k2k-tracking-wide);
+  transition: color var(--k2k-duration-base) var(--k2k-ease-out);
+}
+
+.k2k-nav-link:hover {
+  color: var(--k2k-blue);
+}
+
+.k2k-nav-link--active {
+  color: var(--k2k-navy);
+}
+
+.k2k-wordmark-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  letter-spacing: var(--k2k-tracking-wide);
+  color: var(--k2k-black);
+  transition: color var(--k2k-duration-base) var(--k2k-ease-out);
+}
+
+@media (min-width: 1024px) {
+  .k2k-wordmark-title {
+    font-size: 1.375rem;
+  }
+}
+
+.k2k-wordmark-tagline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: var(--k2k-blue);
+}
+
+@media (min-width: 1024px) {
+  .k2k-wordmark-tagline {
+    font-size: 0.8rem;
+  }
+}
+
+.k2k-icon-hover {
+  transition: transform var(--k2k-duration-base) var(--k2k-ease-spring);
+}
+
+.group:hover .k2k-icon-hover {
+  transform: scale(1.08) rotate(-5deg);
+}
+
+@keyframes k2k-page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.k2k-page-enter {
+  animation: k2k-page-enter var(--k2k-duration-slow) var(--k2k-ease-out) both;
+}
+
+/* FAQ accordion — smooth Radix height (used by accordion.tsx) */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.k2k-accordion-content {
+  overflow: hidden;
+}
+
+.k2k-accordion-content[data-state="open"] {
+  animation: accordion-down 0.32s var(--k2k-ease-out);
+}
+
+.k2k-accordion-content[data-state="closed"] {
+  animation: accordion-up 0.28s var(--k2k-ease-out);
 }
 
 .k2k-surface-alt {
@@ -487,6 +604,109 @@
     radial-gradient(ellipse 80% 60% at 85% 110%, rgba(79, 126, 168, 0.028), transparent 50%);
 }
 
+/* ── 3D Product Carousel ── */
+
+.k2k-3d-carousel-root {
+  position: relative;
+  width: 100%;
+}
+
+.k2k-3d-carousel-focusable:focus-visible {
+  outline: 2px solid var(--k2k-blue);
+  outline-offset: 6px;
+  border-radius: 1rem;
+}
+
+.k2k-3d-carousel-viewport {
+  position: relative;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  height: clamp(26rem, 58vw, 34rem);
+  overflow: hidden;
+  perspective: 1200px;
+  perspective-origin: 50% 42%;
+}
+
+.k2k-3d-carousel-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.k2k-3d-carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(100%, 320px);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition:
+    transform var(--k2k-duration-slow) var(--k2k-ease-out),
+    opacity var(--k2k-duration-slow) var(--k2k-ease-out),
+    filter var(--k2k-duration-slow) var(--k2k-ease-out);
+}
+
+.k2k-3d-carousel-item--active {
+  filter: none !important;
+}
+
+.k2k-3d-carousel-card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.k2k-3d-carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--k2k-black);
+  background: var(--k2k-white);
+  color: var(--k2k-navy);
+  box-shadow: var(--k2k-shadow-sm);
+  cursor: pointer;
+  transition:
+    transform var(--k2k-duration-base) var(--k2k-ease-out),
+    background-color var(--k2k-duration-base) var(--k2k-ease-out),
+    box-shadow var(--k2k-duration-base) var(--k2k-ease-out);
+}
+
+.k2k-3d-carousel-btn:hover {
+  transform: translateY(-2px);
+  background: var(--k2k-cream);
+  box-shadow: var(--k2k-shadow-md);
+}
+
+.k2k-3d-carousel-btn:focus-visible {
+  outline: 2px solid var(--k2k-blue);
+  outline-offset: 3px;
+}
+
+.k2k-3d-carousel-btn--subtle {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-color: rgba(17, 17, 17, 0.35);
+}
+
+.k2k-3d-carousel-reduced {
+  animation: k2k-fade-up var(--k2k-duration-slow) var(--k2k-ease-out) both;
+}
+
+@media (max-width: 767px) {
+  .k2k-3d-carousel-viewport {
+    height: clamp(24rem, 72vw, 30rem);
+    perspective: 900px;
+  }
+
+}
+
 .k2k-scoring-accent {
   position: relative;
   padding-bottom: 0.25rem;
@@ -505,6 +725,146 @@
     rgba(194, 168, 120, 0.45) 70%,
     transparent 100%
   );
+}
+
+/* Contact — interactive phone pulse (hover only) */
+@keyframes k2k-phone-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 126, 168, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(79, 126, 168, 0.14);
+  }
+}
+
+.k2k-phone-pulse:hover {
+  animation: k2k-phone-pulse 1.8s var(--k2k-ease-in-out) infinite;
+}
+
+/* Contact — map pin ripple */
+@keyframes k2k-pin-ring {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+.k2k-pin-pulse {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.k2k-pin-pulse::before,
+.k2k-pin-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 999px;
+  border: 2px solid rgba(79, 126, 168, 0.38);
+  animation: k2k-pin-ring 2.6s var(--k2k-ease-out) infinite;
+  pointer-events: none;
+}
+
+.k2k-pin-pulse::after {
+  animation-delay: 1.3s;
+}
+
+/* Quick-action chips — hover highlight */
+.k2k-quick-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding-inline: 1rem;
+  border-radius: var(--k2k-radius-pill);
+  border: 1px solid #111111;
+  background: var(--k2k-white);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--k2k-navy);
+  transition:
+    color var(--k2k-duration-base) var(--k2k-ease-out),
+    background-color var(--k2k-duration-base) var(--k2k-ease-out),
+    border-color var(--k2k-duration-base) var(--k2k-ease-out),
+    box-shadow var(--k2k-duration-base) var(--k2k-ease-out),
+    transform var(--k2k-duration-base) var(--k2k-ease-out);
+}
+
+.k2k-quick-chip:hover {
+  border-color: rgba(79, 126, 168, 0.45);
+  background: rgba(79, 126, 168, 0.06);
+  color: var(--k2k-blue);
+  box-shadow: 0 4px 18px -8px rgba(79, 126, 168, 0.28);
+  transform: translateY(-1px);
+}
+
+/* Blue accent — top border & left rail (site-wide utilities) */
+.k2k-blue-accent-top {
+  border-top: 2px solid var(--k2k-blue);
+}
+
+.k2k-icon-black {
+  filter: brightness(0);
+}
+
+/* Pre-order tray */
+@keyframes k2k-tray-add-pulse {
+  0% {
+    box-shadow: var(--k2k-shadow-sm), 0 0 0 0 rgba(79, 126, 168, 0.45);
+  }
+  70% {
+    box-shadow: var(--k2k-shadow-md), 0 0 0 10px rgba(79, 126, 168, 0);
+  }
+  100% {
+    box-shadow: var(--k2k-shadow-sm);
+  }
+}
+
+.k2k-tray-add-pulse {
+  animation: k2k-tray-add-pulse 0.55s var(--k2k-ease-out);
+}
+
+.k2k-tray-drawer-open .k2k-tray-drawer-panel {
+  animation: k2k-slide-up-bar 0.35s var(--k2k-ease-out) both;
+}
+
+.k2k-preorder-tray-sidebar {
+  border-top: 2px solid var(--k2k-blue);
+}
+
+.k2k-accent-rail {
+  position: relative;
+}
+
+.k2k-accent-rail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  border-radius: 0 1px 1px 0;
+  background: linear-gradient(
+    180deg,
+    var(--k2k-blue) 0%,
+    var(--k2k-harbor-blue) 65%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.k2k-accent-rail.k2k-blue-accent-top::before {
+  top: 2px;
+  height: calc(100% - 2px);
 }
 
 .font-display {
@@ -592,7 +952,35 @@
   .k2k-breathe,
   .k2k-hero-kenburns,
   .k2k-mobile-bar,
-  .k2k-line-grow {
+  .k2k-line-grow,
+  .k2k-page-enter,
+  .k2k-phone-pulse:hover,
+  .k2k-pin-pulse::before,
+  .k2k-pin-pulse::after,
+  .k2k-accordion-content[data-state="open"],
+  .k2k-accordion-content[data-state="closed"] {
+    animation: none;
+  }
+
+  .k2k-quick-chip:hover {
+    transform: none;
+  }
+
+  .group:hover .k2k-icon-hover {
+    transform: none;
+  }
+
+  .k2k-3d-carousel-item {
+    transition: none;
+    will-change: auto;
+  }
+
+  .k2k-3d-carousel-reduced {
+    animation: none;
+  }
+
+  .k2k-tray-add-pulse,
+  .k2k-tray-drawer-open .k2k-tray-drawer-panel {
     animation: none;
   }
 }
