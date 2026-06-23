@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Eyebrow, Section } from "@/components/sections/Section";
+import { AtmosphereFog } from "@/components/decor/AtmosphereFog";
 import { CTASection } from "@/components/sections/CTASection";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BUSINESS, SITE_URL } from "@/lib/business";
@@ -470,10 +471,7 @@ function AboutPage() {
       </Section>
 
       <section className="relative overflow-hidden bg-k2k-navy py-20 sm:py-28">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(194,168,120,0.12),transparent_55%)]"
-          aria-hidden
-        />
+        <AtmosphereFog variant="wheat-bottom-right" motion="alt" />
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white sm:h-20"
           aria-hidden

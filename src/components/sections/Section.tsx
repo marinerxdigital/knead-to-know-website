@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { KTK_DECOR } from "@/lib/design-assets";
+import { FlourWashDecor } from "@/components/decor/FlourWashDecor";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
@@ -177,15 +177,12 @@ export function SectionHeading({
       )}
     >
       {decorative && (
-        <img
-          src={KTK_DECOR.flourWash}
-          alt=""
-          className={cn(
-            "ktk-flour-wash",
-            align === "center" ? "left-1/2 -translate-x-1/2" : "-left-8 top-1/2 -translate-y-1/2",
-          )}
-          loading="lazy"
-          aria-hidden
+        <FlourWashDecor
+          className={
+            align === "center"
+              ? "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              : "-left-8 top-1/2 -translate-y-1/2"
+          }
         />
       )}
       <div className="relative z-10">

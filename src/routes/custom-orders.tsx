@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { AtmosphereFog } from "@/components/decor/AtmosphereFog";
 import { CTASection } from "@/components/sections/CTASection";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/sections/Section";
@@ -249,103 +250,100 @@ function CustomOrdersPage() {
   if (submitted) {
     return (
       <>
-      <section className="relative overflow-hidden bg-[#f8f4ed] px-5 py-24 sm:px-8 sm:py-32">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(106,158,192,0.12),transparent_60%)]"
-          aria-hidden
-        />
+        <section className="relative overflow-hidden bg-[#f8f4ed] px-5 py-24 sm:px-8 sm:py-32">
+          <AtmosphereFog variant="blue-top-deep" />
 
-        <div className="relative mx-auto max-w-2xl">
-          <div className="k2k-card overflow-hidden rounded-[2rem] p-10 sm:p-12">
-            {/* Scoring accent */}
-            <div className="mb-8 flex items-center gap-3" aria-hidden="true">
-              <div className="relative h-px flex-1">
-                <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+          <div className="relative mx-auto max-w-2xl">
+            <div className="k2k-card overflow-hidden rounded-[2rem] p-10 sm:p-12">
+              {/* Scoring accent */}
+              <div className="mb-8 flex items-center gap-3" aria-hidden="true">
+                <div className="relative h-px flex-1">
+                  <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+                </div>
+                <Sparkles className="h-4 w-4 text-wheat transition duration-300 hover:scale-110 hover:rotate-12" />
+                <div className="relative h-px flex-1">
+                  <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
+                </div>
               </div>
-              <Sparkles className="h-4 w-4 text-wheat transition duration-300 hover:scale-110 hover:rotate-12" />
-              <div className="relative h-px flex-1">
-                <div className="absolute inset-0 k2k-line-grow bg-k2k-blue/15" />
-              </div>
-            </div>
 
-            <div className="flex justify-center gap-4">
-              <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
-                <img
-                  src={KTK_ICONS.cookie}
-                  alt=""
-                  className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
-                  loading="lazy"
-                  decoding="async"
-                  aria-hidden
-                />
+              <div className="flex justify-center gap-4">
+                <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
+                  <img
+                    src={KTK_ICONS.cookie}
+                    alt=""
+                    className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden
+                  />
+                </div>
+                <div className="group flex h-16 w-16 items-center justify-center rounded-full border border-[#111] bg-k2k-blue/10 ring-4 ring-k2k-blue/5 transition duration-300 hover:scale-105">
+                  <CheckCircle2
+                    className="h-8 w-8 text-k2k-blue transition duration-300 group-hover:scale-110"
+                    strokeWidth={2}
+                  />
+                </div>
+                <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
+                  <img
+                    src={KTK_ICONS.bread}
+                    alt=""
+                    className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden
+                  />
+                </div>
               </div>
-              <div className="group flex h-16 w-16 items-center justify-center rounded-full border border-[#111] bg-k2k-blue/10 ring-4 ring-k2k-blue/5 transition duration-300 hover:scale-105">
-                <CheckCircle2
-                  className="h-8 w-8 text-k2k-blue transition duration-300 group-hover:scale-110"
-                  strokeWidth={2}
-                />
-              </div>
-              <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
-                <img
-                  src={KTK_ICONS.bread}
-                  alt=""
-                  className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
-                  loading="lazy"
-                  decoding="async"
-                  aria-hidden
-                />
-              </div>
-            </div>
 
-            <h1 className="mt-8 text-center font-display text-4xl text-ink sm:text-5xl">
-              Request received
-            </h1>
-            <p className="mx-auto mt-4 max-w-md text-center leading-relaxed text-muted-foreground">
-              Your pre-order request for{" "}
-              <span className="font-medium text-ink">
-                {selectedProducts.length
-                  ? selectedProducts.map((p) => p.name).join(", ")
-                  : "custom items"}
-              </span>{" "}
-              is on its way to {BUSINESS.shortOwner}.
-            </p>
-
-            <div className="k2k-surface mx-auto mt-8 max-w-sm rounded-2xl bg-[#f8f4ed]/60 px-5 py-4 text-center">
-              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
-                What happens next
+              <h1 className="mt-8 text-center font-display text-4xl text-ink sm:text-5xl">
+                Request received
+              </h1>
+              <p className="mx-auto mt-4 max-w-md text-center leading-relaxed text-muted-foreground">
+                Your pre-order request for{" "}
+                <span className="font-medium text-ink">
+                  {selectedProducts.length
+                    ? selectedProducts.map((p) => p.name).join(", ")
+                    : "custom items"}
+                </span>{" "}
+                is on its way to {BUSINESS.shortOwner}.
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                She will confirm availability, pricing, and pickup details within 24 hours via your
-                preferred contact method.
+
+              <div className="k2k-surface mx-auto mt-8 max-w-sm rounded-2xl bg-[#f8f4ed]/60 px-5 py-4 text-center">
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/70">
+                  What happens next
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  She will confirm availability, pricing, and pickup details within 24 hours via
+                  your preferred contact method.
+                </p>
+              </div>
+
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
+                <Link to="/menu" className="inline-flex k2k-button k2k-button-outline">
+                  Back to Menu
+                </Link>
+                <Link to="/" className="inline-flex k2k-button k2k-button-primary">
+                  Return Home
+                </Link>
+              </div>
+
+              <p className="mt-10 text-center text-xs text-muted-foreground">
+                Daniel Island, SC · {BUSINESS.name}
               </p>
             </div>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link to="/menu" className="inline-flex k2k-button k2k-button-outline">
-                Back to Menu
-              </Link>
-              <Link to="/" className="inline-flex k2k-button k2k-button-primary">
-                Return Home
-              </Link>
-            </div>
-
-            <p className="mt-10 text-center text-xs text-muted-foreground">
-              Daniel Island, SC · {BUSINESS.name}
-            </p>
           </div>
-        </div>
-      </section>
-      <CTASection
-        compact
-        eyebrow="While you wait"
-        title="Browse the menu"
-        text="Explore our full sourdough collection — breads, cookies, and bagels — all available for pre-order."
-        primaryLabel="View Menu"
-        primaryTo="/menu"
-        secondaryLabel={BUSINESS.phone}
-        secondaryTo={BUSINESS.phoneTel}
-        secondaryIsPhone
-      />
+        </section>
+        <CTASection
+          compact
+          eyebrow="While you wait"
+          title="Browse the menu"
+          text="Explore our full sourdough collection — breads, cookies, and bagels — all available for pre-order."
+          primaryLabel="View Menu"
+          primaryTo="/menu"
+          secondaryLabel={BUSINESS.phone}
+          secondaryTo={BUSINESS.phoneTel}
+          secondaryIsPhone
+        />
       </>
     );
   }

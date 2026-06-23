@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AtmosphereFog } from "@/components/decor/AtmosphereFog";
 import { KTK_ICONS } from "@/lib/design-assets";
 import { cn } from "@/lib/utils";
 
@@ -106,12 +107,7 @@ export function PageHero({
         </>
       )}
 
-      {!hasBgImage && (
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,158,192,0.14),transparent_55%)]"
-          aria-hidden
-        />
-      )}
+      {!hasBgImage && <AtmosphereFog variant="blue-top-right" />}
 
       <WheatScoringMark className="pointer-events-none absolute left-6 top-20 hidden w-20 opacity-50 lg:block xl:left-12" />
       <WheatScoringMark className="pointer-events-none absolute right-8 top-32 hidden w-16 scale-x-[-1] opacity-35 lg:block" />

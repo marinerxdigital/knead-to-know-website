@@ -12,6 +12,7 @@ import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BrandLogo } from "@/components/brand/BrandLogo";
+import { FlourWashDecor } from "@/components/decor/FlourWashDecor";
 import { KTK_DECOR, KTK_ICONS } from "@/lib/design-assets";
 
 const TRUST_ITEMS = [
@@ -254,13 +255,7 @@ function HomePage() {
           </div>
 
           <div className="relative">
-            <img
-              src={KTK_DECOR.flourWash}
-              alt=""
-              className="ktk-flour-wash -left-4 top-1/2 -translate-y-1/2"
-              loading="lazy"
-              aria-hidden
-            />
+            <FlourWashDecor className="-left-4 top-1/2 -translate-y-1/2" />
             <h1 className="k2k-stagger-2 relative z-10 max-w-[14ch] font-display text-[clamp(1.875rem,5.2vw+0.5rem,4.75rem)] leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:max-w-[18ch] sm:leading-[1.03] md:max-w-[20ch]">
               Fresh Sourdough Baked to Order on Daniel Island
             </h1>

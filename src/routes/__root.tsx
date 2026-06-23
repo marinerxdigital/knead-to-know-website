@@ -20,6 +20,7 @@ import {
   isMobileOrderBarVisible,
   MobileOrderBar,
 } from "../components/layout/MobileOrderBar";
+import { AtmosphereFog } from "../components/decor/AtmosphereFog";
 import { cn } from "../lib/utils";
 import { Toaster } from "../components/ui/sonner";
 
@@ -28,10 +29,7 @@ const OG_IMAGE = "/assets/knead-to-know/logo/og-image-1200x630.png";
 function NotFoundComponent() {
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4 py-12">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,158,192,0.12),transparent_55%)]"
-        aria-hidden
-      />
+      <AtmosphereFog variant="blue-top-right-soft" />
       <div className="k2k-bordered k2k-surface relative w-full max-w-md rounded-[1.75rem] px-6 py-10 text-center sm:px-8 sm:py-12">
         <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
           <span className="h-px w-10 bg-k2k-blue/25" />
@@ -66,10 +64,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(194,168,120,0.1),transparent_50%)]"
-        aria-hidden
-      />
+      <AtmosphereFog variant="wheat-bottom-left" motion="alt" />
       <div className="relative max-w-md text-center">
         <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
           <span className="h-px w-10 bg-wheat/50" />

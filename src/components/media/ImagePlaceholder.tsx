@@ -1,3 +1,4 @@
+import { AtmosphereFog } from "@/components/decor/AtmosphereFog";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -39,7 +40,12 @@ export function ImagePlaceholder({
         className,
       )}
     >
-      <div className="absolute inset-0 opacity-60 mix-blend-multiply [background-image:radial-gradient(ellipse_at_top,_rgba(248,221,230,0.6),_transparent_60%),radial-gradient(ellipse_at_bottom_right,_rgba(245,239,230,0.7),_transparent_55%)]" />
+      <AtmosphereFog variant="pink-top" className="opacity-60 mix-blend-multiply" />
+      <AtmosphereFog
+        variant="cream-bottom-right"
+        motion="alt"
+        className="opacity-60 mix-blend-multiply"
+      />
       <svg
         aria-hidden
         className="absolute right-5 top-5 h-10 w-10 text-forest/30"

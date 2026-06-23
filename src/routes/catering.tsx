@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section, SectionHeading } from "@/components/sections/Section";
+import { AtmosphereFog } from "@/components/decor/AtmosphereFog";
 import { CTASection } from "@/components/sections/CTASection";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BAKERY_PHOTOS } from "@/lib/products";
@@ -190,10 +191,7 @@ function CateringPage() {
     return (
       <>
         <section className="relative overflow-hidden bg-[#f8f4ed] py-24 sm:py-32">
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(106,158,192,0.12),transparent_55%)]"
-            aria-hidden
-          />
+          <AtmosphereFog variant="blue-top" />
           <div className="relative mx-auto max-w-xl px-5 sm:px-8">
             <div className="k2k-surface overflow-hidden rounded-[2rem] p-10 text-center sm:p-14">
               <div className="mb-6 flex items-center justify-center gap-4">

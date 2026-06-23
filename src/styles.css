@@ -304,11 +304,21 @@
   overflow: hidden;
   border-radius: 1rem;
   background-color: #f8fafc;
+  box-shadow: var(--k2k-shadow-inner), var(--k2k-shadow-ring);
+  transition: box-shadow var(--k2k-duration-base) var(--k2k-ease-out);
+}
+
+.k2k-product-photo::before {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  z-index: 0;
+  pointer-events: none;
   background-image:
     radial-gradient(circle at 18% 22%, rgb(var(--k2k-harbor-rgb) / 0.1), transparent 48%),
     radial-gradient(circle at 82% 78%, rgb(var(--k2k-blue-rgb) / 0.06), transparent 42%);
-  box-shadow: var(--k2k-shadow-inner), var(--k2k-shadow-ring);
-  transition: box-shadow var(--k2k-duration-base) var(--k2k-ease-out);
+  animation: k2k-fog-wash-drift 26s var(--k2k-ease-in-out) infinite;
+  will-change: transform, opacity;
 }
 
 .k2k-product-card:hover .k2k-product-photo {
@@ -1142,6 +1152,14 @@
     transform: none;
     will-change: auto;
   }
+
+  .k2k-fog-wash-motion,
+  .k2k-fog-wash-motion-alt,
+  .k2k-product-photo::before {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
 }
 
 /* ── Coastal wave section divider — layered horizontal drift ── */
@@ -1232,12 +1250,96 @@
   pointer-events: none;
   user-select: none;
 }
-.ktk-flour-wash {
-  position: absolute;
-  inset: auto;
+
+/* ── Animated flour wash & atmosphere fog ── */
+@keyframes k2k-fog-wash-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(2.5%, -1.5%, 0) scale(1.04);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(-1.5%, 2%, 0) scale(1.06);
+    opacity: 0.96;
+  }
+  75% {
+    transform: translate3d(-2.5%, -0.5%, 0) scale(1.03);
+    opacity: 0.88;
+  }
+}
+
+@keyframes k2k-fog-wash-drift-alt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translate3d(-2%, 1.5%, 0) scale(1.05);
+    opacity: 0.86;
+  }
+  66% {
+    transform: translate3d(1.5%, -2%, 0) scale(1.07);
+    opacity: 0.94;
+  }
+}
+
+.k2k-fog-wash-motion {
+  animation: k2k-fog-wash-drift 24s var(--k2k-ease-in-out) infinite;
+  will-change: transform, opacity;
+}
+
+.k2k-fog-wash-motion-alt {
+  animation: k2k-fog-wash-drift-alt 28s var(--k2k-ease-in-out) infinite;
+  will-change: transform, opacity;
+}
+
+.ktk-flour-wash-img {
   width: min(80vw, 900px);
   opacity: 0.55;
-  z-index: 0;
   pointer-events: none;
   user-select: none;
+}
+
+.k2k-atmosphere-fog {
+  pointer-events: none;
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+}
+
+.k2k-atmosphere-fog--blue-top-right {
+  background: radial-gradient(ellipse at top right, rgba(106, 158, 192, 0.14), transparent 55%);
+}
+
+.k2k-atmosphere-fog--blue-top-right-soft {
+  background: radial-gradient(ellipse at top right, rgba(106, 158, 192, 0.12), transparent 55%);
+}
+
+.k2k-atmosphere-fog--blue-top {
+  background: radial-gradient(ellipse at top, rgba(106, 158, 192, 0.12), transparent 55%);
+}
+
+.k2k-atmosphere-fog--blue-top-deep {
+  background: radial-gradient(ellipse at top, rgba(106, 158, 192, 0.12), transparent 60%);
+}
+
+.k2k-atmosphere-fog--wheat-bottom-left {
+  background: radial-gradient(ellipse at bottom left, rgba(194, 168, 120, 0.1), transparent 50%);
+}
+
+.k2k-atmosphere-fog--wheat-bottom-right {
+  background: radial-gradient(ellipse at bottom right, rgba(194, 168, 120, 0.12), transparent 55%);
+}
+
+.k2k-atmosphere-fog--pink-top {
+  background: radial-gradient(ellipse at top, rgba(248, 221, 230, 0.6), transparent 60%);
+}
+
+.k2k-atmosphere-fog--cream-bottom-right {
+  background: radial-gradient(ellipse at bottom right, rgba(245, 239, 230, 0.7), transparent 55%);
 }
