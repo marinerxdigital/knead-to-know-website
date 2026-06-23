@@ -1,5 +1,23 @@
 # grokmemory.md — Grok Build Orchestration Log
 
+**Session:** 2026-06-23 (latest)  
+**Task:** Second UI/UX Verification Pass — full-site audit + fix
+
+## Agent Team (Verification Pass)
+
+| Agent | Routes | Outcome |
+|-------|--------|---------|
+| Agent 1 | `/`, `/faq`, `/menu` | FAQ padding, menu padding conflict, mobile main pad |
+| Agent 2 | `/about`, `/contact`, `/gallery`, `/catering` | CTA copy, footer overlap, about transition |
+| Agent 3 | `/custom-orders`, `/privacy` | Missing CTASection on 3 page endings |
+
+## Fixes Applied
+
+- Commit `c5e2f18` — 11 files, build PASS, deployed to Cloudflare Pages
+- All routes now end with CTA band before footer (including thank-you states)
+
+---
+
 **Session:** 2026-06-23  
 **Task:** Final Design System Integration & Site Revamp (Claude prompt)
 
@@ -35,5 +53,7 @@ Logo side-sprig symmetry and curved-text baseline remain from source raster art.
 
 ## Deployment
 
-- Commit: (see final output)
-- Live: https://knead-to-know-website-v2.pages.dev
+- Commit: `a287d19`
+- Pushed: `main` → origin
+- Cloudflare deploy: https://22b829dc.knead-to-know-website-v2.pages.dev (preview) + https://knead-to-know-website-v2.pages.dev (production)
+- Live verification: PASS — new logo, design icons, dividers, flourishes, flour wash confirmed on homepage

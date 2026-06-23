@@ -1,6 +1,16 @@
 # codexmemory.md — Technical Codebase State
 
-**Updated:** 2026-06-23
+**Updated:** 2026-06-23  
+**Latest commit:** `c5e2f18`
+
+## UI/UX Verification Pass (2026-06-23)
+
+- `CTASection.tsx` — `useId()` for `headingId`; optional `headingId` prop override
+- `MobileOrderBar.tsx` — exports `isMobileOrderBarVisible(pathname)`; hides on `/custom-orders`, `/contact`, `/menu`
+- `__root.tsx` — conditional `k2k-main-mobile-pad` on `<main>`; passes `showMobileBarOffset` to `Footer`
+- `Footer.tsx` — `k2k-footer-mobile-pad` when mobile bar visible
+- `styles.css` — `.k2k-footer-mobile-pad` mirrors main mobile pad; clears at `md`
+- Routes with new/updated `CTASection`: `custom-orders.tsx`, `privacy.tsx`; fixes in `catering.tsx`, `faq.tsx`, `menu.tsx`, `about.tsx`
 
 ## Asset Paths & Conventions
 
@@ -41,7 +51,9 @@ public/favicon*.png, favicon.ico, apple-touch-icon.png, icon-512.png
 - `SectionDivider.tsx` — PNG wave divider
 - `Section.tsx` / `SectionHeading` — flour wash when `decorative`
 - `K2KProductCard.tsx`, `MenuBuilderCard.tsx` — product placeholders
-- `Footer.tsx` — corner flourish
+- `Footer.tsx` — corner flourish; mobile bar bottom offset
+- `CTASection.tsx` — white CTA band; unique heading IDs
+- `FAQPanel.tsx` — shared FAQ wrapper (`.k2k-faq-panel*`)
 - All route files — `KTK_ICONS` imports
 - `__root.tsx` — OG image, manifest link, favicon sizes
 
@@ -52,7 +64,7 @@ public/favicon*.png, favicon.ico, apple-touch-icon.png, icon-512.png
 ## Build
 
 ```bash
-npm run build   # PASS (2026-06-23)
+npm run build   # PASS (2026-06-23, commit c5e2f18)
 ```
 
 ## Deployment

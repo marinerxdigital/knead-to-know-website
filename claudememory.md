@@ -6,6 +6,8 @@
 
 Knead To Know Website v2 — pre-orders-only home bakery, Daniel Island SC. TanStack Start + React 19 + Tailwind v4 + Nitro → Cloudflare Pages.
 
+**Latest:** `c5e2f18` — second UI/UX verification pass. All routes end with `CTASection` before footer. `CTASection` uses `useId()` for heading IDs. Mobile bar padding is conditional via `isMobileOrderBarVisible()` in `__root.tsx` + `Footer showMobileBarOffset`.
+
 ## What Changed (2026-06-23 Design Integration)
 
 The complete Knead To Know design-asset system from `00_BRAND_ASSETS/Knead_To_Know_Design_Assets_Handoff/` is now live:

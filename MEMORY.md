@@ -4,6 +4,22 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Second UI/UX Verification Pass (2026-06-23)
+
+- **3 parallel super-agent audits** across all 10 routes; fixed every confirmed bug
+- **Commit:** `c5e2f18` · **Build:** PASS · **Deployed:** https://knead-to-know-website-v2.pages.dev
+- **CTASection:** `useId()` for unique heading IDs (a11y-safe if multiple CTAs on one page)
+- **Missing CTAs added:** `/custom-orders` (default + thank-you), `/privacy` (compact)
+- **Mobile footer fix:** conditional `k2k-main-mobile-pad` on `<main>`; `k2k-footer-mobile-pad` on `Footer` when `MobileOrderBar` visible; `isMobileOrderBarVisible()` exported from `MobileOrderBar.tsx`
+- **FAQ:** removed stacked `pl-5 sm:pl-7` on `/faq` `FAQPanel` (fixed asymmetric padding)
+- **Menu:** explicit accent-rail padding (`pt/pr/pb/pl`); no dead bottom gap when bar hidden
+- **Catering:** CTA headline aligned with actions; thank-you `compact` CTA; removed double border
+- **About:** navy→white gradient fade; `min-w-0` on grids
+- **Privacy:** contact link uses TanStack `<Link>`
+- **Remaining (not fixed):** menu category ARIA tab pattern, homepage editorial `overflow-hidden` clipping, redundant inline+CTA blocks on menu/about
+
+---
+
 ## Global UI/UX Audit + Layout Fix Pass (2026-06-23)
 
 - FAQ: `FAQPanel` component, balanced padding, accordion gap spacing (all FAQ instances)
