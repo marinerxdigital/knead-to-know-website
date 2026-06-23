@@ -7,7 +7,9 @@
 
 **Design system integrated + second UI/UX verification pass complete.** All routes have CTA→footer flow; mobile footer/bar overlap fixed. Client-review ready. Production blockers unchanged (Web3Forms env, Wendy nulls, custom domain, product photo accuracy).
 
-**Latest commit:** `c5e2f18` · **Live:** https://knead-to-know-website-v2.pages.dev
+**Latest commit:** `85c0f60` · **Live:** https://knead-to-know-website-v2.pages.dev
+
+Animated coastal wave section divider live on homepage (`CoastalWaveDivider` SVG, layered drift).
 
 ## Branding (locked as of 2026-06-23)
 

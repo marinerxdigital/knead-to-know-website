@@ -4,6 +4,17 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Animated Coastal Wave Divider + QA Pass (2026-06-23)
+
+- **Commit:** `85c0f60` · **Build:** PASS · **Deployed:** https://knead-to-know-website-v2.pages.dev
+- Replaced static PNG `SectionDivider` with animated SVG `CoastalWaveDivider` (`src/components/decor/CoastalWaveDivider.tsx`)
+- **Animation:** Layered parallax horizontal drift — blue (22s), gold reverse (26s), blue (18s); seamless 200% tile loop; edge fade mask
+- **`prefers-reduced-motion`:** wave animation disabled (static SVG)
+- **Routes:** Homepage only — 5 `SectionDivider` placements on `/`
+- **QA fixes bundled:** menu pre-order tray footer pad, FAQ panel `overflow:hidden`, featured carousel `!overflow-visible`, custom-orders pickup time grid, catering form removed double inset frame
+
+---
+
 ## Second UI/UX Verification Pass (2026-06-23)
 
 - **3 parallel super-agent audits** across all 10 routes; fixed every confirmed bug

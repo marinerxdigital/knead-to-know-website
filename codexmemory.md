@@ -1,7 +1,14 @@
 # codexmemory.md — Technical Codebase State
 
 **Updated:** 2026-06-23  
-**Latest commit:** `c5e2f18`
+**Latest commit:** `85c0f60`
+
+## Animated Wave Divider (2026-06-23)
+
+- `src/components/decor/CoastalWaveDivider.tsx` — 3-layer SVG (blue/gold/blue), seamless `k2k-wave-flow` CSS drift
+- `SectionDivider.tsx` — now renders `CoastalWaveDivider` (PNG retired in component; asset remains in `KTK_DECOR.sectionDivider`)
+- CSS: `.k2k-wave-flow-track`, `.k2k-wave-layer-slow|gold|fast` in `styles.css`; disabled under `prefers-reduced-motion`
+- Menu tray pad: `.k2k-main-menu-tray-pad`, `.k2k-footer-menu-tray-pad` on `/menu` via `__root.tsx`
 
 ## UI/UX Verification Pass (2026-06-23)
 

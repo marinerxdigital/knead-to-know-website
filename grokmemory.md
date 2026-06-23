@@ -1,6 +1,15 @@
 # grokmemory.md — Grok Build Orchestration Log
 
 **Session:** 2026-06-23 (latest)  
+**Task:** Animated coastal wave divider + sellable-quality QA pass
+
+- Commit `85c0f60` — `CoastalWaveDivider.tsx` replaces PNG in `SectionDivider.tsx`
+- Layered SVG drift: 18s/22s/26s loops, reduced-motion safe
+- QA: menu tray pad, FAQ overflow, carousel clip, custom-orders grid, catering inset
+
+---
+
+**Session:** 2026-06-23  
 **Task:** Second UI/UX Verification Pass — full-site audit + fix
 
 ## Agent Team (Verification Pass)
