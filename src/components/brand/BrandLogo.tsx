@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
-
-const LOGO_SRC = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
+import { LOGO_ALT, LOGO_SRC } from "@/lib/design-assets";
 
 type BrandLogoVariant = "header" | "header-compact" | "footer" | "hero";
 
@@ -27,7 +26,7 @@ export function BrandLogo({
   return (
     <img
       src={LOGO_SRC}
-      alt="Knead To Know Sweet & Sour bakery logo"
+      alt={LOGO_ALT}
       className={cn(
         "shrink-0 rounded-full object-contain",
         sizeClasses[variant],

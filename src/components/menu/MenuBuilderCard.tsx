@@ -1,13 +1,8 @@
 import { useState } from "react";
 import type { MenuProduct } from "@/data/menu";
+import { KTK_CATEGORY_ICONS, KTK_DECOR } from "@/lib/design-assets";
 import { QuantityControl } from "@/components/menu/QuantityControl";
 import { cn } from "@/lib/utils";
-
-const CATEGORY_ICONS: Record<MenuProduct["category"], string> = {
-  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-  cookies: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-  bagels: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
-};
 
 export function MenuBuilderCard({
   product,
@@ -38,7 +33,12 @@ export function MenuBuilderCard({
       >
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-k2k-black bg-[#f8fafc]">
           <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-k2k-black bg-white/95 px-2 py-1 text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy">
-            <img src={CATEGORY_ICONS[product.category]} alt="" className="h-3 w-3" aria-hidden />
+            <img
+              src={KTK_CATEGORY_ICONS[product.category]}
+              alt=""
+              className="h-3 w-3"
+              aria-hidden
+            />
             {product.displayCategory}
           </span>
           {product.image ? (
@@ -49,11 +49,12 @@ export function MenuBuilderCard({
               loading="lazy"
             />
           ) : (
-            <div className="flex h-full items-center justify-center">
+            <div className="flex h-full items-center justify-center p-4">
               <img
-                src={CATEGORY_ICONS[product.category]}
+                src={KTK_DECOR.productPlaceholderPrimary}
                 alt=""
-                className="h-12 w-12 opacity-50"
+                className="h-full w-full object-contain"
+                loading="lazy"
                 aria-hidden
               />
             </div>

@@ -8,6 +8,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { BAKERY_PHOTOS } from "@/lib/products";
 import { cn } from "@/lib/utils";
+import { KTK_DECOR, KTK_ICONS } from "@/lib/design-assets";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -30,21 +31,11 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const ICONS = {
-  envelope: "/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png",
-  pin: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
-  calendar: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-  pickup: "/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png",
-  wheat: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
-  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-  gift: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
-} as const;
-
 const QUICK_ACTIONS = [
-  { to: "/custom-orders" as const, label: "Custom orders", icon: ICONS.calendar },
-  { to: "/menu" as const, label: "View menu", icon: ICONS.bread },
-  { to: "/catering" as const, label: "Catering", icon: ICONS.gift },
-  { to: "/faq" as const, label: "FAQ", icon: ICONS.wheat },
+  { to: "/custom-orders" as const, label: "Custom orders", icon: KTK_ICONS.calendar },
+  { to: "/menu" as const, label: "View menu", icon: KTK_ICONS.bread },
+  { to: "/catering" as const, label: "Catering", icon: KTK_ICONS.gift },
+  { to: "/faq" as const, label: "FAQ", icon: KTK_ICONS.wheat },
 ] as const;
 
 function HarborLine({ className }: { className?: string }) {
@@ -81,6 +72,8 @@ function IconSectionHeading({
           src={icon}
           alt=""
           className="k2k-breathe h-8 w-8 object-contain transition duration-300 group-hover:scale-110 group-hover:animate-none"
+          loading="lazy"
+          decoding="async"
           aria-hidden
         />
       </div>
@@ -102,6 +95,8 @@ function InfoTile({ icon, title, children }: { icon: string; title: string; chil
             src={icon}
             alt=""
             className="k2k-breathe h-6 w-6 object-contain opacity-85 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+            loading="lazy"
+            decoding="async"
             aria-hidden
           />
         </span>
@@ -127,6 +122,8 @@ function QuickActionChip({
         src={icon}
         alt=""
         className="h-4 w-4 object-contain opacity-80 transition duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
         aria-hidden
       />
       {label}
@@ -166,9 +163,11 @@ function MapPlaceholder() {
     <div className="k2k-surface group/map overflow-hidden !rounded-[1.75rem] !border-t-2 !border-t-k2k-blue/20 !p-0">
       <div className="flex items-center gap-3 border-b border-k2k-blue/10 bg-[#f8f4ed]/60 px-6 py-4">
         <img
-          src={ICONS.pin}
+          src={KTK_ICONS.location}
           alt=""
           className="h-6 w-6 object-contain opacity-80 transition duration-300 group-hover/map:scale-110"
+          loading="lazy"
+          decoding="async"
           aria-hidden
         />
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-k2k-navy/70">
@@ -203,7 +202,14 @@ function MapPlaceholder() {
           </svg>
         </div>
         <div className="k2k-pin-pulse relative">
-          <img src={ICONS.pin} alt="" className="relative h-14 w-14 object-contain" aria-hidden />
+          <img
+            src={KTK_ICONS.location}
+            alt=""
+            className="relative h-14 w-14 object-contain"
+            loading="lazy"
+            decoding="async"
+            aria-hidden
+          />
         </div>
         <p className="relative font-display text-xl text-ink">Daniel Island, SC</p>
         <p className="relative max-w-xs text-sm text-k2k-navy/90">
@@ -255,7 +261,7 @@ function ContactPage() {
           <div className="min-w-0 space-y-6">
             <ScrollReveal delay={0}>
               <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-9">
-                <IconSectionHeading icon={ICONS.envelope} title="Bakery details" />
+                <IconSectionHeading icon={KTK_ICONS.envelope} title="Bakery details" />
 
                 <div className="k2k-surface mt-8 overflow-hidden !rounded-2xl !border-[#111] !border-t-k2k-blue/30 !bg-[#f8f4ed] !p-0">
                   <div className="border-b border-k2k-blue/10 bg-white px-6 py-4 sm:px-8">
@@ -290,9 +296,11 @@ function ContactPage() {
                   <li className="k2k-surface group flex items-start gap-4 rounded-2xl border-l-2 border-l-k2k-blue/25 p-5">
                     <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105 group-hover:border-k2k-blue/20">
                       <img
-                        src={ICONS.pin}
+                        src={KTK_ICONS.location}
                         alt=""
                         className="h-6 w-6 object-contain transition duration-300 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
                         aria-hidden
                       />
                     </span>
@@ -307,7 +315,7 @@ function ContactPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <ScrollReveal delay={1}>
-                <InfoTile icon={ICONS.calendar} title="Ordering">
+                <InfoTile icon={KTK_ICONS.calendar} title="Ordering">
                   <p>{BUSINESS.orderingModel}</p>
                   <p className="mt-1">Est. {BUSINESS.established}</p>
                 </InfoTile>
@@ -315,11 +323,11 @@ function ContactPage() {
 
               <ScrollReveal delay={2}>
                 {BUSINESS.hours ? (
-                  <InfoTile icon={ICONS.wheat} title="Hours">
+                  <InfoTile icon={KTK_ICONS.wheat} title="Hours">
                     <p>{BUSINESS.hours}</p>
                   </InfoTile>
                 ) : (
-                  <InfoTile icon={ICONS.pickup} title="Fulfillment">
+                  <InfoTile icon={KTK_ICONS.pickup} title="Fulfillment">
                     <p>{BUSINESS.fulfillment}</p>
                   </InfoTile>
                 )}
@@ -327,7 +335,7 @@ function ContactPage() {
             </div>
 
             <ScrollReveal delay={3}>
-              <InfoTile icon={ICONS.pickup} title="Place an order">
+              <InfoTile icon={KTK_ICONS.pickup} title="Place an order">
                 <p>Call, text, DM, or submit an order request. {BUSINESS.fulfillment}.</p>
               </InfoTile>
             </ScrollReveal>
@@ -359,7 +367,7 @@ function ContactPage() {
           <div className="min-w-0 space-y-8">
             <ScrollReveal delay={1}>
               <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-9">
-                <IconSectionHeading icon={ICONS.envelope} eyebrow="Message" title="Send a note" />
+                <IconSectionHeading icon={KTK_ICONS.envelope} eyebrow="Message" title="Send a note" />
                 <div className="mt-8 border-t border-k2k-blue/10 pt-8">
                   <ContactForm />
                 </div>
@@ -367,13 +375,23 @@ function ContactPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={2}>
-              <blockquote className="k2k-surface group rounded-2xl border-l-2 border-l-k2k-blue/30 p-6">
+              <blockquote className="k2k-surface group relative overflow-hidden rounded-2xl border-l-2 border-l-k2k-blue/30 p-6">
+                <img
+                  src={KTK_DECOR.cornerFlourish}
+                  alt=""
+                  className="ktk-corner-flourish"
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden
+                />
                 <div className="flex items-start gap-4">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105 group-hover:border-k2k-blue/20">
                     <img
-                      src={ICONS.wheat}
+                      src={KTK_ICONS.wheat}
                       alt=""
                       className="k2k-breathe h-6 w-6 object-contain opacity-70 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                      loading="lazy"
+                      decoding="async"
                       aria-hidden
                     />
                   </span>

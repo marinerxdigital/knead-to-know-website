@@ -11,13 +11,14 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { KTK_ICONS } from "../lib/design-assets";
 import { SITE_URL } from "../lib/business";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { MobileOrderBar } from "../components/layout/MobileOrderBar";
 import { Toaster } from "../components/ui/sonner";
 
-const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
+const OG_IMAGE = "/assets/knead-to-know/logo/og-image-1200x630.png";
 
 function NotFoundComponent() {
   return (
@@ -29,7 +30,7 @@ function NotFoundComponent() {
       <div className="k2k-bordered k2k-surface relative w-full max-w-md rounded-[1.75rem] px-6 py-10 text-center sm:px-8 sm:py-12">
         <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
           <span className="h-px w-10 bg-k2k-blue/25" />
-          <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-60" />
+          <img src={KTK_ICONS.wheat} alt="" className="h-5 w-5 opacity-60" aria-hidden />
           <span className="h-px w-10 bg-k2k-blue/25" />
         </div>
         <p className="text-xs font-bold uppercase tracking-[0.24em] text-k2k-blue">404</p>
@@ -67,7 +68,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
       <div className="relative max-w-md text-center">
         <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
           <span className="h-px w-10 bg-wheat/50" />
-          <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-50" />
+          <img src={KTK_ICONS.wheat} alt="" className="h-5 w-5 opacity-50" aria-hidden />
           <span className="h-px w-10 bg-wheat/50" />
         </div>
         <p className="text-xs font-medium uppercase tracking-[0.24em] text-k2k-blue">
@@ -133,13 +134,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         property: "og:image",
-        content: `${SITE_URL}/assets/knead-to-know/photos/hero-bakery-spread.jpg`,
+        content: `${SITE_URL}${OG_IMAGE}`,
       },
       { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "1500" },
+      { property: "og:image:height", content: "630" },
       {
         name: "twitter:image",
-        content: `${SITE_URL}/assets/knead-to-know/photos/hero-bakery-spread.jpg`,
+        content: `${SITE_URL}${OG_IMAGE}`,
       },
     ],
     scripts: [
@@ -152,7 +153,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           url: SITE_URL,
           description:
             "Knead To Know is a boutique home bakery on Daniel Island, South Carolina offering small-batch sourdough bread, cookies, bagels, pastries, bakery boxes, and custom orders.",
-          image: `${SITE_URL}/assets/knead-to-know/photos/hero-bakery-spread.jpg`,
+          image: `${SITE_URL}${OG_IMAGE}`,
           areaServed: "Daniel Island, South Carolina",
           founder: { "@type": "Person", name: "Wendy Mercado" },
         }),
@@ -163,6 +164,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

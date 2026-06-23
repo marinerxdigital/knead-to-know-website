@@ -1,8 +1,6 @@
 import type { ReactNode } from "react";
+import { KTK_ICONS } from "@/lib/design-assets";
 import { cn } from "@/lib/utils";
-
-const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
-const DOUGH_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png";
 
 const WHEAT_SVG = (
   <svg width="22" height="10" viewBox="0 0 22 10" fill="none" className="text-wheat" aria-hidden>
@@ -117,9 +115,9 @@ export function PageHero({
 
       <WheatScoringMark className="pointer-events-none absolute left-6 top-20 hidden w-20 opacity-50 lg:block xl:left-12" />
       <WheatScoringMark className="pointer-events-none absolute right-8 top-32 hidden w-16 scale-x-[-1] opacity-35 lg:block" />
-      <HeroIconAccent src={WHEAT_ICON} className="right-[12%] top-[18%] hidden lg:flex" />
+      <HeroIconAccent src={KTK_ICONS.wheat} className="right-[12%] top-[18%] hidden lg:flex" />
       <HeroIconAccent
-        src={DOUGH_ICON}
+        src={KTK_ICONS.dough}
         className="left-[8%] bottom-[22%] hidden opacity-80 lg:flex [animation-delay:2s]"
       />
 

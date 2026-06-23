@@ -8,6 +8,7 @@ import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { BAKERY_PHOTOS, PRODUCTS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
+import { KTK_ICONS } from "@/lib/design-assets";
 
 const ACCESS_KEY =
   (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
@@ -268,9 +269,11 @@ function CustomOrdersPage() {
             <div className="flex justify-center gap-4">
               <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
                 <img
-                  src="/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png"
+                  src={KTK_ICONS.cookie}
                   alt=""
                   className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden
                 />
               </div>
@@ -282,9 +285,11 @@ function CustomOrdersPage() {
               </div>
               <div className="group flex h-14 w-14 items-center justify-center rounded-2xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
                 <img
-                  src="/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png"
+                  src={KTK_ICONS.bread}
                   alt=""
                   className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden
                 />
               </div>

@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { BookOpen, Compass, Instagram, Mail, MapPin, Phone } from "lucide-react";
-import { BUSINESS } from "@/lib/business";
-
 import { BrandLogo } from "@/components/brand/BrandLogo";
+import { KTK_DECOR } from "@/lib/design-assets";
+import { BUSINESS } from "@/lib/business";
 
 const EXPLORE_LINKS = [
   { to: "/menu" as const, label: "Menu" },
@@ -79,7 +79,14 @@ function NewsletterPlaceholder() {
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-[#f8f4ed]">
+    <footer className="relative mt-24 overflow-hidden bg-[#f8f4ed]">
+      <img
+        src={KTK_DECOR.cornerFlourish}
+        alt=""
+        className="ktk-corner-flourish"
+        loading="lazy"
+        aria-hidden
+      />
       <div className="pt-10">
         <FooterScoringDivider />
       </div>

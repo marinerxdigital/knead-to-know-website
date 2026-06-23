@@ -3,6 +3,7 @@
  * Sourced from src/lib/products.ts — do not invent items or prices.
  */
 
+import { KTK_ICONS } from "@/lib/design-assets";
 import { ALL_BAGELS, ALL_BREADS, ALL_COOKIES, type Product } from "@/lib/products";
 
 export type MenuCategory = "bread" | "cookies" | "bagels";
@@ -74,20 +75,20 @@ export const MENU_BY_ID = Object.fromEntries(MENU_PRODUCTS.map((p) => [p.id, p])
 >;
 
 export const MENU_CATEGORIES: { id: MenuCategory | "all"; label: string; icon: string }[] = [
-  { id: "all", label: "All", icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png" },
+  { id: "all", label: "All", icon: KTK_ICONS.wheat },
   {
     id: "bread",
     label: "Sourdough Bread",
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+    icon: KTK_ICONS.bread,
   },
   {
     id: "cookies",
     label: "Sourdough Cookies",
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
+    icon: KTK_ICONS.cookie,
   },
   {
     id: "bagels",
     label: "Sourdough Bagels",
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
+    icon: KTK_ICONS.dough,
   },
 ];

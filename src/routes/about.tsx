@@ -8,6 +8,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { BAKERY_PHOTOS } from "@/lib/products";
 import { cn } from "@/lib/utils";
+import { KTK_DECOR, KTK_ICONS } from "@/lib/design-assets";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -31,28 +32,19 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const ICONS = {
-  wheat: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
-  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-  calendar: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-  pin: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
-  dough: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
-  heart: "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png",
-} as const;
-
 const PHILOSOPHY = [
   {
-    icon: ICONS.dough,
+    icon: KTK_ICONS.dough,
     title: "Time & attention",
     desc: "Great sourdough takes long ferments, attentive shaping, and baking in limited batches so every order gets the care it deserves.",
   },
   {
-    icon: ICONS.bread,
+    icon: KTK_ICONS.bread,
     title: "Small-batch only",
     desc: "Every loaf, cookie, and bagel is crafted in limited quantities — consistent quality, never mass-produced.",
   },
   {
-    icon: ICONS.heart,
+    icon: KTK_ICONS.heart,
     title: "Freshness first",
     desc: `${BUSINESS.orderingModel}. ${BUSINESS.fulfillment} — nothing sits on a shelf waiting for you.`,
   },
@@ -60,17 +52,17 @@ const PHILOSOPHY = [
 
 const VALUES = [
   {
-    icon: ICONS.bread,
+    icon: KTK_ICONS.bread,
     title: "Small-batch sourdough",
     desc: "Every loaf, cookie, and bagel is crafted in limited batches for consistent quality.",
   },
   {
-    icon: ICONS.calendar,
+    icon: KTK_ICONS.calendar,
     title: "Baked to order",
     desc: `${BUSINESS.orderingModel} — nothing sits on a shelf waiting for you.`,
   },
   {
-    icon: ICONS.pin,
+    icon: KTK_ICONS.location,
     title: "Daniel Island roots",
     desc: `Based on Daniel Island, serving the ${BUSINESS.serviceArea}.`,
   },
@@ -139,6 +131,8 @@ function IconSectionHeading({
             src={icon}
             alt=""
             className="k2k-breathe h-8 w-8 object-contain transition duration-300 group-hover:scale-110 group-hover:animate-none"
+            loading="lazy"
+            decoding="async"
             aria-hidden
           />
         </div>
@@ -176,9 +170,11 @@ function MapPlaceholder({ variant = "light" }: { variant?: "light" | "dark" }) {
         )}
       >
         <img
-          src={ICONS.pin}
+          src={KTK_ICONS.location}
           alt=""
           className="h-6 w-6 object-contain opacity-80 transition duration-300 group-hover/map:scale-110"
+          loading="lazy"
+          decoding="async"
           aria-hidden
         />
         <p
@@ -221,9 +217,11 @@ function MapPlaceholder({ variant = "light" }: { variant?: "light" | "dark" }) {
           </svg>
         </div>
         <img
-          src={ICONS.pin}
+          src={KTK_ICONS.location}
           alt=""
           className="relative h-12 w-12 object-contain opacity-70"
+          loading="lazy"
+          decoding="async"
           aria-hidden
         />
         <p className={cn("relative font-display text-xl", isDark ? "text-white" : "text-ink")}>
@@ -276,9 +274,11 @@ function AboutPage() {
           </span>
           <span className="group inline-flex items-center gap-2 rounded-full border border-[#111] bg-k2k-blue px-4 py-2 text-sm font-medium text-white">
             <img
-              src={ICONS.calendar}
+              src={KTK_ICONS.calendar}
               alt=""
               className="h-4 w-4 brightness-0 invert transition duration-300 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
               aria-hidden
             />
             {BUSINESS.orderingModel}
@@ -289,9 +289,24 @@ function AboutPage() {
       <Section variant="editorial">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-14">
           <ScrollReveal className="space-y-5">
-            <div className="k2k-surface overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-6 text-center sm:p-8">
+            <div className="k2k-surface relative overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-6 text-center sm:p-8">
+              <img
+                src={KTK_DECOR.cornerFlourish}
+                alt=""
+                className="ktk-corner-flourish"
+                loading="lazy"
+                decoding="async"
+                aria-hidden
+              />
               <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border-2 border-dashed border-[#111]/20 bg-[#f8f4ed]">
-                <img src={ICONS.wheat} alt="" className="h-10 w-10 opacity-50" aria-hidden />
+                <img
+                  src={KTK_ICONS.wheat}
+                  alt=""
+                  className="h-10 w-10 opacity-50"
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden
+                />
               </div>
               <p className="mt-6 font-display text-2xl text-ink">{BUSINESS.owner}</p>
               <p className="mt-2 text-xs uppercase tracking-[0.2em] text-k2k-blue">
@@ -313,7 +328,7 @@ function AboutPage() {
 
           <ScrollReveal delay={1} className="lg:pt-2">
             <IconSectionHeading
-              icon={ICONS.wheat}
+              icon={KTK_ICONS.wheat}
               eyebrow="The bakery"
               title="Freshly baked to order"
             />
@@ -351,7 +366,7 @@ function AboutPage() {
         <div className="grid gap-12 sm:gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <IconSectionHeading
-              icon={ICONS.dough}
+              icon={KTK_ICONS.dough}
               eyebrow="Our philosophy"
               title="Small-batch, never rushed"
             />
@@ -364,6 +379,8 @@ function AboutPage() {
                         src={item.icon}
                         alt=""
                         className="k2k-breathe h-7 w-7 object-contain transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                        loading="lazy"
+                        decoding="async"
                         aria-hidden
                       />
                     </div>
@@ -381,7 +398,7 @@ function AboutPage() {
 
           <div>
             <IconSectionHeading
-              icon={ICONS.calendar}
+              icon={KTK_ICONS.calendar}
               eyebrow="The process"
               title="From starter to pickup"
             />
@@ -425,7 +442,7 @@ function AboutPage() {
 
       <Section bg="white">
         <IconSectionHeading
-          icon={ICONS.heart}
+          icon={KTK_ICONS.heart}
           eyebrow="What we stand for"
           title="Values you can taste"
           align="center"
@@ -439,6 +456,8 @@ function AboutPage() {
                     src={item.icon}
                     alt=""
                     className="k2k-breathe h-8 w-8 object-contain opacity-90 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden
                   />
                 </div>
@@ -460,9 +479,11 @@ function AboutPage() {
             <ScrollReveal>
               <div className="group flex items-center gap-3">
                 <img
-                  src={ICONS.pin}
+                  src={KTK_ICONS.location}
                   alt=""
                   className="k2k-breathe h-10 w-10 object-contain brightness-0 invert opacity-70 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden
                 />
                 <p className="text-xs font-medium uppercase tracking-[0.24em] text-wheat/80">

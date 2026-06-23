@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { KTK_ICONS } from "@/lib/design-assets";
 import { cn } from "@/lib/utils";
 import { BUSINESS } from "@/lib/business";
 
@@ -140,9 +141,10 @@ export function ContactForm() {
               <div className="absolute inset-0 k2k-line-grow bg-k2k-black/10" />
             </div>
             <img
-              src="/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png"
+              src={KTK_ICONS.contact}
               alt=""
               className="k2k-icon-hover h-5 w-5 opacity-70"
+              aria-hidden
             />
             <div className="relative h-px flex-1 overflow-hidden">
               <div

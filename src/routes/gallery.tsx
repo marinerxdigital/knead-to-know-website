@@ -9,6 +9,7 @@ import { Lightbox } from "@/components/media/Lightbox";
 import { ALL_BREADS, ALL_COOKIES, ALL_BAGELS, BAKERY_PHOTOS } from "@/lib/products";
 import { SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
+import { KTK_ICONS } from "@/lib/design-assets";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -38,12 +39,10 @@ type Category = (typeof GALLERY_CATEGORIES)[number];
 type RevealDelay = 0 | 1 | 2 | 3 | 4;
 
 const CATEGORY_ICONS: Record<Category, string> = {
-  Breads: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-  Cookies: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-  Bagels: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
+  Breads: KTK_ICONS.bread,
+  Cookies: KTK_ICONS.cookie,
+  Bagels: KTK_ICONS.dough,
 };
-
-const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
 
 function HarborLine({ className }: { className?: string }) {
   return (
@@ -119,6 +118,8 @@ function GalleryPage() {
                     src={CATEGORY_ICONS[activeCategory]}
                     alt=""
                     className="k2k-breathe h-6 w-6 object-contain transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden
                   />
                   <div>
@@ -153,6 +154,8 @@ function GalleryPage() {
                       src={CATEGORY_ICONS[cat]}
                       alt=""
                       className="h-4 w-4 object-contain transition duration-300 group-hover:scale-110"
+                      loading="lazy"
+                      decoding="async"
                       aria-hidden
                     />
                     {cat}
@@ -235,6 +238,8 @@ function GalleryPage() {
                               src={CATEGORY_ICONS[activeCategory]}
                               alt=""
                               className="k2k-breathe h-8 w-8 object-contain opacity-50"
+                              loading="lazy"
+                              decoding="async"
                               aria-hidden
                             />
                           </span>
@@ -272,9 +277,11 @@ function GalleryPage() {
             <div className="k2k-surface group mx-auto max-w-lg rounded-[1.75rem] border-t-2 border-t-k2k-blue/15 p-10 text-center">
               <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105">
                 <img
-                  src={WHEAT_ICON}
+                  src={KTK_ICONS.wheat}
                   alt=""
                   className="k2k-breathe h-7 w-7 opacity-40 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden
                 />
               </span>

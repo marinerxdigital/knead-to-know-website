@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
+import { KTK_ICONS } from "@/lib/design-assets";
 import { cn } from "@/lib/utils";
 
 type RouteTo =
@@ -11,10 +12,6 @@ type RouteTo =
   | "/custom-orders"
   | "/catering"
   | "/faq";
-
-const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
-const BREAD_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png";
-const COOKIE_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png";
 
 function ScoringLine({ className, delay }: { className?: string; delay?: string }) {
   return (
@@ -106,7 +103,7 @@ export function CTASection({
 
           {/* Decorative brand icons — floating */}
           <img
-            src={WHEAT_ICON}
+            src={KTK_ICONS.wheat}
             alt=""
             className={cn(
               "k2k-icon-hover pointer-events-none absolute k2k-float-gentle opacity-20",
@@ -115,7 +112,7 @@ export function CTASection({
             aria-hidden="true"
           />
           <img
-            src={BREAD_ICON}
+            src={KTK_ICONS.bread}
             alt=""
             className={cn(
               "k2k-icon-hover pointer-events-none absolute k2k-breathe opacity-15",
@@ -124,7 +121,7 @@ export function CTASection({
             aria-hidden="true"
           />
           <img
-            src={COOKIE_ICON}
+            src={KTK_ICONS.cookie}
             alt=""
             className={cn(
               "k2k-icon-hover pointer-events-none absolute hidden k2k-float-gentle opacity-15 sm:block",
@@ -168,7 +165,7 @@ export function CTASection({
                   />
                 </span>
                 <img
-                  src={WHEAT_ICON}
+                  src={KTK_ICONS.wheat}
                   alt=""
                   className="k2k-icon-hover h-4 w-4 shrink-0 opacity-70"
                   aria-hidden="true"
@@ -254,7 +251,7 @@ export function CTASection({
                 <span className="text-xs font-medium uppercase tracking-[0.3em] text-wheat">
                   Pre-order only
                 </span>
-                <img src={BREAD_ICON} alt="" className="k2k-icon-hover h-4 w-4 opacity-50" />
+                <img src={KTK_ICONS.bread} alt="" className="k2k-icon-hover h-4 w-4 opacity-50" />
               </div>
             </ScrollReveal>
           </div>

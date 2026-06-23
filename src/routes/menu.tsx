@@ -60,6 +60,8 @@ function MenuPage() {
           src={BANNER_PATH}
           alt="Knead To Know bakery announcement and pre-order information"
           className="mx-auto h-auto w-full max-w-7xl"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 

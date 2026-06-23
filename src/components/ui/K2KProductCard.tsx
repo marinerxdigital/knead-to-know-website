@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
+import { KTK_CATEGORY_ICONS, KTK_DECOR, KTK_ICONS } from "@/lib/design-assets";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/lib/products";
 
@@ -23,22 +24,11 @@ const CATEGORY_LABELS: Record<Product["category"], string> = {
   custom: "Custom",
 };
 
-const CATEGORY_ICONS: Record<Product["category"], string> = {
-  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-  cookies: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-  bagels: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
-  pastries: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
-  "bakery-boxes": "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
-  custom: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-};
-
-const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
-
 function CategoryIconBadge({ product }: { product: Product }) {
   return (
     <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-k2k-black bg-white/95 px-2.5 py-1 shadow-sm backdrop-blur-sm">
       <img
-        src={CATEGORY_ICONS[product.category]}
+        src={KTK_CATEGORY_ICONS[product.category]}
         alt=""
         className="k2k-icon-hover h-4 w-4 object-contain"
         aria-hidden
@@ -66,32 +56,27 @@ function ProductPhotoArea({ product }: { product: Product }) {
   }
 
   return (
-    <div className="k2k-product-photo relative aspect-[4/3] overflow-hidden rounded-2xl border border-k2k-black bg-gradient-to-br from-[#f8fafc] via-white to-[#f0f5fa]">
+    <div className="k2k-product-photo relative aspect-square overflow-hidden rounded-2xl border border-k2k-black bg-gradient-to-br from-[#f8fafc] via-white to-[#f0f5fa]">
       <CategoryIconBadge product={product} />
-      <div
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-wheat/50 to-transparent"
-        aria-hidden
-      />
-      <div className="flex h-full flex-col items-center justify-center gap-4 px-6 py-8 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-k2k-black bg-white shadow-[0_8px_24px_-12px_rgba(17,17,17,0.2)]">
-          <img
-            src={CATEGORY_ICONS[product.category]}
-            alt=""
-            className="k2k-icon-hover h-8 w-8 object-contain opacity-80"
-            aria-hidden
-          />
-        </div>
-        <div className="space-y-1.5">
-          <img
-            src={WHEAT_ICON}
-            alt=""
-            className="k2k-icon-hover mx-auto h-4 w-4 opacity-40"
-            aria-hidden
-          />
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-navy/90">
-            Photo coming soon
-          </p>
-        </div>
+      <div className="flex h-full items-center justify-center p-4">
+        <img
+          src={KTK_DECOR.productPlaceholderPrimary}
+          alt=""
+          className="h-full w-full object-contain"
+          loading="lazy"
+          aria-hidden
+        />
+      </div>
+      <div className="absolute inset-x-0 bottom-4 flex flex-col items-center gap-1.5 text-center">
+        <img
+          src={KTK_ICONS.wheat}
+          alt=""
+          className="k2k-icon-hover h-4 w-4 opacity-40"
+          aria-hidden
+        />
+        <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-navy/90">
+          Photo coming soon
+        </p>
       </div>
     </div>
   );

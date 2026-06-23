@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { BAKERY_PHOTOS } from "@/lib/products";
 import { cn } from "@/lib/utils";
+import { KTK_ICONS } from "@/lib/design-assets";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -31,18 +32,10 @@ export const Route = createFileRoute("/privacy")({
 
 const LAST_UPDATED = "June 2026";
 
-const ICONS = {
-  envelope: "/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png",
-  heart: "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png",
-  wheat: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
-  calendar: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-  pickup: "/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png",
-} as const;
-
 const SECTIONS = [
   {
     id: "what-we-collect",
-    icon: ICONS.envelope,
+    icon: KTK_ICONS.envelope,
     title: "What we collect",
     content: (
       <p>
@@ -54,7 +47,7 @@ const SECTIONS = [
   },
   {
     id: "why-we-collect",
-    icon: ICONS.heart,
+    icon: KTK_ICONS.heart,
     title: "Why we collect it",
     content: (
       <p>
@@ -66,7 +59,7 @@ const SECTIONS = [
   },
   {
     id: "no-selling",
-    icon: ICONS.wheat,
+    icon: KTK_ICONS.wheat,
     title: "We do not sell your information",
     content: (
       <p>
@@ -77,7 +70,7 @@ const SECTIONS = [
   },
   {
     id: "third-party",
-    icon: ICONS.envelope,
+    icon: KTK_ICONS.envelope,
     title: "Third-party form tools",
     content: (
       <p>
@@ -90,7 +83,7 @@ const SECTIONS = [
   },
   {
     id: "updates-removal",
-    icon: ICONS.calendar,
+    icon: KTK_ICONS.calendar,
     title: "Updates and removal",
     content: (
       <p>
@@ -125,7 +118,7 @@ const SECTIONS = [
   },
   {
     id: "questions",
-    icon: ICONS.pickup,
+    icon: KTK_ICONS.pickup,
     title: "Questions",
     content: (
       <p>
@@ -173,6 +166,8 @@ function PrivacySectionHeading({ icon, children }: { icon: string; children: Rea
           src={icon}
           alt=""
           className="h-6 w-6 object-contain opacity-85 sm:h-7 sm:w-7"
+          loading="lazy"
+          decoding="async"
           aria-hidden
         />
       </div>
@@ -193,7 +188,14 @@ function PrivacyPage() {
         imagePosition="right"
       >
         <span className="k2k-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-[0.65rem] font-medium uppercase tracking-[0.14em] text-k2k-navy">
-          <img src={ICONS.wheat} alt="" className="h-4 w-4 object-contain opacity-70" aria-hidden />
+          <img
+            src={KTK_ICONS.wheat}
+            alt=""
+            className="h-4 w-4 object-contain opacity-70"
+            loading="lazy"
+            decoding="async"
+            aria-hidden
+          />
           Last updated: {LAST_UPDATED}
         </span>
       </PageHero>
@@ -212,9 +214,11 @@ function PrivacyPage() {
             >
               <div className="mb-1 flex w-full items-center gap-3 pb-2">
                 <img
-                  src={ICONS.wheat}
+                  src={KTK_ICONS.wheat}
                   alt=""
                   className="h-7 w-7 object-contain opacity-75"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden
                 />
                 <Eyebrow decorative>Jump to section</Eyebrow>
@@ -229,6 +233,8 @@ function PrivacyPage() {
                     src={section.icon}
                     alt=""
                     className="h-3.5 w-3.5 object-contain opacity-75"
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden
                   />
                   {section.title}

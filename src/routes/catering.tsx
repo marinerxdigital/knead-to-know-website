@@ -8,6 +8,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BAKERY_PHOTOS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
+import { KTK_ICONS } from "@/lib/design-assets";
 
 const ACCESS_KEY =
   (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ??
@@ -22,37 +23,37 @@ const textareaClass =
 
 const CATERING_SERVICES = [
   {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
+    icon: KTK_ICONS.cookie,
     title: "Cookie Trays",
     desc: "Assorted sourdough cookies — chocolate chip, cranberry walnut, and seasonal varieties.",
     tier: "Popular",
   },
   {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+    icon: KTK_ICONS.bread,
     title: "Bread Baskets",
     desc: "Selection of our loaves with butter or olive oil for events and dinners.",
     tier: "Events",
   },
   {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
+    icon: KTK_ICONS.dough,
     title: "Brunch Spreads",
     desc: "Bagels, breads, and sweet pastries for morning meetings and gatherings.",
     tier: "Morning",
   },
   {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
+    icon: KTK_ICONS.gift,
     title: "Bakery Gift Boxes",
     desc: "Curated boxes ideal for client gifts, hostesses, and corporate gifting.",
     tier: "Gifting",
   },
   {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+    icon: KTK_ICONS.calendar,
     title: "Holiday Orders",
     desc: "Seasonal loaves, cookies, and large-format boxes for celebrations.",
     tier: "Seasonal",
   },
   {
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
+    icon: KTK_ICONS.wheat,
     title: "Custom Platters",
     desc: "Tell us your vision — we build to your guest count and preferences.",
     tier: "Bespoke",
@@ -65,21 +66,21 @@ const CATERING_STEPS = [
     title: "Share your event",
     description:
       "Tell us your date, guest count, and what you'd like — cookie trays, bread baskets, brunch spreads, or custom platters.",
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+    icon: KTK_ICONS.calendar,
   },
   {
     step: "02",
     title: "Wendy confirms details",
     description:
       "We reply within one business day with menu selections, quantities, timing, and delivery or pickup arrangements.",
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+    icon: KTK_ICONS.bread,
   },
   {
     step: "03",
     title: "Fresh bakes, your way",
     description:
       "Everything is baked to order in small batches — ready for your Daniel Island gathering, office, or celebration.",
-    icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
+    icon: KTK_ICONS.wheat,
   },
 ] as const;
 
@@ -198,9 +199,11 @@ function CateringPage() {
               <div className="mb-6 flex items-center justify-center gap-4">
                 <div className="group flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
                   <img
-                    src="/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png"
+                    src={KTK_ICONS.gift}
                     alt=""
                     className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden
                   />
                 </div>
@@ -212,9 +215,11 @@ function CateringPage() {
                 </div>
                 <div className="group flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
                   <img
-                    src="/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png"
+                    src={KTK_ICONS.wheat}
                     alt=""
                     className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden
                   />
                 </div>
@@ -295,6 +300,8 @@ function CateringPage() {
                       src={service.icon}
                       alt=""
                       className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                      loading="lazy"
+                      decoding="async"
                       aria-hidden
                     />
                   </span>
@@ -347,6 +354,8 @@ function CateringPage() {
                       src={step.icon}
                       alt=""
                       className="k2k-breathe h-7 w-7 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                      loading="lazy"
+                      decoding="async"
                       aria-hidden
                     />
                     <span className="absolute -right-1.5 -top-1.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#111] bg-k2k-blue text-[11px] font-semibold leading-none text-white">

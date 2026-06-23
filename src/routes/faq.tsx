@@ -14,6 +14,7 @@ import { BUSINESS, SITE_URL } from "@/lib/business";
 import { BAKERY_PHOTOS } from "@/lib/products";
 import type { FAQGroup } from "@/components/ui/FAQAccordion";
 import { cn } from "@/lib/utils";
+import { KTK_ICONS } from "@/lib/design-assets";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -36,16 +37,6 @@ export const Route = createFileRoute("/faq")({
   component: FAQPage,
 });
 
-const ICONS = {
-  calendar: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-  pickup: "/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png",
-  gift: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
-  cookie: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-  wheat: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
-  envelope: "/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png",
-  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-} as const;
-
 function HarborLine({ className }: { className?: string }) {
   return (
     <svg
@@ -67,7 +58,7 @@ function HarborLine({ className }: { className?: string }) {
 const FAQ_GROUPS: ReadonlyArray<FAQGroup & { icon: string }> = [
   {
     title: "Ordering & timing",
-    icon: ICONS.calendar,
+    icon: KTK_ICONS.calendar,
     items: [
       {
         q: "How far in advance should I order?",
@@ -89,7 +80,7 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup & { icon: string }> = [
   },
   {
     title: "Pickup & delivery",
-    icon: ICONS.pickup,
+    icon: KTK_ICONS.pickup,
     items: [
       {
         q: "Do you offer pickup and delivery?",
@@ -99,7 +90,7 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup & { icon: string }> = [
   },
   {
     title: "Custom & catering",
-    icon: ICONS.gift,
+    icon: KTK_ICONS.gift,
     items: [
       {
         q: "Can I order for catering or events?",
@@ -109,7 +100,7 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup & { icon: string }> = [
   },
   {
     title: "Products & pricing",
-    icon: ICONS.cookie,
+    icon: KTK_ICONS.cookie,
     items: [
       {
         q: "Can you accommodate allergies or special requests?",
@@ -132,10 +123,10 @@ const FAQ_GROUPS: ReadonlyArray<FAQGroup & { icon: string }> = [
 ];
 
 const QUICK_LINKS = [
-  { to: "/custom-orders" as const, label: "Custom orders", icon: ICONS.calendar },
-  { to: "/catering" as const, label: "Catering", icon: ICONS.gift },
-  { to: "/contact" as const, label: "Contact", icon: ICONS.envelope },
-  { to: "/menu" as const, label: "View menu", icon: ICONS.bread },
+  { to: "/custom-orders" as const, label: "Custom orders", icon: KTK_ICONS.calendar },
+  { to: "/catering" as const, label: "Catering", icon: KTK_ICONS.gift },
+  { to: "/contact" as const, label: "Contact", icon: KTK_ICONS.envelope },
+  { to: "/menu" as const, label: "View menu", icon: KTK_ICONS.bread },
 ];
 
 function FAQAccordionBlack({ groups }: { groups: ReadonlyArray<FAQGroup & { icon: string }> }) {
@@ -150,6 +141,8 @@ function FAQAccordionBlack({ groups }: { groups: ReadonlyArray<FAQGroup & { icon
                   src={group.icon}
                   alt=""
                   className="k2k-breathe h-6 w-6 object-contain opacity-85 transition duration-300 group-hover:scale-110 group-hover:animate-none sm:h-7 sm:w-7"
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden
                 />
               </span>
@@ -225,6 +218,8 @@ function FAQPage() {
                 src={link.icon}
                 alt=""
                 className="h-4 w-4 object-contain opacity-80 transition duration-300 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
                 aria-hidden
               />
               {link.label}
@@ -240,9 +235,11 @@ function FAQPage() {
               <div className="group flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#111] bg-white transition duration-300 group-hover:scale-105">
                   <img
-                    src={ICONS.wheat}
+                    src={KTK_ICONS.wheat}
                     alt=""
                     className="k2k-breathe h-6 w-6 object-contain opacity-80 transition duration-300 group-hover:scale-110 group-hover:animate-none"
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden
                   />
                 </span>

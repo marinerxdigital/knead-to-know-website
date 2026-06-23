@@ -11,25 +11,13 @@ import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BrandLogo } from "@/components/brand/BrandLogo";
-
-const ICONS = {
-  wheat: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
-  bread: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
-  cookie: "/assets/knead-to-know/icons/Knead_To_Know_Cookie_Icon.png",
-  calendar: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
-  location: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
-  dough: "/assets/knead-to-know/icons/Knead_To_Know_Dough_Swirl_Icon.png",
-  pickup: "/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png",
-  gift: "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
-  heart: "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png",
-  contact: "/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png",
-} as const;
+import { KTK_DECOR, KTK_ICONS } from "@/lib/design-assets";
 
 const TRUST_ITEMS = [
-  { icon: ICONS.location, label: BUSINESS.city },
-  { icon: ICONS.wheat, label: BUSINESS.fulfillment },
-  { icon: ICONS.bread, label: "Artisan Sourdough" },
-  { icon: ICONS.calendar, label: BUSINESS.orderingModel },
+  { icon: KTK_ICONS.location, label: BUSINESS.city },
+  { icon: KTK_ICONS.wheat, label: BUSINESS.fulfillment },
+  { icon: KTK_ICONS.bread, label: "Artisan Sourdough" },
+  { icon: KTK_ICONS.calendar, label: BUSINESS.orderingModel },
 ];
 
 const ORDER_STEPS = [
@@ -37,25 +25,25 @@ const ORDER_STEPS = [
     step: "01",
     title: "Choose",
     description: "Browse the menu and note your items and quantities.",
-    icon: ICONS.cookie,
+    icon: KTK_ICONS.cookie,
   },
   {
     step: "02",
     title: "Request",
     description: `${BUSINESS.customerAction} with your preferred pickup timing.`,
-    icon: ICONS.contact,
+    icon: KTK_ICONS.contact,
   },
   {
     step: "03",
     title: `${BUSINESS.shortOwner} Bakes Fresh`,
     description: `Everything is baked to order in small batches — never pulled from a shelf.`,
-    icon: ICONS.dough,
+    icon: KTK_ICONS.dough,
   },
   {
     step: "04",
     title: "Pickup",
     description: `Collect on Daniel Island at your confirmed pickup time — warm, fresh, and ready.`,
-    icon: ICONS.pickup,
+    icon: KTK_ICONS.pickup,
   },
 ];
 
@@ -65,21 +53,21 @@ const PAGE_TEASERS = [
     eyebrow: "The menu",
     title: "Signature sourdough bakes",
     text: "Breads, cookies, and bagels with verified pricing — all pre-order.",
-    icon: ICONS.bread,
+    icon: KTK_ICONS.bread,
   },
   {
     to: "/about" as const,
     eyebrow: "Our story",
     title: `Meet ${BUSINESS.owner}`,
     text: `Small-batch baking rooted on ${BUSINESS.city}.`,
-    icon: ICONS.dough,
+    icon: KTK_ICONS.dough,
   },
   {
     to: "/faq" as const,
     eyebrow: "Questions",
     title: "Ordering made clear",
     text: "Pickup, timing, allergies, and catering — answered.",
-    icon: ICONS.contact,
+    icon: KTK_ICONS.contact,
   },
 ];
 
@@ -235,14 +223,14 @@ function HomePage() {
 
         <WheatScoringMark className="k2k-float-gentle absolute left-4 top-28 hidden w-24 opacity-35 lg:block xl:left-12" />
         <WheatScoringMark className="k2k-float-gentle absolute right-6 top-24 hidden w-28 opacity-40 lg:block xl:right-16 [animation-delay:1.5s]" />
-        <HeroIconAccent src={ICONS.bread} className="right-[10%] top-[20%] hidden lg:flex" />
+        <HeroIconAccent src={KTK_ICONS.bread} className="right-[10%] top-[20%] hidden lg:flex" />
         <HeroIconAccent
-          src={ICONS.cookie}
+          src={KTK_ICONS.cookie}
           className="left-[6%] top-[42%] hidden opacity-90 lg:flex"
           delay="2s"
         />
         <HeroIconAccent
-          src={ICONS.dough}
+          src={KTK_ICONS.dough}
           className="right-[18%] bottom-[28%] hidden lg:flex"
           delay="3s"
         />
@@ -264,9 +252,18 @@ function HomePage() {
             </div>
           </div>
 
-          <h1 className="k2k-stagger-2 max-w-[14ch] font-display text-[clamp(1.875rem,5.2vw+0.5rem,4.75rem)] leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:max-w-[18ch] sm:leading-[1.03] md:max-w-[20ch]">
-            Fresh Sourdough Baked to Order on Daniel Island
-          </h1>
+          <div className="relative">
+            <img
+              src={KTK_DECOR.flourWash}
+              alt=""
+              className="ktk-flour-wash -left-4 top-1/2 -translate-y-1/2"
+              loading="lazy"
+              aria-hidden
+            />
+            <h1 className="k2k-stagger-2 relative z-10 max-w-[14ch] font-display text-[clamp(1.875rem,5.2vw+0.5rem,4.75rem)] leading-[1.06] tracking-[-0.02em] text-ink text-balance sm:max-w-[18ch] sm:leading-[1.03] md:max-w-[20ch]">
+              Fresh Sourdough Baked to Order on Daniel Island
+            </h1>
+          </div>
 
           <p className="k2k-stagger-3 mt-5 max-w-xl text-base leading-relaxed text-ink text-pretty sm:mt-6 sm:text-lg md:text-xl">
             Artisan sourdough breads, cookies, and bagels — {BUSINESS.orderingModel.toLowerCase()},
@@ -295,7 +292,7 @@ function HomePage() {
               className="group inline-flex items-center gap-2 rounded-full border border-k2k-black/10 bg-white/60 px-4 py-2 text-sm font-medium text-k2k-navy underline-offset-4 backdrop-blur-sm transition hover:border-k2k-black hover:text-k2k-blue hover:underline"
             >
               <img
-                src={ICONS.contact}
+                src={KTK_ICONS.contact}
                 alt=""
                 className="k2k-icon-hover h-4 w-4 opacity-70"
                 aria-hidden
@@ -343,7 +340,7 @@ function HomePage() {
         <div className="relative">
           <WheatScoringMark className="k2k-float-gentle absolute -left-2 top-0 w-20 opacity-60 sm:w-24" />
           <img
-            src={ICONS.wheat}
+            src={KTK_ICONS.wheat}
             alt=""
             className="k2k-float-gentle pointer-events-none absolute right-0 top-4 hidden h-8 w-8 opacity-25 sm:block"
             style={{ animationDelay: "1.2s" }}
@@ -489,12 +486,19 @@ function HomePage() {
 
           <ScrollReveal delay={1}>
             <div className="k2k-surface group relative overflow-hidden rounded-[2rem] bg-k2k-cream px-8 py-12 text-center">
+              <img
+                src={KTK_DECOR.cornerFlourish}
+                alt=""
+                className="ktk-corner-flourish"
+                loading="lazy"
+                aria-hidden
+              />
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-k2k-harbor/8 to-transparent"
                 aria-hidden
               />
               <img
-                src={ICONS.wheat}
+                src={KTK_ICONS.wheat}
                 alt=""
                 className="k2k-float-gentle pointer-events-none absolute left-6 top-8 h-6 w-6 opacity-30"
                 style={{ animationDelay: "0.8s" }}
@@ -526,7 +530,7 @@ function HomePage() {
                 </svg>
                 <div className="absolute inset-5 flex flex-col items-center justify-center gap-2 rounded-full border border-k2k-black bg-white">
                   <img
-                    src={ICONS.heart}
+                    src={KTK_ICONS.heart}
                     alt=""
                     className="k2k-icon-hover h-9 w-9 object-contain opacity-80"
                     aria-hidden
@@ -605,12 +609,19 @@ function HomePage() {
         />
         <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-3">
           {[
-            { n: 1, icon: ICONS.heart },
-            { n: 2, icon: ICONS.wheat },
-            { n: 3, icon: ICONS.gift },
+            { n: 1, icon: KTK_ICONS.heart },
+            { n: 2, icon: KTK_ICONS.wheat },
+            { n: 3, icon: KTK_ICONS.gift },
           ].map((item, index) => (
             <ScrollReveal key={item.n} delay={Math.min(index, 2) as 0 | 1 | 2}>
-              <div className="k2k-surface k2k-hover-lift group flex h-full flex-col items-center rounded-2xl border-t-2 border-t-k2k-blue/15 px-6 py-7 text-center sm:px-8 sm:py-8">
+              <div className="k2k-surface k2k-hover-lift group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border-t-2 border-t-k2k-blue/15 px-6 py-7 text-center sm:px-8 sm:py-8">
+                <img
+                  src={KTK_DECOR.cornerFlourish}
+                  alt=""
+                  className="ktk-corner-flourish"
+                  loading="lazy"
+                  aria-hidden
+                />
                 <div className="flex flex-col items-center gap-3">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-k2k-black bg-k2k-cream">
                     <img
@@ -649,7 +660,7 @@ function HomePage() {
               <div className="group flex items-center justify-between border-b border-k2k-black/8 bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06] px-6 py-4 sm:px-8">
                 <div className="flex items-center gap-3">
                   <img
-                    src={ICONS.calendar}
+                    src={KTK_ICONS.calendar}
                     alt=""
                     className="k2k-icon-hover h-5 w-5 opacity-70"
                     aria-hidden
@@ -660,7 +671,7 @@ function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <img
-                    src={ICONS.wheat}
+                    src={KTK_ICONS.wheat}
                     alt=""
                     className="k2k-float-gentle h-5 w-5 opacity-40"
                     style={{ animationDelay: "0.6s" }}

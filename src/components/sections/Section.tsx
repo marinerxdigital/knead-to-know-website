@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { KTK_DECOR } from "@/lib/design-assets";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
@@ -170,58 +171,72 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-3xl",
+        "relative max-w-3xl",
         align === "center" && "mx-auto text-center",
         align === "center" && decorative && "flex flex-col items-center",
       )}
     >
-      {eyebrow && (
-        <Eyebrow decorative={decorative} className={decorative ? undefined : "mb-0"}>
-          {eyebrow}
-        </Eyebrow>
-      )}
-      <As
-        id={id}
-        className={cn(
-          "mt-4 font-display leading-[1.05] text-ink text-balance sm:mt-5",
-          As === "h1"
-            ? "text-4xl sm:text-6xl lg:text-7xl"
-            : "text-3xl sm:text-5xl lg:text-[3.25rem]",
-          align === "center" && "mx-auto",
-        )}
-      >
-        {title}
-      </As>
-      {intro && (
-        <p
-          className={cn(
-            "mt-4 text-base leading-relaxed text-k2k-navy/90 text-pretty sm:mt-5 sm:text-lg sm:leading-relaxed",
-            align === "center" && "mx-auto max-w-2xl",
-          )}
-        >
-          {intro}
-        </p>
-      )}
       {decorative && (
-        <div
+        <img
+          src={KTK_DECOR.flourWash}
+          alt=""
           className={cn(
-            "mt-5 flex items-center gap-3 sm:mt-6",
-            align === "center" && "justify-center",
+            "ktk-flour-wash",
+            align === "center" ? "left-1/2 -translate-x-1/2" : "-left-8 top-1/2 -translate-y-1/2",
           )}
-          aria-hidden="true"
-        >
-          <span className="h-px w-12 bg-k2k-black/10" />
-          <svg width="22" height="10" viewBox="0 0 22 10" fill="none" className="text-wheat/80">
-            <path
-              d="M1 7c4-7 9-7 11-2 2-5 7-5 9 1"
-              stroke="currentColor"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-            />
-          </svg>
-          <span className="h-px w-12 bg-k2k-black/10" />
-        </div>
+          loading="lazy"
+          aria-hidden
+        />
       )}
+      <div className="relative z-10">
+        {eyebrow && (
+          <Eyebrow decorative={decorative} className={decorative ? undefined : "mb-0"}>
+            {eyebrow}
+          </Eyebrow>
+        )}
+        <As
+          id={id}
+          className={cn(
+            "mt-4 font-display leading-[1.05] text-ink text-balance sm:mt-5",
+            As === "h1"
+              ? "text-4xl sm:text-6xl lg:text-7xl"
+              : "text-3xl sm:text-5xl lg:text-[3.25rem]",
+            align === "center" && "mx-auto",
+          )}
+        >
+          {title}
+        </As>
+        {intro && (
+          <p
+            className={cn(
+              "mt-4 text-base leading-relaxed text-k2k-navy/90 text-pretty sm:mt-5 sm:text-lg sm:leading-relaxed",
+              align === "center" && "mx-auto max-w-2xl",
+            )}
+          >
+            {intro}
+          </p>
+        )}
+        {decorative && (
+          <div
+            className={cn(
+              "mt-5 flex items-center gap-3 sm:mt-6",
+              align === "center" && "justify-center",
+            )}
+            aria-hidden="true"
+          >
+            <span className="h-px w-12 bg-k2k-black/10" />
+            <svg width="22" height="10" viewBox="0 0 22 10" fill="none" className="text-wheat/80">
+              <path
+                d="M1 7c4-7 9-7 11-2 2-5 7-5 9 1"
+                stroke="currentColor"
+                strokeWidth="1.25"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span className="h-px w-12 bg-k2k-black/10" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -4,8 +4,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BUSINESS } from "@/lib/business";
 import { BrandLogo } from "@/components/brand/BrandLogo";
-
-const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
+import { KTK_ICONS } from "@/lib/design-assets";
 
 /** Center nav per premium brief — full nav remains in mobile drawer */
 const PRIMARY_NAV = [
@@ -98,7 +97,7 @@ export function Header() {
             <span className="hidden min-w-0 flex-col overflow-hidden sm:flex">
               <span className="flex min-w-0 items-center gap-1.5">
                 <img
-                  src={WHEAT_ICON}
+                  src={KTK_ICONS.wheat}
                   alt=""
                   className="k2k-icon-hover h-3.5 w-3.5 shrink-0 opacity-70 sm:h-4 sm:w-4"
                   aria-hidden
