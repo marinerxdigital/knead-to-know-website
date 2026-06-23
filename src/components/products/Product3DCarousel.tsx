@@ -8,6 +8,10 @@ import type { Product } from "@/lib/products";
 const AUTOPLAY_MS = 4000;
 const TRANSITION_MS = 750;
 
+/** Boost contrast for product card copy rendered inside the carousel */
+const CAROUSEL_CARD_TEXT =
+  "[&_.line-clamp-2]:text-k2k-navy/80 [&_.k2k-product-photo_p]:text-xs [&_.k2k-product-photo_p]:text-k2k-blue [&_.absolute>span:last-child]:text-xs [&_.tabular-nums]:text-xs [&_.k2k-badge-wheat]:text-xs";
+
 type CarouselOffset = -3 | -2 | -1 | 0 | 1 | 2 | 3;
 
 interface CardPose {
@@ -217,7 +221,11 @@ export function Product3DCarousel({
           aria-roledescription="carousel"
           aria-label="Featured bakery products"
         >
-          <K2KProductCard product={activeProduct} compact className="w-full" />
+          <K2KProductCard
+            product={activeProduct}
+            compact
+            className={cn("w-full", CAROUSEL_CARD_TEXT)}
+          />
         </div>
         <CarouselControls
           activeIndex={activeIndex}
@@ -283,6 +291,7 @@ export function Product3DCarousel({
                     compact
                     className={cn(
                       "k2k-3d-carousel-card w-[min(92vw,260px)] sm:w-[min(100%,300px)] md:w-[320px]",
+                      CAROUSEL_CARD_TEXT,
                       offset === 0 && "shadow-[var(--k2k-shadow-lg)]",
                     )}
                   />

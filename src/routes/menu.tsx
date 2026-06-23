@@ -100,7 +100,7 @@ function MenuPage() {
               <p className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-k2k-blue">
                 {BUSINESS.orderingModel} · {BUSINESS.fulfillment}
               </p>
-              <p className="mt-2 text-[11px] text-muted-foreground">
+              <p className="mt-2 text-xs leading-relaxed text-k2k-navy/90">
                 Final order timing and availability are confirmed directly with Wendy.
               </p>
             </div>

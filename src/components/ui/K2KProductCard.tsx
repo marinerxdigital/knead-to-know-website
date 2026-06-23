@@ -43,7 +43,7 @@ function CategoryIconBadge({ product }: { product: Product }) {
         className="k2k-icon-hover h-4 w-4 object-contain"
         aria-hidden
       />
-      <span className="text-[8px] font-medium uppercase tracking-[0.16em] text-k2k-navy">
+      <span className="text-xs font-medium uppercase tracking-[0.16em] text-k2k-navy">
         {CATEGORY_LABELS[product.category]}
       </span>
     </span>
@@ -88,7 +88,7 @@ function ProductPhotoArea({ product }: { product: Product }) {
             className="k2k-icon-hover mx-auto h-4 w-4 opacity-40"
             aria-hidden
           />
-          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/55">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-navy/90">
             Photo coming soon
           </p>
         </div>
@@ -129,13 +129,13 @@ export function K2KProductCard({
             <span
               className={cn(
                 "mt-0.5 shrink-0 self-start rounded-full border border-k2k-black bg-k2k-blue/8 font-medium leading-none tabular-nums text-k2k-navy",
-                compact ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-xs sm:px-3 sm:text-sm",
+                compact ? "px-2 py-0.5 text-xs" : "px-2.5 py-1 text-xs sm:px-3 sm:text-sm",
               )}
             >
               {product.price}
             </span>
           ) : (
-            <span className="k2k-badge-wheat mt-0.5 shrink-0 self-start rounded-full border border-k2k-black px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
+            <span className="k2k-badge-wheat mt-0.5 shrink-0 self-start rounded-full border border-k2k-black px-2.5 py-1 text-xs font-medium uppercase tracking-wider">
               Ask for pricing
             </span>
           )}
@@ -144,7 +144,7 @@ export function K2KProductCard({
         {product.description && (
           <p
             className={cn(
-              "line-clamp-2 leading-relaxed text-muted-foreground",
+              "line-clamp-2 leading-relaxed text-k2k-navy/90",
               compact ? "mt-2 text-xs" : "mt-3 text-sm",
             )}
           >
@@ -153,8 +153,8 @@ export function K2KProductCard({
         )}
 
         {product.ingredients && !compact && (
-          <p className="mt-2.5 line-clamp-2 text-[11px] leading-relaxed text-k2k-navy/60">
-            <span className="font-medium uppercase tracking-[0.12em] text-k2k-navy/75">
+          <p className="mt-2.5 line-clamp-2 text-xs leading-relaxed text-k2k-navy/90">
+            <span className="font-medium uppercase tracking-[0.12em] text-k2k-navy">
               Ingredients:{" "}
             </span>
             {product.ingredients}
@@ -169,7 +169,7 @@ export function K2KProductCard({
           )}
         >
           {selectable && selected && (
-            <span className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-widest text-k2k-blue">
+            <span className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-k2k-navy">
               <span className="flex h-4 w-4 items-center justify-center rounded-full bg-k2k-blue text-white">
                 <Check className="h-2.5 w-2.5" strokeWidth={3} />
               </span>

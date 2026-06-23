@@ -219,7 +219,7 @@ export function Header() {
                           : "text-k2k-black hover:bg-[#f8f4ed]/80 hover:text-k2k-blue"
                         : isActive
                           ? "bg-[#f8f4ed] text-k2k-blue"
-                          : "text-ink/80 hover:bg-[#f8f4ed]/80 hover:text-k2k-blue",
+                          : "k2k-text-secondary hover:bg-[#f8f4ed]/80 hover:text-k2k-blue",
                     )}
                   >
                     {item.label}

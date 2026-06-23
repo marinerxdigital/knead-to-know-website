@@ -166,14 +166,14 @@ function FAQAccordionBlack({ groups }: { groups: ReadonlyArray<FAQGroup & { icon
                 >
                   <AccordionTrigger
                     className={cn(
-                      "relative px-5 py-4 text-left font-display text-lg text-ink hover:no-underline sm:px-6 sm:py-5 sm:text-xl",
+                      "relative px-5 py-4 text-left text-lg font-medium text-ink hover:no-underline sm:px-6 sm:py-5 sm:text-xl",
                       "before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-r-full before:bg-transparent before:transition-colors before:duration-300",
                       "[&[data-state=open]]:text-k2k-navy [&[data-state=open]]:before:bg-wheat",
                     )}
                   >
                     <span className="pr-4 leading-snug">{item.q}</span>
                   </AccordionTrigger>
-                  <AccordionContent className="px-5 pb-5 text-base leading-relaxed text-muted-foreground sm:px-6 sm:pb-6">
+                  <AccordionContent className="px-5 pb-5 text-sm leading-relaxed text-k2k-navy/90 sm:px-6 sm:pb-6">
                     <div className="border-t border-k2k-blue/10 pt-4">{item.a}</div>
                   </AccordionContent>
                 </AccordionItem>
@@ -206,7 +206,7 @@ function FAQPage() {
             className="h-5 w-5 shrink-0 text-k2k-blue/60 transition duration-300 group-hover:scale-110 group-hover:text-k2k-blue"
             aria-hidden
           />
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-k2k-navy/85">
             Browse topics below — ordering, pickup, catering, and more
           </span>
         </div>

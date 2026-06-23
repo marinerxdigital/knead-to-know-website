@@ -107,7 +107,7 @@ function InfoTile({ icon, title, children }: { icon: string; title: string; chil
         </span>
         <p className="font-display text-lg text-ink">{title}</p>
       </div>
-      <div className="mt-3 text-sm leading-relaxed text-muted-foreground">{children}</div>
+      <div className="mt-3 text-sm leading-relaxed text-k2k-navy/90">{children}</div>
     </div>
   );
 }
@@ -206,7 +206,7 @@ function MapPlaceholder() {
           <img src={ICONS.pin} alt="" className="relative h-14 w-14 object-contain" aria-hidden />
         </div>
         <p className="relative font-display text-xl text-ink">Daniel Island, SC</p>
-        <p className="relative max-w-xs text-sm text-muted-foreground">
+        <p className="relative max-w-xs text-sm text-k2k-navy/90">
           {BUSINESS.address}. Exact pickup details confirmed after your order.
         </p>
         {BUSINESS.mapsUrl && (
@@ -269,7 +269,7 @@ function ContactPage() {
                   </div>
                   <div className="px-6 py-8 sm:px-8 sm:py-10">
                     <PhoneLink variant="cta">{BUSINESS.phone}</PhoneLink>
-                    <p className="mt-4 max-w-sm text-base leading-relaxed text-muted-foreground">
+                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-k2k-navy/85">
                       The fastest way to reach {BUSINESS.shortOwner} for orders and questions.
                     </p>
                     <a
@@ -285,7 +285,7 @@ function ContactPage() {
                 <ul className="mt-8 space-y-4 text-base">
                   <li className="k2k-surface rounded-2xl border-l-2 border-l-k2k-blue/25 p-5">
                     <p className="font-medium text-ink">{BUSINESS.name}</p>
-                    <p className="mt-1 text-sm text-muted-foreground">Owner: {BUSINESS.owner}</p>
+                    <p className="mt-1 text-sm text-k2k-navy/90">Owner: {BUSINESS.owner}</p>
                   </li>
                   <li className="k2k-surface group flex items-start gap-4 rounded-2xl border-l-2 border-l-k2k-blue/25 p-5">
                     <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed] transition duration-300 group-hover:scale-105 group-hover:border-k2k-blue/20">
@@ -298,7 +298,7 @@ function ContactPage() {
                     </span>
                     <div>
                       <p className="text-ink">{BUSINESS.address}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{BUSINESS.serviceArea}</p>
+                      <p className="mt-1 text-sm text-k2k-navy/90">{BUSINESS.serviceArea}</p>
                     </div>
                   </li>
                 </ul>
@@ -382,7 +382,7 @@ function ContactPage() {
                     <p className="font-display text-lg leading-snug text-k2k-navy">
                       &ldquo;I look forward to baking for you.&rdquo;
                     </p>
-                    <footer className="mt-2 text-sm text-muted-foreground">
+                    <footer className="mt-2 text-sm text-k2k-navy/90">
                       — {BUSINESS.owner}, {BUSINESS.name}
                     </footer>
                   </div>

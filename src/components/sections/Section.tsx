@@ -195,7 +195,7 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:mt-5 sm:text-lg sm:leading-relaxed",
+            "mt-4 text-base leading-relaxed text-k2k-navy/90 text-pretty sm:mt-5 sm:text-lg sm:leading-relaxed",
             align === "center" && "mx-auto max-w-2xl",
           )}
         >

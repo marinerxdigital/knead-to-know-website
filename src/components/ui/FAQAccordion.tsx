@@ -44,7 +44,7 @@ function FAQAccordionList({
         >
           <AccordionTrigger
             className={cn(
-              "relative px-5 py-4 text-left font-display text-lg text-ink transition-colors duration-300 hover:no-underline sm:px-6 sm:py-5 sm:text-xl",
+              "relative px-5 py-4 text-left text-lg font-medium text-ink transition-colors duration-300 hover:no-underline sm:px-6 sm:py-5 sm:text-xl",
               "before:absolute before:inset-y-3 before:left-0 before:w-1 before:rounded-r-full before:bg-transparent before:transition-colors before:duration-300",
               "[&[data-state=open]]:text-k2k-navy [&[data-state=open]]:before:bg-wheat",
               "[&>svg]:text-k2k-blue/60 [&>svg]:transition-transform [&>svg]:duration-300 [&>svg]:ease-out",
@@ -52,7 +52,7 @@ function FAQAccordionList({
           >
             <span className="pr-4 leading-snug">{item.q}</span>
           </AccordionTrigger>
-          <AccordionContent className="px-5 pb-5 text-base leading-relaxed text-muted-foreground transition-opacity duration-300 sm:px-6 sm:pb-6">
+          <AccordionContent className="px-5 pb-5 text-sm leading-relaxed text-k2k-navy/90 transition-opacity duration-300 sm:px-6 sm:pb-6">
             <div className="border-t border-k2k-blue/10 pt-4">{item.a}</div>
           </AccordionContent>
         </AccordionItem>

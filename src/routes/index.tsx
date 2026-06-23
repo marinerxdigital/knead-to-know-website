@@ -253,12 +253,12 @@ function HomePage() {
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="h-px w-6 bg-k2k-black/15" aria-hidden="true" />
-                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-ink text-balance sm:text-xs sm:tracking-[0.24em]">
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue text-balance sm:tracking-[0.24em]">
                   {BUSINESS.city}
                 </p>
                 <span className="h-1 w-1 shrink-0 rounded-full bg-wheat" aria-hidden="true" />
               </div>
-              <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-ink sm:text-[11px] sm:tracking-[0.22em]">
+              <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-k2k-navy sm:tracking-[0.22em]">
                 Serving {BUSINESS.serviceArea}
               </p>
             </div>
@@ -268,7 +268,7 @@ function HomePage() {
             Fresh Sourdough Baked to Order on Daniel Island
           </h1>
 
-          <p className="k2k-stagger-3 mt-5 max-w-xl text-base leading-relaxed text-ink/75 text-pretty sm:mt-6 sm:text-lg md:text-xl">
+          <p className="k2k-stagger-3 mt-5 max-w-xl text-base leading-relaxed text-ink text-pretty sm:mt-6 sm:text-lg md:text-xl">
             Artisan sourdough breads, cookies, and bagels — {BUSINESS.orderingModel.toLowerCase()},
             baked fresh by {BUSINESS.owner}.
           </p>
@@ -326,7 +326,7 @@ function HomePage() {
                     aria-hidden
                   />
                 </span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/75 transition-colors duration-300 group-hover:text-k2k-navy">
+                <span className="text-xs font-medium uppercase tracking-[0.16em] text-k2k-navy transition-colors duration-300 group-hover:text-k2k-blue">
                   {item.label}
                 </span>
               </div>
@@ -352,10 +352,10 @@ function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:items-end lg:gap-12">
             <ScrollReveal delay={0}>
               <div className="lg:pb-2">
-                <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-k2k-harbor">
+                <p className="text-xs font-medium uppercase tracking-[0.28em] text-k2k-blue">
                   What we bake
                 </p>
-                <p className="mt-6 max-w-[12rem] font-display text-2xl leading-snug text-k2k-navy/70 sm:text-3xl">
+                <p className="mt-6 max-w-[12rem] font-display text-2xl leading-snug text-k2k-navy/80 sm:text-3xl">
                   From the oven, by request
                 </p>
               </div>
@@ -393,7 +393,7 @@ function HomePage() {
         />
         <ScrollReveal delay={0}>
           <div className="k2k-surface mx-auto mt-8 max-w-xl rounded-2xl px-6 py-4 text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-k2k-navy/80">
               Phone:{" "}
               <a href={BUSINESS.phoneTel} className="font-medium text-k2k-blue hover:text-k2k-navy">
                 {BUSINESS.phone}
@@ -420,7 +420,7 @@ function HomePage() {
                     </span>
                   </div>
                   <h3 className="font-display text-xl text-ink">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-sm leading-relaxed text-k2k-navy/80">
                     {step.description}
                   </p>
                 </li>
@@ -531,13 +531,13 @@ function HomePage() {
                     className="k2k-icon-hover h-9 w-9 object-contain opacity-80"
                     aria-hidden
                   />
-                  <p className="text-[9px] font-medium uppercase tracking-[0.22em] text-k2k-blue/55">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
                     Photo coming soon
                   </p>
                 </div>
               </div>
               <p className="font-display text-2xl text-ink">{BUSINESS.owner}</p>
-              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-k2k-blue/70">
+              <p className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-k2k-blue">
                 Founder &amp; Baker · Est. {BUSINESS.established}
               </p>
               <HarborLine className="mx-auto mt-8 w-36" />
@@ -570,13 +570,13 @@ function HomePage() {
                     aria-hidden
                   />
                 </div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/70">
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
                   {item.eyebrow}
                 </p>
                 <h3 className="mt-3 font-display text-2xl text-ink transition group-hover:text-k2k-blue">
                   {item.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/80">
                   {item.text}
                 </p>
                 <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-k2k-blue">
@@ -623,7 +623,7 @@ function HomePage() {
                   <WheatScoringMark className="k2k-float-gentle w-14 opacity-35 sm:w-16" />
                 </div>
                 <p className="mt-5 font-display text-lg text-ink">Neighbor story #{item.n}</p>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/80">
                   Testimonial coming soon — we're baking relationships one loaf at a time.
                 </p>
               </div>
@@ -654,7 +654,7 @@ function HomePage() {
                     className="k2k-icon-hover h-5 w-5 opacity-70"
                     aria-hidden
                   />
-                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-blue/75">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
                     Ordering &amp; pickup
                   </p>
                 </div>

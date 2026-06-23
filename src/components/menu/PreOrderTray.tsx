@@ -37,7 +37,7 @@ function TrayContent({
           <ShoppingBag className="h-5 w-5 text-k2k-blue" aria-hidden />
           <h2 className="font-display text-xl text-ink">Pre-Order Tray</h2>
         </div>
-        <p className="mt-1 text-xs text-muted-foreground">
+        <p className="mt-1 text-xs text-k2k-navy">
           {BUSINESS.orderingModel} · {BUSINESS.fulfillment}
         </p>
       </div>
@@ -48,11 +48,11 @@ function TrayContent({
             <ShoppingCart className="h-6 w-6 text-k2k-blue" aria-hidden />
           </span>
           <p className="font-display text-xl text-ink">Your tray is empty</p>
-          <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-k2k-navy/90">
             Tap any menu item to add it here. When you&apos;re ready, text Wendy your tray — no
             checkout, just a quick SMS.
           </p>
-          <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-k2k-blue/80">
+          <p className="mt-3 text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy">
             Pre-order only · Baked fresh to order
           </p>
           <a
@@ -76,7 +76,7 @@ function TrayContent({
                     <p className="truncate font-display text-sm text-ink">
                       {orderDisplayName(line.product)}
                     </p>
-                    <p className="text-[10px] uppercase tracking-wider text-k2k-blue/80">
+                    <p className="text-xs uppercase tracking-wider text-k2k-navy">
                       {line.product.priceLabel}
                     </p>
                   </div>
@@ -107,14 +107,14 @@ function TrayContent({
 
           <div className="border-t border-k2k-black/10 px-5 py-4 sm:px-6">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/90">
                 Estimated Total
               </span>
               <span className="font-display text-2xl tabular-nums text-ink">
                 {formatMoney(total)}
               </span>
             </div>
-            <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-xs leading-relaxed text-k2k-navy/90">
               Final order timing and availability are confirmed directly with Wendy.
             </p>
 
@@ -219,7 +219,7 @@ export function PreOrderTrayMobile({
                 {count > 0 ? (
                   <p className="text-xs tabular-nums text-k2k-blue">Est. {formatMoney(total)}</p>
                 ) : (
-                  <p className="truncate text-xs text-muted-foreground">
+                  <p className="truncate text-xs text-k2k-navy">
                     Tap items to build your tray
                   </p>
                 )}

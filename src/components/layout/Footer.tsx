@@ -59,7 +59,7 @@ function NewsletterPlaceholder() {
             Stay in the loop
           </p>
           <p className="mt-1 font-display text-lg text-ink">Join our neighbor list — coming soon</p>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="k2k-text-secondary mt-1 text-sm">
             Seasonal drops, pickup reminders, and bakery news for Daniel Island neighbors.
           </p>
         </div>
@@ -67,7 +67,7 @@ function NewsletterPlaceholder() {
           className="flex w-full shrink-0 items-center gap-3 rounded-full border border-[#111111] bg-[#f8f4ed]/60 px-5 py-3 sm:w-auto"
           aria-hidden="true"
         >
-          <span className="text-sm text-muted-foreground/70">your@email.com</span>
+          <span className="k2k-text-secondary text-sm">your@email.com</span>
           <span className="ml-auto rounded-full bg-k2k-blue/10 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-k2k-navy/60">
             Soon
           </span>
@@ -100,7 +100,7 @@ export function Footer() {
               </p>
             </div>
           </div>
-          <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
+          <p className="k2k-text-secondary mt-6 max-w-xs text-sm leading-relaxed">
             Freshly baked sourdough bread, cookies, and bagels by pre-order only. Daniel Island,
             South Carolina.
           </p>
@@ -117,7 +117,7 @@ export function Footer() {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="inline-flex min-h-11 items-center py-1 text-sm font-medium text-ink/75 transition-colors hover:text-k2k-blue"
+                  className="k2k-text-secondary inline-flex min-h-11 items-center py-1 text-sm font-medium transition-colors hover:text-k2k-blue"
                 >
                   {link.label}
                 </Link>
@@ -137,7 +137,7 @@ export function Footer() {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="inline-flex min-h-11 items-center py-1 text-sm font-medium text-ink/75 transition-colors hover:text-k2k-blue"
+                  className="k2k-text-secondary inline-flex min-h-11 items-center py-1 text-sm font-medium transition-colors hover:text-k2k-blue"
                 >
                   {link.label}
                 </Link>
@@ -152,13 +152,13 @@ export function Footer() {
             <Mail className="h-3.5 w-3.5 shrink-0" aria-hidden />
             Contact
           </h4>
-          <ul className="mt-4 space-y-2.5 text-sm text-ink/80 sm:mt-5 sm:space-y-3">
+          <ul className="k2k-text-body mt-4 space-y-2.5 text-sm sm:mt-5 sm:space-y-3">
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-k2k-blue" />
               <span>
                 {BUSINESS.address}
                 <br />
-                <span className="text-muted-foreground">{BUSINESS.serviceArea}</span>
+                <span className="k2k-text-secondary">{BUSINESS.serviceArea}</span>
               </span>
             </li>
             {BUSINESS.phone && (
@@ -197,7 +197,7 @@ export function Footer() {
               </li>
             )}
             {!BUSINESS.email && !BUSINESS.instagramUrl && BUSINESS.phone && (
-              <li className="text-muted-foreground">
+              <li className="k2k-text-secondary">
                 Call{" "}
                 <a href={BUSINESS.phoneTel} className="underline hover:text-k2k-blue">
                   {BUSINESS.phone}
@@ -218,7 +218,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-k2k-blue/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-muted-foreground sm:flex-row sm:px-8">
+        <div className="k2k-text-secondary mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs sm:flex-row sm:px-8">
           <p>© 2026 {BUSINESS.name} · Baked with love on Daniel Island, SC</p>
           {BUSINESS.instagramUrl ? (
             <a

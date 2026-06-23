@@ -140,7 +140,7 @@ export function PageHero({
             )}
           >
             <span className="h-px w-8 bg-k2k-black/20" aria-hidden />
-            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue sm:text-xs sm:tracking-[0.24em]">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue sm:tracking-[0.24em]">
               {eyebrow}
             </p>
             {WHEAT_SVG}
@@ -158,7 +158,7 @@ export function PageHero({
           {intro && (
             <p
               className={cn(
-                "k2k-stagger-3 mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:mt-5 sm:text-lg md:text-xl",
+                "k2k-stagger-3 mt-4 text-base leading-relaxed text-k2k-navy/90 text-pretty sm:mt-5 sm:text-lg md:text-xl",
                 isCenter ? "mx-auto max-w-2xl" : "max-w-2xl",
               )}
             >

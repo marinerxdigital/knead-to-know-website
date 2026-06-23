@@ -149,7 +149,7 @@ function IconSectionHeading({
           </h2>
           <HarborLine className="mt-4 h-2 w-28 sm:mt-5" />
           {intro && (
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:mt-5 sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-k2k-navy/90 text-pretty sm:mt-5 sm:text-lg">
               {intro}
             </p>
           )}
@@ -183,8 +183,8 @@ function MapPlaceholder({ variant = "light" }: { variant?: "light" | "dark" }) {
         />
         <p
           className={cn(
-            "text-[11px] font-medium uppercase tracking-[0.2em]",
-            isDark ? "text-white/65" : "text-k2k-navy/70",
+            "text-xs font-medium uppercase tracking-[0.2em]",
+            isDark ? "text-white/65" : "text-k2k-navy/90",
           )}
         >
           Pickup area · Daniel Island, SC
@@ -232,7 +232,7 @@ function MapPlaceholder({ variant = "light" }: { variant?: "light" | "dark" }) {
         <p
           className={cn(
             "relative max-w-xs text-sm",
-            isDark ? "text-white/60" : "text-muted-foreground",
+            isDark ? "text-white/60" : "text-k2k-navy/90",
           )}
         >
           {BUSINESS.address}. Exact pickup details confirmed after your order.
@@ -294,10 +294,10 @@ function AboutPage() {
                 <img src={ICONS.wheat} alt="" className="h-10 w-10 opacity-50" aria-hidden />
               </div>
               <p className="mt-6 font-display text-2xl text-ink">{BUSINESS.owner}</p>
-              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-k2k-blue/80">
+              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-k2k-blue">
                 Founder &amp; Baker · Est. {BUSINESS.established}
               </p>
-              <p className="mt-4 text-[10px] uppercase tracking-[0.18em] text-muted-foreground/80">
+              <p className="mt-4 text-xs uppercase tracking-[0.18em] text-k2k-navy/90">
                 Founder photo coming soon
               </p>
             </div>
@@ -317,7 +317,7 @@ function AboutPage() {
               eyebrow="The bakery"
               title="Freshly baked to order"
             />
-            <div className="k2k-accent-rail k2k-surface mt-6 space-y-4 rounded-2xl border-t-2 border-t-k2k-blue/25 p-5 pl-5 text-base leading-[1.75] text-muted-foreground sm:mt-8 sm:space-y-5 sm:p-7 sm:pl-7">
+            <div className="k2k-accent-rail k2k-surface mt-6 space-y-4 rounded-2xl border-t-2 border-t-k2k-blue/25 p-5 pl-5 text-base leading-relaxed text-k2k-navy/90 sm:mt-8 sm:space-y-5 sm:p-7 sm:pl-7">
               <p>
                 {BUSINESS.name} is run by {BUSINESS.owner} on Daniel Island, South Carolina. Every
                 loaf, cookie, and bagel is baked fresh to order — pre-orders only.
@@ -369,7 +369,7 @@ function AboutPage() {
                     </div>
                     <div>
                       <h3 className="font-display text-lg text-ink">{item.title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      <p className="mt-1.5 text-sm leading-relaxed text-k2k-navy/90">
                         {item.desc}
                       </p>
                     </div>
@@ -411,7 +411,7 @@ function AboutPage() {
                   >
                     <div className="k2k-surface k2k-hover-lift rounded-2xl border-t-2 border-t-k2k-blue/15 p-4 transition duration-300 hover:border-t-k2k-blue/35 sm:p-5">
                       <h3 className="font-display text-lg text-ink">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">
                         {step.desc}
                       </p>
                     </div>
@@ -443,7 +443,7 @@ function AboutPage() {
                   />
                 </div>
                 <h3 className="mt-5 font-display text-xl text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">{item.desc}</p>
               </div>
             </ScrollReveal>
           ))}

@@ -44,17 +44,17 @@ export function ProductDetailDialog({
         )}
         <div className="overflow-y-auto overscroll-contain p-6 sm:p-8">
           <DialogHeader>
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-k2k-navy">
               {product.displayCategory}
             </p>
             <DialogTitle className="font-display text-2xl text-ink">{product.name}</DialogTitle>
-            <DialogDescription className="text-base text-muted-foreground">
+            <DialogDescription className="text-base leading-relaxed text-k2k-navy/90">
               {product.description || `${product.priceLabel} · ${product.unitLabel}`}
             </DialogDescription>
           </DialogHeader>
 
           {product.ingredients && (
-            <p className="mt-4 text-sm leading-relaxed text-k2k-navy/75">
+            <p className="mt-4 text-sm leading-relaxed text-k2k-navy/90">
               <span className="font-medium uppercase tracking-[0.1em] text-k2k-navy">
                 Ingredients:{" "}
               </span>
@@ -64,7 +64,7 @@ export function ProductDetailDialog({
 
           <div className="mt-6 flex items-center justify-between rounded-2xl border border-k2k-black bg-k2k-cream/50 px-4 py-3">
             <span className="font-display text-xl tabular-nums text-ink">{product.priceLabel}</span>
-            <span className="text-xs uppercase tracking-wider text-muted-foreground">
+            <span className="text-xs uppercase tracking-wider text-k2k-navy/90">
               per {product.unitLabel}
             </span>
           </div>

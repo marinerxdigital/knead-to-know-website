@@ -15,12 +15,12 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "min-h-12 h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
+  "min-h-12 h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-all duration-300 placeholder:text-k2k-navy/50 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
 
 const textareaClass =
-  "min-h-[120px] w-full resize-y rounded-xl border border-[#111] bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
+  "min-h-[120px] w-full resize-y rounded-xl border border-[#111] bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-all duration-300 placeholder:text-k2k-navy/50 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:shadow-[0_4px_20px_-6px_rgba(17,17,17,0.12)] focus:outline-none";
 
-const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70 block mb-1.5";
+const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-ink block mb-1.5";
 
 const STEPS = [
   { num: 1, label: "Choose bakes", short: "Choose" },
@@ -359,7 +359,7 @@ function CustomOrdersPage() {
               </span>
             )}
           </div>
-          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-k2k-navy/90">
             Tap any card to add or remove. You can select multiple items — don&apos;t see exactly
             what you want? Add details in the special instructions field below.
           </p>
@@ -476,7 +476,7 @@ function CustomOrdersPage() {
                         {selectedProducts.map((p) => p.name).join(" • ")}
                       </span>
                     ) : (
-                      <span className="text-muted-foreground">
+                      <span className="text-k2k-navy/85">
                         Select items above or describe your request below.
                       </span>
                     )}
@@ -574,7 +574,7 @@ function CustomOrdersPage() {
                 <div>
                   <label className={labelClass}>Preferred contact method</label>
                   <div className="flex gap-6 text-sm">
-                    <label className="flex cursor-pointer items-center gap-2">
+                    <label className="flex cursor-pointer items-center gap-2 font-medium text-ink">
                       <input
                         type="radio"
                         name="contactMethod"
@@ -585,7 +585,7 @@ function CustomOrdersPage() {
                       />
                       Email
                     </label>
-                    <label className="flex cursor-pointer items-center gap-2">
+                    <label className="flex cursor-pointer items-center gap-2 font-medium text-ink">
                       <input
                         type="radio"
                         name="contactMethod"
@@ -630,7 +630,7 @@ function CustomOrdersPage() {
                     )}
                   </button>
 
-                  <p className="pt-3 text-center text-[10px] leading-relaxed text-muted-foreground">
+                  <p className="pt-3 text-center text-sm leading-relaxed text-k2k-navy/85">
                     This is a request. We will reply to confirm pricing, exact availability, and
                     timing. Standard pricing from menu applies unless custom work is required.
                   </p>
@@ -647,7 +647,7 @@ function CustomOrdersPage() {
         <ScrollReveal delay={1}>
           <div className="k2k-surface max-w-prose rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-sm">
             <p className="font-display text-lg text-ink">Need something larger or different?</p>
-            <p className="mt-2 leading-relaxed text-muted-foreground">
+            <p className="mt-2 leading-relaxed text-k2k-navy/90">
               We also handle full catering spreads, corporate orders, and seasonal specials. Visit
               our{" "}
               <Link to="/catering" className="font-medium text-k2k-blue hover:text-k2k-navy">

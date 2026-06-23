@@ -37,7 +37,7 @@ export function MenuBuilderCard({
         className="flex flex-1 flex-col text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-k2k-blue focus-visible:ring-offset-2"
       >
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-k2k-black bg-[#f8fafc]">
-          <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-k2k-black bg-white/95 px-2 py-1 text-[8px] font-medium uppercase tracking-[0.14em] text-k2k-navy">
+          <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full border border-k2k-black bg-white/95 px-2 py-1 text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy">
             <img src={CATEGORY_ICONS[product.category]} alt="" className="h-3 w-3" aria-hidden />
             {product.displayCategory}
           </span>
@@ -69,11 +69,11 @@ export function MenuBuilderCard({
               {product.priceLabel}
             </span>
           </div>
-          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.14em] text-k2k-blue/80">
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy">
             Freshly baked to order
           </p>
           {product.description ? (
-            <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-k2k-navy/90">
               {product.description}
             </p>
           ) : (
@@ -94,7 +94,7 @@ export function MenuBuilderCard({
       </div>
 
       {trayQuantity > 0 && (
-        <p className="pb-1 pt-2 text-center text-[10px] font-medium uppercase tracking-wider text-k2k-blue">
+        <p className="pb-1 pt-2 text-center text-xs font-medium uppercase tracking-wider text-k2k-navy">
           {trayQuantity} in tray
         </p>
       )}

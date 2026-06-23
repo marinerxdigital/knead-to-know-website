@@ -15,10 +15,10 @@ const ACCESS_KEY =
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const fieldClass =
-  "min-h-12 h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
+  "min-h-12 h-12 w-full rounded-xl border border-[#111] bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-k2k-navy/50 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
 
 const textareaClass =
-  "min-h-[120px] w-full resize-y rounded-xl border border-[#111] bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-colors placeholder:text-muted-foreground/60 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
+  "min-h-[120px] w-full resize-y rounded-xl border border-[#111] bg-white px-4 py-3.5 text-sm leading-relaxed shadow-sm transition-colors placeholder:text-k2k-navy/50 focus:border-[#111] focus:ring-2 focus:ring-[#111]/10 focus:outline-none";
 
 const CATERING_SERVICES = [
   {
@@ -225,7 +225,7 @@ function CateringPage() {
               <h1 className="mt-4 font-display text-4xl leading-[1.05] text-ink sm:text-5xl">
                 Thank you — we&apos;ll be in touch soon.
               </h1>
-              <p className="mt-5 leading-relaxed text-muted-foreground">
+              <p className="mt-5 leading-relaxed text-k2k-navy/90">
                 Your catering request is on its way to Wendy. We will contact you shortly to confirm
                 menu selections, quantities, timing, and delivery or pickup arrangements for your
                 event on Daniel Island.
@@ -308,7 +308,7 @@ function CateringPage() {
                   </span>
                 </div>
                 <h3 className="mt-5 font-display text-xl text-ink">{service.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/90">
                   {service.desc}
                 </p>
                 <div
@@ -354,7 +354,7 @@ function CateringPage() {
                     </span>
                   </div>
                   <h3 className="font-display text-xl text-ink">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">
                     {step.description}
                   </p>
                 </li>
@@ -499,7 +499,7 @@ function CateringPage() {
                 {submitting ? "Sending…" : "Submit Catering Request"}
                 <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
               </button>
-              <p className="text-center text-xs text-muted-foreground">
+              <p className="text-center text-sm text-k2k-navy/85">
                 We reply within 1 business day to finalize details and availability.
               </p>
             </form>
@@ -509,7 +509,7 @@ function CateringPage() {
 
       <Section bg="beige" reveal={false}>
         <ScrollReveal delay={1}>
-          <p className="k2k-surface mx-auto max-w-md rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-center text-sm text-muted-foreground">
+          <p className="k2k-surface mx-auto max-w-md rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 text-center text-sm text-k2k-navy/90">
             For simple menu items in smaller quantities, you can also use the{" "}
             <Link to="/custom-orders" className="font-medium text-k2k-blue hover:text-k2k-navy">
               Custom Orders form

@@ -128,7 +128,7 @@ function GalleryPage() {
                     <HarborLine className="mt-2 h-2 w-24" />
                   </div>
                 </div>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">
                   {photoCount} of {currentItems.length} items photographed
                 </p>
               </div>
@@ -238,7 +238,7 @@ function GalleryPage() {
                               aria-hidden
                             />
                           </span>
-                          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-k2k-blue/50">
+                          <p className="text-xs font-medium uppercase tracking-[0.2em] text-k2k-navy/90">
                             Photo coming soon
                           </p>
                         </div>
@@ -250,8 +250,13 @@ function GalleryPage() {
                         {product.name}
                       </h3>
                       {product.price && (
-                        <p className="mt-1 text-sm font-medium tabular-nums text-k2k-navy">
+                        <p className="mt-1 text-xs font-medium tabular-nums text-k2k-navy sm:text-sm">
                           {product.price}
+                        </p>
+                      )}
+                      {product.description && (
+                        <p className="mt-1.5 text-sm leading-relaxed text-k2k-navy/90 line-clamp-2">
+                          {product.description}
                         </p>
                       )}
                     </div>
@@ -274,7 +279,7 @@ function GalleryPage() {
                 />
               </span>
               <p className="mt-4 font-display text-xl text-ink">Photos coming soon</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">
                 We&apos;re capturing this category next. In the meantime, explore our menu or
                 request a custom order.
               </p>

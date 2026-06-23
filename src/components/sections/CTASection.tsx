@@ -157,7 +157,7 @@ export function CTASection({
           >
             {/* Text block */}
             <ScrollReveal delay={1} className="text-center lg:text-left">
-              <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-white/75 sm:text-sm">
+              <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-white sm:text-sm">
                 <span
                   className="relative hidden h-px w-10 overflow-hidden lg:block"
                   aria-hidden="true"
@@ -187,7 +187,7 @@ export function CTASection({
               </h2>
               <p
                 className={cn(
-                  "mx-auto mt-4 max-w-xl leading-relaxed text-white/85 text-pretty sm:mt-6 lg:mx-0",
+                  "mx-auto mt-4 max-w-xl leading-relaxed text-white text-pretty sm:mt-6 lg:mx-0",
                   compact ? "text-sm sm:text-base" : "text-sm sm:text-lg",
                 )}
               >
@@ -251,7 +251,7 @@ export function CTASection({
 
               <div className="mt-1 hidden items-center gap-3 lg:flex" aria-hidden="true">
                 <ScoringLine className="w-12 text-wheat/40" delay="0.5s" />
-                <span className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-wheat/75">
+                <span className="text-xs font-medium uppercase tracking-[0.3em] text-wheat">
                   Pre-order only
                 </span>
                 <img src={BREAD_ICON} alt="" className="k2k-icon-hover h-4 w-4 opacity-50" />

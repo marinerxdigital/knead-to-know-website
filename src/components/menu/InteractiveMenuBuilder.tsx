@@ -78,7 +78,7 @@ export function InteractiveMenuBuilder() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-3 sm:px-8">
           <p className="text-sm text-ink">
             <span className="font-medium">{BUSINESS.orderingModel}</span>
-            <span className="text-muted-foreground"> · Tap items to build your tray</span>
+            <span className="text-k2k-navy/90"> · Tap items to build your tray</span>
           </p>
           <a
             href={BUSINESS.phoneTel}
@@ -105,7 +105,7 @@ export function InteractiveMenuBuilder() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search breads, cookies, bagels…"
                 aria-label="Search menu"
-                className="h-11 min-h-[44px] w-full rounded-full border border-k2k-black bg-white pl-11 pr-4 text-sm text-ink placeholder:text-muted-foreground/70 transition focus:border-k2k-blue focus:outline-none focus:ring-2 focus:ring-k2k-blue/25 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/30"
+                className="h-11 min-h-[44px] w-full rounded-full border border-k2k-black bg-white pl-11 pr-4 text-sm text-ink placeholder:text-k2k-navy/50 transition focus:border-k2k-blue focus:outline-none focus:ring-2 focus:ring-k2k-blue/25 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/30"
               />
             </div>
 
@@ -122,7 +122,7 @@ export function InteractiveMenuBuilder() {
                   aria-selected={category === cat.id}
                   onClick={() => setCategory(cat.id)}
                   className={cn(
-                    "group inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-[10px] font-medium uppercase tracking-[0.1em] transition duration-300 sm:px-4 sm:text-xs",
+                    "group inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-medium uppercase tracking-[0.1em] transition duration-300 sm:px-4",
                     category === cat.id
                       ? "border-k2k-black bg-k2k-blue text-white shadow-sm"
                       : "border-k2k-black bg-white text-k2k-navy hover:bg-k2k-blue/5",
@@ -156,7 +156,7 @@ export function InteractiveMenuBuilder() {
             {filtered.length === 0 ? (
               <div className="k2k-surface rounded-[2rem] border-dashed px-8 py-16 text-center">
                 <p className="font-display text-2xl text-ink">No bakes match your search</p>
-                <p className="mt-2 text-muted-foreground">Try a different term or category.</p>
+                <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">Try a different term or category.</p>
                 <button
                   type="button"
                   onClick={() => {

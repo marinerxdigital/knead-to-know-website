@@ -129,7 +129,8 @@
   --secondary: #6a9ec0;
   --secondary-foreground: #111111;
   --muted: #f8fafc;
-  --muted-foreground: #4b5563;
+  --muted-foreground: #3d4f5f;
+  --k2k-text-secondary: rgb(31 52 71 / 0.88);
   --accent: #3b6e91;
   --accent-foreground: #ffffff;
   --destructive: #b3261e;
@@ -382,7 +383,15 @@
   line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  color: var(--k2k-blue);
+  color: #3b6e91;
+}
+
+.k2k-text-body {
+  color: var(--k2k-navy);
+}
+
+.k2k-text-secondary {
+  color: var(--k2k-text-secondary);
 }
 
 @media (min-width: 640px) {

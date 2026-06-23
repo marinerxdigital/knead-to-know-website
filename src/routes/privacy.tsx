@@ -201,7 +201,7 @@ function PrivacyPage() {
       <Section bg="beige" reveal={false}>
         <ScrollReveal>
           <div className="mx-auto min-w-0 max-w-prose space-y-6 sm:max-w-2xl lg:max-w-[42rem]">
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed">
+            <p className="text-base leading-relaxed text-k2k-navy/90 sm:text-lg sm:leading-relaxed">
               This policy explains how we handle information you share when you contact us or submit
               an order request. Plain language, no fine print surprises.
             </p>
@@ -244,7 +244,7 @@ function PrivacyPage() {
                   className={cn("k2k-surface scroll-mt-28 rounded-[1.75rem] p-6 sm:p-8")}
                 >
                   <PrivacySectionHeading icon={section.icon}>{section.title}</PrivacySectionHeading>
-                  <div className="mt-5 border-t border-[#111]/8 pt-5 text-[0.9375rem] leading-[1.75] text-muted-foreground sm:text-base sm:leading-[1.8]">
+                  <div className="mt-5 border-t border-[#111]/8 pt-5 text-[0.9375rem] leading-[1.75] text-k2k-navy/90 sm:text-base sm:leading-[1.8]">
                     {section.content}
                   </div>
                 </article>
