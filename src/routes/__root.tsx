@@ -203,6 +203,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const showMobileBar = isMobileOrderBarVisible(pathname);
+  const showMenuTrayPad = pathname === "/menu";
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -213,11 +214,15 @@ function RootComponent() {
         <Header />
         <main
           id="main-content"
-          className={cn("k2k-page-enter flex-1", showMobileBar && "k2k-main-mobile-pad")}
+          className={cn(
+            "k2k-page-enter flex-1",
+            showMobileBar && "k2k-main-mobile-pad",
+            showMenuTrayPad && "k2k-main-menu-tray-pad",
+          )}
         >
           <Outlet />
         </main>
-        <Footer showMobileBarOffset={showMobileBar} />
+        <Footer showMobileBarOffset={showMobileBar} showMenuTrayOffset={showMenuTrayPad} />
         <MobileOrderBar />
         <Toaster />
       </div>

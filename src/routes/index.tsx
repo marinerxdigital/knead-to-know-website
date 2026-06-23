@@ -337,7 +337,7 @@ function HomePage() {
       <SectionDivider bg="cream" accent="wheat" />
 
       {/* 3. Featured products */}
-      <Section bg="white" variant="editorial">
+      <Section bg="white" variant="editorial" className="!overflow-visible">
         <div className="relative">
           <WheatScoringMark className="k2k-float-gentle absolute -left-2 top-0 w-20 opacity-60 sm:w-24" />
           <img

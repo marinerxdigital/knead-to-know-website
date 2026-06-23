@@ -374,7 +374,7 @@ function CateringPage() {
         </div>
       </Section>
 
-      <Section bg="white" variant="inset" id="catering-form">
+      <Section bg="white" id="catering-form">
         <ScrollReveal>
           <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-0 pl-5 shadow-[0_28px_60px_-44px_rgba(17,17,17,0.18)] sm:pl-7">
             <div className="border-b border-k2k-blue/10 px-6 py-8 sm:px-10 sm:py-10">

@@ -646,9 +646,19 @@
   padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
 }
 
+.k2k-main-menu-tray-pad {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.k2k-footer-menu-tray-pad {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
 @media (min-width: 768px) {
   .k2k-main-mobile-pad,
-  .k2k-footer-mobile-pad {
+  .k2k-footer-mobile-pad,
+  .k2k-main-menu-tray-pad,
+  .k2k-footer-menu-tray-pad {
     padding-bottom: 0;
   }
 }
@@ -1126,6 +1136,44 @@
   .k2k-tray-drawer-open .k2k-tray-drawer-panel {
     animation: none;
   }
+
+  .k2k-wave-flow-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* ── Coastal wave section divider — layered horizontal drift ── */
+@keyframes k2k-wave-flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.k2k-wave-flow-track {
+  animation: k2k-wave-flow 20s linear infinite;
+  will-change: transform;
+}
+
+.k2k-wave-layer-slow .k2k-wave-flow-track {
+  animation-duration: 22s;
+}
+
+.k2k-wave-layer-gold .k2k-wave-flow-track {
+  animation-duration: 26s;
+  animation-direction: reverse;
+}
+
+.k2k-wave-layer-fast .k2k-wave-flow-track {
+  animation-duration: 18s;
+}
+
+.k2k-section-divider {
+  isolation: isolate;
 }
 
 /* ── FAQ panel (balanced padding, natural height) ── */
@@ -1134,6 +1182,7 @@
   border: 1px solid #111111;
   border-radius: var(--k2k-radius-lg);
   box-shadow: var(--k2k-shadow-sm), var(--k2k-shadow-ring);
+  overflow: hidden;
 }
 
 .k2k-faq-panel-header {

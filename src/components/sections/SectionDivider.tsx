@@ -1,4 +1,4 @@
-import { KTK_DECOR } from "@/lib/design-assets";
+import { CoastalWaveDivider } from "@/components/decor/CoastalWaveDivider";
 import { cn } from "@/lib/utils";
 
 export function SectionDivider({
@@ -16,14 +16,11 @@ export function SectionDivider({
   }[bg];
 
   return (
-    <div className={cn(bgClass)} aria-hidden="true">
-      <img
-        src={KTK_DECOR.sectionDivider}
-        alt=""
-        className="h-auto w-full pointer-events-none select-none"
-        loading="lazy"
-        decoding="async"
-      />
+    <div
+      className={cn(bgClass, "k2k-section-divider py-1 sm:py-1.5")}
+      aria-hidden="true"
+    >
+      <CoastalWaveDivider />
     </div>
   );
 }

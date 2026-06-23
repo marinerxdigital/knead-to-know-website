@@ -475,16 +475,17 @@ function CustomOrdersPage() {
                       className={fieldClass}
                     />
                   </div>
-                  <div>
-                    <label className={labelClass}>Preferred pickup time</label>
-                    <input
-                      type="time"
-                      name="pickupTime"
-                      value={formData.pickupTime}
-                      onChange={handleChange}
-                      className={fieldClass}
-                    />
-                  </div>
+                </div>
+
+                <div>
+                  <label className={labelClass}>Preferred pickup time</label>
+                  <input
+                    type="time"
+                    name="pickupTime"
+                    value={formData.pickupTime}
+                    onChange={handleChange}
+                    className={fieldClass}
+                  />
                 </div>
 
                 <div>

@@ -78,12 +78,19 @@ function NewsletterPlaceholder() {
   );
 }
 
-export function Footer({ showMobileBarOffset = false }: { showMobileBarOffset?: boolean }) {
+export function Footer({
+  showMobileBarOffset = false,
+  showMenuTrayOffset = false,
+}: {
+  showMobileBarOffset?: boolean;
+  showMenuTrayOffset?: boolean;
+}) {
   return (
     <footer
       className={cn(
         "relative mt-0 overflow-hidden border-t border-k2k-black/[0.06] bg-[#f8f4ed]",
         showMobileBarOffset && "k2k-footer-mobile-pad",
+        showMenuTrayOffset && "k2k-footer-menu-tray-pad",
       )}
     >
       <img
