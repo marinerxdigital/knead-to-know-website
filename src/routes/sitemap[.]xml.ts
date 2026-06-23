@@ -8,7 +8,7 @@ interface SitemapEntry {
   priority?: string;
 }
 
-// Public, indexable routes only. Exclude /flavors-pricing (redirect-only).
+// Public, indexable routes only. Legacy paths redirect via public/_redirects.
 const ENTRIES: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
   { path: "/menu", changefreq: "weekly", priority: "0.9" },

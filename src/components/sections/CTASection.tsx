@@ -4,9 +4,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 type RouteTo =
-  | "/inquiry"
   | "/gallery"
-  | "/flavors"
   | "/about"
   | "/contact"
   | "/menu"

@@ -12,11 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MenuRouteImport } from './routes/menu'
-import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as FlavorsPricingRouteImport } from './routes/flavors-pricing'
-import { Route as FlavorsRouteImport } from './routes/flavors'
-import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CustomOrdersRouteImport } from './routes/custom-orders'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -39,29 +35,9 @@ const MenuRoute = MenuRouteImport.update({
   path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InquiryRoute = InquiryRouteImport.update({
-  id: '/inquiry',
-  path: '/inquiry',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FlavorsPricingRoute = FlavorsPricingRouteImport.update({
-  id: '/flavors-pricing',
-  path: '/flavors-pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FlavorsRoute = FlavorsRouteImport.update({
-  id: '/flavors',
-  path: '/flavors',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeaturedRoute = FeaturedRouteImport.update({
-  id: '/featured',
-  path: '/featured',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -102,11 +78,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/custom-orders': typeof CustomOrdersRoute
   '/faq': typeof FaqRoute
-  '/featured': typeof FeaturedRoute
-  '/flavors': typeof FlavorsRoute
-  '/flavors-pricing': typeof FlavorsPricingRoute
   '/gallery': typeof GalleryRoute
-  '/inquiry': typeof InquiryRoute
   '/menu': typeof MenuRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -118,11 +90,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/custom-orders': typeof CustomOrdersRoute
   '/faq': typeof FaqRoute
-  '/featured': typeof FeaturedRoute
-  '/flavors': typeof FlavorsRoute
-  '/flavors-pricing': typeof FlavorsPricingRoute
   '/gallery': typeof GalleryRoute
-  '/inquiry': typeof InquiryRoute
   '/menu': typeof MenuRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -135,11 +103,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/custom-orders': typeof CustomOrdersRoute
   '/faq': typeof FaqRoute
-  '/featured': typeof FeaturedRoute
-  '/flavors': typeof FlavorsRoute
-  '/flavors-pricing': typeof FlavorsPricingRoute
   '/gallery': typeof GalleryRoute
-  '/inquiry': typeof InquiryRoute
   '/menu': typeof MenuRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -153,11 +117,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-orders'
     | '/faq'
-    | '/featured'
-    | '/flavors'
-    | '/flavors-pricing'
     | '/gallery'
-    | '/inquiry'
     | '/menu'
     | '/privacy'
     | '/sitemap.xml'
@@ -169,11 +129,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-orders'
     | '/faq'
-    | '/featured'
-    | '/flavors'
-    | '/flavors-pricing'
     | '/gallery'
-    | '/inquiry'
     | '/menu'
     | '/privacy'
     | '/sitemap.xml'
@@ -185,11 +141,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-orders'
     | '/faq'
-    | '/featured'
-    | '/flavors'
-    | '/flavors-pricing'
     | '/gallery'
-    | '/inquiry'
     | '/menu'
     | '/privacy'
     | '/sitemap.xml'
@@ -202,11 +154,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomOrdersRoute: typeof CustomOrdersRoute
   FaqRoute: typeof FaqRoute
-  FeaturedRoute: typeof FeaturedRoute
-  FlavorsRoute: typeof FlavorsRoute
-  FlavorsPricingRoute: typeof FlavorsPricingRoute
   GalleryRoute: typeof GalleryRoute
-  InquiryRoute: typeof InquiryRoute
   MenuRoute: typeof MenuRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -235,39 +183,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/inquiry': {
-      id: '/inquiry'
-      path: '/inquiry'
-      fullPath: '/inquiry'
-      preLoaderRoute: typeof InquiryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flavors-pricing': {
-      id: '/flavors-pricing'
-      path: '/flavors-pricing'
-      fullPath: '/flavors-pricing'
-      preLoaderRoute: typeof FlavorsPricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flavors': {
-      id: '/flavors'
-      path: '/flavors'
-      fullPath: '/flavors'
-      preLoaderRoute: typeof FlavorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/featured': {
-      id: '/featured'
-      path: '/featured'
-      fullPath: '/featured'
-      preLoaderRoute: typeof FeaturedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -322,11 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomOrdersRoute: CustomOrdersRoute,
   FaqRoute: FaqRoute,
-  FeaturedRoute: FeaturedRoute,
-  FlavorsRoute: FlavorsRoute,
-  FlavorsPricingRoute: FlavorsPricingRoute,
   GalleryRoute: GalleryRoute,
-  InquiryRoute: InquiryRoute,
   MenuRoute: MenuRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
