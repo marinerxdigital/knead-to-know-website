@@ -10,6 +10,7 @@ const FOG_VARIANTS = {
   "wheat-bottom-right": "k2k-atmosphere-fog--wheat-bottom-right",
   "pink-top": "k2k-atmosphere-fog--pink-top",
   "cream-bottom-right": "k2k-atmosphere-fog--cream-bottom-right",
+  "harbor-top-soft": "k2k-atmosphere-fog--harbor-top-soft",
 } as const;
 
 export type AtmosphereFogVariant = keyof typeof FOG_VARIANTS;

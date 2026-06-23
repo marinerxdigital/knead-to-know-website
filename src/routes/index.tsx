@@ -12,6 +12,7 @@ import { BUSINESS, SITE_URL } from "@/lib/business";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BrandLogo } from "@/components/brand/BrandLogo";
+import { AtmosphereFog } from "@/components/decor/AtmosphereFog";
 import { FlourWashDecor } from "@/components/decor/FlourWashDecor";
 import { KTK_DECOR, KTK_ICONS } from "@/lib/design-assets";
 
@@ -489,9 +490,9 @@ function HomePage() {
                 loading="lazy"
                 aria-hidden
               />
-              <div
-                className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-k2k-harbor/8 to-transparent"
-                aria-hidden
+              <AtmosphereFog
+                variant="harbor-top-soft"
+                className="inset-x-0 top-0 bottom-auto h-28"
               />
               <img
                 src={KTK_ICONS.wheat}

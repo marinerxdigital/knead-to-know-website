@@ -4,6 +4,16 @@ Long-term project memory. **Update after every meaningful session.**
 
 ---
 
+## Animated Flour Wash & Atmosphere Fog (2026-06-23)
+
+- **Commit:** `725c547` · **Build:** PASS · **Deployed:** https://knead-to-know-website-v2.pages.dev
+- **`FlourWashDecor`** — animated watercolor flour wash PNG behind all `decorative` `SectionHeading`s (How It Works, Discover more, Neighbor stories, FAQ, menu/catering headings, hero headline)
+- **`AtmosphereFog`** — shared radial-gradient fog with `k2k-fog-wash-drift` (24s) / `k2k-fog-wash-drift-alt` (28s) motion
+- **Coverage:** `PageHero`, 404/error pages, about navy section, catering/custom-orders thank-you, `ImagePlaceholder`, product card `::before` harbor fog
+- **`prefers-reduced-motion`:** fog animations disabled site-wide
+
+---
+
 ## Animated Coastal Wave Divider + QA Pass (2026-06-23)
 
 - **Commit:** `85c0f60` · **Build:** PASS · **Deployed:** https://knead-to-know-website-v2.pages.dev

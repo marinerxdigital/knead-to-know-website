@@ -1343,3 +1343,7 @@
 .k2k-atmosphere-fog--cream-bottom-right {
   background: radial-gradient(ellipse at bottom right, rgba(245, 239, 230, 0.7), transparent 55%);
 }
+
+.k2k-atmosphere-fog--harbor-top-soft {
+  background: radial-gradient(ellipse at top, rgb(var(--k2k-harbor-rgb) / 0.08), transparent 60%);
+}
