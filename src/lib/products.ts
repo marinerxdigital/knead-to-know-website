@@ -1,6 +1,8 @@
 // src/lib/products.ts
 // Official Knead To Know product catalog — verified from Wendy's physical menu.
 
+import { PRODUCT_COPY } from "./product-copy";
+
 export type ProductCategory =
   | "bread"
   | "cookies"
@@ -14,11 +16,26 @@ export interface Product {
   name: string;
   category: ProductCategory;
   description: string;
+  ingredients?: string;
   price: string | null;
   cardAsset: string;
   photo?: string;
   featured?: boolean;
   preorderAvailable?: boolean;
+}
+
+function withCopy(
+  product: Omit<Product, "description" | "ingredients"> & {
+    description?: string;
+    ingredients?: string;
+  },
+): Product {
+  const copy = PRODUCT_COPY[product.id];
+  return {
+    ...product,
+    description: product.description ?? copy?.description ?? "",
+    ingredients: product.ingredients ?? copy?.ingredients,
+  };
 }
 
 const CARD_BASE = "/assets/knead-to-know/product-cards";
@@ -41,7 +58,7 @@ export const CATEGORY_PRICING: Record<"bread" | "cookies" | "bagels", string | n
   bagels: "$3 each",
 };
 
-export const PRODUCTS: Product[] = [
+const PRODUCTS_RAW = [
   // Sourdough Breads (7)
   {
     id: "plain-sourdough",
@@ -208,6 +225,8 @@ export const PRODUCTS: Product[] = [
     preorderAvailable: true,
   },
 ];
+
+export const PRODUCTS: Product[] = PRODUCTS_RAW.map(withCopy);
 
 export const FEATURED_BREADS = PRODUCTS.filter((p) => p.category === "bread" && p.featured);
 export const FEATURED_COOKIES = PRODUCTS.filter((p) => p.category === "cookies" && p.featured);

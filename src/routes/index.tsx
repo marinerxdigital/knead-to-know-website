@@ -7,8 +7,10 @@ import { K2KProductCard } from "@/components/ui/K2KProductCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { BAKERY_PHOTOS, HOME_FEATURED_PRODUCTS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
+import { cn } from "@/lib/utils";
 
 const LOGO_URL = "/assets/knead-to-know/logo/Knead_To_Know_Primary_Circular_Logo.png";
+const WHEAT_ICON = "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png";
 
 const TRUST_ITEMS = [
   {
@@ -20,6 +22,54 @@ const TRUST_ITEMS = [
   {
     icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
     label: "Pre-Orders Welcome",
+  },
+];
+
+const ORDER_STEPS = [
+  {
+    step: "01",
+    title: "Choose",
+    description: "Browse the menu and note your items and quantities.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
+  },
+  {
+    step: "02",
+    title: "Request",
+    description: "Call, text, DM, or submit an order request with your preferred pickup timing.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Calendar_Preorder_Icon.png",
+  },
+  {
+    step: "03",
+    title: "Wendy Bakes Fresh",
+    description: "Everything is baked to order in small batches — never pulled from a shelf.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
+  },
+  {
+    step: "04",
+    title: "Pickup",
+    description: "Collect on Daniel Island at your confirmed pickup time — warm, fresh, and ready.",
+    icon: "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
+  },
+];
+
+const PAGE_TEASERS = [
+  {
+    to: "/menu" as const,
+    eyebrow: "The menu",
+    title: "Signature sourdough bakes",
+    text: "Breads, cookies, and bagels with verified pricing — all pre-order.",
+  },
+  {
+    to: "/about" as const,
+    eyebrow: "Our story",
+    title: "Meet Wendy Mercado",
+    text: "Small-batch baking rooted on Daniel Island, SC.",
+  },
+  {
+    to: "/faq" as const,
+    eyebrow: "Questions",
+    title: "Ordering made clear",
+    text: "Pickup, timing, allergies, and catering — answered.",
   },
 ];
 
@@ -41,6 +91,45 @@ const HOME_FAQS = [
     a: "Yes. Visit our Catering page for cookie trays, bread baskets, brunch spreads, and event boxes.",
   },
 ];
+
+function WheatScoringMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 48" fill="none" aria-hidden className={cn("text-wheat/45", className)}>
+      <path
+        d="M4 38 C28 6 52 6 60 28 C68 6 92 6 116 38"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 32 C34 14 46 14 60 26 C74 14 86 14 102 32"
+        stroke="currentColor"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+      <path d="M60 28 V8" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function HarborLine({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 180 12"
+      fill="none"
+      aria-hidden
+      className={cn("text-k2k-harbor/60", className)}
+    >
+      <path
+        d="M2 8 C30 2 60 2 90 7 C120 2 150 2 178 8"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -72,72 +161,95 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      {/* 1. Hero */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-16 sm:px-8 sm:pt-24 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:pb-28">
-          <div>
+      {/* 1. Hero — full-bleed with warm overlay */}
+      <section className="relative min-h-[88vh] overflow-hidden">
+        <img
+          src={BAKERY_PHOTOS.hero}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#f8f4ed]/97 via-[#f8f4ed]/88 to-[#f8f4ed]/55 sm:from-[#f8f4ed]/95 sm:via-[#f8f4ed]/75 sm:to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-k2k-navy/25 via-transparent to-transparent"
+          aria-hidden
+        />
+
+        <WheatScoringMark className="absolute right-6 top-24 hidden w-28 opacity-40 lg:block xl:right-16" />
+
+        <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:max-w-[54rem] lg:py-28">
+          <div className="mb-8 flex items-center gap-4">
             <img
               src={LOGO_URL}
               alt="Knead To Know Bakery"
-              className="mb-6 h-24 w-24 rounded-full object-contain sm:h-28 sm:w-28"
+              className="h-16 w-16 rounded-full object-contain ring-2 ring-k2k-blue/25 ring-offset-4 ring-offset-[#f8f4ed]/80 sm:h-20 sm:w-20"
             />
-            <Eyebrow>Daniel Island, South Carolina</Eyebrow>
-            <h1 className="mt-4 font-display text-5xl leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
-              Fresh Sourdough, Cookies &amp; Bagels Baked To Order
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {BUSINESS.name} offers freshly baked sourdough bread, sourdough cookies, and sourdough
-              bagels by pre-order only.
-            </p>
-            <p className="mt-4 text-sm text-ink/70">
-              Run by {BUSINESS.owner} · Daniel Island, South Carolina · Est. {BUSINESS.established}
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                to="/custom-orders"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-k2k-blue px-7 text-sm font-medium text-white hover:bg-k2k-navy"
-              >
-                Request an Order
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/menu"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-k2k-blue/30 bg-white px-7 text-sm font-medium text-k2k-blue transition hover:border-k2k-blue/50"
-              >
-                View Menu
-              </Link>
-              <a
-                href={BUSINESS.phoneTel}
-                className="inline-flex h-12 items-center justify-center rounded-full border border-k2k-blue/30 bg-white px-7 text-sm font-medium text-k2k-blue transition hover:border-k2k-blue/50"
-              >
-                Call Wendy
-              </a>
+            <div>
+              <Eyebrow>Daniel Island, South Carolina</Eyebrow>
+              <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-navy/60">
+                Serving {BUSINESS.serviceArea}
+              </p>
             </div>
           </div>
-          <div className="relative">
-            <div className="overflow-hidden rounded-[2rem] bg-white p-2 ring-1 ring-k2k-blue/15 shadow-[0_30px_60px_-40px_rgba(79,126,168,0.35)]">
-              <img
-                src={BAKERY_PHOTOS.hero}
-                alt="Fresh sourdough breads, cookies, and bagels from Knead To Know home bakery on Daniel Island"
-                className="aspect-[4/5] w-full rounded-[1.6rem] object-cover"
-                width={900}
-                height={1125}
-              />
-            </div>
+
+          <h1 className="max-w-[16ch] font-display text-[clamp(2.5rem,6.5vw,4.75rem)] leading-[1.02] tracking-[-0.02em] text-ink">
+            Fresh Sourdough Baked to Order on Daniel Island
+          </h1>
+
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75 sm:text-xl">
+            Artisan sourdough breads, cookies, and bagels — pre-order only, baked fresh by{" "}
+            {BUSINESS.owner}.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Link
+              to="/custom-orders"
+              className="k2k-button k2k-button-primary inline-flex h-14 items-center justify-center gap-2 px-10 text-[0.75rem] shadow-[0_16px_40px_-12px_rgba(79,126,168,0.55)] hover:bg-k2k-navy"
+            >
+              Pre-Order Your Bakes
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              to="/menu"
+              className="k2k-button k2k-button-outline inline-flex h-14 items-center justify-center px-8"
+            >
+              View Menu
+            </Link>
+            <a
+              href={BUSINESS.phoneTel}
+              className="inline-flex h-14 items-center rounded-full px-5 text-sm font-medium text-k2k-navy underline-offset-4 hover:text-k2k-blue hover:underline"
+            >
+              {BUSINESS.phone}
+            </a>
           </div>
         </div>
       </section>
 
       {/* 2. Local trust strip */}
-      <section className="border-y border-k2k-blue/10 bg-[#f8fafc]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-5 py-8 sm:grid-cols-4 sm:px-8">
-          {TRUST_ITEMS.map((item) => (
+      <section className="relative border-y border-k2k-blue/12 bg-[#f8fafc]">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-stretch px-5 sm:px-8">
+          {TRUST_ITEMS.map((item, index) => (
             <div
               key={item.label}
-              className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left"
+              className={cn(
+                "group flex min-w-[calc(50%-0.5rem)] flex-1 flex-col items-center justify-center gap-2.5 border-k2k-blue/10 px-4 py-7 text-center transition-all duration-300 sm:min-w-0 sm:flex-row sm:gap-3 sm:px-6 sm:text-left",
+                "hover:-translate-y-px hover:bg-white hover:shadow-[inset_0_-2px_0_0_var(--k2k-wheat)]",
+                index > 0 && "sm:border-l",
+                index % 2 === 1 && "border-l sm:border-l",
+              )}
             >
-              <img src={item.icon} alt="" className="h-8 w-8 object-contain" aria-hidden />
-              <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink/80">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-k2k-blue/12 bg-white transition duration-300 group-hover:scale-105 group-hover:border-k2k-blue/25 group-hover:shadow-sm">
+                <img
+                  src={item.icon}
+                  alt=""
+                  className="h-5 w-5 object-contain transition duration-300 group-hover:-translate-y-0.5"
+                  aria-hidden
+                />
+              </span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ink/75 transition-colors duration-300 group-hover:text-k2k-navy">
                 {item.label}
               </span>
             </div>
@@ -149,35 +261,55 @@ function HomePage() {
 
       {/* 3. Featured products */}
       <Section bg="white">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading
-            eyebrow="What we bake"
-            title="Signature sourdough bakes"
-            intro="Artisan breads, cookies, and bagels from our official product collection — made in small batches on Daniel Island."
-          />
-          <Link
-            to="/menu"
-            className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
-          >
-            Browse Full Menu <ArrowRight className="h-4 w-4" />
-          </Link>
+        <div className="relative">
+          <WheatScoringMark className="absolute -left-2 top-0 w-20 opacity-60 sm:w-24" />
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:items-end lg:gap-12">
+            <div className="lg:pb-2">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-k2k-harbor">
+                What we bake
+              </p>
+              <p className="mt-6 max-w-[12rem] font-display text-2xl leading-snug text-k2k-navy/70 sm:text-3xl">
+                From the oven, by request
+              </p>
+            </div>
+            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+              <SectionHeading
+                title="Signature sourdough bakes"
+                intro="Artisan breads, cookies, and bagels from our official product collection — made in small batches on Daniel Island."
+              />
+              <Link
+                to="/menu"
+                className="k2k-button k2k-button-outline inline-flex h-11 shrink-0 items-center justify-center gap-2 px-6 hover:border-k2k-blue/45"
+              >
+                Browse Full Menu <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {HOME_FEATURED_PRODUCTS.map((product) => (
-            <K2KProductCard key={product.id} product={product} />
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {HOME_FEATURED_PRODUCTS.map((product, index) => (
+            <K2KProductCard
+              key={product.id}
+              product={product}
+              className={cn(
+                "transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-36px_rgba(31,52,71,0.35)]",
+                index === 0 && "sm:col-span-2 lg:col-span-2",
+              )}
+            />
           ))}
         </div>
       </Section>
 
       <SectionDivider bg="beige" />
 
-      {/* 4. How to order */}
+      {/* 4. How it works */}
       <Section bg="beige">
         <SectionHeading
-          eyebrow="Ordering"
-          title="Pre-Orders Only"
+          eyebrow="How it works"
+          title="Pre-Orders Only — Baked Fresh for You"
           align="center"
-          intro="Everything is freshly baked to order. To place an order, call, text, DM, or submit an order request."
+          intro="Four simple steps from craving to pickup. Call, text, DM, or submit an order request anytime."
         />
         <div className="mx-auto mt-8 max-w-xl text-center">
           <p className="text-sm text-muted-foreground">
@@ -187,42 +319,54 @@ function HomePage() {
             </a>
           </p>
         </div>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-6 text-left sm:grid-cols-3">
-          <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
-            <div className="mb-2 font-display text-xl text-k2k-blue">Choose</div>
-            <p className="text-sm text-muted-foreground">
-              Browse the menu and note your items and quantities.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
-            <div className="mb-2 font-display text-xl text-k2k-blue">Request</div>
-            <p className="text-sm text-muted-foreground">
-              Call, text, DM, or submit an order request with your preferred pickup timing.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
-            <div className="mb-2 font-display text-xl text-k2k-blue">Confirm</div>
-            <p className="text-sm text-muted-foreground">
-              Wendy confirms availability, then bakes fresh for you.
-            </p>
-          </div>
+
+        <div className="relative mx-auto mt-16 max-w-5xl">
+          <div
+            className="pointer-events-none absolute left-[10%] right-[10%] top-8 hidden h-px bg-gradient-to-r from-transparent via-k2k-blue/25 to-transparent sm:block"
+            aria-hidden
+          />
+          <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {ORDER_STEPS.map((step) => (
+              <li
+                key={step.title}
+                className="k2k-surface relative rounded-2xl p-6 text-center sm:text-left"
+              >
+                <div className="relative mx-auto mb-5 flex h-14 w-14 items-center justify-center sm:mx-0">
+                  <img
+                    src={step.icon}
+                    alt=""
+                    className="h-7 w-7 object-contain opacity-80"
+                    aria-hidden
+                  />
+                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-k2k-blue text-[10px] font-medium text-white">
+                    {step.step.replace("0", "")}
+                  </span>
+                </div>
+                <h3 className="font-display text-xl text-ink">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {step.description}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
           <Link
             to="/custom-orders"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-k2k-blue px-6 text-sm font-medium text-white hover:bg-k2k-navy"
+            className="k2k-button k2k-button-primary inline-flex h-11 items-center justify-center gap-2 px-6 hover:bg-k2k-navy"
           >
             Request an Order <ArrowRight className="h-4 w-4" />
           </Link>
           <a
             href={BUSINESS.phoneTel}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
+            className="k2k-button k2k-button-outline inline-flex h-11 items-center justify-center gap-2 px-6 hover:border-k2k-blue/45"
           >
             Call Wendy
           </a>
           <Link
             to="/menu"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
+            className="k2k-button k2k-button-outline inline-flex h-11 items-center justify-center gap-2 px-6 hover:border-k2k-blue/45"
           >
             View Menu
           </Link>
@@ -233,33 +377,139 @@ function HomePage() {
 
       {/* 5. About teaser */}
       <Section bg="white">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="About"
-              title="About Knead To Know Sweet &amp; Sour"
-              intro={`${BUSINESS.name} is a small-batch bakery by ${BUSINESS.owner}, offering freshly baked sourdough bread, sourdough cookies, and sourdough bagels by pre-order only.`}
-            />
-            <Link
-              to="/about"
-              className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue hover:border-k2k-blue/45"
-            >
-              About Knead To Know <ArrowRight className="h-4 w-4" />
-            </Link>
+        <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
+          <div className="relative">
+            <blockquote className="relative border-l-2 border-wheat/70 py-2 pl-8 sm:pl-10">
+              <span
+                className="absolute -left-0.5 -top-3 font-display text-5xl leading-none text-wheat/35"
+                aria-hidden
+              >
+                &ldquo;
+              </span>
+              <p className="font-display text-2xl leading-snug text-k2k-navy sm:text-[1.75rem]">
+                {BUSINESS.name} is a small-batch bakery by {BUSINESS.owner}, offering freshly baked
+                sourdough bread, sourdough cookies, and sourdough bagels by pre-order only.
+              </p>
+            </blockquote>
+
+            <div className="mt-10">
+              <SectionHeading eyebrow="About" title="About Knead To Know Sweet &amp; Sour" />
+              <Link
+                to="/about"
+                className="k2k-button k2k-button-outline mt-7 inline-flex h-11 items-center justify-center gap-2 px-6 hover:border-k2k-blue/45"
+              >
+                About Knead To Know <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-col items-center justify-center gap-3 rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-12 text-center">
-            <div className="mx-auto h-14 w-14 rounded-full border border-k2k-blue/25" />
-            <p className="font-display text-2xl text-ink">Wendy Mercado</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">
-              Founder &amp; Baker · Est. 2026
+
+          <div className="k2k-surface relative overflow-hidden rounded-[2rem] border border-k2k-blue/12 bg-[#f8fafc] px-8 py-12 text-center shadow-[0_28px_60px_-44px_rgba(31,52,71,0.28)]">
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-k2k-harbor/8 to-transparent"
+              aria-hidden
+            />
+            <div className="relative mx-auto mb-7 h-36 w-36">
+              <svg
+                viewBox="0 0 144 144"
+                fill="none"
+                className="absolute inset-0 h-full w-full text-wheat/55"
+                aria-hidden
+              >
+                <circle
+                  cx="72"
+                  cy="72"
+                  r="66"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeDasharray="5 7"
+                />
+                <circle
+                  cx="72"
+                  cy="72"
+                  r="58"
+                  stroke="currentColor"
+                  strokeWidth="0.75"
+                  opacity="0.45"
+                />
+              </svg>
+              <div className="absolute inset-5 flex flex-col items-center justify-center gap-2 rounded-full bg-white ring-1 ring-k2k-blue/15">
+                <img
+                  src={WHEAT_ICON}
+                  alt=""
+                  className="h-9 w-9 object-contain opacity-80"
+                  aria-hidden
+                />
+                <p className="text-[9px] font-medium uppercase tracking-[0.22em] text-k2k-blue/55">
+                  Photo coming soon
+                </p>
+              </div>
+            </div>
+            <p className="font-display text-2xl text-ink">{BUSINESS.owner}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-k2k-blue/70">
+              Founder &amp; Baker · Est. {BUSINESS.established}
             </p>
+            <HarborLine className="mx-auto mt-8 w-36" />
           </div>
         </div>
       </Section>
 
-      <SectionDivider bg="beige" />
+      {/* Page teasers */}
+      <Section bg="white">
+        <div className="grid gap-6 md:grid-cols-3">
+          {PAGE_TEASERS.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="k2k-surface k2k-hover-lift group flex flex-col rounded-2xl p-8 transition"
+            >
+              <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/70">
+                {item.eyebrow}
+              </p>
+              <h3 className="mt-3 font-display text-2xl text-ink transition group-hover:text-k2k-blue">
+                {item.title}
+              </h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                {item.text}
+              </p>
+              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-k2k-blue">
+                Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </Section>
 
-      {/* 6. FAQ teaser + final CTA */}
+      <SectionDivider bg="beige" accent="wheat" />
+
+      {/* Neighbor stories — placeholder until Wendy provides testimonials */}
+      <Section bg="beige">
+        <SectionHeading
+          eyebrow="Community"
+          title="What our neighbors say"
+          align="center"
+          intro="We're gathering stories from Daniel Island and Charleston neighbors. Check back soon — or place an order and tell us what you think."
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {[1, 2, 3].map((n) => (
+            <div
+              key={n}
+              className="k2k-surface rounded-2xl border border-dashed border-k2k-blue/20 bg-white/80 p-8 text-center"
+            >
+              <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-wheat/15">
+                <img src={WHEAT_ICON} alt="" className="h-5 w-5 opacity-60" aria-hidden />
+              </div>
+              <p className="font-display text-lg text-k2k-navy/70">Neighbor story #{n}</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Testimonial coming soon — we're baking relationships one loaf at a time.
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <SectionDivider bg="white" />
+
+      {/* FAQ teaser */}
       <Section bg="beige">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
@@ -268,13 +518,21 @@ function HomePage() {
             intro="Quick answers about ordering, pickup, and catering from Knead To Know."
             align="center"
           />
-          <div className="mt-10 rounded-3xl border border-k2k-blue/15 bg-white px-6">
-            <FAQAccordion items={HOME_FAQS} />
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-k2k-blue/15 bg-white shadow-[0_28px_70px_-42px_rgba(31,52,71,0.3)] ring-1 ring-k2k-blue/8">
+            <div className="flex items-center justify-between border-b border-k2k-blue/10 bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06] px-6 py-4 sm:px-8">
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-k2k-blue/75">
+                Ordering &amp; pickup
+              </p>
+              <WheatScoringMark className="w-14 text-wheat/50" />
+            </div>
+            <div className="px-4 sm:px-6">
+              <FAQAccordion items={HOME_FAQS} />
+            </div>
           </div>
           <div className="mt-8 text-center">
             <Link
               to="/faq"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-k2k-blue/25 px-6 text-sm font-medium text-k2k-blue"
+              className="k2k-button k2k-button-outline inline-flex h-11 items-center justify-center gap-2 px-6"
             >
               View All FAQs <ArrowRight className="h-4 w-4" />
             </Link>

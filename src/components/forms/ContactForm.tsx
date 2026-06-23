@@ -6,6 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import { BUSINESS } from "@/lib/business";
 
 const schema = z.object({
@@ -25,6 +26,11 @@ const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 const ERROR_MESSAGE = BUSINESS.email
   ? `Something went wrong while sending your message. Please try again or email us directly at ${BUSINESS.email}.`
   : `Something went wrong while sending your message. Please try again or call ${BUSINESS.phone}.`;
+
+const fieldClass =
+  "h-12 rounded-xl border border-k2k-blue/18 bg-white px-4 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0";
+
+const labelClass = "text-xs font-medium uppercase tracking-[0.14em] text-k2k-navy/70";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -84,10 +90,14 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="rounded-3xl bg-white p-8 text-center">
-        <CheckCircle2 className="mx-auto h-9 w-9 text-forest" />
-        <h3 className="mt-4 font-display text-2xl text-ink">Thank you for reaching out.</h3>
-        <p className="mt-2 text-sm text-muted-foreground">We will follow up with you soon.</p>
+      <div className="k2k-card rounded-[1.75rem] p-10 text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-k2k-blue/10">
+          <CheckCircle2 className="h-7 w-7 text-k2k-blue" />
+        </div>
+        <h3 className="mt-5 font-display text-2xl text-ink">Thank you for reaching out.</h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          We will follow up with you soon.
+        </p>
       </div>
     );
   }
@@ -96,7 +106,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="grid gap-5 rounded-3xl bg-white p-6 ring-1 ring-border/60 sm:p-8"
+      className="k2k-card grid gap-6 rounded-[1.75rem] p-6 sm:p-8"
     >
       {/* Honeypot — hidden from real users */}
       <input
@@ -109,22 +119,56 @@ export function ContactForm() {
       />
 
       <div className="grid gap-2">
-        <Label>Name</Label>
-        <Input {...register("name")} autoComplete="name" />
+        <Label className={labelClass} htmlFor="contact-name">
+          Name
+        </Label>
+        <Input
+          id="contact-name"
+          {...register("name")}
+          autoComplete="name"
+          className={cn(fieldClass, errors.name && "border-destructive/50")}
+        />
         {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
       </div>
       <div className="grid gap-2">
-        <Label>Email</Label>
-        <Input type="email" {...register("email")} autoComplete="email" />
+        <Label className={labelClass} htmlFor="contact-email">
+          Email
+        </Label>
+        <Input
+          id="contact-email"
+          type="email"
+          {...register("email")}
+          autoComplete="email"
+          className={cn(fieldClass, errors.email && "border-destructive/50")}
+        />
         {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
       </div>
       <div className="grid gap-2">
-        <Label>Phone (optional)</Label>
-        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="(843) 973-0309" />
+        <Label className={labelClass} htmlFor="contact-phone">
+          Phone <span className="normal-case tracking-normal text-muted-foreground">(optional)</span>
+        </Label>
+        <Input
+          id="contact-phone"
+          type="tel"
+          {...register("phone")}
+          autoComplete="tel"
+          placeholder="(843) 973-0309"
+          className={fieldClass}
+        />
       </div>
       <div className="grid gap-2">
-        <Label>Message / order notes</Label>
-        <Textarea rows={5} {...register("message")} />
+        <Label className={labelClass} htmlFor="contact-message">
+          Message / order notes
+        </Label>
+        <Textarea
+          id="contact-message"
+          rows={5}
+          {...register("message")}
+          className={cn(
+            "min-h-[140px] rounded-xl border border-k2k-blue/18 bg-white px-4 py-3 text-sm shadow-sm transition-colors placeholder:text-muted-foreground/60 focus-visible:border-k2k-blue focus-visible:ring-2 focus-visible:ring-k2k-blue/15 focus-visible:ring-offset-0",
+            errors.message && "border-destructive/50",
+          )}
+        />
         {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
       </div>
 
@@ -137,7 +181,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-12 items-center justify-center rounded-full bg-forest px-8 text-sm font-medium text-primary-foreground hover:bg-forest-dark disabled:opacity-60"
+        className="k2k-button k2k-button-primary w-full disabled:opacity-60"
       >
         {isSubmitting ? "Sending…" : "Send message"}
       </button>
