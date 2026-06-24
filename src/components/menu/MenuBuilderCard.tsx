@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Check } from "lucide-react";
 import type { MenuProduct } from "@/data/menu";
 import { KTK_CATEGORY_ICONS, KTK_DECOR } from "@/lib/design-assets";
 import { QuantityControl } from "@/components/menu/QuantityControl";
@@ -90,7 +91,14 @@ export function MenuBuilderCard({
           onClick={() => onAdd(qty)}
           className="k2k-button k2k-button-primary !min-h-11 !px-4 !text-[10px] !tracking-[0.12em]"
         >
-          Add to Pre-Order
+          {justAdded ? (
+            <>
+              <Check className="h-3.5 w-3.5" aria-hidden="true" />
+              Added
+            </>
+          ) : (
+            "Add to Pre-Order"
+          )}
         </button>
       </div>
 

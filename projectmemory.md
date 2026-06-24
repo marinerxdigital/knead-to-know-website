@@ -20,12 +20,12 @@ Animated coastal wave section divider live on homepage (`CoastalWaveDivider` SVG
 
 ## History
 
-| Date | Milestone |
-|------|-----------|
-| 2026-06-22 | Revamps #1–#5 visual shell complete |
-| 2026-06-23 | Session handoff log + DALL·E asset pipeline docs |
-| 2026-06-23 | **Design asset handoff integrated; all logos replaced** |
-| 2026-06-23 | Global UI/UX fix pass (`ee8c4a1`) — FAQ, CTA, footer rhythm |
+| Date       | Milestone                                                                             |
+| ---------- | ------------------------------------------------------------------------------------- |
+| 2026-06-22 | Revamps #1–#5 visual shell complete                                                   |
+| 2026-06-23 | Session handoff log + DALL·E asset pipeline docs                                      |
+| 2026-06-23 | **Design asset handoff integrated; all logos replaced**                               |
+| 2026-06-23 | Global UI/UX fix pass (`ee8c4a1`) — FAQ, CTA, footer rhythm                           |
 | 2026-06-23 | **Second verification pass (`c5e2f18`) — all routes CTA-complete, mobile footer pad** |
 
 ## Next Priorities (unchanged)

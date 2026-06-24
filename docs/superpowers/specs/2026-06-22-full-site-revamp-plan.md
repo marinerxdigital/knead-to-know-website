@@ -17,21 +17,21 @@
 
 ### Page ownership (4 waves)
 
-| Wave | Agent | Pages / files |
-|------|-------|----------------|
-| 1 | Shell | Header, Footer, PageHero, BrandLogo, __root 404/error, MobileOrderBar |
-| 2 | Story | Home, About, Contact, FAQ |
-| 3 | Commerce | Menu, Custom Orders, Catering, product copy |
-| 4 | Media | Gallery, Privacy, forms polish |
+| Wave | Agent    | Pages / files                                                           |
+| ---- | -------- | ----------------------------------------------------------------------- |
+| 1    | Shell    | Header, Footer, PageHero, BrandLogo, \_\_root 404/error, MobileOrderBar |
+| 2    | Story    | Home, About, Contact, FAQ                                               |
+| 3    | Commerce | Menu, Custom Orders, Catering, product copy                             |
+| 4    | Media    | Gallery, Privacy, forms polish                                          |
 
 ### Logo scale tokens (`BrandLogo`)
 
-| Variant | Mobile | Desktop (xl) |
-|---------|--------|----------------|
-| header | 52px | 84px |
-| header-compact (scrolled) | 44px | 56px |
-| footer | 64px | 80px |
-| hero | 80px | 128px |
+| Variant                   | Mobile | Desktop (xl) |
+| ------------------------- | ------ | ------------ |
+| header                    | 52px   | 84px         |
+| header-compact (scrolled) | 44px   | 56px         |
+| footer                    | 64px   | 80px         |
+| hero                      | 80px   | 128px        |
 
 ### Still from Wendy (placeholders only)
 

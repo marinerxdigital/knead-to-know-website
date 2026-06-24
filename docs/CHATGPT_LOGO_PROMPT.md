@@ -28,14 +28,14 @@ Design a premium circular bakery logo for a real home bakery brand:
 
 ### COLOR PALETTE (strict — do not invent new colors)
 
-| Color | Hex | Use |
-|-------|-----|-----|
-| Primary coastal blue | `#3B6E91` | Harbor Deep |
-| Secondary harbor blue | `#6A9EC0` | Soft accents |
-| Accent wheat | `#C2A878` | Small details only |
-| Ink black | `#111111` | Borders, primary text |
-| Navy | `#1F3447` | Optional depth |
-| Background | white or cream `#F8F4ED` | NO pink, teal, or neon |
+| Color                 | Hex                      | Use                    |
+| --------------------- | ------------------------ | ---------------------- |
+| Primary coastal blue  | `#3B6E91`                | Harbor Deep            |
+| Secondary harbor blue | `#6A9EC0`                | Soft accents           |
+| Accent wheat          | `#C2A878`                | Small details only     |
+| Ink black             | `#111111`                | Borders, primary text  |
+| Navy                  | `#1F3447`                | Optional depth         |
+| Background            | white or cream `#F8F4ED` | NO pink, teal, or neon |
 
 ### TYPOGRAPHY FEEL (if wordmark included)
 

@@ -24,10 +24,12 @@
 ### Task 1: Design tokens — Fraunces font, wheat accent, focus-visible rings
 
 **Files:**
+
 - Modify: `src/styles.css:1-96` (theme tokens)
 - Modify: `src/routes/__root.tsx:121-126` (Google Fonts link)
 
 **Interfaces:**
+
 - Produces: CSS var `--color-wheat` / `--wheat` (`#C2A878`), Tailwind class `text-wheat`/`bg-wheat`/`border-wheat` (via `@theme inline` token `--color-wheat`), global `:focus-visible` ring style. `--font-display` now resolves to `"Fraunces", Georgia, "Times New Roman", serif`.
 
 - [ ] **Step 1: Add the wheat token and swap the display font in `src/styles.css`**
@@ -35,37 +37,37 @@
 Modify the `@theme inline` block (lines 35–48) to add the wheat color token:
 
 ```css
-  /* Brand palette - Knead To Know coastal theme (mapped for compatibility) */
-  --color-cream: var(--cream);
-  --color-blush: var(--blush);
-  --color-pink: var(--pink);
-  --color-forest: var(--forest);
-  --color-forest-dark: var(--forest-dark);
-  --color-beige: var(--beige);
-  --color-ink: var(--ink);
+/* Brand palette - Knead To Know coastal theme (mapped for compatibility) */
+--color-cream: var(--cream);
+--color-blush: var(--blush);
+--color-pink: var(--pink);
+--color-forest: var(--forest);
+--color-forest-dark: var(--forest-dark);
+--color-beige: var(--beige);
+--color-ink: var(--ink);
 
-  /* New K2K tokens exposed as Tailwind colors */
-  --color-k2k-blue: #4f7ea8;
-  --color-k2k-harbor: #7fa7c7;
-  --color-k2k-navy: #1f3447;
-  --color-k2k-black: #111111;
+/* New K2K tokens exposed as Tailwind colors */
+--color-k2k-blue: #4f7ea8;
+--color-k2k-harbor: #7fa7c7;
+--color-k2k-navy: #1f3447;
+--color-k2k-black: #111111;
 
-  /* Wheat accent — approved deviation from locked palette, small details only */
-  --color-wheat: #c2a878;
+/* Wheat accent — approved deviation from locked palette, small details only */
+--color-wheat: #c2a878;
 ```
 
 Modify the `:root` block's font declaration (line 52):
 
 ```css
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+--font-display: "Fraunces", Georgia, "Times New Roman", serif;
+--font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 ```
 
 Add a `--k2k-wheat` var next to the existing `--k2k-blue` etc. (after line 61):
 
 ```css
-  --k2k-navy: #1f3447;
-  --k2k-wheat: #c2a878;
+--k2k-navy: #1f3447;
+--k2k-wheat: #c2a878;
 ```
 
 - [ ] **Step 2: Add global focus-visible rings**
@@ -73,16 +75,16 @@ Add a `--k2k-wheat` var next to the existing `--k2k-blue` etc. (after line 61):
 Append to the `@layer base` block in `src/styles.css` (after the `::selection` rule, before its closing `}`):
 
 ```css
-  a:focus-visible,
-  button:focus-visible,
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible,
-  [role="button"]:focus-visible {
-    outline: 2px solid var(--k2k-blue);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--k2k-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 ```
 
 - [ ] **Step 3: Add the wheat pre-order badge utility**
@@ -127,9 +129,11 @@ git commit -m "style: swap display font to Fraunces, add wheat accent token and 
 ### Task 2: Scoring-line signature divider
 
 **Files:**
+
 - Modify: `src/components/sections/SectionDivider.tsx`
 
 **Interfaces:**
+
 - Produces: `SectionDivider({ bg, accent })` where `accent?: "blue" | "wheat"` (default `"blue"`).
 - Consumes: nothing new.
 
@@ -194,10 +198,12 @@ git commit -m "style: rework SectionDivider into the scoring-line signature moti
 ### Task 3: Header nav breakpoint, skip-to-content, active nav indicator
 
 **Files:**
+
 - Modify: `src/components/layout/Header.tsx`
 - Modify: `src/routes/__root.tsx:149-164` (`RootComponent`)
 
 **Interfaces:**
+
 - Consumes: nothing new.
 - Produces: nothing new exported; visual/behavioral fix only.
 
@@ -212,7 +218,8 @@ Replace line 37:
 Replace line 64 (the mobile toggle button's visibility class) — change `xl:hidden` to `lg:hidden`:
 
 ```tsx
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-ink lg:hidden"
+className =
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-ink lg:hidden";
 ```
 
 Replace line 72 (mobile panel wrapper) — change `xl:hidden` to `lg:hidden`:
@@ -282,11 +289,13 @@ git commit -m "fix: lower header nav breakpoint to lg, add skip-to-content link 
 ### Task 4: `business.ts` honest placeholders + conditional Footer/Contact rendering
 
 **Files:**
+
 - Modify: `src/lib/business.ts`
 - Modify: `src/components/layout/Footer.tsx`
 - Modify: `src/routes/contact.tsx`
 
 **Interfaces:**
+
 - Produces: `BUSINESS.owner = "Wendy Mercado"`, `BUSINESS.address = "Pickup by appointment — Daniel Island, SC"`, `BUSINESS.hours = "By appointment"`, and `BUSINESS.phone`, `BUSINESS.email`, `BUSINESS.instagramHandle`, `BUSINESS.instagramUrl`, `BUSINESS.facebookUrl`, `BUSINESS.mapsUrl`, `BUSINESS.orderingUrl` all set to `null` (typed `string | null`) instead of bracket strings.
 - Consumes: `Footer.tsx` and `contact.tsx` must null-check before rendering each field.
 
@@ -335,45 +344,49 @@ export const PRESS_FEATURE: PressFeature | null = null;
 Replace the "Visit" column (lines 32-63):
 
 ```tsx
-        <div>
-          <h4 className="text-sm font-medium uppercase tracking-[0.18em] text-k2k-blue">Visit</h4>
-          <ul className="mt-5 space-y-3 text-sm text-ink/80">
-            <li className="flex items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-k2k-blue" />
-              <span>
-                {BUSINESS.address}
-                <br />
-                <span className="text-muted-foreground">{BUSINESS.serviceArea}</span>
-              </span>
-            </li>
-            {BUSINESS.email && (
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-k2k-blue" />
-                <a href={`mailto:${BUSINESS.email}`} className="hover:text-k2k-blue">
-                  {BUSINESS.email}
-                </a>
-              </li>
-            )}
-            {BUSINESS.instagramUrl && BUSINESS.instagramHandle && (
-              <li className="flex items-center gap-2">
-                <Instagram className="h-4 w-4 shrink-0 text-k2k-blue" />
-                <a
-                  href={BUSINESS.instagramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-k2k-blue"
-                >
-                  {BUSINESS.instagramHandle}
-                </a>
-              </li>
-            )}
-            {!BUSINESS.email && !BUSINESS.instagramUrl && (
-              <li className="text-muted-foreground">
-                Use the <Link to="/contact" className="underline hover:text-k2k-blue">contact form</Link> to reach us.
-              </li>
-            )}
-          </ul>
-        </div>
+<div>
+  <h4 className="text-sm font-medium uppercase tracking-[0.18em] text-k2k-blue">Visit</h4>
+  <ul className="mt-5 space-y-3 text-sm text-ink/80">
+    <li className="flex items-start gap-2">
+      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-k2k-blue" />
+      <span>
+        {BUSINESS.address}
+        <br />
+        <span className="text-muted-foreground">{BUSINESS.serviceArea}</span>
+      </span>
+    </li>
+    {BUSINESS.email && (
+      <li className="flex items-center gap-2">
+        <Mail className="h-4 w-4 shrink-0 text-k2k-blue" />
+        <a href={`mailto:${BUSINESS.email}`} className="hover:text-k2k-blue">
+          {BUSINESS.email}
+        </a>
+      </li>
+    )}
+    {BUSINESS.instagramUrl && BUSINESS.instagramHandle && (
+      <li className="flex items-center gap-2">
+        <Instagram className="h-4 w-4 shrink-0 text-k2k-blue" />
+        <a
+          href={BUSINESS.instagramUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="hover:text-k2k-blue"
+        >
+          {BUSINESS.instagramHandle}
+        </a>
+      </li>
+    )}
+    {!BUSINESS.email && !BUSINESS.instagramUrl && (
+      <li className="text-muted-foreground">
+        Use the{" "}
+        <Link to="/contact" className="underline hover:text-k2k-blue">
+          contact form
+        </Link>{" "}
+        to reach us.
+      </li>
+    )}
+  </ul>
+</div>
 ```
 
 - [ ] **Step 3: Make `contact.tsx` render contact rows conditionally**
@@ -451,10 +464,12 @@ git commit -m "fix: replace business.ts placeholders with honest copy and condit
 ### Task 5: `products.ts` pricing/photo fixes + price pill + bagel icon
 
 **Files:**
+
 - Modify: `src/lib/products.ts`
 - Modify: `src/components/ui/K2KProductCard.tsx`
 
 **Interfaces:**
+
 - Produces: `Product.price` is now `string | null` (null = "Ask for pricing"); `cheese-jalapeno`, `chocolate-nutella`, `olive-sourdough`, `poppy-bagel` have `photo: undefined` so they fall back to the existing "Photo coming soon" state. `CATEGORY_ICONS.bagels` now uses a distinct bagel icon path.
 - Consumes: `K2KProductCard` reads `product.price` and must render the wheat "Ask for pricing" pill when it's `null`.
 
@@ -479,6 +494,7 @@ export interface Product {
 Modify each `price: "[INSERT PRICE]"` to `price: null` across all 16 product entries (lines 40, 51, 62, 73, 83, 93, 103, 114, 125, 135, 146, 156, 167, 177, 188, 198) — every product's price field becomes `null`.
 
 Remove the `photo` line entirely for these four products so they fall back to the placeholder state:
+
 - `cheese-jalapeno` (was `photo: BAKERY_PHOTOS.plainSourdough,` at line 75) → delete that line
 - `chocolate-nutella` (was `photo: BAKERY_PHOTOS.plainSourdough,` at line 85) → delete that line
 - `olive-sourdough` (was `photo: BAKERY_PHOTOS.rosemarySourdough,` at line 105) → delete that line
@@ -489,13 +505,15 @@ Remove the `photo` line entirely for these four products so they fall back to th
 Replace line 79 (`<p className="shrink-0 text-sm font-medium tabular-nums text-k2k-navy">{product.price}</p>`):
 
 ```tsx
-          {product.price ? (
-            <p className="shrink-0 text-sm font-medium tabular-nums text-k2k-navy">{product.price}</p>
-          ) : (
-            <span className="k2k-badge-wheat shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
-              Ask for pricing
-            </span>
-          )}
+{
+  product.price ? (
+    <p className="shrink-0 text-sm font-medium tabular-nums text-k2k-navy">{product.price}</p>
+  ) : (
+    <span className="k2k-badge-wheat shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider">
+      Ask for pricing
+    </span>
+  );
+}
 ```
 
 - [ ] **Step 3: Fix the bagel category icon**
@@ -528,11 +546,13 @@ git commit -m "fix: replace product price placeholders with Ask for pricing pill
 ### Task 6: Copy fixes in `menu.tsx`, `custom-orders.tsx`, `ContactForm.tsx`
 
 **Files:**
+
 - Modify: `src/routes/menu.tsx:113`
 - Modify: `src/routes/custom-orders.tsx:193`
 - Modify: `src/components/forms/ContactForm.tsx:121`
 
 **Interfaces:**
+
 - Consumes/produces: nothing new — copy-only changes.
 
 - [ ] **Step 1: Fix `menu.tsx` line 113**
@@ -540,13 +560,13 @@ git commit -m "fix: replace product price placeholders with Ask for pricing pill
 Replace:
 
 ```tsx
-              <p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">[ASK FOR AVAILABILITY]</p>
+<p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">[ASK FOR AVAILABILITY]</p>
 ```
 
 with:
 
 ```tsx
-              <p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">Ask us about availability</p>
+<p className="mt-4 text-xs uppercase tracking-widest text-k2k-blue">Ask us about availability</p>
 ```
 
 - [ ] **Step 2: Fix `custom-orders.tsx` line 193 (budget field placeholder)**
@@ -554,13 +574,25 @@ with:
 Replace:
 
 ```tsx
-                <input name="budget" value={formData.budget} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="[PRICE TBD] — share your range" />
+<input
+  name="budget"
+  value={formData.budget}
+  onChange={handleChange}
+  className="w-full h-11 rounded-xl border px-4 bg-white"
+  placeholder="[PRICE TBD] — share your range"
+/>
 ```
 
 with:
 
 ```tsx
-                <input name="budget" value={formData.budget} onChange={handleChange} className="w-full h-11 rounded-xl border px-4 bg-white" placeholder="Share your range — we'll confirm exact pricing" />
+<input
+  name="budget"
+  value={formData.budget}
+  onChange={handleChange}
+  className="w-full h-11 rounded-xl border px-4 bg-white"
+  placeholder="Share your range — we'll confirm exact pricing"
+/>
 ```
 
 - [ ] **Step 3: Fix `ContactForm.tsx` line 121 (phone field placeholder)**
@@ -568,13 +600,13 @@ with:
 Replace:
 
 ```tsx
-        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="[INSERT PHONE]" />
+<Input type="tel" {...register("phone")} autoComplete="tel" placeholder="[INSERT PHONE]" />
 ```
 
 with:
 
 ```tsx
-        <Input type="tel" {...register("phone")} autoComplete="tel" placeholder="(843) 555-0123" />
+<Input type="tel" {...register("phone")} autoComplete="tel" placeholder="(843) 555-0123" />
 ```
 
 - [ ] **Step 4: Verify**
@@ -597,44 +629,48 @@ git commit -m "fix: replace remaining bracketed placeholder copy with honest tex
 ### Task 7: `about.tsx` — Wendy Mercado's name and a styled photo-pending slot
 
 **Files:**
+
 - Modify: `src/routes/about.tsx:51-60`
 
 **Interfaces:**
+
 - Consumes: nothing new.
 - Produces: nothing new exported.
 
 - [ ] **Step 1: Replace the static logo placeholder block (lines 51-60) with a named photo-pending slot**
 
 ```tsx
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="overflow-hidden rounded-3xl bg-[#f8fafc] p-2 ring-1 ring-border/60">
-            <div className="aspect-[4/5] w-full rounded-2xl bg-[#f8fafc] flex flex-col items-center justify-center gap-3 p-10 text-center">
-              <div className="mx-auto h-12 w-12 rounded-full border border-k2k-blue/25" />
-              <p className="font-display text-2xl text-ink">Wendy Mercado</p>
-              <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">Founder &amp; Baker</p>
-              <p className="text-xs text-muted-foreground">Photo coming soon</p>
-            </div>
-          </div>
-          <div>
-            <SectionHeading
-              eyebrow="The bakery"
-              title="Handcrafted in small batches."
-            />
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
-              <p>
-                Knead To Know is a boutique home bakery founded by Wendy Mercado, focused on artisan sourdough products. We bake in limited quantities each day using traditional methods and high-quality ingredients.
-              </p>
-              <p>
-                Our lineup centers on naturally leavened breads in classic and thoughtfully flavored varieties, chewy sourdough cookies, and boiled sourdough bagels — alongside seasonal pastries and curated bakery boxes.
-              </p>
-              <p>
-                We serve neighbors on Daniel Island and the Charleston area with reliable daily offerings and personal custom orders.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
+<Section>
+  <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+    <div className="overflow-hidden rounded-3xl bg-[#f8fafc] p-2 ring-1 ring-border/60">
+      <div className="aspect-[4/5] w-full rounded-2xl bg-[#f8fafc] flex flex-col items-center justify-center gap-3 p-10 text-center">
+        <div className="mx-auto h-12 w-12 rounded-full border border-k2k-blue/25" />
+        <p className="font-display text-2xl text-ink">Wendy Mercado</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">Founder &amp; Baker</p>
+        <p className="text-xs text-muted-foreground">Photo coming soon</p>
+      </div>
+    </div>
+    <div>
+      <SectionHeading eyebrow="The bakery" title="Handcrafted in small batches." />
+      <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground">
+        <p>
+          Knead To Know is a boutique home bakery founded by Wendy Mercado, focused on artisan
+          sourdough products. We bake in limited quantities each day using traditional methods and
+          high-quality ingredients.
+        </p>
+        <p>
+          Our lineup centers on naturally leavened breads in classic and thoughtfully flavored
+          varieties, chewy sourdough cookies, and boiled sourdough bagels — alongside seasonal
+          pastries and curated bakery boxes.
+        </p>
+        <p>
+          We serve neighbors on Daniel Island and the Charleston area with reliable daily offerings
+          and personal custom orders.
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>
 ```
 
 (Note: only the name "Wendy Mercado" and "founded by" are added to known facts — no invented personal history, quotes, or anecdotes.)
@@ -659,9 +695,11 @@ git commit -m "feat: add Wendy Mercado's name and a styled photo-pending slot to
 ### Task 8: Homepage restructure — 11 sections down to 6
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 **Interfaces:**
+
 - Consumes: `BAKERY_PHOTOS`, `HOME_FEATURED_PRODUCTS` from `@/lib/products` (unchanged), `SectionDivider` from Task 2 (now supports `accent` prop).
 - Produces: nothing new exported — `HomePage` component internals only.
 
@@ -728,9 +766,14 @@ function HomePage() {
       <section className="border-y border-k2k-blue/10 bg-[#f8fafc]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-5 py-8 sm:grid-cols-4 sm:px-8">
           {TRUST_ITEMS.map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
+            <div
+              key={item.label}
+              className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left"
+            >
               <img src={item.icon} alt="" className="h-8 w-8 object-contain" aria-hidden />
-              <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink/80">{item.label}</span>
+              <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink/80">
+                {item.label}
+              </span>
             </div>
           ))}
         </div>
@@ -773,15 +816,21 @@ function HomePage() {
         <div className="mx-auto mt-12 grid max-w-4xl gap-6 text-left sm:grid-cols-3">
           <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
             <div className="mb-2 font-display text-xl text-k2k-blue">Choose</div>
-            <p className="text-sm text-muted-foreground">Browse the menu and note what you would like, or describe a custom request.</p>
+            <p className="text-sm text-muted-foreground">
+              Browse the menu and note what you would like, or describe a custom request.
+            </p>
           </div>
           <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
             <div className="mb-2 font-display text-xl text-k2k-blue">Submit inquiry</div>
-            <p className="text-sm text-muted-foreground">Use the Custom Orders or Catering form with quantities and your date.</p>
+            <p className="text-sm text-muted-foreground">
+              Use the Custom Orders or Catering form with quantities and your date.
+            </p>
           </div>
           <div className="rounded-2xl border border-k2k-blue/15 bg-white p-7">
             <div className="mb-2 font-display text-xl text-k2k-blue">Confirm</div>
-            <p className="text-sm text-muted-foreground">We confirm availability and pricing, then bake fresh for you.</p>
+            <p className="text-sm text-muted-foreground">
+              We confirm availability and pricing, then bake fresh for you.
+            </p>
           </div>
         </div>
         <div className="mt-10 flex justify-center gap-3">
@@ -821,7 +870,9 @@ function HomePage() {
           <div className="flex flex-col items-center justify-center gap-3 rounded-3xl border border-k2k-blue/15 bg-[#f8fafc] p-12 text-center">
             <div className="mx-auto h-14 w-14 rounded-full border border-k2k-blue/25" />
             <p className="font-display text-2xl text-ink">Wendy Mercado</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">Founder &amp; Baker · Est. 2026</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-k2k-blue/70">
+              Founder &amp; Baker · Est. 2026
+            </p>
           </div>
         </div>
       </Section>
@@ -891,9 +942,11 @@ git commit -m "refactor: cut homepage from 11 sections to 6, remove duplicate pr
 ### Task 9: Gallery — hide empty categories, wire Lightbox
 
 **Files:**
+
 - Modify: `src/routes/gallery.tsx`
 
 **Interfaces:**
+
 - Consumes: `Lightbox`, `LightboxSlide` from `@/components/media/Lightbox` (existing, unchanged).
 - Produces: nothing new exported.
 
@@ -963,7 +1016,9 @@ function GalleryPage() {
             <button
               key={product.id}
               type="button"
-              onClick={() => product.photo && setLightboxIndex(slides.findIndex((s) => s.id === product.id))}
+              onClick={() =>
+                product.photo && setLightboxIndex(slides.findIndex((s) => s.id === product.id))
+              }
               className="text-left"
               disabled={!product.photo}
             >
@@ -974,10 +1029,14 @@ function GalleryPage() {
 
         <div className="mt-12 text-center">
           <p className="mx-auto max-w-md text-sm text-muted-foreground">
-            Interested in ordering or recreating something you see? Head to our menu or custom orders page.
+            Interested in ordering or recreating something you see? Head to our menu or custom
+            orders page.
           </p>
           <div className="mt-5 flex justify-center gap-3">
-            <Link to="/menu" className="inline-flex h-10 items-center rounded-full border px-6 text-sm">
+            <Link
+              to="/menu"
+              className="inline-flex h-10 items-center rounded-full border px-6 text-sm"
+            >
               View Menu
             </Link>
             <Link
@@ -1031,9 +1090,11 @@ git commit -m "fix: hide empty gallery categories, wire Lightbox into populated 
 ### Task 10: Wire Custom Orders form to Web3Forms
 
 **Files:**
+
 - Modify: `src/routes/custom-orders.tsx`
 
 **Interfaces:**
+
 - Consumes: same Web3Forms pattern as `ContactForm.tsx` (`ACCESS_KEY`, `WEB3FORMS_URL`).
 - Produces: nothing new exported.
 
@@ -1053,55 +1114,55 @@ const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 Replace the `const [submitted, setSubmitted] = useState(false);` line and `handleSubmit` function:
 
 ```tsx
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [botcheck, setBotcheck] = useState("");
+const [submitted, setSubmitted] = useState(false);
+const [submitting, setSubmitting] = useState(false);
+const [submitError, setSubmitError] = useState<string | null>(null);
+const [botcheck, setBotcheck] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitError(null);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setSubmitError(null);
 
-    if (botcheck) return;
+  if (botcheck) return;
 
-    setSubmitting(true);
-    try {
-      const res = await fetch(WEB3FORMS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: "New Custom Order Request - Knead To Know",
-          from_name: formData.name,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          requested_date: formData.date,
-          order_type: formData.orderType,
-          quantity: formData.quantity,
-          occasion: formData.occasion,
-          budget: formData.budget,
-          preference: formData.preference,
-          allergies: formData.allergies,
-          instructions: formData.instructions,
-          contact_method: formData.contactMethod,
-          products_selected: selectedProducts.map((p) => p.name).join(" • ") || "None selected",
-          source: "Custom Orders Form",
-          botcheck: "",
-        }),
-      });
-      const data = (await res.json().catch(() => null)) as { success?: boolean } | null;
-      if (!res.ok || !data?.success) throw new Error("Submission failed");
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch {
-      setSubmitError(
-        "Something went wrong sending your order request. Please try again or email us directly.",
-      );
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  setSubmitting(true);
+  try {
+    const res = await fetch(WEB3FORMS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: ACCESS_KEY,
+        subject: "New Custom Order Request - Knead To Know",
+        from_name: formData.name,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        requested_date: formData.date,
+        order_type: formData.orderType,
+        quantity: formData.quantity,
+        occasion: formData.occasion,
+        budget: formData.budget,
+        preference: formData.preference,
+        allergies: formData.allergies,
+        instructions: formData.instructions,
+        contact_method: formData.contactMethod,
+        products_selected: selectedProducts.map((p) => p.name).join(" • ") || "None selected",
+        source: "Custom Orders Form",
+        botcheck: "",
+      }),
+    });
+    const data = (await res.json().catch(() => null)) as { success?: boolean } | null;
+    if (!res.ok || !data?.success) throw new Error("Submission failed");
+    setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch {
+    setSubmitError(
+      "Something went wrong sending your order request. Please try again or email us directly.",
+    );
+  } finally {
+    setSubmitting(false);
+  }
+};
 ```
 
 - [ ] **Step 3: Add the honeypot field and error message to the form, update the submit button**
@@ -1109,33 +1170,35 @@ Replace the `const [submitted, setSubmitted] = useState(false);` line and `handl
 Add the honeypot input as the first child of the `<form onSubmit={handleSubmit} ...>` element:
 
 ```tsx
-            <input
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              value={botcheck}
-              onChange={(e) => setBotcheck(e.target.value)}
-              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-            />
+<input
+  type="text"
+  tabIndex={-1}
+  autoComplete="off"
+  aria-hidden="true"
+  value={botcheck}
+  onChange={(e) => setBotcheck(e.target.value)}
+  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+/>
 ```
 
 Replace the submit button block:
 
 ```tsx
-            {submitError && (
-              <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
-                {submitError}
-              </p>
-            )}
+{
+  submitError && (
+    <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
+      {submitError}
+    </p>
+  );
+}
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="mt-2 w-full h-12 rounded-full bg-forest text-sm font-medium text-white flex items-center justify-center gap-2 hover:bg-forest-dark disabled:opacity-60"
-            >
-              {submitting ? "Sending…" : "Submit Custom Order Request"} <ArrowRight className="h-4 w-4" />
-            </button>
+<button
+  type="submit"
+  disabled={submitting}
+  className="mt-2 w-full h-12 rounded-full bg-forest text-sm font-medium text-white flex items-center justify-center gap-2 hover:bg-forest-dark disabled:opacity-60"
+>
+  {submitting ? "Sending…" : "Submit Custom Order Request"} <ArrowRight className="h-4 w-4" />
+</button>;
 ```
 
 - [ ] **Step 4: Verify**
@@ -1171,9 +1234,11 @@ git commit -m "feat: wire Custom Orders form to Web3Forms, fix mobile nested scr
 ### Task 11: Wire Catering form to Web3Forms
 
 **Files:**
+
 - Modify: `src/routes/catering.tsx`
 
 **Interfaces:**
+
 - Consumes: same Web3Forms pattern as Task 10.
 - Produces: nothing new exported.
 
@@ -1193,53 +1258,53 @@ const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 Replace `const [submitted, setSubmitted] = useState(false);` and `handleSubmit`:
 
 ```tsx
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [botcheck, setBotcheck] = useState("");
+const [submitted, setSubmitted] = useState(false);
+const [submitting, setSubmitting] = useState(false);
+const [submitError, setSubmitError] = useState<string | null>(null);
+const [botcheck, setBotcheck] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitError(null);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setSubmitError(null);
 
-    if (botcheck) return;
+  if (botcheck) return;
 
-    setSubmitting(true);
-    try {
-      const res = await fetch(WEB3FORMS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: "New Catering Request - Knead To Know",
-          from_name: formData.name,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          event_date: formData.eventDate,
-          event_type: formData.eventType,
-          guest_count: formData.guestCount,
-          items: formData.items,
-          preference: formData.preference,
-          budget: formData.budget,
-          allergies: formData.allergies,
-          message: formData.message,
-          source: "Catering Form",
-          botcheck: "",
-        }),
-      });
-      const data = (await res.json().catch(() => null)) as { success?: boolean } | null;
-      if (!res.ok || !data?.success) throw new Error("Submission failed");
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch {
-      setSubmitError(
-        "Something went wrong sending your catering request. Please try again or email us directly.",
-      );
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  setSubmitting(true);
+  try {
+    const res = await fetch(WEB3FORMS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: ACCESS_KEY,
+        subject: "New Catering Request - Knead To Know",
+        from_name: formData.name,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        event_date: formData.eventDate,
+        event_type: formData.eventType,
+        guest_count: formData.guestCount,
+        items: formData.items,
+        preference: formData.preference,
+        budget: formData.budget,
+        allergies: formData.allergies,
+        message: formData.message,
+        source: "Catering Form",
+        botcheck: "",
+      }),
+    });
+    const data = (await res.json().catch(() => null)) as { success?: boolean } | null;
+    if (!res.ok || !data?.success) throw new Error("Submission failed");
+    setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch {
+    setSubmitError(
+      "Something went wrong sending your catering request. Please try again or email us directly.",
+    );
+  } finally {
+    setSubmitting(false);
+  }
+};
 ```
 
 - [ ] **Step 3: Add honeypot field, error message, and loading state to the form**
@@ -1247,33 +1312,35 @@ Replace `const [submitted, setSubmitted] = useState(false);` and `handleSubmit`:
 Add as the first child of `<form onSubmit={handleSubmit} ...>`:
 
 ```tsx
-          <input
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            value={botcheck}
-            onChange={(e) => setBotcheck(e.target.value)}
-            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-          />
+<input
+  type="text"
+  tabIndex={-1}
+  autoComplete="off"
+  aria-hidden="true"
+  value={botcheck}
+  onChange={(e) => setBotcheck(e.target.value)}
+  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+/>
 ```
 
 Replace the submit button block:
 
 ```tsx
-          {submitError && (
-            <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
-              {submitError}
-            </p>
-          )}
+{
+  submitError && (
+    <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive" role="alert">
+      {submitError}
+    </p>
+  );
+}
 
-          <button
-            type="submit"
-            disabled={submitting}
-            className="h-12 rounded-full bg-forest w-full text-sm font-medium text-white disabled:opacity-60"
-          >
-            {submitting ? "Sending…" : "Submit Catering Request"}
-          </button>
+<button
+  type="submit"
+  disabled={submitting}
+  className="h-12 rounded-full bg-forest w-full text-sm font-medium text-white disabled:opacity-60"
+>
+  {submitting ? "Sending…" : "Submit Catering Request"}
+</button>;
 ```
 
 - [ ] **Step 4: Verify**
@@ -1296,11 +1363,13 @@ git commit -m "feat: wire Catering form to Web3Forms"
 ### Task 12: SEO fixes — robots.txt, sitemap, OG image, JSON-LD
 
 **Files:**
+
 - Modify: `public/robots.txt`
 - Modify: `src/routes/sitemap[.]xml.ts`
 - Modify: `src/routes/__root.tsx`
 
 **Interfaces:**
+
 - Consumes: `SITE_URL`, `BUSINESS` from `@/lib/business`.
 - Produces: `Bakery` JSON-LD script tag in `__root.tsx` head.
 
@@ -1396,6 +1465,7 @@ git commit -m "fix: correct robots.txt/sitemap, replace OG image with real K2K p
 ### Task 13: Delete orphaned old-brand assets
 
 **Files:**
+
 - Delete: `src/assets/alexandra-*.jpg.asset.json` (5 files), `src/assets/alexandra-signature.png.asset.json`
 - Delete: `src/assets/cake-*.png.asset.json` (11 files), `src/assets/cake-360-*.mp4.asset.json` (3 files), `src/assets/cake-360-*-poster.jpg.asset.json` (3 files)
 - Delete: `src/assets/hero-cake.jpg.asset.json`
@@ -1407,7 +1477,7 @@ git commit -m "fix: correct robots.txt/sitemap, replace OG image with real K2K p
 
 Run: `grep -rln "alexandra\|cake-blue-butterfly\|cake-cherry\|cake-classic\|cake-floral\|cake-heart\|cake-holiday\|cake-mermaid\|cake-pink\|cake-rainbow\|cake-teddy\|cake-white\|cake-360\|hero-cake" src --include="*.tsx" --include="*.ts"`
 
-Expected: no matches outside `src/assets/*.asset.json` themselves (these files reference their own filenames inside their JSON, which is fine — we're checking for *imports from* `.tsx`/`.ts` source files).
+Expected: no matches outside `src/assets/*.asset.json` themselves (these files reference their own filenames inside their JSON, which is fine — we're checking for _imports from_ `.tsx`/`.ts` source files).
 
 - [ ] **Step 2: Delete the orphaned `.asset.json` pointer files**
 
@@ -1456,7 +1526,7 @@ for (const uuid of fs.readdirSync(dir)) {
 "
 ```
 
-Cross-reference the printed `original_filename` values against the list of deleted asset names (alexandra-*, cake-*, hero-cake, og-image) and delete each matching UUID folder with `rm -rf public/lovable-assets/<uuid>`.
+Cross-reference the printed `original_filename` values against the list of deleted asset names (alexandra-_, cake-_, hero-cake, og-image) and delete each matching UUID folder with `rm -rf public/lovable-assets/<uuid>`.
 
 - [ ] **Step 4: Verify**
 

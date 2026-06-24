@@ -243,7 +243,7 @@ export function Product3DCarousel({
   }
 
   return (
-    <div className={cn("k2k-3d-carousel-root", className)}>
+    <div className={cn("k2k-3d-carousel-root overflow-visible", className)}>
       <div
         ref={rootRef}
         tabIndex={0}
@@ -263,7 +263,7 @@ export function Product3DCarousel({
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="k2k-3d-carousel-viewport">
+        <div className="k2k-3d-carousel-viewport overflow-visible max-md:!min-h-[clamp(32rem,120vw,38rem)] max-md:!overflow-visible">
           <div className="k2k-3d-carousel-stage">
             {products.map((product, index) => {
               const offset = wrapOffset(index, activeIndex, total);

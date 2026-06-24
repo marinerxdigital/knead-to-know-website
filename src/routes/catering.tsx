@@ -193,7 +193,7 @@ function CateringPage() {
         <section className="relative overflow-hidden bg-[#f8f4ed] py-24 sm:py-32">
           <AtmosphereFog variant="blue-top" />
           <div className="relative mx-auto max-w-xl px-5 sm:px-8">
-            <div className="k2k-surface overflow-hidden rounded-[2rem] p-10 text-center sm:p-14">
+            <div className="k2k-surface overflow-visible rounded-[2rem] p-10 text-center sm:p-14">
               <div className="mb-6 flex items-center justify-center gap-4">
                 <div className="group flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 hover:scale-105">
                   <img
@@ -241,9 +241,6 @@ function CateringPage() {
                   Return home
                   <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
                 </Link>
-                <a href={BUSINESS.phoneTel} className="k2k-button k2k-button-outline inline-flex">
-                  {BUSINESS.phone}
-                </a>
               </div>
             </div>
           </div>
@@ -292,7 +289,7 @@ function CateringPage() {
               delay={Math.min(index % 3, 4) as 0 | 1 | 2 | 3 | 4}
               className="h-full"
             >
-              <div className="k2k-surface k2k-hover-lift group flex h-full min-h-full flex-col rounded-2xl border-t-2 border-t-k2k-blue/15 p-6 sm:p-7 transition duration-300 hover:border-t-k2k-blue/35">
+              <div className="k2k-surface k2k-hover-lift group flex h-full min-h-full flex-col rounded-2xl p-6 sm:p-7 transition duration-300">
                 <div className="flex items-start justify-between gap-3">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#111] bg-[#f8f4ed]/80 transition duration-300 group-hover:scale-105 group-hover:bg-white group-hover:shadow-[0_4px_16px_-6px_rgba(17,17,17,0.15)]">
                     <img
@@ -374,7 +371,7 @@ function CateringPage() {
 
       <Section bg="white" id="catering-form">
         <ScrollReveal>
-          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-0 pl-5 shadow-[0_28px_60px_-44px_rgba(17,17,17,0.18)] sm:pl-7">
+          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-visible rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-0 pl-5 shadow-[0_28px_60px_-44px_rgba(17,17,17,0.18)] sm:pl-7">
             <div className="border-b border-k2k-blue/10 px-6 py-8 sm:px-10 sm:py-10">
               <SectionHeading
                 eyebrow="Inquire"

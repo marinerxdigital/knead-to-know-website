@@ -50,30 +50,6 @@ const ORDER_STEPS = [
   },
 ];
 
-const PAGE_TEASERS = [
-  {
-    to: "/menu" as const,
-    eyebrow: "The menu",
-    title: "Signature sourdough bakes",
-    text: "Breads, cookies, and bagels with verified pricing — all pre-order.",
-    icon: KTK_ICONS.bread,
-  },
-  {
-    to: "/about" as const,
-    eyebrow: "Our story",
-    title: `Meet ${BUSINESS.owner}`,
-    text: `Small-batch baking rooted on ${BUSINESS.city}.`,
-    icon: KTK_ICONS.dough,
-  },
-  {
-    to: "/faq" as const,
-    eyebrow: "Questions",
-    title: "Ordering made clear",
-    text: "Pickup, timing, allergies, and catering — answered.",
-    icon: KTK_ICONS.contact,
-  },
-];
-
 const HOME_FAQS = [
   {
     q: "How do I place a pre-order?",
@@ -333,7 +309,7 @@ function HomePage() {
       <SectionDivider bg="cream" accent="wheat" />
 
       {/* 3. Featured products */}
-      <Section bg="white" variant="editorial" className="!overflow-visible">
+      <Section bg="white" variant="editorial">
         <div className="relative">
           <WheatScoringMark className="k2k-float-gentle absolute -left-2 top-0 w-20 opacity-60 sm:w-24" />
           <img
@@ -393,6 +369,20 @@ function HomePage() {
                 {BUSINESS.phone}
               </a>
             </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={1} className="mx-auto mt-10 max-w-3xl">
+          <div
+            className="k2k-order-path"
+            aria-label={`Order process: ${ORDER_STEPS.map((step) => step.title).join(", ")}`}
+          >
+            {ORDER_STEPS.map((step, index) => (
+              <div key={step.title} className="k2k-order-path-step">
+                <span>{index + 1}</span>
+                <p>{step.title}</p>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
 
@@ -482,7 +472,7 @@ function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={1}>
-            <div className="k2k-surface group relative overflow-hidden rounded-[2rem] bg-k2k-cream px-8 py-12 text-center">
+            <div className="k2k-surface group relative overflow-x-clip overflow-y-visible rounded-[2rem] bg-k2k-cream px-8 py-12 text-center">
               <img
                 src={KTK_DECOR.cornerFlourish}
                 alt=""
@@ -547,100 +537,9 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* Page teasers */}
-      <Section bg="cream">
-        <SectionHeading
-          eyebrow="Explore"
-          title="Discover more"
-          align="center"
-          decorative
-          intro="Menu, story, and answers — everything you need before your first order."
-        />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {PAGE_TEASERS.map((item, index) => (
-            <ScrollReveal key={item.to} delay={Math.min(index, 2) as 0 | 1 | 2}>
-              <Link
-                to={item.to}
-                className="k2k-surface k2k-hover-lift group flex h-full flex-col rounded-2xl p-8 transition"
-              >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-k2k-black bg-k2k-cream transition">
-                  <img
-                    src={item.icon}
-                    alt=""
-                    className="k2k-icon-hover h-5 w-5 opacity-80"
-                    aria-hidden
-                  />
-                </div>
-                <p className="text-xs font-medium uppercase tracking-[0.22em] text-k2k-blue">
-                  {item.eyebrow}
-                </p>
-                <h3 className="mt-3 font-display text-2xl text-ink transition group-hover:text-k2k-blue">
-                  {item.title}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/80">{item.text}</p>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-k2k-blue">
-                  Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                </span>
-              </Link>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Section>
-
-      <SectionDivider bg="beige" accent="wheat" />
-
-      {/* Neighbor stories — placeholder until Wendy provides testimonials */}
-      <Section bg="beige" variant="editorial">
-        <SectionHeading
-          eyebrow="Community"
-          title="What our neighbors say"
-          align="center"
-          decorative
-          intro={
-            <span className="text-ink">
-              {`We're gathering stories from ${BUSINESS.serviceArea} neighbors. Check back soon — or place an order and tell us what you think.`}
-            </span>
-          }
-        />
-        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-3">
-          {[
-            { n: 1, icon: KTK_ICONS.heart },
-            { n: 2, icon: KTK_ICONS.wheat },
-            { n: 3, icon: KTK_ICONS.gift },
-          ].map((item, index) => (
-            <ScrollReveal key={item.n} delay={Math.min(index, 2) as 0 | 1 | 2}>
-              <div className="k2k-surface k2k-hover-lift group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border-t-2 border-t-k2k-blue/15 px-6 py-7 text-center sm:px-8 sm:py-8">
-                <img
-                  src={KTK_DECOR.cornerFlourish}
-                  alt=""
-                  className="ktk-corner-flourish"
-                  loading="lazy"
-                  aria-hidden
-                />
-                <div className="flex flex-col items-center gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-k2k-black bg-k2k-cream">
-                    <img
-                      src={item.icon}
-                      alt=""
-                      className="k2k-icon-black k2k-icon-hover h-5 w-5 object-contain"
-                      aria-hidden
-                    />
-                  </div>
-                  <WheatScoringMark className="k2k-float-gentle w-14 opacity-35 sm:w-16" />
-                </div>
-                <p className="mt-5 font-display text-lg text-ink">Neighbor story #{item.n}</p>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-k2k-navy/80">
-                  Testimonial coming soon — we're baking relationships one loaf at a time.
-                </p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Section>
-
       <SectionDivider bg="white" accent="blue" />
 
-      {/* FAQ teaser */}
+      {/* 6. FAQ teaser */}
       <Section bg="cream">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
@@ -654,7 +553,7 @@ function HomePage() {
             <FAQPanel
               className="mt-12"
               header={
-                <div className="group flex items-center justify-between bg-gradient-to-r from-k2k-blue/[0.04] via-white to-wheat/[0.06]">
+                <div className="group flex items-center justify-between bg-transparent">
                   <div className="flex items-center gap-3">
                     <img
                       src={KTK_ICONS.calendar}

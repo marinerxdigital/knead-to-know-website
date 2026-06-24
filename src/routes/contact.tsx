@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Eyebrow, Section } from "@/components/sections/Section";
 import { CTASection } from "@/components/sections/CTASection";
@@ -264,7 +264,7 @@ function ContactPage() {
               <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-9">
                 <IconSectionHeading icon={KTK_ICONS.envelope} title="Bakery details" />
 
-                <div className="k2k-surface mt-8 overflow-hidden !rounded-2xl !border-[#111] !border-t-k2k-blue/30 !bg-[#f8f4ed] !p-0">
+                <div className="k2k-surface-inset mt-8 overflow-visible !p-0">
                   <div className="border-b border-k2k-blue/10 bg-white px-6 py-4 sm:px-8">
                     <p className="group flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-k2k-blue">
                       <Phone
@@ -344,25 +344,6 @@ function ContactPage() {
             <ScrollReveal delay={4}>
               <MapPlaceholder />
             </ScrollReveal>
-
-            <ScrollReveal delay={4}>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/custom-orders"
-                  className="group inline-flex k2k-button k2k-button-primary"
-                >
-                  Request an Order{" "}
-                  <ArrowRight className="ml-1 h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
-                </Link>
-                <a
-                  href={BUSINESS.phoneTel}
-                  className="group k2k-button k2k-button-outline k2k-phone-pulse inline-flex"
-                >
-                  <Phone className="h-4 w-4 transition duration-300 group-hover:scale-110" />
-                  Call Wendy
-                </a>
-              </div>
-            </ScrollReveal>
           </div>
 
           <div className="min-w-0 space-y-8">
@@ -380,7 +361,7 @@ function ContactPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={2}>
-              <blockquote className="k2k-surface group relative overflow-hidden rounded-2xl border-l-2 border-l-k2k-blue/30 p-6">
+              <blockquote className="k2k-surface group relative overflow-x-clip overflow-y-visible rounded-2xl border-l-2 border-l-k2k-blue/30 p-6">
                 <img
                   src={KTK_DECOR.cornerFlourish}
                   alt=""

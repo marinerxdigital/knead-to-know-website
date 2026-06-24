@@ -22,7 +22,7 @@ const variantClasses: Record<SectionVariant, { section: string; inner: string }>
     inner: cn("mx-auto max-w-7xl min-w-0", sectionX),
   },
   editorial: {
-    section: cn("relative", sectionPadding),
+    section: sectionPadding,
     inner: cn("relative mx-auto max-w-7xl min-w-0", sectionX),
   },
   inset: {
@@ -31,6 +31,8 @@ const variantClasses: Record<SectionVariant, { section: string; inner: string }>
       "mx-auto max-w-7xl min-w-0",
       sectionX,
       "[&>div]:rounded-[2rem] [&>div]:border [&>div]:border-k2k-black [&>div]:bg-white [&>div]:p-8 [&>div]:shadow-[var(--k2k-shadow-sm)] sm:[&>div]:p-12",
+      "[&>div:has(.k2k-surface)]:rounded-none [&>div:has(.k2k-surface)]:border-0 [&>div:has(.k2k-surface)]:bg-transparent [&>div:has(.k2k-surface)]:p-0 [&>div:has(.k2k-surface)]:shadow-none",
+      "[&>div:has(.k2k-card)]:rounded-none [&>div:has(.k2k-card)]:border-0 [&>div:has(.k2k-card)]:bg-transparent [&>div:has(.k2k-card)]:p-0 [&>div:has(.k2k-card)]:shadow-none",
     ),
   },
 };
@@ -94,7 +96,7 @@ export function Section({
         className={cn(
           styles.section,
           bgClasses[bg],
-          variant === "editorial" && "relative overflow-hidden",
+          variant === "editorial" && "k2k-section-editorial",
           className,
         )}
       >
@@ -109,7 +111,7 @@ export function Section({
       className={cn(
         styles.section,
         bgClasses[bg],
-        variant === "editorial" && "relative overflow-hidden",
+        variant === "editorial" && "k2k-section-editorial",
         className,
       )}
     >

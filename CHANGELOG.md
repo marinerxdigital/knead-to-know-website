@@ -5,6 +5,7 @@
 **Commit message:** `feat(branding): integrate KTK design-asset system, replace all logos, add dividers/flourishes/icons/placeholders, update favicons+OG+manifest`
 
 ### Added
+
 - 19 production design assets under `/public/assets/knead-to-know/design/`
 - Official logo `KTK_NEW_LOGO_FINAL.png` site-wide
 - Central asset module `src/lib/design-assets.ts`
@@ -13,6 +14,7 @@
 - Agent memory files: `codexmemory.md`, `claudememory.md`, `grokmemory.md`, `projectmemory.md`
 
 ### Changed
+
 - All legacy icon paths → new KTK individual icon family
 - `SectionDivider` → wave/gold PNG divider asset
 - `SectionHeading` decorative mode → flour-wash background accent
@@ -21,7 +23,9 @@
 - OG/Twitter/JSON-LD images → logo-based 1200×630 composite
 
 ### Archived
+
 - `Knead_To_Know_Primary_Circular_Logo.png` → `public/_archive_legacy_logos/`
 
 ### Build
+
 - `npm run build`: PASS

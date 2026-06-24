@@ -548,11 +548,11 @@ All CTAs use `tel:8439730309` → `(843) 973-0309`
 | Coastal blue (Harbor Deep) | `#3B6E91` | Primary buttons, accents, Sweet & Sour tagline |
 | Harbor blue                | `#6A9EC0` | Secondary, gradients                           |
 | Blue hover                 | `#325F7D` | Primary button hover                           |
-| Navy         | `#1F3447` | Headings, hover states                         |
-| Ink / black  | `#111111` | Body text, borders                             |
-| Cream        | `#F8F4ED` | Section backgrounds                            |
-| Wheat        | `#C2A878` | Small accents only                             |
-| White        | `#FFFFFF` | Cards, surfaces                                |
+| Navy                       | `#1F3447` | Headings, hover states                         |
+| Ink / black                | `#111111` | Body text, borders                             |
+| Cream                      | `#F8F4ED` | Section backgrounds                            |
+| Wheat                      | `#C2A878` | Small accents only                             |
+| White                      | `#FFFFFF` | Cards, surfaces                                |
 
 ### Typography
 
@@ -671,16 +671,16 @@ Please review the live site and confirm:
 
 ## 17. Session History (Revamp #1–#5)
 
-| Phase            | Date       | Deliverables                                        |
-| ---------------- | ---------- | --------------------------------------------------- |
-| Phase 1          | 2026-06-22 | Skeleton extraction, npm build verified             |
-| Phase 2          | 2026-06-22 | Spilled Milk → K2K brand conversion                 |
-| Data integration | 2026-06-22 | 16 products, phone, product-copy.ts                 |
-| Revamp #1–#2     | 2026-06-22 | Full-site UI, PageHero, cream palette, hero photo   |
-| Revamp #3        | 2026-06-22 | Black borders, motion, nav/wordmark polish          |
-| Revamp #4        | 2026-06-23 | 3D carousel, interactive menu, blue accents, deploy |
-| Cleanup          | 2026-06-23 | Orphan routes removed, master guide, redirects      |
-| Harbor Deep blue | 2026-06-22 | Refined palette `#3B6E91` / `#6A9EC0`               |
+| Phase            | Date       | Deliverables                                                                                                                                                                                                             |
+| ---------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Phase 1          | 2026-06-22 | Skeleton extraction, npm build verified                                                                                                                                                                                  |
+| Phase 2          | 2026-06-22 | Spilled Milk → K2K brand conversion                                                                                                                                                                                      |
+| Data integration | 2026-06-22 | 16 products, phone, product-copy.ts                                                                                                                                                                                      |
+| Revamp #1–#2     | 2026-06-22 | Full-site UI, PageHero, cream palette, hero photo                                                                                                                                                                        |
+| Revamp #3        | 2026-06-22 | Black borders, motion, nav/wordmark polish                                                                                                                                                                               |
+| Revamp #4        | 2026-06-23 | 3D carousel, interactive menu, blue accents, deploy                                                                                                                                                                      |
+| Cleanup          | 2026-06-23 | Orphan routes removed, master guide, redirects                                                                                                                                                                           |
+| Harbor Deep blue | 2026-06-22 | Refined palette `#3B6E91` / `#6A9EC0`                                                                                                                                                                                    |
 | **Revamp #5**    | 2026-06-22 | **Final polish:** 4 parallel UI agents — header/nav mobile drawer, homepage hero + 3D carousel sizing, menu tray + 44px touch targets, contact/forms/FAQ section padding, global `overflow-x` fix, Wendy walkthrough doc |
 
 **Latest commit:** `main` branch (post orphan removal)

@@ -219,9 +219,7 @@ export function PreOrderTrayMobile({
                 {count > 0 ? (
                   <p className="text-xs tabular-nums text-k2k-blue">Est. {formatMoney(total)}</p>
                 ) : (
-                  <p className="truncate text-xs text-k2k-navy">
-                    Tap items to build your tray
-                  </p>
+                  <p className="truncate text-xs text-k2k-navy">Tap items to build your tray</p>
                 )}
               </div>
             </div>

@@ -135,7 +135,7 @@ export function ContactForm() {
   if (sent) {
     return (
       <ScrollReveal>
-        <div className="group k2k-card overflow-hidden rounded-[1.75rem] p-10 text-center">
+        <div className="group k2k-card rounded-[1.75rem] p-10 text-center">
           <div className="mb-6 flex items-center gap-3" aria-hidden="true">
             <div className="relative h-px flex-1 overflow-hidden">
               <div className="absolute inset-0 k2k-line-grow bg-k2k-black/10" />

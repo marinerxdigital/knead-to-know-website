@@ -146,7 +146,7 @@ function GalleryPage() {
                     aria-selected={activeCategory === cat}
                     onClick={() => setActiveCategory(cat)}
                     className={cn(
-                      "group k2k-button !min-h-10 !gap-2 !px-5 !py-2 !text-[0.68rem] transition-all duration-300",
+                      "group k2k-button !min-h-11 !gap-2 !px-5 !py-2 !text-[0.68rem] transition-all duration-300",
                       activeCategory === cat ? "k2k-button-primary" : "k2k-button-outline",
                     )}
                   >
@@ -167,7 +167,8 @@ function GalleryPage() {
         </ScrollReveal>
 
         <div
-          className="columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3 lg:gap-6 xl:columns-4"
+          key={activeCategory}
+          className="k2k-menu-filter-results columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3 lg:gap-6 xl:columns-4"
           role="tabpanel"
           aria-label={`${activeCategory} gallery`}
         >
@@ -180,7 +181,7 @@ function GalleryPage() {
               <ScrollReveal
                 key={product.id}
                 delay={revealDelay}
-                className="mb-4 break-inside-avoid sm:mb-5 lg:mb-6"
+                className="k2k-product-reveal mb-4 break-inside-avoid sm:mb-5 lg:mb-6"
               >
                 <button
                   type="button"
@@ -200,7 +201,7 @@ function GalleryPage() {
                 >
                   <div
                     className={cn(
-                      "k2k-surface overflow-hidden rounded-[1.5rem] p-2.5 transition duration-300 sm:p-3",
+                      "k2k-surface overflow-visible rounded-[1.5rem] p-2.5 transition duration-300 sm:p-3",
                       hasPhoto && "group-hover:shadow-[0_28px_60px_-32px_rgba(17,17,17,0.25)]",
                       !hasPhoto && "border-dashed opacity-90",
                     )}

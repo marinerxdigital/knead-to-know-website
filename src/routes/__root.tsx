@@ -15,11 +15,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { KTK_ICONS } from "../lib/design-assets";
 import { SITE_URL } from "../lib/business";
 import { Header } from "../components/layout/Header";
+import { SeasonalBanner } from "../components/layout/SeasonalBanner";
 import { Footer } from "../components/layout/Footer";
-import {
-  isMobileOrderBarVisible,
-  MobileOrderBar,
-} from "../components/layout/MobileOrderBar";
+import { isMobileOrderBarVisible, MobileOrderBar } from "../components/layout/MobileOrderBar";
 import { AtmosphereFog } from "../components/decor/AtmosphereFog";
 import { cn } from "../lib/utils";
 import { Toaster } from "../components/ui/sonner";
@@ -30,7 +28,7 @@ function NotFoundComponent() {
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8f4ed] px-4 py-12">
       <AtmosphereFog variant="blue-top-right-soft" />
-      <div className="k2k-bordered k2k-surface relative w-full max-w-md rounded-[1.75rem] px-6 py-10 text-center sm:px-8 sm:py-12">
+      <div className="k2k-surface relative w-full max-w-md rounded-[1.75rem] px-6 py-10 text-center sm:px-8 sm:py-12">
         <div className="mb-6 flex items-center justify-center gap-3" aria-hidden>
           <span className="h-px w-10 bg-k2k-blue/25" />
           <img src={KTK_ICONS.wheat} alt="" className="h-5 w-5 opacity-60" aria-hidden />
@@ -207,6 +205,7 @@ function RootComponent() {
           Skip to content
         </a>
         <Header />
+        <SeasonalBanner />
         <main
           id="main-content"
           className={cn(

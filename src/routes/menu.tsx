@@ -1,9 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Sparkles } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
-import { Section, SectionHeading } from "@/components/sections/Section";
 import { CTASection } from "@/components/sections/CTASection";
-import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { InteractiveMenuBuilder } from "@/components/menu/InteractiveMenuBuilder";
 import { BAKERY_PHOTOS } from "@/lib/products";
 import { BUSINESS, SITE_URL } from "@/lib/business";
@@ -68,61 +66,18 @@ function MenuPage() {
 
       <InteractiveMenuBuilder />
 
-      <Section bg="beige" variant="editorial">
-        <ScrollReveal>
-          <div className="k2k-surface k2k-accent-rail relative mx-auto max-w-4xl overflow-hidden rounded-[2.25rem] border-t-2 border-t-k2k-blue/30 pt-10 pr-10 pb-10 pl-5 sm:pt-14 sm:pr-14 sm:pb-14 sm:pl-7">
-            <div className="relative text-center">
-              <SectionHeading
-                align="center"
-                decorative
-                eyebrow="Ready to order"
-                title="Pre-order your favorites"
-                intro="Select items above, text Wendy your tray, or call directly — she confirms availability and bakes fresh for pickup on Daniel Island."
-              />
-              <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Link
-                  to="/custom-orders"
-                  className="group k2k-button k2k-button-primary inline-flex !min-h-11 items-center gap-2 !px-6 !text-xs shadow-[0_16px_40px_-12px_rgba(59,110,145,0.55)] sm:!px-8"
-                >
-                  Full Order Form
-                  <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
-                </Link>
-                <a
-                  href={BUSINESS.phoneTel}
-                  className="k2k-button k2k-button-outline inline-flex !min-h-11 !px-6 !text-xs sm:!px-8"
-                >
-                  {BUSINESS.phone}
-                </a>
-                <Link
-                  to="/catering"
-                  className="k2k-button k2k-button-outline inline-flex !min-h-11 !px-6 !text-xs sm:!px-8"
-                >
-                  Catering &amp; Events
-                </Link>
-              </div>
-              <p className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-k2k-blue">
-                {BUSINESS.orderingModel} · {BUSINESS.fulfillment}
-              </p>
-              <p className="mt-2 text-xs leading-relaxed text-k2k-navy/90">
-                Final order timing and availability are confirmed directly with Wendy.
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
-      </Section>
-
       <CTASection
         compact
-        eyebrow="Questions?"
-        title="Need help with your order?"
-        text="Call or text Wendy with your tray, timing, or custom requests — she confirms availability and bakes fresh for pickup."
-        primaryLabel="Contact Wendy"
-        primaryTo="/contact"
+        eyebrow="Ready to order"
+        title="Pre-order your favorites"
+        text="Build your tray above, then text Wendy your order — or call directly. She confirms availability and bakes fresh for pickup on Daniel Island."
+        primaryLabel="Full Order Form"
+        primaryTo="/custom-orders"
         secondaryLabel={BUSINESS.phone}
         secondaryTo={BUSINESS.phoneTel}
         secondaryIsPhone
-        tertiaryLabel="FAQ"
-        tertiaryTo="/faq"
+        tertiaryLabel="Catering & Events"
+        tertiaryTo="/catering"
       />
     </>
   );

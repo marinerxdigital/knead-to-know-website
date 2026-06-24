@@ -254,7 +254,7 @@ function CustomOrdersPage() {
           <AtmosphereFog variant="blue-top-deep" />
 
           <div className="relative mx-auto max-w-2xl">
-            <div className="k2k-card overflow-hidden rounded-[2rem] p-10 sm:p-12">
+            <div className="k2k-surface overflow-visible rounded-[2rem] p-10 sm:p-12">
               {/* Scoring accent */}
               <div className="mb-8 flex items-center gap-3" aria-hidden="true">
                 <div className="relative h-px flex-1">
@@ -381,8 +381,8 @@ function CustomOrdersPage() {
             what you want? Add details in the special instructions field below.
           </p>
 
-          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-hidden rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-5 pl-5 sm:p-7 sm:pl-7">
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-x-clip overflow-y-visible rounded-[1.75rem] border-t-2 border-t-k2k-blue/25 p-5 pl-5 sm:p-7 sm:pl-7">
+            <div className="grid grid-cols-1 gap-4 sm:max-h-[620px] sm:grid-cols-2 sm:overflow-auto lg:grid-cols-3">
               {PRODUCTS.map((product, index) => {
                 const delay = (index % 5) as 0 | 1 | 2 | 3 | 4;
                 return (
@@ -402,9 +402,9 @@ function CustomOrdersPage() {
         </ScrollReveal>
       </Section>
 
-      <Section bg="beige" reveal={false}>
+      <Section bg="beige" variant="default" reveal={false}>
         <ScrollReveal>
-          <div className="k2k-accent-rail k2k-card min-w-0 overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-10">
+          <div className="k2k-accent-rail k2k-surface min-w-0 overflow-visible rounded-[2rem] border-t-2 border-t-k2k-blue/25 p-6 pl-5 sm:p-8 sm:pl-7 lg:p-10">
             <div className="grid gap-12 lg:grid-cols-[1fr_280px] lg:gap-16">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <input

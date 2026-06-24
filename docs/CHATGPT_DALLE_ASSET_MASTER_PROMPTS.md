@@ -26,58 +26,58 @@ Four parallel agents evaluated every asset type the site could use. Below is the
 
 ### Priority Tiers
 
-| Tier | Meaning | Generate when |
-|------|---------|---------------|
-| **Must** | Blocks polish, trust, or shareability | Before Wendy review or launch |
-| **Should** | Strong uplift; site works without it | After Must tier |
-| **Nice** | Seasonal / future channel | After client approves core brand |
+| Tier       | Meaning                               | Generate when                    |
+| ---------- | ------------------------------------- | -------------------------------- |
+| **Must**   | Blocks polish, trust, or shareability | Before Wendy review or launch    |
+| **Should** | Strong uplift; site works without it  | After Must tier                  |
+| **Nice**   | Seasonal / future channel             | After client approves core brand |
 
 ### Master Priority List (Top 15)
 
-| # | Asset | Priority | Best tool |
-|---|-------|----------|-----------|
-| 1 | Primary circular logo | **Must** | DALL·E → trace SVG |
-| 2 | Favicon + Apple touch icon | **Must** | DALL·E icon source → ICO tooling |
-| 3 | Open Graph card 1200×630 | **Must** | DALL·E background + Figma/code text |
-| 4 | Missing product photos (breads) | **Must** | DALL·E interim → Wendy real photos |
-| 5 | Pre-order only badge/seal | **Must** | DALL·E shape → Figma text overlay |
-| 6 | Thank-you pickup card insert | **Must** | DALL·E border → print template |
-| 7 | Empty menu tray illustration | **Should** | DALL·E spot illustration |
-| 8 | Daniel Island stylized map | **Should** | DALL·E → verify geography |
-| 9 | Logo on navy / reversed | **Should** | DALL·E comp → SVG |
-| 10 | Monochrome stamp watermark | **Should** | DALL·E → SVG trace |
-| 11 | Menu announcement graphic frame | **Should** | DALL·E frame → real menu text in Figma |
-| 12 | Google Business Profile cover | **Should** | Real hero photo composite preferred |
-| 13 | 404 spot illustration | **Nice** | DALL·E |
-| 14 | Instagram post/story templates | **Nice** | DALL·E backgrounds → Canva |
-| 15 | Coastal tileable texture | **Nice** | CSS first; DALL·E only if needed |
+| #   | Asset                           | Priority   | Best tool                              |
+| --- | ------------------------------- | ---------- | -------------------------------------- |
+| 1   | Primary circular logo           | **Must**   | DALL·E → trace SVG                     |
+| 2   | Favicon + Apple touch icon      | **Must**   | DALL·E icon source → ICO tooling       |
+| 3   | Open Graph card 1200×630        | **Must**   | DALL·E background + Figma/code text    |
+| 4   | Missing product photos (breads) | **Must**   | DALL·E interim → Wendy real photos     |
+| 5   | Pre-order only badge/seal       | **Must**   | DALL·E shape → Figma text overlay      |
+| 6   | Thank-you pickup card insert    | **Must**   | DALL·E border → print template         |
+| 7   | Empty menu tray illustration    | **Should** | DALL·E spot illustration               |
+| 8   | Daniel Island stylized map      | **Should** | DALL·E → verify geography              |
+| 9   | Logo on navy / reversed         | **Should** | DALL·E comp → SVG                      |
+| 10  | Monochrome stamp watermark      | **Should** | DALL·E → SVG trace                     |
+| 11  | Menu announcement graphic frame | **Should** | DALL·E frame → real menu text in Figma |
+| 12  | Google Business Profile cover   | **Should** | Real hero photo composite preferred    |
+| 13  | 404 spot illustration           | **Nice**   | DALL·E                                 |
+| 14  | Instagram post/story templates  | **Nice**   | DALL·E backgrounds → Canva             |
+| 15  | Coastal tileable texture        | **Nice**   | CSS first; DALL·E only if needed       |
 
 ### What NOT to Generate (Hard Rules)
 
-| Never generate | Why |
-|----------------|-----|
-| Wendy's face / AI founder portrait | No consent; trust risk |
-| Fake customer testimonials or review cards | No verified quotes in data layer |
-| Fake press logos or "As seen in" bars | `PRESS_FEATURE` is null |
-| Invented Instagram handles | `instagramHandle` is null until Wendy provides |
-| Invented email, hours, street address | All null in `business.ts` |
-| AI logo with baked-in text as final file | Typography errors; use existing PNG + trace |
-| Menu prices or item names inside images | Source of truth is `src/lib/products.ts` |
-| Checkout / "Add to cart" UI | Site uses SMS pre-order tray only |
-| Spilled Milk / cake-boutique luxury vibes | K2K brand only |
-| PNG buttons, cards, form fields | Site uses CSS `k2k-surface` / `k2k-button` |
+| Never generate                             | Why                                            |
+| ------------------------------------------ | ---------------------------------------------- |
+| Wendy's face / AI founder portrait         | No consent; trust risk                         |
+| Fake customer testimonials or review cards | No verified quotes in data layer               |
+| Fake press logos or "As seen in" bars      | `PRESS_FEATURE` is null                        |
+| Invented Instagram handles                 | `instagramHandle` is null until Wendy provides |
+| Invented email, hours, street address      | All null in `business.ts`                      |
+| AI logo with baked-in text as final file   | Typography errors; use existing PNG + trace    |
+| Menu prices or item names inside images    | Source of truth is `src/lib/products.ts`       |
+| Checkout / "Add to cart" UI                | Site uses SMS pre-order tray only              |
+| Spilled Milk / cake-boutique luxury vibes  | K2K brand only                                 |
+| PNG buttons, cards, form fields            | Site uses CSS `k2k-surface` / `k2k-button`     |
 
 ### Code vs Image — Team Decision Matrix
 
-| Keep in **CODE** (CSS/SVG/React) | Generate as **IMAGE** |
-|----------------------------------|------------------------|
-| Buttons, cards, borders, forms | Product photos (interim gaps) |
-| Harbor wave SVGs, wheat scoring marks | Spot illustrations (empty states, 404) |
-| Section dividers (`SectionDivider.tsx`) | OG/social composite backgrounds |
-| Wordmark in header/footer (Fraunces CSS) | Favicon / app icon simplified mark |
-| Lucide utility icons (search, phone) | Stylized Daniel Island map base |
-| Radial coastal washes | Print collateral borders (cards, stickers) |
-| Black-bordered `k2k-*` design system | Founder **hands-only** lifestyle (not face) |
+| Keep in **CODE** (CSS/SVG/React)         | Generate as **IMAGE**                       |
+| ---------------------------------------- | ------------------------------------------- |
+| Buttons, cards, borders, forms           | Product photos (interim gaps)               |
+| Harbor wave SVGs, wheat scoring marks    | Spot illustrations (empty states, 404)      |
+| Section dividers (`SectionDivider.tsx`)  | OG/social composite backgrounds             |
+| Wordmark in header/footer (Fraunces CSS) | Favicon / app icon simplified mark          |
+| Lucide utility icons (search, phone)     | Stylized Daniel Island map base             |
+| Radial coastal washes                    | Print collateral borders (cards, stickers)  |
+| Black-bordered `k2k-*` design system     | Founder **hands-only** lifestyle (not face) |
 
 ### Recommended Hybrid Workflow
 
@@ -114,14 +114,14 @@ No Spilled Milk branding. No invented business names. No fake reviews.
 
 ## 1. Primary Circular Logo
 
-| | |
-|---|---|
-| **Why** | Header, footer, hero, packaging, social — central brand mark |
-| **Pros** | Fast exploration of seal/monogram/loaf directions; mood boards for Wendy |
-| **Cons** | Text in logo often misspelled; must trace to SVG/PNG; don't ship raw DALL·E as final |
-| **Priority** | **Must** |
-| **Output** | 1024×1024 PNG → trace → `public/assets/knead-to-know/logo/` |
-| **Web team** | Replace `Knead_To_Know_Primary_Circular_Logo.png`; update `BrandLogo.tsx` |
+|              |                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------ |
+| **Why**      | Header, footer, hero, packaging, social — central brand mark                         |
+| **Pros**     | Fast exploration of seal/monogram/loaf directions; mood boards for Wendy             |
+| **Cons**     | Text in logo often misspelled; must trace to SVG/PNG; don't ship raw DALL·E as final |
+| **Priority** | **Must**                                                                             |
+| **Output**   | 1024×1024 PNG → trace → `public/assets/knead-to-know/logo/`                          |
+| **Web team** | Replace `Knead_To_Know_Primary_Circular_Logo.png`; update `BrandLogo.tsx`            |
 
 ### START PROMPT
 
@@ -133,6 +133,7 @@ Location: Daniel Island, South Carolina (Lowcountry coastal)
 Positioning: Boutique home bakery — sourdough breads, cookies, bagels, pastries. Pre-orders only.
 
 LOGO FORMAT:
+
 - Primary mark: circular badge / seal (legible at 48px favicon up to 500px hero)
 - Must read on white AND cream #F8F4ED backgrounds
 - Flat vector-style appearance, crisp edges, no muddy gradients
@@ -155,14 +156,14 @@ Image: 1024×1024, centered, generous padding, professional brand mockup.
 
 ## 2. Favicon & Simplified App Icon
 
-| | |
-|---|---|
-| **Why** | Browser tabs, bookmarks, iOS home screen — brand recall on repeat orders |
-| **Pros** | Quick ultra-simple mark exploration (wheat, K, loaf icon) |
-| **Cons** | Detail dies below 32px; needs ICO/PNG export pipeline; no text |
-| **Priority** | **Must** |
-| **Output** | 512×512 source → `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` (180×180 opaque) |
-| **Web team** | `__root.tsx` already links these paths in `/public/` |
+|              |                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------- |
+| **Why**      | Browser tabs, bookmarks, iOS home screen — brand recall on repeat orders                  |
+| **Pros**     | Quick ultra-simple mark exploration (wheat, K, loaf icon)                                 |
+| **Cons**     | Detail dies below 32px; needs ICO/PNG export pipeline; no text                            |
+| **Priority** | **Must**                                                                                  |
+| **Output**   | 512×512 source → `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` (180×180 opaque) |
+| **Web team** | `__root.tsx` already links these paths in `/public/`                                      |
 
 ### START PROMPT
 
@@ -181,14 +182,14 @@ Also describe how this simplifies from the full circular logo.
 
 ## 3. Open Graph Social Share Card
 
-| | |
-|---|---|
-| **Why** | iMessage/Facebook/LinkedIn link previews; current hero is wrong 1200×1500 aspect |
-| **Pros** | Controlled first impression; coastal editorial bakery spread |
-| **Cons** | Text in image garbles — composite logo/type in Figma or code; cache aggressively |
-| **Priority** | **Must** |
-| **Output** | 1200×630 JPG ≤250KB → `public/assets/knead-to-know/social/og-image.jpg` |
-| **Web team** | Update `__root.tsx` og:image width/height to 1200/630 |
+|              |                                                                                  |
+| ------------ | -------------------------------------------------------------------------------- |
+| **Why**      | iMessage/Facebook/LinkedIn link previews; current hero is wrong 1200×1500 aspect |
+| **Pros**     | Controlled first impression; coastal editorial bakery spread                     |
+| **Cons**     | Text in image garbles — composite logo/type in Figma or code; cache aggressively |
+| **Priority** | **Must**                                                                         |
+| **Output**   | 1200×630 JPG ≤250KB → `public/assets/knead-to-know/social/og-image.jpg`          |
+| **Web team** | Update `__root.tsx` og:image width/height to 1200/630                            |
 
 ### START PROMPT
 
@@ -211,14 +212,14 @@ No words, no logos, no phone numbers, no watermarks.
 
 ## 4. Logo on Navy / Reversed
 
-| | |
-|---|---|
-| **Why** | Footer dark bands, navy heroes, email headers, social on dark templates |
-| **Pros** | Tests cream-on-navy vs full-color seal contrast |
-| **Cons** | Auto CSS invert destroys brand; needs dedicated file |
-| **Priority** | **Should** |
-| **Output** | SVG + PNG 1024×1024 transparent → `logo-on-navy.svg` |
-| **Web team** | Optional `BrandLogo variant="on-dark"` |
+|              |                                                                         |
+| ------------ | ----------------------------------------------------------------------- |
+| **Why**      | Footer dark bands, navy heroes, email headers, social on dark templates |
+| **Pros**     | Tests cream-on-navy vs full-color seal contrast                         |
+| **Cons**     | Auto CSS invert destroys brand; needs dedicated file                    |
+| **Priority** | **Should**                                                              |
+| **Output**   | SVG + PNG 1024×1024 transparent → `logo-on-navy.svg`                    |
+| **Web team** | Optional `BrandLogo variant="on-dark"`                                  |
 
 ### START PROMPT
 
@@ -237,13 +238,13 @@ Transparent PNG composition shown on navy #1F3447 swatch for preview.
 
 ## 5. Monochrome Stamp / Watermark
 
-| | |
-|---|---|
-| **Why** | Gallery watermarks, printable inserts, single-ink labels |
-| **Pros** | Vintage seal aesthetic fits farmers-market positioning |
-| **Cons** | Micro text hallucinates; needs SVG trace; avoid grunge |
-| **Priority** | **Should** |
-| **Output** | SVG → `stamp-monochrome-black.svg`, `stamp-monochrome-cream.svg` |
+|              |                                                                  |
+| ------------ | ---------------------------------------------------------------- |
+| **Why**      | Gallery watermarks, printable inserts, single-ink labels         |
+| **Pros**     | Vintage seal aesthetic fits farmers-market positioning           |
+| **Cons**     | Micro text hallucinates; needs SVG trace; avoid grunge           |
+| **Priority** | **Should**                                                       |
+| **Output**   | SVG → `stamp-monochrome-black.svg`, `stamp-monochrome-cream.svg` |
 
 ### START PROMPT
 
@@ -261,13 +262,13 @@ Transparent background, 1024×1024, no letters, no numbers, no bakery name insid
 
 ## 6. Wordmark-Only Lockup (Reference / Print)
 
-| | |
-|---|---|
-| **Why** | Email signatures, PDF menus, print labels where web fonts unavailable |
-| **Pros** | Visualizes Fraunces + tracked "SWEET & SOUR" for client approval |
-| **Cons** | DALL·E typography unreliable — production should be Figma/Fraunces export |
-| **Priority** | **Should** for off-site; **Nice** for web (CSS wordmark already works) |
-| **Output** | Mood comp only OR designer SVG 800×160 |
+|              |                                                                           |
+| ------------ | ------------------------------------------------------------------------- |
+| **Why**      | Email signatures, PDF menus, print labels where web fonts unavailable     |
+| **Pros**     | Visualizes Fraunces + tracked "SWEET & SOUR" for client approval          |
+| **Cons**     | DALL·E typography unreliable — production should be Figma/Fraunces export |
+| **Priority** | **Should** for off-site; **Nice** for web (CSS wordmark already works)    |
+| **Output**   | Mood comp only OR designer SVG 800×160                                    |
 
 ### START PROMPT
 
@@ -288,13 +289,13 @@ No circular icon, no cartoon, no script handwriting font.
 
 ## 7. Pre-Order Only Badge (Seal)
 
-| | |
-|---|---|
-| **Why** | Matches `orderingModel: "Pre-orders only"` site-wide; packaging, IG, GBP |
-| **Pros** | Round seal shape aligns with logo system |
-| **Cons** | Text must be added in Figma — DALL·E misspells "Pre-order" |
-| **Priority** | **Must** |
-| **Output** | 800×800 PNG transparent → overlay text in Figma |
+|              |                                                                          |
+| ------------ | ------------------------------------------------------------------------ |
+| **Why**      | Matches `orderingModel: "Pre-orders only"` site-wide; packaging, IG, GBP |
+| **Pros**     | Round seal shape aligns with logo system                                 |
+| **Cons**     | Text must be added in Figma — DALL·E misspells "Pre-order"               |
+| **Priority** | **Must**                                                                 |
+| **Output**   | 800×800 PNG transparent → overlay text in Figma                          |
 
 ### START PROMPT
 
@@ -314,14 +315,14 @@ NO text, NO letters, NO words inside the image.
 
 ## 8. Empty Pre-Order Tray Illustration
 
-| | |
-|---|---|
-| **Why** | `/menu` tray empty state — high-traffic UX moment |
-| **Pros** | On-brand vs generic shopping cart icon |
-| **Cons** | Must stay small in sidebar ~280px |
-| **Priority** | **Should** |
-| **Output** | 400×300 PNG/WebP → `illustrations/empty-tray.webp` |
-| **Web team** | `PreOrderTray.tsx` empty state |
+|              |                                                    |
+| ------------ | -------------------------------------------------- |
+| **Why**      | `/menu` tray empty state — high-traffic UX moment  |
+| **Pros**     | On-brand vs generic shopping cart icon             |
+| **Cons**     | Must stay small in sidebar ~280px                  |
+| **Priority** | **Should**                                         |
+| **Output**   | 400×300 PNG/WebP → `illustrations/empty-tray.webp` |
+| **Web team** | `PreOrderTray.tsx` empty state                     |
 
 ### START PROMPT
 
@@ -339,13 +340,13 @@ Aspect 4:3, 800×600 pixels.
 
 ## 9. Menu Search — No Results Illustration
 
-| | |
-|---|---|
-| **Why** | `InteractiveMenuBuilder` empty search — currently text-only |
-| **Pros** | Pairs with empty tray illustration style |
-| **Cons** | Low frequency edge case |
-| **Priority** | **Should** |
-| **Output** | 400×300 → `illustrations/empty-search.webp` |
+|              |                                                             |
+| ------------ | ----------------------------------------------------------- |
+| **Why**      | `InteractiveMenuBuilder` empty search — currently text-only |
+| **Pros**     | Pairs with empty tray illustration style                    |
+| **Cons**     | Low frequency edge case                                     |
+| **Priority** | **Should**                                                  |
+| **Output**   | 400×300 → `illustrations/empty-search.webp`                 |
 
 ### START PROMPT
 
@@ -361,14 +362,14 @@ No text, no logos. 800×600 pixels, 4:3 aspect.
 
 ## 10. 404 Page Illustration
 
-| | |
-|---|---|
-| **Why** | Memorable brand moment on rare 404 visits |
-| **Pros** | "Lost loaf" storytelling without cartoon vibe |
-| **Cons** | Low traffic |
-| **Priority** | **Nice** |
-| **Output** | 600×400 → `illustrations/illustration-404.webp` |
-| **Web team** | `__root.tsx` NotFoundComponent |
+|              |                                                 |
+| ------------ | ----------------------------------------------- |
+| **Why**      | Memorable brand moment on rare 404 visits       |
+| **Pros**     | "Lost loaf" storytelling without cartoon vibe   |
+| **Cons**     | Low traffic                                     |
+| **Priority** | **Nice**                                        |
+| **Output**   | 600×400 → `illustrations/illustration-404.webp` |
+| **Web team** | `__root.tsx` NotFoundComponent                  |
 
 ### START PROMPT
 
@@ -385,14 +386,14 @@ No numbers, no "404" text, no logos. 1200×800 pixels, transparent PNG.
 
 ## 11. Daniel Island Stylized Map
 
-| | |
-|---|---|
-| **Why** | Contact/About pickup area — current placeholder is abstract grid |
-| **Pros** | Local trust signal without Google embed |
-| **Cons** | Geographic accuracy — verify island shape after generation |
-| **Priority** | **Should** |
-| **Output** | 1200×750 WebP → `illustrations/daniel-island-map.webp` |
-| **Web team** | `contact.tsx` MapPlaceholder; keep `mapsUrl` CTA in code |
+|              |                                                                  |
+| ------------ | ---------------------------------------------------------------- |
+| **Why**      | Contact/About pickup area — current placeholder is abstract grid |
+| **Pros**     | Local trust signal without Google embed                          |
+| **Cons**     | Geographic accuracy — verify island shape after generation       |
+| **Priority** | **Should**                                                       |
+| **Output**   | 1200×750 WebP → `illustrations/daniel-island-map.webp`           |
+| **Web team** | `contact.tsx` MapPlaceholder; keep `mapsUrl` CTA in code         |
 
 ### START PROMPT
 
@@ -411,13 +412,13 @@ No city names, no street names, no text. 16:10 aspect, 1600×1000 pixels.
 
 ## 12. Catering Process Step Illustrations (3-Pack)
 
-| | |
-|---|---|
-| **Why** | Clarifies 3-step catering flow beyond icon-in-box |
-| **Pros** | Consistent series elevates catering page |
-| **Cons** | 3 assets to maintain; scroll weight |
-| **Priority** | **Should** |
-| **Output** | 240×180 each → `illustrations/process/step-01.webp` etc. |
+|              |                                                          |
+| ------------ | -------------------------------------------------------- |
+| **Why**      | Clarifies 3-step catering flow beyond icon-in-box        |
+| **Pros**     | Consistent series elevates catering page                 |
+| **Cons**     | 3 assets to maintain; scroll weight                      |
+| **Priority** | **Should**                                               |
+| **Output**   | 240×180 each → `illustrations/process/step-01.webp` etc. |
 
 ### START PROMPT — Step 1
 
@@ -450,13 +451,13 @@ Same series style. No text. 480×360 transparent PNG.
 
 ## 13. About Page — Kitchen Lifestyle (No Face)
 
-| | |
-|---|---|
-| **Why** | About page uses cookie photo as stand-in — needs bakery atmosphere |
-| **Pros** | Reinforces home-bakery story without founder photo |
-| **Cons** | Generic AI kitchen may not match Wendy's real space |
-| **Priority** | **Should** |
-| **Output** | 1600×1200 JPG → `photos/bakery-kitchen-lifestyle.jpg` |
+|              |                                                                    |
+| ------------ | ------------------------------------------------------------------ |
+| **Why**      | About page uses cookie photo as stand-in — needs bakery atmosphere |
+| **Pros**     | Reinforces home-bakery story without founder photo                 |
+| **Cons**     | Generic AI kitchen may not match Wendy's real space                |
+| **Priority** | **Should**                                                         |
+| **Output**   | 1600×1200 JPG → `photos/bakery-kitchen-lifestyle.jpg`              |
 
 ### START PROMPT
 
@@ -474,13 +475,13 @@ Daniel Island coastal home aesthetic. NO people, NO faces, NO text, NO logos.
 
 ## 14. Founder — Hands Only (Safe Interim)
 
-| | |
-|---|---|
-| **Why** | About founder slot is "coming soon" — hands shot safer than AI face |
-| **Pros** | Human warmth without likeness risk |
-| **Cons** | Still not Wendy; real portrait is **Must** before launch |
-| **Priority** | **Nice** interim · **Must** real photo for launch |
-| **Output** | 1200×1500 → `photos/founder-baker-hands.jpg` |
+|              |                                                                     |
+| ------------ | ------------------------------------------------------------------- |
+| **Why**      | About founder slot is "coming soon" — hands shot safer than AI face |
+| **Pros**     | Human warmth without likeness risk                                  |
+| **Cons**     | Still not Wendy; real portrait is **Must** before launch            |
+| **Priority** | **Nice** interim · **Must** real photo for launch                   |
+| **Output**   | 1200×1500 → `photos/founder-baker-hands.jpg`                        |
 
 ### START PROMPT
 
@@ -503,17 +504,17 @@ NO face visible, NO identifiable person, NO text, NO logos.
 
 **Match existing photos:** `plain-sourdough-bread.jpg`, `hero-bakery-spread.jpg` — soft window light, cream/marble, 4:3, no text/hands/logos.
 
-| Product | Priority | Filename |
-|---------|----------|----------|
-| Cheese & Jalapeño bread | **Must** | `cheese-jalapeno-sourdough-bread.jpg` |
-| Chocolate Chip Nutella bread | **Must** | `chocolate-chip-nutella-sourdough-bread.jpg` |
-| Rosemary & Roasted Garlic | **Must** | `rosemary-garlic-sourdough-bread.jpg` |
-| Everything Sourdough bread | **Must** | `everything-sourdough-bread.jpg` |
-| Cinnamon Roll | **Should** | `cinnamon-roll.jpg` |
-| Lemon Blueberry Scone | **Should** | `lemon-blueberry-scone.jpg` |
-| Banana Bread | **Should** | `banana-bread.jpg` |
-| Bakery Box assorted | **Should** | `bakery-box-assorted.jpg` |
-| Custom order spread | **Nice** | `custom-order-spread.jpg` |
+| Product                      | Priority   | Filename                                     |
+| ---------------------------- | ---------- | -------------------------------------------- |
+| Cheese & Jalapeño bread      | **Must**   | `cheese-jalapeno-sourdough-bread.jpg`        |
+| Chocolate Chip Nutella bread | **Must**   | `chocolate-chip-nutella-sourdough-bread.jpg` |
+| Rosemary & Roasted Garlic    | **Must**   | `rosemary-garlic-sourdough-bread.jpg`        |
+| Everything Sourdough bread   | **Must**   | `everything-sourdough-bread.jpg`             |
+| Cinnamon Roll                | **Should** | `cinnamon-roll.jpg`                          |
+| Lemon Blueberry Scone        | **Should** | `lemon-blueberry-scone.jpg`                  |
+| Banana Bread                 | **Should** | `banana-bread.jpg`                           |
+| Bakery Box assorted          | **Should** | `bakery-box-assorted.jpg`                    |
+| Custom order spread          | **Nice**   | `custom-order-spread.jpg`                    |
 
 ### START PROMPT — Cheese & Jalapeño Sourdough
 
@@ -831,28 +832,28 @@ Include placeholders for customer name and pickup timing. Sign off as Wendy / Kn
 
 ## Section 15 — Agent Consensus: Skip DALL·E For These
 
-| Asset | Do instead |
-|-------|------------|
-| Section dividers | Keep `SectionDivider.tsx` SVG |
-| Buttons / cards / forms | Keep CSS `k2k-*` classes |
-| FAQ category icons | Keep existing PNG icon set in `/icons/` |
-| Hero homepage | Keep real `hero-bakery-spread.jpg` |
-| Wordmark in header | Keep Fraunces CSS |
-| Testimonial cards | Wait for Wendy's real quotes |
-| Google Maps embed | Add real `mapsUrl` when Wendy provides |
+| Asset                   | Do instead                              |
+| ----------------------- | --------------------------------------- |
+| Section dividers        | Keep `SectionDivider.tsx` SVG           |
+| Buttons / cards / forms | Keep CSS `k2k-*` classes                |
+| FAQ category icons      | Keep existing PNG icon set in `/icons/` |
+| Hero homepage           | Keep real `hero-bakery-spread.jpg`      |
+| Wordmark in header      | Keep Fraunces CSS                       |
+| Testimonial cards       | Wait for Wendy's real quotes            |
+| Google Maps embed       | Add real `mapsUrl` when Wendy provides  |
 
 ---
 
 ## Related Documents
 
-| File | Purpose |
-|------|---------|
-| `docs/CHATGPT_LOGO_PROMPT.md` | Logo-only quick reference |
-| `docs/WENDY_WALKTHROUGH_GUIDE.md` | Client review tour |
-| `docs/WENDY_MOCK_TO_PRODUCTION_MASTER_GUIDE.md` | Full technical site reference |
-| `00_BRAND_ASSETS/.../BRAND_GUIDELINES.md` | Locked brand rules |
-| `src/lib/products.ts` | Menu source of truth for any text overlays |
+| File                                            | Purpose                                    |
+| ----------------------------------------------- | ------------------------------------------ |
+| `docs/CHATGPT_LOGO_PROMPT.md`                   | Logo-only quick reference                  |
+| `docs/WENDY_WALKTHROUGH_GUIDE.md`               | Client review tour                         |
+| `docs/WENDY_MOCK_TO_PRODUCTION_MASTER_GUIDE.md` | Full technical site reference              |
+| `00_BRAND_ASSETS/.../BRAND_GUIDELINES.md`       | Locked brand rules                         |
+| `src/lib/products.ts`                           | Menu source of truth for any text overlays |
 
 ---
 
-*Generated by 4 parallel superagent brainstorm passes — brand identity, product photography, UI illustrations, marketing collateral — synthesized June 23, 2026.*
+_Generated by 4 parallel superagent brainstorm passes — brand identity, product photography, UI illustrations, marketing collateral — synthesized June 23, 2026._

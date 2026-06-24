@@ -17,17 +17,17 @@ The site is ready for Wendy to review. Content gaps (email, hours, social, testi
 
 ## What Grok Built (Revamp #1–#4)
 
-| Deliverable | Status |
-|-------------|--------|
-| Full-site UI revamp (all 9 primary routes) | Done |
-| Black-bordered boutique design system | Done |
-| Homepage 3D product carousel | Done |
-| Interactive Menu Builder + Pre-Order Tray | Done |
-| SMS prefilled order to Wendy | Done |
-| Contact page interactions + blue accents | Done |
-| Verified 16-item menu + pricing | Done |
+| Deliverable                                         | Status               |
+| --------------------------------------------------- | -------------------- |
+| Full-site UI revamp (all 9 primary routes)          | Done                 |
+| Black-bordered boutique design system               | Done                 |
+| Homepage 3D product carousel                        | Done                 |
+| Interactive Menu Builder + Pre-Order Tray           | Done                 |
+| SMS prefilled order to Wendy                        | Done                 |
+| Contact page interactions + blue accents            | Done                 |
+| Verified 16-item menu + pricing                     | Done                 |
 | Web3Forms wiring (contact, custom-orders, catering) | Done (needs env key) |
-| Cloudflare Pages deploy | Done |
+| Cloudflare Pages deploy                             | Done                 |
 
 ---
 
@@ -52,15 +52,15 @@ The site is ready for Wendy to review. Content gaps (email, hours, social, testi
 
 ## Key Components
 
-| Component | Where used |
-|-----------|------------|
-| `Product3DCarousel` | Homepage featured products |
-| `InteractiveMenuBuilder` | `/menu` |
-| `PreOrderTray` | `/menu` (sidebar + mobile) |
-| `BrandLogo` | Header, footer, hero |
-| `PageHero` | All inner pages |
-| `K2KProductCard` | Custom orders, carousel cards |
-| `ContactForm` | Contact page |
+| Component                | Where used                    |
+| ------------------------ | ----------------------------- |
+| `Product3DCarousel`      | Homepage featured products    |
+| `InteractiveMenuBuilder` | `/menu`                       |
+| `PreOrderTray`           | `/menu` (sidebar + mobile)    |
+| `BrandLogo`              | Header, footer, hero          |
+| `PageHero`               | All inner pages               |
+| `K2KProductCard`         | Custom orders, carousel cards |
+| `ContactForm`            | Contact page                  |
 
 ---
 

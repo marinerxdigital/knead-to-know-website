@@ -37,9 +37,9 @@ function FAQAccordionList({
           key={`${idPrefix}-${i}`}
           value={`${idPrefix}-item-${i}`}
           className={cn(
-            "group/item overflow-hidden rounded-2xl border border-k2k-black border-t-2 border-t-k2k-blue/10 bg-white shadow-[0_4px_20px_-12px_rgba(17,17,17,0.08)] transition-all duration-300 ease-out",
+            "group/item rounded-2xl border border-k2k-black bg-white shadow-[0_4px_20px_-12px_rgba(17,17,17,0.08)] transition-all duration-300 ease-out",
             "hover:shadow-[var(--k2k-shadow-md)]",
-            "data-[state=open]:border-k2k-blue data-[state=open]:border-t-k2k-blue/30 data-[state=open]:shadow-[0_8px_28px_-14px_rgba(59,110,145,0.18)]",
+            "data-[state=open]:border-k2k-blue data-[state=open]:shadow-[0_8px_28px_-14px_rgba(59,110,145,0.18)]",
           )}
         >
           <AccordionTrigger

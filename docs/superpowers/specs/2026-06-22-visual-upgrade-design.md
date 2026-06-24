@@ -22,13 +22,13 @@ Skyler has decided: do not wait on Wendy's real contact/pricing data. Proceed no
 
 ### Color tokens
 
-| Token | Hex | Use |
-|---|---|---|
-| `white` | `#FFFFFF` | Background, cards |
-| `coastal-blue` | `#4F7EA8` | Primary CTA, links, accent lines |
-| `harbor-blue` | `#7FA7C7` | Secondary accents, soft borders |
-| `ink` | `#111111` | Body text, headlines |
-| `navy` | `#1F3447` | Dark accents, hover states |
+| Token                                             | Hex       | Use                                                                                                   |
+| ------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `white`                                           | `#FFFFFF` | Background, cards                                                                                     |
+| `coastal-blue`                                    | `#4F7EA8` | Primary CTA, links, accent lines                                                                      |
+| `harbor-blue`                                     | `#7FA7C7` | Secondary accents, soft borders                                                                       |
+| `ink`                                             | `#111111` | Body text, headlines                                                                                  |
+| `navy`                                            | `#1F3447` | Dark accents, hover states                                                                            |
 | `wheat` (**proposed deviation — flag for Wendy**) | `#C2A878` | Pre-order badges, the scoring-line divider motif, small warm details only. Never backgrounds or CTAs. |
 
 ### Typography
@@ -60,18 +60,18 @@ Removes the duplicate menu-preview/gallery-preview overlap and the bakery-boxes/
 
 ### Component/UI fixes bundled into this pass
 
-| Fix | File(s) |
-|---|---|
-| Nav breakpoint `xl` → `lg` so standard laptops see the real nav | `Header.tsx` |
-| Unify the three competing button patterns into one button treatment using the locked tokens | `styles.css`, button usages |
-| Add visible `focus-visible` rings globally | `styles.css` |
+| Fix                                                                                                            | File(s)                                                                          |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Nav breakpoint `xl` → `lg` so standard laptops see the real nav                                                | `Header.tsx`                                                                     |
+| Unify the three competing button patterns into one button treatment using the locked tokens                    | `styles.css`, button usages                                                      |
+| Add visible `focus-visible` rings globally                                                                     | `styles.css`                                                                     |
 | Stop showing wrong-product photos — unset `photo` so cards fall back to the existing "Photo coming soon" state | `products.ts` (cheese-jalapeno, chocolate-nutella, olive-sourdough, poppy-bagel) |
-| Gallery: hide categories with zero real products instead of showing placeholder grids | `gallery.tsx` |
-| Wire existing `Lightbox.tsx` into the Gallery's populated categories | `gallery.tsx`, `Lightbox.tsx` |
-| Fix bagel category icon (currently reuses the bread icon) | `K2KProductCard.tsx` |
-| Custom Orders: fix nested mobile scroll (`max-h-[620px] overflow-auto`) → natural single-column flow on mobile | `custom-orders.tsx` |
-| Skip-to-content link, active-nav indicator beyond color alone | `__root.tsx` / `Header.tsx` |
-| Replace decorative banner/badge/divider PNGs with HTML/CSS built from the new tokens | `index.tsx`, `menu.tsx`, `SectionDivider.tsx` |
+| Gallery: hide categories with zero real products instead of showing placeholder grids                          | `gallery.tsx`                                                                    |
+| Wire existing `Lightbox.tsx` into the Gallery's populated categories                                           | `gallery.tsx`, `Lightbox.tsx`                                                    |
+| Fix bagel category icon (currently reuses the bread icon)                                                      | `K2KProductCard.tsx`                                                             |
+| Custom Orders: fix nested mobile scroll (`max-h-[620px] overflow-auto`) → natural single-column flow on mobile | `custom-orders.tsx`                                                              |
+| Skip-to-content link, active-nav indicator beyond color alone                                                  | `__root.tsx` / `Header.tsx`                                                      |
+| Replace decorative banner/badge/divider PNGs with HTML/CSS built from the new tokens                           | `index.tsx`, `menu.tsx`, `SectionDivider.tsx`                                    |
 
 Explicitly **not** doing this pass: fabricating testimonials, inventing Wendy's personal story beyond known facts, adding new product photography, redesigning Menu/Custom Orders/Catering/Gallery page structure beyond the fixes listed above.
 
@@ -79,19 +79,19 @@ Explicitly **not** doing this pass: fabricating testimonials, inventing Wendy's 
 
 `src/lib/business.ts` and `src/lib/products.ts` get every literal `"[INSERT ...]"` replaced with intentional, styled copy — never a bracket on a live page:
 
-| Field | From | To |
-|---|---|---|
-| `owner` | `[INSERT OWNER NAME]` | `Wendy Mercado` (known fact) |
-| `address` | `[INSERT ADDRESS]` | `"Pickup by appointment — Daniel Island, SC"` |
-| `phone` | `[INSERT PHONE]` | Hidden from render until provided (component conditionally omits the row) |
-| `email` | `[INSERT EMAIL]` | Hidden from render until provided; Contact page CTA instead reads "Send us a message below" |
-| `hours` | `[INSERT HOURS]` | `"By appointment"` |
-| `instagramHandle`/`instagramUrl` | `[INSERT INSTAGRAM]` | Hidden from render until provided |
-| `facebookUrl`, `mapsUrl`, `orderingUrl` | brackets | Hidden from render until provided |
-| `products[].price` | `[INSERT PRICE]` | `"Ask for pricing"` styled as a small pill, matching the existing pre-order badge treatment |
-| `menu.tsx` broader-menu sections | `[ASK FOR AVAILABILITY]` | `"Ask us about availability"` |
-| `custom-orders.tsx` budget field placeholder | `[PRICE TBD]` | `"Share your range — we'll confirm exact pricing"` |
-| `ContactForm.tsx` phone input placeholder | `[INSERT PHONE]` | `"(843) 555-0123"` (generic example format, not a real number) |
+| Field                                        | From                     | To                                                                                          |
+| -------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
+| `owner`                                      | `[INSERT OWNER NAME]`    | `Wendy Mercado` (known fact)                                                                |
+| `address`                                    | `[INSERT ADDRESS]`       | `"Pickup by appointment — Daniel Island, SC"`                                               |
+| `phone`                                      | `[INSERT PHONE]`         | Hidden from render until provided (component conditionally omits the row)                   |
+| `email`                                      | `[INSERT EMAIL]`         | Hidden from render until provided; Contact page CTA instead reads "Send us a message below" |
+| `hours`                                      | `[INSERT HOURS]`         | `"By appointment"`                                                                          |
+| `instagramHandle`/`instagramUrl`             | `[INSERT INSTAGRAM]`     | Hidden from render until provided                                                           |
+| `facebookUrl`, `mapsUrl`, `orderingUrl`      | brackets                 | Hidden from render until provided                                                           |
+| `products[].price`                           | `[INSERT PRICE]`         | `"Ask for pricing"` styled as a small pill, matching the existing pre-order badge treatment |
+| `menu.tsx` broader-menu sections             | `[ASK FOR AVAILABILITY]` | `"Ask us about availability"`                                                               |
+| `custom-orders.tsx` budget field placeholder | `[PRICE TBD]`            | `"Share your range — we'll confirm exact pricing"`                                          |
+| `ContactForm.tsx` phone input placeholder    | `[INSERT PHONE]`         | `"(843) 555-0123"` (generic example format, not a real number)                              |
 
 `Footer.tsx` and `contact.tsx` are updated to conditionally render each contact row only when the underlying `BUSINESS` field has real content — no placeholder row, no bracket, just an absent row until Wendy provides it.
 
@@ -104,6 +104,7 @@ Add Wendy Mercado's name and known facts only (location, established 2026, produ
 ### Custom Orders (`custom-orders.tsx`)
 
 Replace the mock `handleSubmit` (`setSubmitted(true)` only) with a real submission mirroring `ContactForm.tsx`'s Web3Forms pattern:
+
 - POST to `https://api.web3forms.com/submit` with `access_key` from `VITE_WEB3FORMS_ACCESS_KEY`
 - Payload includes all form fields plus the selected product names (joined string)
 - Honeypot field (mirroring `ContactForm`'s `botcheck`)
@@ -120,12 +121,12 @@ Both forms reuse the same `ACCESS_KEY` constant pattern already in `ContactForm.
 
 ## 4. SEO fixes
 
-| Item | Current | Fix |
-|---|---|---|
-| `public/robots.txt` | `Sitemap: https://spilled-milk-cake-builder.lovable.app/sitemap.xml` | `Sitemap: ${SITE_URL}/sitemap.xml` (current `.pages.dev` domain — correct domain, not yet the production one) |
-| `src/routes/sitemap[.]xml.ts` | Missing `/menu`, `/custom-orders`, `/catering`, `/faq`; includes orphan `/flavors`, `/inquiry`, `/featured` | Rebuild `ENTRIES` to list only real nav routes: `/`, `/menu`, `/about`, `/custom-orders`, `/catering`, `/gallery`, `/faq`, `/contact`, `/privacy` |
-| OG image | `src/assets/og-image.jpg.asset.json` → `/lovable-assets/<uuid>/og-image.jpg` (old Spilled Milk cake image) | Point `__root.tsx`'s `og:image`/`twitter:image` at the real K2K hero photo (`/assets/knead-to-know/photos/hero-bakery-spread.jpg`) instead of the asset-json/lovable-assets path |
-| JSON-LD | None | Add `Bakery` (schema.org) JSON-LD to `__root.tsx` head, populated **only with facts we actually know**: `name`, `url`, `description`, `image`, `areaServed: "Daniel Island, SC"`, `founder: { "@type": "Person", "name": "Wendy Mercado" }`. Omit `address`/`telephone`/`openingHours` until real data exists — emitting placeholder schema data is worse than omitting the field. |
+| Item                          | Current                                                                                                     | Fix                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `public/robots.txt`           | `Sitemap: https://spilled-milk-cake-builder.lovable.app/sitemap.xml`                                        | `Sitemap: ${SITE_URL}/sitemap.xml` (current `.pages.dev` domain — correct domain, not yet the production one)                                                                                                                                                                                                                                                                      |
+| `src/routes/sitemap[.]xml.ts` | Missing `/menu`, `/custom-orders`, `/catering`, `/faq`; includes orphan `/flavors`, `/inquiry`, `/featured` | Rebuild `ENTRIES` to list only real nav routes: `/`, `/menu`, `/about`, `/custom-orders`, `/catering`, `/gallery`, `/faq`, `/contact`, `/privacy`                                                                                                                                                                                                                                  |
+| OG image                      | `src/assets/og-image.jpg.asset.json` → `/lovable-assets/<uuid>/og-image.jpg` (old Spilled Milk cake image)  | Point `__root.tsx`'s `og:image`/`twitter:image` at the real K2K hero photo (`/assets/knead-to-know/photos/hero-bakery-spread.jpg`) instead of the asset-json/lovable-assets path                                                                                                                                                                                                   |
+| JSON-LD                       | None                                                                                                        | Add `Bakery` (schema.org) JSON-LD to `__root.tsx` head, populated **only with facts we actually know**: `name`, `url`, `description`, `image`, `areaServed: "Daniel Island, SC"`, `founder: { "@type": "Person", "name": "Wendy Mercado" }`. Omit `address`/`telephone`/`openingHours` until real data exists — emitting placeholder schema data is worse than omitting the field. |
 
 `SITE_URL` itself stays as the `.pages.dev` preview domain in this pass — there is no production domain to switch to yet; that's a Phase 3 item per the handoff, blocked on Skyler/Wendy purchasing a domain.
 

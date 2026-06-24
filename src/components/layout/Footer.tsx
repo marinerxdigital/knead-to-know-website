@@ -53,7 +53,7 @@ function FooterScoringDivider() {
 
 function NewsletterPlaceholder() {
   return (
-    <div className="k2k-card k2k-bordered mx-auto max-w-7xl rounded-[1.5rem] bg-white/90 px-6 py-5 sm:px-8">
+    <div className="k2k-card mx-auto max-w-7xl rounded-[1.5rem] bg-white/90 px-6 py-5 sm:px-8">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-k2k-blue/70">

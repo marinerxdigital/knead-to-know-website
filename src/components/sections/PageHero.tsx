@@ -87,7 +87,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "group relative overflow-hidden border-b border-k2k-black bg-k2k-cream pb-14 pt-14 sm:pb-20 sm:pt-24",
+        "group relative overflow-x-clip overflow-y-visible border-b border-k2k-black bg-k2k-cream pb-14 pt-14 sm:pb-20 sm:pt-24",
         hasBgImage && "min-h-[42vh]",
         className,
       )}

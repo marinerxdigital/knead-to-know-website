@@ -13,13 +13,13 @@
 
 This project is a **high-quality visual mockup with solid information architecture** — not a production business website yet.
 
-| Dimension | Score (approx.) | Notes |
-|-----------|---------------|-------|
-| Design / IA | 7/10 | Coastal boutique direction is on-brand; homepage is template-heavy |
-| Content / trust | 2/10 | All contact fields and prices are `[INSERT ...]` literals on live pages |
-| Conversion | 3/10 | Contact form works; Custom Orders + Catering are **fake submits** |
-| SEO | 4/10 | Good per-page meta; broken robots.txt, incomplete sitemap, no JSON-LD, wrong OG image |
-| Technical | 7/10 | Build passes; lint clean except 3 `any` types + 6 warnings |
+| Dimension       | Score (approx.) | Notes                                                                                 |
+| --------------- | --------------- | ------------------------------------------------------------------------------------- |
+| Design / IA     | 7/10            | Coastal boutique direction is on-brand; homepage is template-heavy                    |
+| Content / trust | 2/10            | All contact fields and prices are `[INSERT ...]` literals on live pages               |
+| Conversion      | 3/10            | Contact form works; Custom Orders + Catering are **fake submits**                     |
+| SEO             | 4/10            | Good per-page meta; broken robots.txt, incomplete sitemap, no JSON-LD, wrong OG image |
+| Technical       | 7/10            | Build passes; lint clean except 3 `any` types + 6 warnings                            |
 
 **Your job:** Pour Wendy’s real business into an already-built shell. **Start with data and forms, not a redesign.**
 
@@ -58,17 +58,17 @@ b3f40d2 ui: replace PNG product card containers with premium CSS boutique cards
 
 ## 2. Tech stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | TanStack Start (SSR) `@tanstack/react-start` ^1.167 |
-| Router | TanStack Router (file-based) `src/routes/` |
-| UI | React 19 |
-| Build | Vite 7 + Nitro 3 beta |
-| Styling | Tailwind CSS v4 — tokens in `src/styles.css` (no `tailwind.config`) |
-| Components | shadcn/ui + Radix (~45 primitives; most unused on routes) |
-| Forms | react-hook-form + Zod; Web3Forms for Contact only |
-| Deploy | **Cloudflare Pages** — `dist/` + `_worker.js` SSR |
-| Fonts | Cormorant Garamond (display), Inter (body) — Google Fonts in `__root.tsx` |
+| Layer      | Technology                                                                |
+| ---------- | ------------------------------------------------------------------------- |
+| Framework  | TanStack Start (SSR) `@tanstack/react-start` ^1.167                       |
+| Router     | TanStack Router (file-based) `src/routes/`                                |
+| UI         | React 19                                                                  |
+| Build      | Vite 7 + Nitro 3 beta                                                     |
+| Styling    | Tailwind CSS v4 — tokens in `src/styles.css` (no `tailwind.config`)       |
+| Components | shadcn/ui + Radix (~45 primitives; most unused on routes)                 |
+| Forms      | react-hook-form + Zod; Web3Forms for Contact only                         |
+| Deploy     | **Cloudflare Pages** — `dist/` + `_worker.js` SSR                         |
+| Fonts      | Cormorant Garamond (display), Inter (body) — Google Fonts in `__root.tsx` |
 
 ### Commands
 
@@ -86,8 +86,8 @@ npx wrangler pages deploy dist --project-name=knead-to-know-website-v2
 
 ### Environment variables
 
-| Variable | Purpose |
-|----------|---------|
+| Variable                    | Purpose                                                                                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `VITE_WEB3FORMS_ACCESS_KEY` | Contact form (and should be used for Custom Orders + Catering). **Set in Cloudflare Pages build env.** Hardcoded fallback exists in source — remove for production. |
 
 ---
@@ -120,27 +120,27 @@ npx wrangler pages deploy dist --project-name=knead-to-know-website-v2
 
 ### Primary (in Header nav)
 
-| Route | File | Status |
-|-------|------|--------|
-| `/` | `index.tsx` | Mockup — 11 sections, product previews, hero photo |
-| `/about` | `about.tsx` | No Wendy identity; logo placeholder instead of photo |
-| `/menu` | `menu.tsx` | 16 products; no prices; 9/16 wrong/reused photos |
-| `/custom-orders` | `custom-orders.tsx` | **Form does not submit** — mock success only |
-| `/catering` | `catering.tsx` | **Form does not submit** — mock success only |
-| `/gallery` | `gallery.tsx` | 3/8 categories populated; 5 show empty placeholders |
-| `/faq` | `faq.tsx` | Good — confirm lead times with Wendy |
-| `/contact` | `contact.tsx` | Web3Forms works; all BUSINESS fields are placeholders |
-| `/privacy` | `privacy.tsx` | OK; mentions Formspree but app uses Web3Forms |
+| Route            | File                | Status                                                |
+| ---------------- | ------------------- | ----------------------------------------------------- |
+| `/`              | `index.tsx`         | Mockup — 11 sections, product previews, hero photo    |
+| `/about`         | `about.tsx`         | No Wendy identity; logo placeholder instead of photo  |
+| `/menu`          | `menu.tsx`          | 16 products; no prices; 9/16 wrong/reused photos      |
+| `/custom-orders` | `custom-orders.tsx` | **Form does not submit** — mock success only          |
+| `/catering`      | `catering.tsx`      | **Form does not submit** — mock success only          |
+| `/gallery`       | `gallery.tsx`       | 3/8 categories populated; 5 show empty placeholders   |
+| `/faq`           | `faq.tsx`           | Good — confirm lead times with Wendy                  |
+| `/contact`       | `contact.tsx`       | Web3Forms works; all BUSINESS fields are placeholders |
+| `/privacy`       | `privacy.tsx`       | OK; mentions Formspree but app uses Web3Forms         |
 
 ### Legacy / orphan (not in nav)
 
-| Route | File | Action |
-|-------|------|--------|
-| `/inquiry` | `inquiry.tsx` | Redirects → `/custom-orders` — remove from sitemap |
-| `/flavors` | `flavors.tsx` | Soft “menu moved” page — consider hard redirect to `/menu` |
-| `/flavors-pricing` | `flavors-pricing.tsx` | Redirects → `/flavors` |
-| `/featured` | `featured.tsx` | “Coming soon” stub — hide or finish |
-| `/sitemap.xml` | `sitemap[.]xml.ts` | Incomplete route list |
+| Route              | File                  | Action                                                     |
+| ------------------ | --------------------- | ---------------------------------------------------------- |
+| `/inquiry`         | `inquiry.tsx`         | Redirects → `/custom-orders` — remove from sitemap         |
+| `/flavors`         | `flavors.tsx`         | Soft “menu moved” page — consider hard redirect to `/menu` |
+| `/flavors-pricing` | `flavors-pricing.tsx` | Redirects → `/flavors`                                     |
+| `/featured`        | `featured.tsx`        | “Coming soon” stub — hide or finish                        |
+| `/sitemap.xml`     | `sitemap[.]xml.ts`    | Incomplete route list                                      |
 
 ---
 
@@ -169,13 +169,13 @@ SITE_URL → production domain when ready
 
 ### Dead / duplicate modules (consolidate or delete)
 
-| File | Issue |
-|------|-------|
-| `src/lib/k2k-products.ts` | Duplicate catalog with hardcoded `$12` prices — **zero imports** |
-| `src/lib/cake-photos.ts` | Legacy; 2 `any` types; zero imports |
-| `src/lib/squarespace.ts` | Payment links hidden; zero imports |
-| `src/lib/site-data.ts` | Mostly unused; `ORDER_TYPES` missing (breaks dead `InquiryForm`) |
-| `src/components/forms/InquiryForm.tsx` | Complete Web3Forms form — **never mounted**; TS error |
+| File                                   | Issue                                                            |
+| -------------------------------------- | ---------------------------------------------------------------- |
+| `src/lib/k2k-products.ts`              | Duplicate catalog with hardcoded `$12` prices — **zero imports** |
+| `src/lib/cake-photos.ts`               | Legacy; 2 `any` types; zero imports                              |
+| `src/lib/squarespace.ts`               | Payment links hidden; zero imports                               |
+| `src/lib/site-data.ts`                 | Mostly unused; `ORDER_TYPES` missing (breaks dead `InquiryForm`) |
+| `src/components/forms/InquiryForm.tsx` | Complete Web3Forms form — **never mounted**; TS error            |
 
 ---
 
@@ -185,24 +185,24 @@ SITE_URL → production domain when ready
 
 Grep `src/` for `[INSERT` and `[ASK FOR` — **zero should render** before Wendy sees the site.
 
-| Location | Placeholder |
-|----------|-------------|
-| `business.ts` | All contact/social fields |
-| `products.ts` ×16 | `[INSERT PRICE]` |
-| `menu.tsx` ×5 | `[ASK FOR AVAILABILITY]` |
-| `ContactForm.tsx` | `placeholder="[INSERT PHONE]"` |
-| `custom-orders.tsx` | `[PRICE TBD]` in budget field |
+| Location            | Placeholder                    |
+| ------------------- | ------------------------------ |
+| `business.ts`       | All contact/social fields      |
+| `products.ts` ×16   | `[INSERT PRICE]`               |
+| `menu.tsx` ×5       | `[ASK FOR AVAILABILITY]`       |
+| `ContactForm.tsx`   | `placeholder="[INSERT PHONE]"` |
+| `custom-orders.tsx` | `[PRICE TBD]` in budget field  |
 
 **Fix:** Replace with Wendy’s real data OR styled copy like “Contact us for pricing” / “Ask about availability” — never raw brackets.
 
 ### 6.2 Forms that don’t work
 
-| Form | Status |
-|------|--------|
-| Contact (`ContactForm.tsx`) | ✅ Posts to Web3Forms |
-| Custom Orders (`custom-orders.tsx`) | ❌ `setSubmitted(true)` only — no API call |
-| Catering (`catering.tsx`) | ❌ Same mock pattern |
-| InquiryForm | Dead code — could be reused for Custom Orders |
+| Form                                | Status                                        |
+| ----------------------------------- | --------------------------------------------- |
+| Contact (`ContactForm.tsx`)         | ✅ Posts to Web3Forms                         |
+| Custom Orders (`custom-orders.tsx`) | ❌ `setSubmitted(true)` only — no API call    |
+| Catering (`catering.tsx`)           | ❌ Same mock pattern                          |
+| InquiryForm                         | Dead code — could be reused for Custom Orders |
 
 ```ts
 // custom-orders.tsx — current (broken)
@@ -216,17 +216,18 @@ const handleSubmit = (e: React.FormEvent) => {
 
 ### 6.3 SEO / legacy Spilled Milk artifacts
 
-| Issue | File | Current |
-|-------|------|---------|
-| Wrong sitemap URL | `public/robots.txt` | `spilled-milk-cake-builder.lovable.app` |
-| Wrong OG image | `__root.tsx` + `og-image.jpg.asset.json` | `/lovable-assets/.../og-image.jpg` (old cake boutique) |
-| Preview canonicals | `business.ts` SITE_URL | `.pages.dev` preview domain |
-| Incomplete sitemap | `sitemap[.]xml.ts` | Missing `/menu`, `/custom-orders`, `/catering`, `/faq` |
-| No JSON-LD | anywhere | Need `Bakery` / `LocalBusiness` schema |
+| Issue              | File                                     | Current                                                |
+| ------------------ | ---------------------------------------- | ------------------------------------------------------ |
+| Wrong sitemap URL  | `public/robots.txt`                      | `spilled-milk-cake-builder.lovable.app`                |
+| Wrong OG image     | `__root.tsx` + `og-image.jpg.asset.json` | `/lovable-assets/.../og-image.jpg` (old cake boutique) |
+| Preview canonicals | `business.ts` SITE_URL                   | `.pages.dev` preview domain                            |
+| Incomplete sitemap | `sitemap[.]xml.ts`                       | Missing `/menu`, `/custom-orders`, `/catering`, `/faq` |
+| No JSON-LD         | anywhere                                 | Need `Bakery` / `LocalBusiness` schema                 |
 
 ### 6.4 Product photo mismatches
 
 8 AI placeholder photos mapped to 16 products. Examples:
+
 - `cheese-jalapeno`, `chocolate-nutella` → plain sourdough photo
 - `olive-sourdough` → rosemary photo
 - `poppy-bagel` → everything bagel photo
@@ -247,14 +248,14 @@ const handleSubmit = (e: React.FormEvent) => {
 
 ### Colors (`src/styles.css`)
 
-| Token | Hex | Use |
-|-------|-----|-----|
-| `k2k-blue` | `#4F7EA8` | Primary CTA, accents |
-| `k2k-harbor` | `#7FA7C7` | Secondary |
-| `k2k-navy` | `#1F3447` | Dark text, hovers |
-| `ink` | `#111111` | Body text |
-| Background | `#FFFFFF` | Page |
-| Muted sections | `#F8FAFC` | Alternating bands |
+| Token          | Hex       | Use                  |
+| -------------- | --------- | -------------------- |
+| `k2k-blue`     | `#4F7EA8` | Primary CTA, accents |
+| `k2k-harbor`   | `#7FA7C7` | Secondary            |
+| `k2k-navy`     | `#1F3447` | Dark text, hovers    |
+| `ink`          | `#111111` | Body text            |
+| Background     | `#FFFFFF` | Page                 |
+| Muted sections | `#F8FAFC` | Alternating bands    |
 
 ### Typography
 
@@ -313,12 +314,14 @@ Pages still mix `forest` / `k2k-blue` (same color, two names from skeleton). `cr
 ### UI/UX revamp priorities
 
 #### P0 — Trust + conversion
+
 1. Fill `business.ts` + `products.ts` with real data or intentional copy
 2. Fix photo mapping — no wrong-product images
 3. Unify buttons + add global `focus-visible` rings
 4. Wire Custom Orders + Catering forms
 
 #### P1 — Structure + polish
+
 5. Shorten homepage (remove duplicate previews)
 6. Lower Header nav breakpoint to `lg`
 7. Gallery: hide empty categories until photos exist
@@ -326,6 +329,7 @@ Pages still mix `forest` / `k2k-blue` (same color, two names from skeleton). `cr
 9. Custom orders: single-column mobile flow; migrate form to shadcn like ContactForm
 
 #### P2 — Brand distinction
+
 10. Add testimonials section (asset exists: `Knead_To_Know_Testimonial_Card.png`) — **only with real reviews**
 11. Replace PNG promo banner with responsive HTML announcement bar
 12. Register `--font-display` / `--font-sans` in `@theme inline`
@@ -333,6 +337,7 @@ Pages still mix `forest` / `k2k-blue` (same color, two names from skeleton). `cr
 14. Mobile menu → Radix Sheet with focus trap + animation
 
 #### P3 — Enhancement
+
 15. Skip-to-content link
 16. Active nav indicator beyond color
 17. Prune unused shadcn components (bundle size)
@@ -350,16 +355,16 @@ Missing: gallery lightbox, mobile menu animation, form loading spinners, selecti
 
 ### Deployed (`public/assets/knead-to-know/`)
 
-| Folder | Contents | Used? |
-|--------|----------|-------|
-| `logo/` | Circular primary logo | ✅ Header, Footer, Hero |
-| `photos/` | 8 AI placeholder JPGs | ✅ Hero + product cards |
-| `product-cards/` | 16 `KTK_Product_Card_*.png` | ❌ Data only, not rendered |
-| `icons/` | 10 brand icons | ✅ Trust strip, offerings |
-| `banners/` | Promo strip PNG | ✅ Home + Menu |
-| `badges/` | Divider + label tag | ✅ Menu section headers |
-| `cards/` | Container, feature, testimonial | ⚠️ Partially decorative |
-| `buttons/` | PNG button refs | ❌ CSS buttons used instead |
+| Folder           | Contents                        | Used?                       |
+| ---------------- | ------------------------------- | --------------------------- |
+| `logo/`          | Circular primary logo           | ✅ Header, Footer, Hero     |
+| `photos/`        | 8 AI placeholder JPGs           | ✅ Hero + product cards     |
+| `product-cards/` | 16 `KTK_Product_Card_*.png`     | ❌ Data only, not rendered  |
+| `icons/`         | 10 brand icons                  | ✅ Trust strip, offerings   |
+| `banners/`       | Promo strip PNG                 | ✅ Home + Menu              |
+| `badges/`        | Divider + label tag             | ✅ Menu section headers     |
+| `cards/`         | Container, feature, testimonial | ⚠️ Partially decorative     |
+| `buttons/`       | PNG button refs                 | ❌ CSS buttons used instead |
 
 ### Brand source packages (untracked in git)
 
@@ -456,10 +461,10 @@ Use `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` as intake form.
 
 **Remaining (9 issues in 8 files):**
 
-| Rule | Count | Files |
-|------|-------|-------|
-| `@typescript-eslint/no-explicit-any` | 3 | `cake-photos.ts` (×2), `custom-orders.tsx` (×1) |
-| `react-refresh/only-export-components` | 6 | shadcn ui files (warnings, non-blocking) |
+| Rule                                   | Count | Files                                           |
+| -------------------------------------- | ----- | ----------------------------------------------- |
+| `@typescript-eslint/no-explicit-any`   | 3     | `cake-photos.ts` (×2), `custom-orders.tsx` (×1) |
+| `react-refresh/only-export-components` | 6     | shadcn ui files (warnings, non-blocking)        |
 
 **No `typecheck` script** in `package.json` — run `npx tsc --noEmit` manually.  
 `InquiryForm.tsx` has TS error (`ORDER_TYPES` missing) if ever mounted.
@@ -470,22 +475,22 @@ Use `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` as intake form.
 
 ### Highest leverage
 
-| File | Why |
-|------|-----|
-| `src/lib/business.ts` | Contact truth layer |
-| `src/lib/products.ts` | Prices + photos |
-| `src/routes/about.tsx` | Wendy identity |
-| `src/routes/custom-orders.tsx` | Form submission |
-| `src/routes/catering.tsx` | Form submission |
-| `src/components/forms/ContactForm.tsx` | Web3Forms key cleanup |
-| `src/routes/contact.tsx` | Trust copy |
-| `src/components/layout/Header.tsx` | Nav breakpoint |
-| `src/routes/menu.tsx` | Availability copy |
-| `src/routes/gallery.tsx` | Category visibility |
-| `src/routes/sitemap[.]xml.ts` | Complete routes |
-| `public/robots.txt` | Fix sitemap URL |
-| `src/routes/__root.tsx` | JSON-LD + OG image |
-| `src/routes/index.tsx` | Homepage deduplication |
+| File                                   | Why                    |
+| -------------------------------------- | ---------------------- |
+| `src/lib/business.ts`                  | Contact truth layer    |
+| `src/lib/products.ts`                  | Prices + photos        |
+| `src/routes/about.tsx`                 | Wendy identity         |
+| `src/routes/custom-orders.tsx`         | Form submission        |
+| `src/routes/catering.tsx`              | Form submission        |
+| `src/components/forms/ContactForm.tsx` | Web3Forms key cleanup  |
+| `src/routes/contact.tsx`               | Trust copy             |
+| `src/components/layout/Header.tsx`     | Nav breakpoint         |
+| `src/routes/menu.tsx`                  | Availability copy      |
+| `src/routes/gallery.tsx`               | Category visibility    |
+| `src/routes/sitemap[.]xml.ts`          | Complete routes        |
+| `public/robots.txt`                    | Fix sitemap URL        |
+| `src/routes/__root.tsx`                | JSON-LD + OG image     |
+| `src/routes/index.tsx`                 | Homepage deduplication |
 
 ### Touch second
 
@@ -493,12 +498,12 @@ Use `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` as intake form.
 
 ### Avoid unless required
 
-| Path | Why |
-|------|-----|
-| `00_*` intake folders | Preserved archives |
-| `.grok/skills/` | Agent tooling |
-| `src/components/ui/*.tsx` (shadcn) | High blast radius |
-| `src/routeTree.gen.ts` | Auto-generated |
+| Path                                              | Why                       |
+| ------------------------------------------------- | ------------------------- |
+| `00_*` intake folders                             | Preserved archives        |
+| `.grok/skills/`                                   | Agent tooling             |
+| `src/components/ui/*.tsx` (shadcn)                | High blast radius         |
+| `src/routeTree.gen.ts`                            | Auto-generated            |
 | `Knead_To_Know_Final_Master_Grok_Build_Prompt.md` | Historical reference only |
 
 ---
@@ -506,24 +511,28 @@ Use `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` as intake form.
 ## 14. QA checklist before Wendy handoff
 
 ### Content & brand
+
 - [ ] Grep: zero `[INSERT` / `[ASK FOR` in rendered output
 - [ ] “Wendy Mercado” on About
 - [ ] No Spilled Milk / Alexandra / cake-boutique language user-facing
 - [ ] Logo correct everywhere
 
 ### Contact & forms
+
 - [ ] Footer shows real phone, email, address, hours, Instagram
 - [ ] Contact + Custom Orders + Catering submissions reach Wendy’s inbox
 - [ ] Honeypot on all forms
 - [ ] Error states show real fallback email
 
 ### Visual / UX
+
 - [ ] No wrong-product photos
 - [ ] Desktop nav at 1024px
 - [ ] Mobile nav works
 - [ ] `npm run build` exits 0
 
 ### SEO
+
 - [ ] `SITE_URL` = production domain
 - [ ] `robots.txt` correct
 - [ ] Sitemap includes menu, custom-orders, catering, faq
@@ -549,19 +558,19 @@ Use `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` as intake form.
 
 ## 16. Reference documents
 
-| File | Purpose |
-|------|---------|
-| `SOURCE_OF_TRUTH.md` | Highest authority |
-| `MEMORY.md` | Session history |
-| `CLAUDE.md` | Claude entry point |
-| `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` | Wendy intake |
-| `docs/KNEAD_TO_KNOW_SITE_AUDIT.md` | Prior audit |
-| `Knead_To_Know_Final_Master_Grok_Build_Prompt.md` | Original build spec |
-| `00_BRAND_ASSETS/.../BRAND_GUIDELINES.md` | Visual brand |
-| `00_BRAND_ASSETS/.../DEVELOPER_HANDOFF_NOTES.md` | Asset usage |
-| `07_QA/BRAND_REMOVAL_AUDIT.md` | Spilled Milk removal log |
-| `DEPLOYMENT.md` | Deploy notes (may be Vercel-stale) |
-| `CLOUDFLARE_DEPLOYMENT_NOTES.md` | Stale — needs rewrite |
+| File                                              | Purpose                            |
+| ------------------------------------------------- | ---------------------------------- |
+| `SOURCE_OF_TRUTH.md`                              | Highest authority                  |
+| `MEMORY.md`                                       | Session history                    |
+| `CLAUDE.md`                                       | Claude entry point                 |
+| `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md`       | Wendy intake                       |
+| `docs/KNEAD_TO_KNOW_SITE_AUDIT.md`                | Prior audit                        |
+| `Knead_To_Know_Final_Master_Grok_Build_Prompt.md` | Original build spec                |
+| `00_BRAND_ASSETS/.../BRAND_GUIDELINES.md`         | Visual brand                       |
+| `00_BRAND_ASSETS/.../DEVELOPER_HANDOFF_NOTES.md`  | Asset usage                        |
+| `07_QA/BRAND_REMOVAL_AUDIT.md`                    | Spilled Milk removal log           |
+| `DEPLOYMENT.md`                                   | Deploy notes (may be Vercel-stale) |
+| `CLOUDFLARE_DEPLOYMENT_NOTES.md`                  | Stale — needs rewrite              |
 
 ---
 
@@ -569,16 +578,16 @@ Use `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` as intake form.
 
 The fastest path to a site Wendy can be proud of:
 
-1. `business.ts` → real contact info  
-2. `products.ts` → real prices + honest photos  
-3. `about.tsx` → Wendy Mercado’s story  
-4. Wire Custom Orders + Catering forms  
-5. Fix `robots.txt` + sitemap + `SITE_URL` + OG image  
-6. UI polish (homepage length, nav breakpoint, focus states, gallery)  
-7. Custom domain on Cloudflare Pages  
+1. `business.ts` → real contact info
+2. `products.ts` → real prices + honest photos
+3. `about.tsx` → Wendy Mercado’s story
+4. Wire Custom Orders + Catering forms
+5. Fix `robots.txt` + sitemap + `SITE_URL` + OG image
+6. UI polish (homepage length, nav breakpoint, focus states, gallery)
+7. Custom domain on Cloudflare Pages
 
 **The mockup becomes production when a real person is behind the pixels and inquiries reach her inbox.**
 
 ---
 
-*End of handoff. Questions → check `MEMORY.md` or ask Skyler for Wendy’s intake answers.*
+_End of handoff. Questions → check `MEMORY.md` or ask Skyler for Wendy’s intake answers._

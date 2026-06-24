@@ -135,8 +135,8 @@ When integrating into the Knead To Know site:
 7. Add lazy loading to non-critical images:
 
 ```tsx
-loading="lazy"
-decoding="async"
+loading = "lazy";
+decoding = "async";
 ```
 
 8. Keep decorative assets non-interactive:

@@ -10,24 +10,25 @@
 
 ## Executive Summary
 
-| Area | Status |
-|------|--------|
-| Visual shell / UI revamp | **Complete** (Revamp #1–#4) |
-| Verified menu + pricing | **Complete** (16 items) |
-| Interactive menu builder + SMS tray | **Complete** |
-| 3D homepage product carousel | **Complete** |
-| Forms (Web3Forms) | **Wired** — needs production env key |
-| SEO basics | **Complete** |
-| Client-ready content | **Blocked on Wendy** (email, hours, social, photo, testimonials) |
-| Build | **Pass** |
-| Lint | **0 errors**, 8 warnings (pre-existing) |
-| Deployed to main | **Yes** |
+| Area                                | Status                                                           |
+| ----------------------------------- | ---------------------------------------------------------------- |
+| Visual shell / UI revamp            | **Complete** (Revamp #1–#4)                                      |
+| Verified menu + pricing             | **Complete** (16 items)                                          |
+| Interactive menu builder + SMS tray | **Complete**                                                     |
+| 3D homepage product carousel        | **Complete**                                                     |
+| Forms (Web3Forms)                   | **Wired** — needs production env key                             |
+| SEO basics                          | **Complete**                                                     |
+| Client-ready content                | **Blocked on Wendy** (email, hours, social, photo, testimonials) |
+| Build                               | **Pass**                                                         |
+| Lint                                | **0 errors**, 8 warnings (pre-existing)                          |
+| Deployed to main                    | **Yes**                                                          |
 
 ---
 
 ## Routes — Page-by-Page
 
 ### `/` Homepage — COMPLETE
+
 - Full-bleed client hero (`hero-bakery-spread.jpg`)
 - Trust strip with brand icons + black-bordered containers
 - **3D Product Carousel** (`Product3DCarousel`) — 7 featured items, autoplay, swipe, a11y
@@ -38,6 +39,7 @@
 - **Blocked:** Real testimonials from Wendy
 
 ### `/menu` — COMPLETE (Interactive)
+
 - **InteractiveMenuBuilder** — category filter, search, quantity controls
 - **PreOrderTray** — desktop sticky sidebar, mobile bottom drawer
 - Estimated total math (bread/cookies/bagels rules verified)
@@ -48,44 +50,52 @@
 - No checkout / no payment
 
 ### `/about` — COMPLETE (content partial)
+
 - PageHero, philosophy, process timeline, values, Lowcountry band
 - Blue accent rails, harbor lines, black-bordered surfaces
 - **Blocked:** Founder photo, full Wendy biography (conservative copy only)
 
 ### `/faq` — COMPLETE
+
 - Grouped FAQ accordion, search-style hero, quick-link chips
 - Smooth accordion height animation
 - CTASection footer
 
 ### `/contact` — COMPLETE
+
 - Split layout, large phone CTA, map placeholder
 - ContactForm (Web3Forms), quick-action chips
 - Phone pulse, pin pulse, accent rails, ScrollReveal stagger
 - **Blocked:** Email, hours (conditionally hidden when null)
 
 ### `/custom-orders` — COMPLETE
+
 - Product selection grid, pickup date/time, Web3Forms submit
 - Step indicators, success state
 - **Needs:** `VITE_WEB3FORMS_ACCESS_KEY` in Cloudflare for live delivery
 
 ### `/catering` — COMPLETE
+
 - Service tiers, timeline, inset Web3Forms form
 - Blue accents on key containers
 
 ### `/gallery` — COMPLETE
+
 - Masonry layout, category tabs, lightbox
 - Some products use honest "photo coming soon" placeholders
 
 ### `/privacy` — COMPLETE
+
 - Editorial layout, anchor nav
 
 ### Orphan / Legacy Routes (not in primary nav)
-| Route | Status |
-|-------|--------|
-| `/inquiry` | Legacy — redirects or stub |
-| `/flavors` | Spilled Milk skeleton orphan |
+
+| Route              | Status                       |
+| ------------------ | ---------------------------- |
+| `/inquiry`         | Legacy — redirects or stub   |
+| `/flavors`         | Spilled Milk skeleton orphan |
 | `/flavors-pricing` | Spilled Milk skeleton orphan |
-| `/featured` | Legacy featured route |
+| `/featured`        | Legacy featured route        |
 
 **Recommendation:** Remove or redirect orphan routes before final launch.
 
@@ -93,40 +103,41 @@
 
 ## Components — Inventory
 
-| Component | Path | Status |
-|-----------|------|--------|
-| Header | `layout/Header.tsx` | Bold nav, wordmark (Knead To Know black / Sweet & Sour blue) |
-| Footer | `layout/Footer.tsx` | Black-bordered newsletter card |
-| BrandLogo | `brand/BrandLogo.tsx` | Responsive sizes |
-| MobileOrderBar | `layout/MobileOrderBar.tsx` | Sticky Pre-Order + Call |
-| PageHero | `sections/PageHero.tsx` | Shared inner-page heroes |
-| Section / SectionHeading | `sections/Section.tsx` | ScrollReveal default |
-| CTASection | `sections/CTASection.tsx` | Conversion band |
-| SectionDivider | `sections/SectionDivider.tsx` | Wheat/blue accents |
-| ScrollReveal | `motion/ScrollReveal.tsx` | Intersection Observer |
-| K2KProductCard | `ui/K2KProductCard.tsx` | Black borders, category badges |
-| FAQAccordion | `ui/FAQAccordion.tsx` | Grouped + flat modes |
-| Product3DCarousel | `products/Product3DCarousel.tsx` | Homepage 3D coverflow |
-| InteractiveMenuBuilder | `menu/InteractiveMenuBuilder.tsx` | Full menu UX |
-| PreOrderTray | `menu/PreOrderTray.tsx` | Sidebar + mobile drawer |
-| MenuBuilderCard | `menu/MenuBuilderCard.tsx` | Qty + add to tray |
-| ProductDetailDialog | `menu/ProductDetailDialog.tsx` | Radix dialog |
-| ContactForm | `forms/ContactForm.tsx` | Web3Forms |
-| InquiryForm | `forms/InquiryForm.tsx` | Legacy — consider removal |
+| Component                | Path                              | Status                                                       |
+| ------------------------ | --------------------------------- | ------------------------------------------------------------ |
+| Header                   | `layout/Header.tsx`               | Bold nav, wordmark (Knead To Know black / Sweet & Sour blue) |
+| Footer                   | `layout/Footer.tsx`               | Black-bordered newsletter card                               |
+| BrandLogo                | `brand/BrandLogo.tsx`             | Responsive sizes                                             |
+| MobileOrderBar           | `layout/MobileOrderBar.tsx`       | Sticky Pre-Order + Call                                      |
+| PageHero                 | `sections/PageHero.tsx`           | Shared inner-page heroes                                     |
+| Section / SectionHeading | `sections/Section.tsx`            | ScrollReveal default                                         |
+| CTASection               | `sections/CTASection.tsx`         | Conversion band                                              |
+| SectionDivider           | `sections/SectionDivider.tsx`     | Wheat/blue accents                                           |
+| ScrollReveal             | `motion/ScrollReveal.tsx`         | Intersection Observer                                        |
+| K2KProductCard           | `ui/K2KProductCard.tsx`           | Black borders, category badges                               |
+| FAQAccordion             | `ui/FAQAccordion.tsx`             | Grouped + flat modes                                         |
+| Product3DCarousel        | `products/Product3DCarousel.tsx`  | Homepage 3D coverflow                                        |
+| InteractiveMenuBuilder   | `menu/InteractiveMenuBuilder.tsx` | Full menu UX                                                 |
+| PreOrderTray             | `menu/PreOrderTray.tsx`           | Sidebar + mobile drawer                                      |
+| MenuBuilderCard          | `menu/MenuBuilderCard.tsx`        | Qty + add to tray                                            |
+| ProductDetailDialog      | `menu/ProductDetailDialog.tsx`    | Radix dialog                                                 |
+| ContactForm              | `forms/ContactForm.tsx`           | Web3Forms                                                    |
+| InquiryForm              | `forms/InquiryForm.tsx`           | Legacy — consider removal                                    |
 
 ---
 
 ## Data Layer
 
-| File | Purpose |
-|------|---------|
-| `src/lib/business.ts` | Wendy, phone, tel, sms, ordering model |
-| `src/lib/products.ts` | 16 products, photos, featured sets |
-| `src/lib/product-copy.ts` | Descriptions + ingredients |
-| `src/data/menu.ts` | MenuProduct schema for builder (derived from products) |
-| `src/lib/preorder-tray.ts` | Cart reducer, SMS body, pricing math |
+| File                       | Purpose                                                |
+| -------------------------- | ------------------------------------------------------ |
+| `src/lib/business.ts`      | Wendy, phone, tel, sms, ordering model                 |
+| `src/lib/products.ts`      | 16 products, photos, featured sets                     |
+| `src/lib/product-copy.ts`  | Descriptions + ingredients                             |
+| `src/data/menu.ts`         | MenuProduct schema for builder (derived from products) |
+| `src/lib/preorder-tray.ts` | Cart reducer, SMS body, pricing math                   |
 
 ### Verified Pricing (unchanged)
+
 - **Breads:** $12–$20 per loaf (7 items)
 - **Cookies:** 2 for $5 per order unit (5 items)
 - **Bagels:** $3 each (4 items)
@@ -146,13 +157,13 @@
 
 ## Forms & Integrations
 
-| Form | Page | Backend | Production ready? |
-|------|------|---------|-----------------|
-| ContactForm | `/contact` | Web3Forms | Needs env key |
-| Custom Orders | `/custom-orders` | Web3Forms | Needs env key |
-| Catering | `/catering` | Web3Forms | Needs env key |
-| SMS Pre-Order | `/menu` tray | Native `sms:` link | **Ready** |
-| Phone CTAs | Site-wide | `tel:8439730309` | **Ready** |
+| Form          | Page             | Backend            | Production ready? |
+| ------------- | ---------------- | ------------------ | ----------------- |
+| ContactForm   | `/contact`       | Web3Forms          | Needs env key     |
+| Custom Orders | `/custom-orders` | Web3Forms          | Needs env key     |
+| Catering      | `/catering`      | Web3Forms          | Needs env key     |
+| SMS Pre-Order | `/menu` tray     | Native `sms:` link | **Ready**         |
+| Phone CTAs    | Site-wide        | `tel:8439730309`   | **Ready**         |
 
 **Action:** Set `VITE_WEB3FORMS_ACCESS_KEY` in Cloudflare Pages → Settings → Environment variables.
 

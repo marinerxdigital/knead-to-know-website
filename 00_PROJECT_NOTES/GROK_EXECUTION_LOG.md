@@ -57,9 +57,9 @@ Result: Assets organized, documented.
 Files affected: public/assets/knead-to-know/, 05_ASSETS/ASSET_INVENTORY.md
 Next step: Brand audit + content conversion.
 
-[2026-06-22] Action: Brand removal + content conversion (business, header, footer, forms, about, index hero/meta, titles across routes). NAV updated. BRAND_REMOVAL_AUDIT.md created.
+[2026-06-22] Action: Brand removal + content conversion (business, header, footer, forms, about, index hero/meta, titles across routes). NAV updated. BRAND*REMOVAL_AUDIT.md created.
 Result: Major Spilled Milk references removed from active code.
-Files affected: src/lib/_, src/components/layout/_, src/routes/\*, 07_QA/BRAND_REMOVAL_AUDIT.md
+Files affected: src/lib/*, src/components/layout/\_, src/routes/\*, 07_QA/BRAND_REMOVAL_AUDIT.md
 Next step: Build verification + reports + git check.
 
 [2026-06-22] Action: npm install + npm run build (Phase 1 npm path).

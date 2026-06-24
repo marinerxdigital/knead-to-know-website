@@ -18,7 +18,7 @@ export function FAQPanel({
   return (
     <div className={cn("k2k-faq-panel", accentRail && "k2k-accent-rail", className)}>
       {header ? <div className="k2k-faq-panel-header">{header}</div> : null}
-      <div className="k2k-faq-panel-body">{children}</div>
+      <div className="k2k-faq-panel-body min-w-0">{children}</div>
     </div>
   );
 }

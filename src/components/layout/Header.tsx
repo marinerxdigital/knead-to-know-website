@@ -196,7 +196,7 @@ export function Header() {
         <nav className="mx-auto flex max-w-7xl flex-col px-4 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-6 lg:px-8">
           <a
             href={BUSINESS.phoneTel}
-            className="k2k-bordered mb-3 flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-[#f8f4ed] px-4 py-3 text-sm font-bold text-k2k-navy"
+            className="mb-3 flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-k2k-black bg-[#f8f4ed] px-4 py-3 text-sm font-bold text-k2k-navy"
           >
             <Phone className="h-4 w-4 text-k2k-blue" />
             {BUSINESS.phone}

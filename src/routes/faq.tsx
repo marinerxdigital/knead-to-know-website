@@ -156,7 +156,7 @@ function FAQAccordionBlack({ groups }: { groups: ReadonlyArray<FAQGroup & { icon
                 <AccordionItem
                   key={`group-${gi}-item-${i}`}
                   value={`group-${gi}-item-${i}`}
-                  className="overflow-hidden rounded-2xl border border-[#111] border-t-2 border-t-k2k-blue/10 bg-white shadow-[0_6px_24px_-14px_rgba(17,17,17,0.18)] transition-all duration-300 data-[state=open]:border-k2k-blue data-[state=open]:border-t-k2k-blue/30 data-[state=open]:shadow-[0_12px_32px_-16px_rgba(17,17,17,0.22)]"
+                  className="rounded-2xl border border-[#111] border-t-2 border-t-k2k-blue/10 bg-white shadow-[0_6px_24px_-14px_rgba(17,17,17,0.18)] transition-all duration-300 data-[state=open]:border-k2k-blue data-[state=open]:border-t-k2k-blue/30 data-[state=open]:shadow-[0_12px_32px_-16px_rgba(17,17,17,0.22)]"
                 >
                   <AccordionTrigger
                     className={cn(

@@ -52,7 +52,7 @@ export function Lightbox({ slides, index, onClose, onIndexChange }: LightboxProp
       role="dialog"
       aria-modal="true"
       aria-label="Media viewer"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/85 backdrop-blur-sm"
+      className="k2k-lightbox-overlay fixed inset-0 z-[100] flex items-center justify-center bg-ink/85 backdrop-blur-sm"
       onClick={onClose}
     >
       <button
@@ -95,7 +95,8 @@ export function Lightbox({ slides, index, onClose, onIndexChange }: LightboxProp
       )}
 
       <figure
-        className="relative mx-auto flex max-h-[90vh] w-full max-w-5xl flex-col items-center px-4 sm:px-12"
+        key={current.id}
+        className="k2k-lightbox-figure relative mx-auto flex max-h-[90vh] w-full max-w-5xl flex-col items-center px-4 sm:px-12"
         onClick={(e) => e.stopPropagation()}
       >
         {current.kind === "video" ? (
@@ -109,13 +110,13 @@ export function Lightbox({ slides, index, onClose, onIndexChange }: LightboxProp
             playsInline
             controls
             preload="auto"
-            className="max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
+            className="k2k-lightbox-media max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
           />
         ) : (
           <img
             src={current.url}
             alt={current.alt}
-            className="max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
+            className="k2k-lightbox-media max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
           />
         )}
         <figcaption className="mt-4 max-w-2xl text-center text-white">

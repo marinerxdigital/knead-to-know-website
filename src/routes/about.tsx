@@ -229,10 +229,7 @@ function MapPlaceholder({ variant = "light" }: { variant?: "light" | "dark" }) {
           {BUSINESS.city}
         </p>
         <p
-          className={cn(
-            "relative max-w-xs text-sm",
-            isDark ? "text-white/60" : "text-k2k-navy/90",
-          )}
+          className={cn("relative max-w-xs text-sm", isDark ? "text-white/60" : "text-k2k-navy/90")}
         >
           {BUSINESS.address}. Exact pickup details confirmed after your order.
         </p>
@@ -290,7 +287,7 @@ function AboutPage() {
       <Section variant="editorial">
         <div className="grid min-w-0 gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-14">
           <ScrollReveal className="min-w-0 space-y-5">
-            <div className="k2k-surface relative overflow-hidden rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-6 text-center sm:p-8">
+            <div className="k2k-surface relative overflow-x-clip overflow-y-visible rounded-[2rem] border-t-2 border-t-k2k-blue/15 p-6 text-center sm:p-8">
               <img
                 src={KTK_DECOR.cornerFlourish}
                 alt=""
@@ -387,9 +384,7 @@ function AboutPage() {
                     </div>
                     <div>
                       <h3 className="font-display text-lg text-ink">{item.title}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-k2k-navy/90">
-                        {item.desc}
-                      </p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-k2k-navy/90">{item.desc}</p>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -429,9 +424,7 @@ function AboutPage() {
                   >
                     <div className="k2k-surface k2k-hover-lift rounded-2xl border-t-2 border-t-k2k-blue/15 p-4 transition duration-300 hover:border-t-k2k-blue/35 sm:p-5">
                       <h3 className="font-display text-lg text-ink">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">
-                        {step.desc}
-                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">{step.desc}</p>
                     </div>
                   </ScrollReveal>
                 </li>
@@ -499,21 +492,6 @@ function AboutPage() {
                 Based on Daniel Island, {BUSINESS.name} serves the Charleston area with freshly
                 baked sourdough by pre-order. Call or submit a request to place your order.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to="/menu"
-                  className="inline-flex k2k-button k2k-button-outline border-white/35 text-white hover:border-white/60 hover:bg-white/5"
-                >
-                  View Menu
-                </Link>
-                <Link
-                  to="/custom-orders"
-                  className="group inline-flex k2k-button k2k-button-primary"
-                >
-                  Request an Order{" "}
-                  <ArrowRight className="ml-1.5 h-4 w-4 transition duration-300 group-hover:translate-x-0.5" />
-                </Link>
-              </div>
             </ScrollReveal>
 
             <ScrollReveal delay={1} className="min-w-0">

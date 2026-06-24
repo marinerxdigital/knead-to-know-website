@@ -14,11 +14,11 @@
 
 ## Agent Team (Verification Pass)
 
-| Agent | Routes | Outcome |
-|-------|--------|---------|
-| Agent 1 | `/`, `/faq`, `/menu` | FAQ padding, menu padding conflict, mobile main pad |
-| Agent 2 | `/about`, `/contact`, `/gallery`, `/catering` | CTA copy, footer overlap, about transition |
-| Agent 3 | `/custom-orders`, `/privacy` | Missing CTASection on 3 page endings |
+| Agent   | Routes                                        | Outcome                                             |
+| ------- | --------------------------------------------- | --------------------------------------------------- |
+| Agent 1 | `/`, `/faq`, `/menu`                          | FAQ padding, menu padding conflict, mobile main pad |
+| Agent 2 | `/about`, `/contact`, `/gallery`, `/catering` | CTA copy, footer overlap, about transition          |
+| Agent 3 | `/custom-orders`, `/privacy`                  | Missing CTASection on 3 page endings                |
 
 ## Fixes Applied
 
@@ -32,12 +32,12 @@
 
 ## Agent Team
 
-| Agent | Role | Outcome |
-|-------|------|---------|
-| Agent 1 | Discovery & Audit | `design_integration_manifest.json` |
-| Agent 2 | Asset Integration | Copied 19 assets + logo; favicons; OG; archive |
-| Agent 3 | Code Integration | 24+ src files; `design-assets.ts`; CSS utilities |
-| Agent 4 | QA & Docs | Build PASS; memory files; this report |
+| Agent   | Role              | Outcome                                          |
+| ------- | ----------------- | ------------------------------------------------ |
+| Agent 1 | Discovery & Audit | `design_integration_manifest.json`               |
+| Agent 2 | Asset Integration | Copied 19 assets + logo; favicons; OG; archive   |
+| Agent 3 | Code Integration  | 24+ src files; `design-assets.ts`; CSS utilities |
+| Agent 4 | QA & Docs         | Build PASS; memory files; this report            |
 
 ## Key Decisions
 

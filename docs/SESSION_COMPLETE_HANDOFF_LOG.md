@@ -33,13 +33,13 @@
 
 ## 1. Git & Deploy Confirmation
 
-| Check | Status |
-|-------|--------|
-| Local `HEAD` | `6668f35` |
-| `origin/main` | `6668f35` (synced) |
-| Uncommitted `src/` changes | **None** — all UI/docs work pushed |
-| Cloudflare Pages | Deploys from `main` → https://knead-to-know-website-v2.pages.dev |
-| Build (`npm run build`) | **PASS** (last verified Revamp #5 + text contrast) |
+| Check                      | Status                                                           |
+| -------------------------- | ---------------------------------------------------------------- |
+| Local `HEAD`               | `6668f35`                                                        |
+| `origin/main`              | `6668f35` (synced)                                               |
+| Uncommitted `src/` changes | **None** — all UI/docs work pushed                               |
+| Cloudflare Pages           | Deploys from `main` → https://knead-to-know-website-v2.pages.dev |
+| Build (`npm run build`)    | **PASS** (last verified Revamp #5 + text contrast)               |
 
 ### Recent commits (newest first)
 
@@ -61,21 +61,21 @@ f4bf5c5  chore: orphan routes, redirects, Wendy master guide
 
 **Knead To Know Sweet & Sour Website v2** is a **client-review mockup** for Wendy Mercado's Daniel Island home bakery. It is visually production-grade and functionally interactive, but **not** a final launch until Wendy supplies remaining content and the operator configures form delivery.
 
-| Dimension | Status |
-|-----------|--------|
-| Visual design (Revamps #1–#5) | ✅ Complete |
-| Harbor Deep palette `#3B6E91` | ✅ Complete |
-| 16-item verified menu + pricing | ✅ Complete |
-| Interactive menu + SMS pre-order tray | ✅ Complete |
-| Homepage 3D product carousel | ✅ Complete |
-| All 9 primary pages | ✅ Complete |
-| Orphan Spilled Milk routes | ✅ Removed + 301 redirects |
-| Text contrast pass | ✅ Complete |
-| Web3Forms live delivery | ⏳ Needs `VITE_WEB3FORMS_ACCESS_KEY` |
-| Wendy email / hours / social | ⏳ Awaiting client |
-| Real testimonials / founder photo | ⏳ Placeholder structure only |
-| Custom domain | ⏳ Post-approval |
-| DALL·E asset generation | 📋 Documented, not executed |
+| Dimension                             | Status                               |
+| ------------------------------------- | ------------------------------------ |
+| Visual design (Revamps #1–#5)         | ✅ Complete                          |
+| Harbor Deep palette `#3B6E91`         | ✅ Complete                          |
+| 16-item verified menu + pricing       | ✅ Complete                          |
+| Interactive menu + SMS pre-order tray | ✅ Complete                          |
+| Homepage 3D product carousel          | ✅ Complete                          |
+| All 9 primary pages                   | ✅ Complete                          |
+| Orphan Spilled Milk routes            | ✅ Removed + 301 redirects           |
+| Text contrast pass                    | ✅ Complete                          |
+| Web3Forms live delivery               | ⏳ Needs `VITE_WEB3FORMS_ACCESS_KEY` |
+| Wendy email / hours / social          | ⏳ Awaiting client                   |
+| Real testimonials / founder photo     | ⏳ Placeholder structure only        |
+| Custom domain                         | ⏳ Post-approval                     |
+| DALL·E asset generation               | 📋 Documented, not executed          |
 
 **Conversion model:** Browse menu → build pre-order tray → **Text or Call Wendy** at `(843) 973-0309`. No checkout, no payment, no invented data.
 
@@ -89,43 +89,43 @@ Boutique **home bakery** on Daniel Island, SC. **Pre-orders only** — freshly b
 
 ### Technology stack
 
-| Layer | Technology |
-|-------|------------|
-| UI | React 19 |
-| Framework | TanStack Start (SSR) + TanStack Router |
-| Styling | Tailwind CSS v4 + `k2k-*` tokens in `src/styles.css` |
-| Forms | react-hook-form + Zod + Web3Forms API |
-| Build | Vite 7 + Nitro (`cloudflare-pages` preset) |
-| Deploy | Cloudflare Pages + Workers (`dist/_worker.js`) |
-| Fonts | Fraunces (display) + Inter (body) |
+| Layer     | Technology                                           |
+| --------- | ---------------------------------------------------- |
+| UI        | React 19                                             |
+| Framework | TanStack Start (SSR) + TanStack Router               |
+| Styling   | Tailwind CSS v4 + `k2k-*` tokens in `src/styles.css` |
+| Forms     | react-hook-form + Zod + Web3Forms API                |
+| Build     | Vite 7 + Nitro (`cloudflare-pages` preset)           |
+| Deploy    | Cloudflare Pages + Workers (`dist/_worker.js`)       |
+| Fonts     | Fraunces (display) + Inter (body)                    |
 
 **No database, CMS, auth, or payment gateway.**
 
 ### Nine live customer routes
 
-| Route | Purpose |
-|-------|---------|
-| `/` | Homepage — hero, 3D carousel, trust strip, teasers |
-| `/menu` | Interactive menu builder + pre-order tray + SMS |
-| `/about` | Brand story, process, founder placeholder |
-| `/custom-orders` | Product picker + Web3Forms inquiry |
-| `/catering` | Service tiers + Web3Forms inquiry |
-| `/gallery` | Photo masonry + lightbox |
-| `/faq` | Accordion Q&A |
-| `/contact` | Phone CTA + ContactForm + map placeholder |
-| `/privacy` | Privacy policy |
+| Route            | Purpose                                            |
+| ---------------- | -------------------------------------------------- |
+| `/`              | Homepage — hero, 3D carousel, trust strip, teasers |
+| `/menu`          | Interactive menu builder + pre-order tray + SMS    |
+| `/about`         | Brand story, process, founder placeholder          |
+| `/custom-orders` | Product picker + Web3Forms inquiry                 |
+| `/catering`      | Service tiers + Web3Forms inquiry                  |
+| `/gallery`       | Photo masonry + lightbox                           |
+| `/faq`           | Accordion Q&A                                      |
+| `/contact`       | Phone CTA + ContactForm + map placeholder          |
+| `/privacy`       | Privacy policy                                     |
 
 **Redirects:** `/inquiry` → `/custom-orders`; `/flavors`, `/flavors-pricing`, `/featured` → `/menu`
 
 ### Data layer (source of truth)
 
-| File | Role |
-|------|------|
-| `src/lib/business.ts` | `SITE_URL`, `BUSINESS` contact, null placeholders |
-| `src/lib/products.ts` | 16 verified products + `BAKERY_PHOTOS` |
-| `src/lib/product-copy.ts` | Descriptions + ingredients |
-| `src/data/menu.ts` | Menu builder schema (derived from products) |
-| `src/lib/preorder-tray.ts` | Tray reducer, pricing math, SMS body builder |
+| File                       | Role                                              |
+| -------------------------- | ------------------------------------------------- |
+| `src/lib/business.ts`      | `SITE_URL`, `BUSINESS` contact, null placeholders |
+| `src/lib/products.ts`      | 16 verified products + `BAKERY_PHOTOS`            |
+| `src/lib/product-copy.ts`  | Descriptions + ingredients                        |
+| `src/data/menu.ts`         | Menu builder schema (derived from products)       |
+| `src/lib/preorder-tray.ts` | Tray reducer, pricing math, SMS body builder      |
 
 ### Key components
 
@@ -137,14 +137,14 @@ Boutique **home bakery** on Daniel Island, SC. **Pre-orders only** — freshly b
 
 ### Design system (Harbor Deep)
 
-| Token | Hex | Use |
-|-------|-----|-----|
+| Token       | Hex       | Use                                        |
+| ----------- | --------- | ------------------------------------------ |
 | Harbor Deep | `#3B6E91` | Primary CTA, accents, Sweet & Sour tagline |
-| Harbor | `#6A9EC0` | Secondary, gradients |
-| Hover | `#325F7D` | Primary button hover |
-| Ink | `#111111` | Text, 1px borders on all containers |
-| Cream | `#F8F4ED` | Warm section backgrounds |
-| Wheat | `#C2A878` | Small accents only |
+| Harbor      | `#6A9EC0` | Secondary, gradients                       |
+| Hover       | `#325F7D` | Primary button hover                       |
+| Ink         | `#111111` | Text, 1px borders on all containers        |
+| Cream       | `#F8F4ED` | Warm section backgrounds                   |
+| Wheat       | `#C2A878` | Small accents only                         |
 
 **CSS classes:** `.k2k-surface`, `.k2k-card`, `.k2k-button-primary`, `.k2k-accent-rail`, `.k2k-3d-carousel-*`, `.k2k-preorder-tray-*`, `.k2k-text-body`, `.k2k-text-secondary`
 
@@ -161,10 +161,10 @@ Checkout · payments · user accounts · inventory · CMS · newsletter backend 
 
 ### Brand non-negotiables
 
-1. **Knead To Know only** on customer surfaces — never Spilled Milk  
-2. No invented pricing, testimonials, press, hours, email, social  
-3. Cloudflare Pages is deploy target  
-4. Do not delete `00_*` intake folders or `.grok/skills`  
+1. **Knead To Know only** on customer surfaces — never Spilled Milk
+2. No invented pricing, testimonials, press, hours, email, social
+3. Cloudflare Pages is deploy target
+4. Do not delete `00_*` intake folders or `.grok/skills`
 5. Update `MEMORY.md` after meaningful work
 
 ---
@@ -244,12 +244,12 @@ Checkout · payments · user accounts · inventory · CMS · newsletter backend 
 
 **4 parallel UI/UX agents:**
 
-| Agent | Fixes |
-|-------|-------|
-| Layout/nav | Mobile drawer positioning, 44px touch targets, skip link, 404 polish |
-| Homepage/about/gallery | Hero typography, carousel mobile height, equal-height cards |
-| Menu/tray | Tray vs MobileOrderBar conflict, bottom sheet dialog, empty states |
-| Contact/forms/FAQ | 48px form fields, section padding, `overflow-x: clip` |
+| Agent                  | Fixes                                                                |
+| ---------------------- | -------------------------------------------------------------------- |
+| Layout/nav             | Mobile drawer positioning, 44px touch targets, skip link, 404 polish |
+| Homepage/about/gallery | Hero typography, carousel mobile height, equal-height cards          |
+| Menu/tray              | Tray vs MobileOrderBar conflict, bottom sheet dialog, empty states   |
+| Contact/forms/FAQ      | 48px form fields, section padding, `overflow-x: clip`                |
 
 - `docs/WENDY_WALKTHROUGH_GUIDE.md` created
 
@@ -272,27 +272,27 @@ Checkout · payments · user accounts · inventory · CMS · newsletter backend 
 
 ## 5. All Parallel Superagent Sessions
 
-| # | Session | Agents | Outcome |
-|---|---------|--------|---------|
-| 1 | Phase 2 brand conversion | 4 | Full K2K rebrand, assets, routes |
-| 2 | Visual upgrade waves 1–6 | 4×3 + solo | Forms, SEO, homepage trim, dividers |
-| 3 | Revamp #1–#2 | 4 waves | PageHero, cream palette, product copy |
-| 4 | Revamp #4 | 4 | Carousel, menu builder, SMS tray, deploy |
-| 5 | Revamp #5 | 4 | Mobile UX, touch targets, overflow fix |
-| 6 | Harbor Deep blue | 1 | Palette migration |
-| 7 | Text contrast | 4 | Readability site-wide |
-| 8 | DALL·E brainstorm | 4 | 23-prompt master asset doc |
-| 9 | Orphan cleanup | 1 | Redirects + route deletion |
-| 10 | Final handoff + verification | 4 | Git/build audit, remaining-work audit, edit inventory, improvements roadmap |
+| #   | Session                      | Agents     | Outcome                                                                     |
+| --- | ---------------------------- | ---------- | --------------------------------------------------------------------------- |
+| 1   | Phase 2 brand conversion     | 4          | Full K2K rebrand, assets, routes                                            |
+| 2   | Visual upgrade waves 1–6     | 4×3 + solo | Forms, SEO, homepage trim, dividers                                         |
+| 3   | Revamp #1–#2                 | 4 waves    | PageHero, cream palette, product copy                                       |
+| 4   | Revamp #4                    | 4          | Carousel, menu builder, SMS tray, deploy                                    |
+| 5   | Revamp #5                    | 4          | Mobile UX, touch targets, overflow fix                                      |
+| 6   | Harbor Deep blue             | 1          | Palette migration                                                           |
+| 7   | Text contrast                | 4          | Readability site-wide                                                       |
+| 8   | DALL·E brainstorm            | 4          | 23-prompt master asset doc                                                  |
+| 9   | Orphan cleanup               | 1          | Redirects + route deletion                                                  |
+| 10  | Final handoff + verification | 4          | Git/build audit, remaining-work audit, edit inventory, improvements roadmap |
 
 **Session 10 agents (June 23, 2026 — this handoff session):**
 
-| Agent | Role | Key findings |
-|-------|------|--------------|
-| A | Git & deploy verification | `HEAD` = `origin/main` = `6668f35`; `npm run build` PASS; zero uncommitted `src/` changes |
-| B | Remaining-work audit | 7 null `business.ts` fields; Web3Forms env blocker; 9/16 photo issues; 6 dead lib files; 6 lint errors |
-| C | Session edits inventory | Chronological timeline Revamp #4→`6668f35`; ~85+ unique `src/` files touched |
-| D | Improvements & priorities | Top 15 opportunities; 3-session roadmap; DALL·E Must-tier queue |
+| Agent | Role                      | Key findings                                                                                           |
+| ----- | ------------------------- | ------------------------------------------------------------------------------------------------------ |
+| A     | Git & deploy verification | `HEAD` = `origin/main` = `6668f35`; `npm run build` PASS; zero uncommitted `src/` changes              |
+| B     | Remaining-work audit      | 7 null `business.ts` fields; Web3Forms env blocker; 9/16 photo issues; 6 dead lib files; 6 lint errors |
+| C     | Session edits inventory   | Chronological timeline Revamp #4→`6668f35`; ~85+ unique `src/` files touched                           |
+| D     | Improvements & priorities | Top 15 opportunities; 3-session roadmap; DALL·E Must-tier queue                                        |
 
 **Pattern:** Disjoint file ownership per agent → build gate → `MEMORY.md` update → push `main`.
 
@@ -324,17 +324,17 @@ Checkout · payments · user accounts · inventory · CMS · newsletter backend 
 
 ### Blocked 🚫 (needs action)
 
-| Blocker | Owner |
-|---------|-------|
-| `VITE_WEB3FORMS_ACCESS_KEY` + form delivery test | Skyler |
-| Production domain + `SITE_URL` in `business.ts` | Skyler + Wendy |
-| `BUSINESS.email` | Wendy |
-| `BUSINESS.hours` | Wendy |
-| `instagramUrl` / `facebookUrl` | Wendy |
-| `mapsUrl` | Wendy |
-| Real product photos (9 items need work) | Wendy |
-| Real testimonials | Wendy (optional) |
-| Wendy menu/FAQ/policy sign-off | Wendy |
+| Blocker                                          | Owner            |
+| ------------------------------------------------ | ---------------- |
+| `VITE_WEB3FORMS_ACCESS_KEY` + form delivery test | Skyler           |
+| Production domain + `SITE_URL` in `business.ts`  | Skyler + Wendy   |
+| `BUSINESS.email`                                 | Wendy            |
+| `BUSINESS.hours`                                 | Wendy            |
+| `instagramUrl` / `facebookUrl`                   | Wendy            |
+| `mapsUrl`                                        | Wendy            |
+| Real product photos (9 items need work)          | Wendy            |
+| Real testimonials                                | Wendy (optional) |
+| Wendy menu/FAQ/policy sign-off                   | Wendy            |
 
 ---
 
@@ -373,18 +373,18 @@ Bagels ($3): Plain, Everything, Sesame, Poppy
 
 ## 9. Known Tech Debt & Improvements
 
-| Issue | Severity | Fix |
-|-------|----------|-----|
-| OG meta 1200×1500 vs actual hero 1024×576 | Medium | Update meta or create 1200×630 OG image |
-| 9/16 products missing or wrong photos | High | Wendy photos or DALL·E interim (see asset doc) |
-| Brand guidelines still say `#4F7EA8` | Low | Update `00_BRAND_ASSETS/.../BRAND_GUIDELINES.md` |
-| `WENDY_WALKTHROUGH_GUIDE.md` stale menu items | Low | Align with `products.ts` |
-| Hardcoded Web3Forms fallback key | High before launch | Env-only |
-| Legacy lib files unused | Low | Delete per `CODEX.md` |
-| No `typecheck` script | Low | Add `tsc --noEmit` |
-| JSON-LD missing `telephone` | Low | Add now that phone verified |
-| Prettier/lint errors possible post-format | Low | `npm run format` |
-| `docs/GROK_PARALLEL_BUILD_INSTRUCTIONS.md` untracked | Low | Commit if desired |
+| Issue                                                | Severity           | Fix                                              |
+| ---------------------------------------------------- | ------------------ | ------------------------------------------------ |
+| OG meta 1200×1500 vs actual hero 1024×576            | Medium             | Update meta or create 1200×630 OG image          |
+| 9/16 products missing or wrong photos                | High               | Wendy photos or DALL·E interim (see asset doc)   |
+| Brand guidelines still say `#4F7EA8`                 | Low                | Update `00_BRAND_ASSETS/.../BRAND_GUIDELINES.md` |
+| `WENDY_WALKTHROUGH_GUIDE.md` stale menu items        | Low                | Align with `products.ts`                         |
+| Hardcoded Web3Forms fallback key                     | High before launch | Env-only                                         |
+| Legacy lib files unused                              | Low                | Delete per `CODEX.md`                            |
+| No `typecheck` script                                | Low                | Add `tsc --noEmit`                               |
+| JSON-LD missing `telephone`                          | Low                | Add now that phone verified                      |
+| Prettier/lint errors possible post-format            | Low                | `npm run format`                                 |
+| `docs/GROK_PARALLEL_BUILD_INSTRUCTIONS.md` untracked | Low                | Commit if desired                                |
 
 ### Future enhancements (post-launch)
 
@@ -400,21 +400,21 @@ Bagels ($3): Plain, Everything, Sesame, Poppy
 
 ## 10. QA Status
 
-| Gate | Result |
-|------|--------|
-| `npm run build` | ✅ PASS |
-| `npm run lint` | ⚠️ May have prettier errors — run `npm run format` |
-| Placeholder bracket sweep `[INSERT` | ✅ None in `src/` |
-| Spilled Milk on live pages | ✅ Removed |
-| Mobile 375px overflow | ✅ Fixed Revamp #5 |
-| 44px touch targets | ✅ Menu, nav, forms |
-| Forms end-to-end email | ❌ Blocked on env key |
-| SMS tray manual test | ⏳ Wendy should verify on device |
-| Lighthouse audit | ❌ Not run |
-| Custom domain | ❌ Not configured |
-| ESLint (`npm run lint`) | ❌ 6 Prettier errors, 8 warnings (fixable with `--fix`) |
-| TypeScript (`tsc --noEmit`) | ❌ 1 error in `products.ts:229` (category type inference) |
-| Build (`npm run build`) | ✅ PASS (re-verified Session 10) |
+| Gate                                | Result                                                    |
+| ----------------------------------- | --------------------------------------------------------- |
+| `npm run build`                     | ✅ PASS                                                   |
+| `npm run lint`                      | ⚠️ May have prettier errors — run `npm run format`        |
+| Placeholder bracket sweep `[INSERT` | ✅ None in `src/`                                         |
+| Spilled Milk on live pages          | ✅ Removed                                                |
+| Mobile 375px overflow               | ✅ Fixed Revamp #5                                        |
+| 44px touch targets                  | ✅ Menu, nav, forms                                       |
+| Forms end-to-end email              | ❌ Blocked on env key                                     |
+| SMS tray manual test                | ⏳ Wendy should verify on device                          |
+| Lighthouse audit                    | ❌ Not run                                                |
+| Custom domain                       | ❌ Not configured                                         |
+| ESLint (`npm run lint`)             | ❌ 6 Prettier errors, 8 warnings (fixable with `--fix`)   |
+| TypeScript (`tsc --noEmit`)         | ❌ 1 error in `products.ts:229` (category type inference) |
+| Build (`npm run build`)             | ✅ PASS (re-verified Session 10)                          |
 
 **Verdict:** Ready for **Wendy design review**. Not ready for **production launch** until blockers cleared.
 
@@ -432,26 +432,26 @@ Bagels ($3): Plain, Everything, Sesame, Poppy
 
 ### Client-facing
 
-| File | Audience |
-|------|----------|
-| `docs/WENDY_WALKTHROUGH_GUIDE.md` | Wendy — 10-min tour + approval checkboxes |
+| File                                            | Audience                                  |
+| ----------------------------------------------- | ----------------------------------------- |
+| `docs/WENDY_WALKTHROUGH_GUIDE.md`               | Wendy — 10-min tour + approval checkboxes |
 | `docs/WENDY_MOCK_TO_PRODUCTION_MASTER_GUIDE.md` | Wendy + Skyler — full technical reference |
 
 ### Asset generation
 
-| File | Purpose |
-|------|---------|
-| `docs/CHATGPT_LOGO_PROMPT.md` | Logo-only prompt |
+| File                                         | Purpose                        |
+| -------------------------------------------- | ------------------------------ |
+| `docs/CHATGPT_LOGO_PROMPT.md`                | Logo-only prompt               |
 | `docs/CHATGPT_DALLE_ASSET_MASTER_PROMPTS.md` | 23 DALL·E prompts + brainstorm |
 
 ### Planning / audit
 
-| File | Purpose |
-|------|---------|
-| `docs/KNEAD_TO_KNOW_SITE_AUDIT.md` | Pre-revamp audit |
-| `docs/GROK_BUILD_IMPROVEMENT_PLAN.md` | Improvement roadmap |
-| `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` | Launch definition |
-| `docs/superpowers/specs/` + `plans/` | Revamp design specs |
+| File                                        | Purpose             |
+| ------------------------------------------- | ------------------- |
+| `docs/KNEAD_TO_KNOW_SITE_AUDIT.md`          | Pre-revamp audit    |
+| `docs/GROK_BUILD_IMPROVEMENT_PLAN.md`       | Improvement roadmap |
+| `docs/CLIENT_READY_WEBSITE_REQUIREMENTS.md` | Launch definition   |
+| `docs/superpowers/specs/` + `plans/`        | Revamp design specs |
 
 ---
 
@@ -531,12 +531,12 @@ npx wrangler pages deploy dist --project-name=knead-to-know-website-v2
 
 ### Agent B — Product Photo Inventory
 
-| Status | Count | Details |
-|--------|-------|---------|
-| Correct dedicated photo | 7/16 | Verified on disk in `public/assets/knead-to-know/photos/` |
-| Missing `photo` field | 4 | `cheese-jalapeno`, `chocolate-nutella`, `olive-sourdough`, `poppy-bagel` |
-| Wrong/reused photo | 5 | `rosemary-garlic-sourdough`, `cranberry-choc-chip-cookies`, `cranberry-walnut-cookies`, `apricot-mango-cookies`, `plain-bagel` |
-| Product card PNGs | 16/16 | All `KTK_Product_Card_01`–`16` present |
+| Status                  | Count | Details                                                                                                                        |
+| ----------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Correct dedicated photo | 7/16  | Verified on disk in `public/assets/knead-to-know/photos/`                                                                      |
+| Missing `photo` field   | 4     | `cheese-jalapeno`, `chocolate-nutella`, `olive-sourdough`, `poppy-bagel`                                                       |
+| Wrong/reused photo      | 5     | `rosemary-garlic-sourdough`, `cranberry-choc-chip-cookies`, `cranberry-walnut-cookies`, `apricot-mango-cookies`, `plain-bagel` |
+| Product card PNGs       | 16/16 | All `KTK_Product_Card_01`–`16` present                                                                                         |
 
 ### Agent B — Dead Code (safe to delete)
 
@@ -563,18 +563,18 @@ b43f8c5  Revamp #5 mobile UX (30 files) + WENDY_WALKTHROUGH_GUIDE
 
 ### Agent D — Top Improvements (condensed)
 
-| Priority | Item |
-|----------|------|
-| 🔴 | Web3Forms env + remove hardcoded key |
-| 🔴 | `SITE_URL` + custom domain |
-| 🔴 | OG image 1200×630 (not portrait hero) |
-| 🔴 | Honest product photos (stop wrong-image reuse) |
-| 🟠 | CTA rebalance: Header Pre-Order → `/menu` tray funnel |
-| 🟠 | Complete JSON-LD (phone, address, hours, sameAs) |
-| 🟠 | Wendy content: email, hours, social, founder photo |
-| 🟡 | Mobile tray: stop auto-close on add |
-| 🟡 | Self-host fonts; hero `fetchPriority="high"` |
-| 🟡 | Execute DALL·E Must-tier assets |
+| Priority | Item                                                  |
+| -------- | ----------------------------------------------------- |
+| 🔴       | Web3Forms env + remove hardcoded key                  |
+| 🔴       | `SITE_URL` + custom domain                            |
+| 🔴       | OG image 1200×630 (not portrait hero)                 |
+| 🔴       | Honest product photos (stop wrong-image reuse)        |
+| 🟠       | CTA rebalance: Header Pre-Order → `/menu` tray funnel |
+| 🟠       | Complete JSON-LD (phone, address, hours, sameAs)      |
+| 🟠       | Wendy content: email, hours, social, founder photo    |
+| 🟡       | Mobile tray: stop auto-close on add                   |
+| 🟡       | Self-host fonts; hero `fetchPriority="high"`          |
+| 🟡       | Execute DALL·E Must-tier assets                       |
 
 ### Agent D — Next 3 Sessions Roadmap
 
@@ -598,4 +598,4 @@ b43f8c5  Revamp #5 mobile UX (30 files) + WENDY_WALKTHROUGH_GUIDE
 
 ---
 
-*End of complete session handoff log. Synthesized from Sessions 1–10 (including 4 parallel verification agents on June 23, 2026) + full git history through latest `main`.*
+_End of complete session handoff log. Synthesized from Sessions 1–10 (including 4 parallel verification agents on June 23, 2026) + full git history through latest `main`._

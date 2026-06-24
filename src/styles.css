@@ -163,12 +163,14 @@
     background-color var(--k2k-duration-base) var(--k2k-ease-out),
     border-color var(--k2k-duration-base) var(--k2k-ease-out),
     box-shadow var(--k2k-duration-base) var(--k2k-ease-out),
-    transform var(--k2k-duration-base) var(--k2k-ease-out);
+    transform var(--k2k-duration-base) var(--k2k-ease-out),
+    filter var(--k2k-duration-base) var(--k2k-ease-out);
 }
 
 .k2k-button:hover {
   transform: translateY(-2px);
   box-shadow: var(--k2k-shadow-md);
+  filter: saturate(1.04) brightness(1.02);
 }
 
 .k2k-button:active {
@@ -253,8 +255,15 @@
   box-shadow: var(--k2k-shadow-inner);
 }
 
-.k2k-bordered {
-  border: 1px solid #111111;
+/* Border modifier — only when element lacks a built-in container border */
+.k2k-surface.k2k-bordered,
+.k2k-card.k2k-bordered,
+.k2k-product-card.k2k-bordered {
+  /* no-op: border already declared on surface/card/product-card */
+}
+
+.k2k-bordered:not(.k2k-surface):not(.k2k-card):not(.k2k-product-card) {
+  border: var(--k2k-container-border);
 }
 
 .k2k-card {
@@ -277,6 +286,7 @@
     background-color var(--k2k-duration-base) var(--k2k-ease-out);
 }
 
+/* Hover shadow/lift needs room — parent wrappers should use overflow-visible, not overflow-hidden. */
 .k2k-product-card:hover {
   border-color: #111111;
   box-shadow: var(--k2k-shadow-lg);
@@ -334,6 +344,13 @@
   border: 1px solid #111111;
   border-radius: var(--k2k-radius-lg);
   box-shadow: var(--k2k-shadow-sm), var(--k2k-shadow-ring);
+}
+
+.k2k-surface-inset {
+  background: #f8f4ed;
+  border: 1px solid rgb(var(--k2k-blue-rgb) / 0.15);
+  border-radius: 1rem;
+  box-shadow: var(--k2k-shadow-inner);
 }
 
 /* Nav, wordmark & micro-interaction utilities */
@@ -474,6 +491,18 @@
   background: #f8fafc;
 }
 
+/* Editorial sections — clip horizontal bleed without clipping decorative SVGs */
+.k2k-section-editorial {
+  position: relative;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.k2k-section-carousel {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
 .k2k-hero-frame {
   position: relative;
   border-radius: var(--k2k-radius-lg);
@@ -594,7 +623,7 @@
 }
 
 .k2k-float-gentle {
-  animation: k2k-float-gentle 6s var(--k2k-ease-in-out) infinite;
+  animation: k2k-float-gentle 9s var(--k2k-ease-in-out) infinite;
 }
 
 @keyframes k2k-breathe {
@@ -1200,12 +1229,14 @@
   border: 1px solid #111111;
   border-radius: var(--k2k-radius-lg);
   box-shadow: var(--k2k-shadow-sm), var(--k2k-shadow-ring);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .k2k-faq-panel-header {
   border-bottom: 1px solid rgba(17, 17, 17, 0.08);
   padding: 1rem 1.5rem;
+  border-radius: inherit;
+  overflow: clip;
 }
 
 @media (min-width: 640px) {
@@ -1228,6 +1259,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+/* Room for accordion expand shadows and focus rings inside the panel */
+.k2k-faq-panel-body .k2k-faq-accordion-list {
+  padding: 0.125rem;
+  margin: -0.125rem;
 }
 
 @media (min-width: 640px) {
@@ -1346,4 +1383,171 @@
 
 .k2k-atmosphere-fog--harbor-top-soft {
   background: radial-gradient(ellipse at top, rgb(var(--k2k-harbor-rgb) / 0.08), transparent 60%);
+}
+
+/* Fresh-baked motion: cards rise softly as they enter or refilter. */
+.k2k-reveal.k2k-product-reveal {
+  transform: translateY(12px);
+  transition-duration: 0.56s;
+}
+
+.k2k-menu-filter-results {
+  animation: k2k-menu-filter-in 0.38s var(--k2k-ease-out) both;
+}
+
+@keyframes k2k-menu-filter-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Drawn order path: concise status before the detailed ordering steps. */
+.k2k-order-path {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .k2k-order-path {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.k2k-order-path::before {
+  content: "";
+  position: absolute;
+  top: 0.95rem;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: rgb(var(--k2k-blue-rgb) / 0.32);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.k2k-revealed .k2k-order-path::before {
+  animation: k2k-order-path-draw 0.9s var(--k2k-ease-out) 0.12s forwards;
+}
+
+@keyframes k2k-order-path-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.k2k-order-path-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--k2k-navy);
+  text-align: center;
+}
+
+.k2k-order-path-step span {
+  display: grid;
+  width: 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  border: 1px solid var(--k2k-black);
+  border-radius: 999px;
+  background: var(--k2k-white);
+  color: var(--k2k-blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: var(--k2k-shadow-xs);
+}
+
+.k2k-order-path-step p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .k2k-order-path-step p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Lightweight availability announcement: motion is deliberately almost imperceptible. */
+.k2k-seasonal-banner-track {
+  animation: k2k-seasonal-banner-drift 12s var(--k2k-ease-in-out) infinite alternate;
+}
+
+@keyframes k2k-seasonal-banner-drift {
+  from {
+    transform: translateX(-3px);
+  }
+  to {
+    transform: translateX(3px);
+  }
+}
+
+/* Gallery lightbox: calm fade and zoom for opening and slide changes. */
+.k2k-lightbox-overlay {
+  animation: k2k-lightbox-fade-in 0.22s ease-out both;
+}
+
+.k2k-lightbox-figure {
+  animation: k2k-lightbox-figure-in 0.32s var(--k2k-ease-out) both;
+}
+
+.k2k-lightbox-media {
+  animation: k2k-lightbox-media-in 0.42s var(--k2k-ease-out) both;
+}
+
+@keyframes k2k-lightbox-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes k2k-lightbox-figure-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes k2k-lightbox-media-in {
+  from {
+    opacity: 0;
+    transform: scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k2k-menu-filter-results,
+  .k2k-seasonal-banner-track,
+  .k2k-lightbox-overlay,
+  .k2k-lightbox-figure,
+  .k2k-lightbox-media,
+  .k2k-revealed .k2k-order-path::before {
+    animation: none;
+    transform: none;
+  }
 }

@@ -58,7 +58,12 @@
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Wheat_Icon.png",
       "new_ref": "KTK_ICONS.wheat",
-      "files": ["src/routes/index.tsx", "src/routes/__root.tsx", "src/components/layout/Header.tsx", "src/data/menu.ts"]
+      "files": [
+        "src/routes/index.tsx",
+        "src/routes/__root.tsx",
+        "src/components/layout/Header.tsx",
+        "src/data/menu.ts"
+      ]
     },
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Bread_Icon.png",
@@ -83,7 +88,12 @@
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Contact_Envelope_Icon.png",
       "new_ref": "KTK_ICONS.envelope",
-      "files": ["src/routes/contact.tsx", "src/routes/faq.tsx", "src/routes/privacy.tsx", "src/components/forms/ContactForm.tsx"]
+      "files": [
+        "src/routes/contact.tsx",
+        "src/routes/faq.tsx",
+        "src/routes/privacy.tsx",
+        "src/components/forms/ContactForm.tsx"
+      ]
     },
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Location_Pin_Icon.png",
@@ -93,7 +103,12 @@
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Pickup_Bag_Icon.png",
       "new_ref": "KTK_ICONS.pickup",
-      "files": ["src/routes/index.tsx", "src/routes/faq.tsx", "src/routes/contact.tsx", "src/routes/privacy.tsx"]
+      "files": [
+        "src/routes/index.tsx",
+        "src/routes/faq.tsx",
+        "src/routes/contact.tsx",
+        "src/routes/privacy.tsx"
+      ]
     },
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Heart_Favorite_Icon.png",
@@ -103,7 +118,12 @@
     {
       "old_pattern": "/assets/knead-to-know/icons/Knead_To_Know_Gift_Box_Icon.png",
       "new_ref": "KTK_ICONS.gift",
-      "files": ["src/routes/index.tsx", "src/routes/catering.tsx", "src/routes/contact.tsx", "src/routes/faq.tsx"]
+      "files": [
+        "src/routes/index.tsx",
+        "src/routes/catering.tsx",
+        "src/routes/contact.tsx",
+        "src/routes/faq.tsx"
+      ]
     }
   ],
   "decorative_integrations": [
@@ -114,7 +134,12 @@
     },
     {
       "asset": "ktk_corner_wheat_flourish_bottom_left_800x800.png",
-      "targets": ["src/routes/index.tsx", "src/routes/about.tsx", "src/routes/contact.tsx", "src/components/layout/Footer.tsx"],
+      "targets": [
+        "src/routes/index.tsx",
+        "src/routes/about.tsx",
+        "src/routes/contact.tsx",
+        "src/components/layout/Footer.tsx"
+      ],
       "usage": "Testimonial cards, founder card, footer accent"
     },
     {
@@ -124,13 +149,14 @@
     },
     {
       "asset": "ktk_product_placeholder_sourdough_primary_1200x1200.png",
-      "targets": ["src/components/ui/K2KProductCard.tsx", "src/components/menu/MenuBuilderCard.tsx"],
+      "targets": [
+        "src/components/ui/K2KProductCard.tsx",
+        "src/components/menu/MenuBuilderCard.tsx"
+      ],
       "usage": "Products without real photography"
     }
   ],
-  "archived_files": [
-    "public/_archive_legacy_logos/Knead_To_Know_Primary_Circular_Logo.png"
-  ],
+  "archived_files": ["public/_archive_legacy_logos/Knead_To_Know_Primary_Circular_Logo.png"],
   "central_module": "src/lib/design-assets.ts",
   "qc_checklist": {
     "assets_render_without_white_boxes": "pass",

@@ -125,15 +125,6 @@ export function CTASection({
               aria-hidden="true"
             />
             <img
-              src={KTK_ICONS.bread}
-              alt=""
-              className={cn(
-                "k2k-icon-hover pointer-events-none absolute k2k-breathe opacity-15",
-                compact ? "bottom-16 left-6 h-9 w-9" : "bottom-20 left-10 h-12 w-12",
-              )}
-              aria-hidden="true"
-            />
-            <img
               src={KTK_ICONS.cookie}
               alt=""
               className={cn(

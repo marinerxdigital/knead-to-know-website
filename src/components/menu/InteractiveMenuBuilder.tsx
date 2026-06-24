@@ -71,6 +71,9 @@ export function InteractiveMenuBuilder() {
     setDetailOpen(true);
   };
 
+  const panelId = "menu-products-panel";
+  const activeTabId = `menu-tab-${category}`;
+
   return (
     <>
       {/* Top call bar */}
@@ -117,9 +120,11 @@ export function InteractiveMenuBuilder() {
               {MENU_CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
+                  id={`menu-tab-${cat.id}`}
                   type="button"
                   role="tab"
                   aria-selected={category === cat.id}
+                  aria-controls={panelId}
                   onClick={() => setCategory(cat.id)}
                   className={cn(
                     "group inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-medium uppercase tracking-[0.1em] transition duration-300 sm:px-4",
@@ -152,11 +157,13 @@ export function InteractiveMenuBuilder() {
       {/* Menu grid + tray */}
       <div className="bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-16">
         <div className="mx-auto grid max-w-7xl items-start gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,320px)] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(300px,340px)]">
-          <div>
+          <div id={panelId} role="tabpanel" aria-labelledby={activeTabId} tabIndex={0}>
             {filtered.length === 0 ? (
               <div className="k2k-surface rounded-[2rem] border-dashed px-8 py-16 text-center">
                 <p className="font-display text-2xl text-ink">No bakes match your search</p>
-                <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">Try a different term or category.</p>
+                <p className="mt-2 text-sm leading-relaxed text-k2k-navy/90">
+                  Try a different term or category.
+                </p>
                 <button
                   type="button"
                   onClick={() => {
@@ -170,14 +177,14 @@ export function InteractiveMenuBuilder() {
               </div>
             ) : (
               <div
-                className="grid auto-rows-fr items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3"
-                role="tabpanel"
+                key={`${category}-${query}`}
+                className="k2k-menu-filter-results grid auto-rows-fr items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3"
               >
                 {filtered.map((product, index) => (
                   <ScrollReveal
                     key={product.id}
                     delay={Math.min(index % 4, 3) as 0 | 1 | 2 | 3}
-                    className="h-full"
+                    className="k2k-product-reveal h-full"
                   >
                     <MenuBuilderCard
                       product={product}

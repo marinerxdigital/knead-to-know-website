@@ -1,8 +1,8 @@
 const DESIGN_BASE = "/assets/knead-to-know/design";
 const ICON_BASE = `${DESIGN_BASE}/05_icons/individual`;
 
-export const LOGO_SRC = "/assets/knead-to-know/logo/KTK_NEW_LOGO_FINAL.png";
-export const LOGO_ALT = "Knead To Know — Sweet & Sour";
+export const LOGO_SRC = "/assets/knead-to-know/logo/Knead_To_Know_Official_Logo.jpg";
+export const LOGO_ALT = "Knead To Know Bakery, Daniel Island, South Carolina";
 
 export const KTK_ICONS = {
   wheat: `${ICON_BASE}/ktk_icon_01_wheat_stalk_1200x1200.png`,

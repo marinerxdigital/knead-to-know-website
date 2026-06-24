@@ -2,18 +2,18 @@
 
 ## Routes Inspected
 
-| Route | Page | CTA | FAQ |
-|-------|------|-----|-----|
-| `/` | Homepage | Yes | Teaser |
-| `/menu` | Menu + builder | Yes (added) | — |
-| `/about` | About | Yes | — |
-| `/faq` | FAQ | Yes | Full |
-| `/contact` | Contact + form | Yes (added) | — |
-| `/custom-orders` | Custom order form | — | — |
-| `/catering` | Catering + form | Yes (×2) | — |
-| `/gallery` | Gallery | Yes | — |
-| `/privacy` | Privacy policy | — | — |
-| 404 | Not found (`__root.tsx`) | — | — |
+| Route            | Page                     | CTA         | FAQ    |
+| ---------------- | ------------------------ | ----------- | ------ |
+| `/`              | Homepage                 | Yes         | Teaser |
+| `/menu`          | Menu + builder           | Yes (added) | —      |
+| `/about`         | About                    | Yes         | —      |
+| `/faq`           | FAQ                      | Yes         | Full   |
+| `/contact`       | Contact + form           | Yes (added) | —      |
+| `/custom-orders` | Custom order form        | —           | —      |
+| `/catering`      | Catering + form          | Yes (×2)    | —      |
+| `/gallery`       | Gallery                  | Yes         | —      |
+| `/privacy`       | Privacy policy           | —           | —      |
+| 404              | Not found (`__root.tsx`) | —           | —      |
 
 ## Breakpoints Targeted
 

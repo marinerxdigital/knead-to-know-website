@@ -51,6 +51,7 @@ src/
 ## Key Features (do not break)
 
 ### Interactive Menu Builder (`/menu`)
+
 - Category filter + search
 - Add to tray with quantity
 - Estimated total: bread (unit price), cookies ($5 per 2-cookie order), bagels ($3)
@@ -59,10 +60,12 @@ src/
 - **No checkout**
 
 ### Homepage 3D Carousel
+
 - `Product3DCarousel` uses `HOME_FEATURED_PRODUCTS` (7 items)
 - CSS 3D transforms only — no Framer Motion
 
 ### Forms (Web3Forms)
+
 - Contact, Custom Orders, Catering
 - Pattern: `import.meta.env.VITE_WEB3FORMS_ACCESS_KEY`
 - **Production blocker:** key not set in Cloudflare env
